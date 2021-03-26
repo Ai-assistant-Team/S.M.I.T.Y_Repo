@@ -1,5 +1,5 @@
 
-#This function is used to restart the device
+#This function is used to lock the device
 def lockScrn():
     import ctypes
     
