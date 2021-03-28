@@ -6,6 +6,7 @@ Created on Tue Mar 23 06:11:25 2021
 """
 
 def googleMapsSearch(query=""):
+    #made by Οικονομίδης Θεόδωρος
     ## If called with a parameter, it opens a google maps page and searches for the given text
     ## If called without a parameter, it opens a google maps page, with an empty search bar
     
@@ -28,6 +29,7 @@ def googleMapsSearch(query=""):
 
 
 def test():
+    #made by Οικονομίδης Θεόδωρος
     ## Used only for testing the code
     googleMapsSearch(input("What would you like to search?\n"))
     googleMapsSearch()                                          # when used without parameters, it opens google maps empty search 
