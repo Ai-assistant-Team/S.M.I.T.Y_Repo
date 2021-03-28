@@ -7,6 +7,7 @@ Created on Mon Mar 22 06:25:31 2021
 
 
 def googleMapsDirections(origin="", destination="", travelmode=""): #waypoints=[] :: TO ADD
+    #made by Οικονομίδης Θεόδωρος
     ## Options
         ## origin       : from
         ## destination  : to
@@ -48,6 +49,7 @@ def googleMapsDirections(origin="", destination="", travelmode=""): #waypoints=[
 
 
 def test():
+    #made by Οικονομίδης Θεόδωρος
     ## Used only for testing the code
     
     # googleMapsDirections()                                      # Opens empty google maps directions page
