@@ -122,13 +122,6 @@ def the_day_after_tomorrow(date):
             date[1] = 1
             date[2] = date[2] +1
 
-
-def today(date, time):
-    #get the time from user
-    get_time(time,"today")
-    #create and add the event to the list of Events
-    listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
-
 def create_event(listOfEvents):
 
     #Present Time
@@ -151,7 +144,8 @@ def create_event(listOfEvents):
     description = input ("What do you have to do? ")
     whene_is_the_event_happening = input("Whene is this event is going to happen ?")
     if whene_is_the_event_happening == "today":
-        today(date, time)
+        get_time(time,"today")
+        listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
     elif whene_is_the_event_happening == "tomorrow":
             tomorrow(date)
             get_time(time,"tomorrow")
@@ -161,6 +155,14 @@ def create_event(listOfEvents):
         #get_time(time,"the day after tomorrow")
         listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
         #get secific date from user
+    elif whene_is_the_event_happening == "next week":
+        next_week(date)
+        get_time(time,"next week")
+        listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
+    elif whene_is_the_event_happening == "next month":
+        next_month(date)
+        get_time(time,"next month")
+        listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
     else:
         whene_is_the_event_happening = whene_is_the_event_happening.split("-")
         whene_is_the_event_happening[0] = int (whene_is_the_event_happening[0])
@@ -218,8 +220,8 @@ def show_me(comand , listOfEvents):
 
     if comand == "show me my tasks for today":
         for x in listOfEvents:
-            if x.day == date[0] and x.month == date[1] and x.year == date[2] and ( x.hour > time[1] or (x.hour == time[1] and x.minutes >= time[2])):
-                print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
+            if x.day == date[0] and x.month == date[1] and x.year == date[2] and (x.hour > time[0] or (x.hour == time[0] and x.minutes >= time[1])):
+                    print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
     elif comand == "show me my tasks for tomorrow":
         tomorrow(date)
         for x in listOfEvents:
@@ -230,27 +232,52 @@ def show_me(comand , listOfEvents):
         for x in listOfEvents:
             if x.day == date[0] and x.month == date[1] and x.year == date[2] :
                 print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
+    else:
+        comand = comand.split("-")
+        date[0] = int (comand[0])
+        date[1] = int (comand[1])
+        date[2] = int (comand[2])
+        for x in listOfEvents:
+            if x.day == date[0] and x.month == date[1] and x.year == date[2] :
+                print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
+        
+            
+
     
     
+def next_week(date):
+    for x in range (7):
+        tomorrow(date)
+
+def next_month(date):
+    #if the month has 30 days
+    if date[1] == 4 or date[1] == 6 or date[1] == 9 or date[1] == 11:
+        days_of_month = int(30)
+    #if the month has 31 days
+    elif date[1] == 1 or date[1] == 3 or date[1] == 5 or date[1] == 7 or date[1] == 8 or date[1] == 10 or date[1] == 12:
+        days_of_month = int(31)
+    for x in range (days_of_month):
+        tomorrow(date)
+
 
 
 def test2(listOfEvents):
-    listOfEvents.append(Event(2021,12,5,5,50,"ddd"))
+    listOfEvents.append(Event(2021,5,5,15,50,"ddd"))
     listOfEvents.append(Event(2020,3,2,6,00,"ffff"))
-    listOfEvents.append(Event(2021,4,2,7,22,"rrrr"))
+    listOfEvents.append(Event(2021,4,6,7,22,"rrrr"))
     listOfEvents.append(Event(2020,4,4,11,30,"wwwww"))
 
 
-def test():
-    listOfEvents = []
-    #create_event(listOfEvents)
-    test2(listOfEvents)
-    for x in listOfEvents:
-        print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
-    print("----------------------------")
-    show_me("show me my tasks for the day after tomorrow" , listOfEvents)
+def test(listOfEvents):
+    create_event(listOfEvents)
+    create_event(listOfEvents)
+    print( listOfEvents[0].day , listOfEvents[0].month , listOfEvents[0].year , listOfEvents[0].hour, listOfEvents[0].minutes, listOfEvents[0].description)
+    print( listOfEvents[1].day , listOfEvents[1].month , listOfEvents[1].year , listOfEvents[1].hour, listOfEvents[1].minutes, listOfEvents[1].description)
 
-test()
+listOfEvents = []
+test2(listOfEvents)
+#DD-MM-YY
+show_me("6-4-2021",listOfEvents)
 p = input("enter to exit")
 
 
