@@ -294,9 +294,3 @@ test2(listOfEvents)
 #DD-MM-YY
 show_me("show me my tasks for the next 4 days",listOfEvents)
 p = input("enter to exit")
-
-
-#a = t[1]
-#a = a.split(" ")
-#print (t)
-#print(a)
