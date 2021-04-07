@@ -232,6 +232,14 @@ def show_me(comand , listOfEvents):
         for x in listOfEvents:
             if x.day == date[0] and x.month == date[1] and x.year == date[2] :
                 print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
+    elif comand.find("for the next") != -1:
+        comand = comand.split("show me my tasks for the next ")
+        #temporary variable
+        temp = comand[1].split(" days")
+        days = temp[0]
+        days = int(days)
+        print (days)
+        show_my_tasks_for_X_days(days,date,listOfEvents)
     else:
         comand = comand.split("-")
         date[0] = int (comand[0])
@@ -242,6 +250,13 @@ def show_me(comand , listOfEvents):
                 print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
         
             
+def show_my_tasks_for_X_days(x_days,date,listOfEvents):
+    for y in range(date[0]+1, x_days+date[0]+1):
+        #Search for every y in the listOfEvents for matches
+        for x in listOfEvents:
+            if x.day == y and x.month == date[1] and x.year == date[2] :
+                print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
+
 
     
     
@@ -262,10 +277,10 @@ def next_month(date):
 
 
 def test2(listOfEvents):
-    listOfEvents.append(Event(2021,5,5,15,50,"ddd"))
-    listOfEvents.append(Event(2020,3,2,6,00,"ffff"))
-    listOfEvents.append(Event(2021,4,6,7,22,"rrrr"))
-    listOfEvents.append(Event(2020,4,4,11,30,"wwwww"))
+    listOfEvents.append(Event(2021,4,10,15,50,"ddd"))
+    listOfEvents.append(Event(2021,4,8,6,00,"ffff"))
+    listOfEvents.append(Event(2021,4,9,7,22,"rrrr"))
+    listOfEvents.append(Event(2021,4,11,15,30,"wwwww"))
 
 
 def test(listOfEvents):
@@ -277,11 +292,11 @@ def test(listOfEvents):
 listOfEvents = []
 test2(listOfEvents)
 #DD-MM-YY
-show_me("6-4-2021",listOfEvents)
+show_me("show me my tasks for the next 4 days",listOfEvents)
 p = input("enter to exit")
 
 
-
-
-
-    
+#a = t[1]
+#a = a.split(" ")
+#print (t)
+#print(a)
