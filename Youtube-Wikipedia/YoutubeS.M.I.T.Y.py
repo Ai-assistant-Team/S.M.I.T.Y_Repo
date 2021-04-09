@@ -1,7 +1,6 @@
 import speech_recognition as sr         # importing speech_recognition module and giving name
 import pyttsx3                          # importing pyttsx3 module
 import pywhatkit                        # importing pywhatkit module
-import datetime                         # importing datetime module
 import wikipedia                        # importing wikipedia module
 
 listener = sr.Recognizer()                      # recognizer to recognize your voice
@@ -35,10 +34,6 @@ def take_command():                                                     # declar
             if "smity" in command:                                      # working only if she hears her name(smity)
                 command = command.replace("smity", "")                  # replacing word smity with blank
                 talk(command)                                           # if "smity" in command she will talk
-            elif "time" in command:                                     # saying time only if she hears the word "time"
-                time = datetime.datetime.now().strftime("%I:%M %p")     # recognizing time
-                print(time)                                             # printing time
-                talk("Current time is" + time)                          # saying current time is...
             elif "who is " in command:                                  # giving wikipedia info if she hears the sentence"who is"
                 person = command.replace("who is ", "")                 # replacing "who is" with blank
                 info = wikipedia.summary(person, 3)                     # recognizing wikipedia info and giving 3 lines answer
