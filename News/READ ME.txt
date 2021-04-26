@@ -1,0 +1,25 @@
+---------- 20-4-2021 ----------
+GetTitleFromArticle : It gets a URL of an article and returns the article’s title. Requirements : internet connection
+CreateListWithLinks : It gets a URL of a news website and returns all the websites links. Requirements: internet connection
+
+---------- 23-4-2021 ----------
+
+ClearListOfLinks : It gets a list of URLs and chooses which ones to keep and witch to throw way . Requirements: None
+
+---------- 25-4-2021 ----------
+
+news : It gets the list of links that the ClearListOfLinks produces and according to the command prints news titles ,links and also can open them in a browser.
+	function test : It gets an empty list uses CreateListWithLinks and ClearListOfLinks to produce a list of links and in a loop it prints a menu with the different options of commands. It calls print_all_links,print_all_titles, get_one_of_everything, get_some_news, get_news_by_category and can terminate the program.
+
+	function go_to_link: It gets a list with all the links , one with the printed ones and the number of the last link printed. The user gives the pointers of the titles of the articles he wants to read separated by spaces and the program opens them of prints an error message in case the pointer does not belong to any link.
+
+	function get_one_of_everything : gets a list with all the links and prints one title form every category.Aslo it calls the function go_to_link to open the links.
+
+	function get_news : It gets a list of all the links, a number that declares how many titles to print and the number of the pointer of the starting article. It prints the titles of the number of  articles requested and returns the pointer of the article that is going to be the first if the function is call again.
+
+	function get_some_news : It gets a list of all the links and asks the user "How many news would you like? " if the answer is a number between 1 and the number of articles that are in the list it prints the number of article titles that the user requested and calls get_news to print their titles. If the entry of the user does not qualify it prints a message. It asks if the user wants to read more articles until the user answer is negative. A positive answer contains yes, sure, yeah, why not and does not contain no , do not, don't. A negative answer does not contain yes, sure, yeah, why not and does contain no , do not, don't. In every other case the program prints a massage and asks again.
+	function print_all_titles: It gets a list of all the links and prints all the titles. Aslo it calls the function go_to_link to open the links.
+
+	function print_all_links: It gets a list of all the links and prints all the links. Aslo it calls the function go_to_link to open the links.
+
+	function get_news_by_category: It shows the user all the available news categories , he chooses one and the function prints the titles of all the articles that belong to that category. The input of the user must contains the name of the category and the word news. Aslo it calls the function go_to_link to open the links.

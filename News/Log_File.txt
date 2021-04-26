@@ -1,0 +1,30 @@
+---------- <DateA> ----------
+    <name of file 1> :
+        <change 1> (πχ : Added : <...> in line X of the code)
+        <change 2> (πχ : Deleted : line X (<...>) of the code)
+        <change 3> (πχ : Replaced : <...> with <...> in line X of the code)
+    <name of file 2> :
+        .
+
+
+----------20/4/2021----------
+	GetTitleFromArticle  :
+        	Created
+	CreateListWithLinks :
+		Created:
+
+---------- 23/4/2021 ----------
+	CreateListWithLinks :
+		Replaced : <def create_list_with_links():> with <def create_list_with_links(list_of_links):> in line 6 of the code
+		Deleted : line 7 (f = open("test1.txt", "w")) of the code)
+		Replaced : <f.write(data)> with <list_of_links.append(data)> in line 12 of the code
+		Deleted : line 13 (f.write("\n")) of the code)
+		Replaced : <f.close()> with <return list_of_links> in line 14 of the code
+	ClearListOfLinks:
+		Created
+
+---------- 25/4/2021 ----------
+	news:
+		Created:
+
+
