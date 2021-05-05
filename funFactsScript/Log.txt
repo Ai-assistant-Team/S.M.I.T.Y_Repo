@@ -1,0 +1,4 @@
+---------- <05/05/2021> ----------
+	<funFactsScript> :
+		<change 1> (Replaced : <for i in range(1452)> with
+		<for i in range(5142)> in line 11 of the code)
