@@ -1,4 +1,4 @@
 ---------- <05/05/2021> ----------
-	<jokesScript> :
+	<jokes.py> :
 		<change 1> (Replaced : <for i in range(253)> with
 		<for i in range(9, 105)> in line 11 of the code)
