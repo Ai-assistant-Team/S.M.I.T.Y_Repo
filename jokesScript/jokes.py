@@ -8,7 +8,7 @@ Created on Sat Mar 27 13:08:39 2021
 def jokes():
     import pyjokes #Imports random joke generator library
     
-    for i in range(298): #Runs the list with jokes
+    for i in range(9, 105): #Runs the list with jokes
         joke = pyjokes.get_joke() #Generates a joke
         print(joke) #Prints the joke
         
