@@ -8,21 +8,6 @@ import jokes
 
 def testCaseOne():
 
-    request='Yes'
-    jokes(request)
+    jokes()
 
 testCaseOne()
-
-def testCaseTwo():
-
-    request='No'
-    jokes(request)    
-
-testCaseTwo()
-
-def testCaseThree():
-
-    request='Maybe'
-    jokes(request)    
-
-testCaseThree()
