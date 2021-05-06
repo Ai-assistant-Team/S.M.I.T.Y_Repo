@@ -8,21 +8,6 @@ import funFacts
 
 def testCaseOne():
 
-    request='Yes'
-    funFacts(request)
+    funFacts()
 
 testCaseOne()
-
-def testCaseTwo():
-
-    request='No'
-    funFacts(request)    
-
-testCaseTwo()
-
-def testCaseThree():
-
-    request='Maybe'
-    funFacts(request)    
-
-testCaseThree()
