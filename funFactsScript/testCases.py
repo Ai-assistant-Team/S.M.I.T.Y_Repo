@@ -8,12 +8,14 @@ import funFacts
 
 def testCaseOne():
     
-    funFacts()  
+    request='Yes'
+    funFacts(request)
     
 testCaseOne()
 
 def testCaseTwo():
     
-    funFacts()    
+    request='No'
+    funFacts(request)    
     
 testCaseTwo()
