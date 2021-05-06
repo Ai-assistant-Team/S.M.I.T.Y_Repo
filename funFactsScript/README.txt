@@ -1,2 +1,2 @@
 ---------- <05/05/2021> ----------
-<funFacts.py> : <This script imports a random fun fact generator library, runs the list with fun facts, generates a fun fact and then prints it. Subsequently, asks the user if we wants another fun fact and repeats the procedure until the answer is negative.>
+<funFacts.py> : <This script imports a random fun fact generator library, runs the list with fun facts, generates one and then prints it.
