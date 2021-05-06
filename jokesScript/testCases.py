@@ -7,22 +7,22 @@ import pyjokes
 import jokes
 
 def testCaseOne():
-    
+
     request='Yes'
     jokes(request)
-    
+
 testCaseOne()
 
 def testCaseTwo():
-    
+
     request='No'
     jokes(request)    
-    
+
 testCaseTwo()
 
 def testCaseThree():
-    
+
     request='Maybe'
     jokes(request)    
-    
+
 testCaseThree()
