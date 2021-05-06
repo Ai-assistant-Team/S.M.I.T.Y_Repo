@@ -7,22 +7,22 @@ import randfacts
 import funFacts
 
 def testCaseOne():
-    
+
     request='Yes'
     funFacts(request)
-    
+
 testCaseOne()
 
 def testCaseTwo():
-    
+
     request='No'
     funFacts(request)    
-    
+
 testCaseTwo()
 
 def testCaseThree():
-    
+
     request='Maybe'
     funFacts(request)    
-    
+
 testCaseThree()
