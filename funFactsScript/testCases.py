@@ -19,3 +19,10 @@ def testCaseTwo():
     funFacts(request)    
     
 testCaseTwo()
+
+def testCaseThree():
+    
+    request='Maybe'
+    funFacts(request)    
+    
+testCaseThree()
