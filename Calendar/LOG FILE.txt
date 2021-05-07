@@ -1,0 +1,20 @@
+
+---------- 7-5-2021 ----------
+    GetTitleFromArticle  :
+        	Created
+	turn_text_to_date:
+		Created
+	show_me:
+		Created
+	show_me_in_range:
+		Created
+	next_day :
+		Created
+	put_on_record:
+		Created
+	get_description:
+		Created
+	get_date : 
+		Created
+	get_time : 
+		Created
