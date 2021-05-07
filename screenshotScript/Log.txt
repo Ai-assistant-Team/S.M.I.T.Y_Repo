@@ -1,0 +1,3 @@
+7/5/2021
+screenshot.py:
+	      change 1 : (Added try: at line 19 and except with return false and return True)		
