@@ -2,11 +2,7 @@
 from googletrans import Translator
 
 #function that translates a given text to the given language
-def translateText():
-
-    #Gives the text and the langugage to translate to
-    textToTranslate = input('Give text to translate: ')
-    lang = input('Choose language: ')
+def translateText(textToTranslate,lang):
 
     try:
         #Google Translate ajax API implementation class
@@ -18,5 +14,4 @@ def translateText():
         return print('Wrong input.')
     #Show the translated text on screen
     return print(translated.text)
-
 
