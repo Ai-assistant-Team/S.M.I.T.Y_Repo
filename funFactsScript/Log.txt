@@ -5,3 +5,16 @@
 ---------- <06/05/2021> ----------
 	<funFacts.py> :
 		<change 1> (Moved : <import reandfacts> from line 10 to line 7 of the code)
+		
+---------- <09/05/2021> ----------
+	<funFacts.py> :
+		<change 1> (Deleted : lines 15-24 (<...>) of the code)
+		(<request = input("Do you want to see another Fun Fact? Yes/No: ") #Asks user if we wants another fun fact
+        
+        	if (request!="Yes" and request!="No"): #Checks if answer isn't "Yes" or "No"
+            		print("Invalid Answer") #Prints that the answer is not valid
+            		break
+        	#end of if
+        	if (request=="No"): #Checks if user wants another fun fact
+           		break
+        	#end of if>)
