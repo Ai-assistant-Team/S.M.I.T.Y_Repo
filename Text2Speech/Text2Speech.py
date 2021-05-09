@@ -1,19 +1,17 @@
 """
-Created on Mon Mar 22 06:25:31 2021
-@author: Δημήτρης
+Created on Sat May 8 
+@author: Δημήτρης Σούμπασης
 """
 
 import os
-t2s("Hello World")  #inside the () you add what the program will say
+import pyttsx3
 
+text = 'hello world'  #Here you write what you want to hear
+engine = pyttsx3.init()
 
+def t2s(text):
 
-def t2s(text):       #text to speech function 
-    #This function here takes the value of [text] and it creates a .mp3 file of the computer reading it in english
-    #after that it opens the file and plays it.
+    engine.say(text)
+    engine.runAndWait() 
 
-    from gtts import gTTS  #In order to communicate with google's text to speech
-    tts = gTTS(text, lang='en')
-    tts.save("AI.mp3")    
-    os.startfile("AI.mp3")       #end of text to speech
-
+t2s(text)
