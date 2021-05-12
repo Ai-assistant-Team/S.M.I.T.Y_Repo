@@ -13,5 +13,5 @@ def translateText(textToTranslate,lang):
     except:
         return print('Wrong input.')
     #Show the translated text on screen
-    return print(translated.text)
+    return translated.text
 
