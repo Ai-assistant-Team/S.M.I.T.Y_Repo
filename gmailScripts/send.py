@@ -19,7 +19,7 @@ def create_send(msg='',  to='', subject=''):
 
       api_version = 'v1'
 
-      scopes = ['https://www.googleapis.com/auth/gmail.send']
+      scopes = ['https://mail.google.com/']
 
 
       """Creating a connection.
@@ -28,27 +28,26 @@ def create_send(msg='',  to='', subject=''):
           therefore a service.
 
       """
-      service = Create_Service(client_secret_file, api_name, api_version, scopes)
+      services = Create_Service(client_secret_file, api_name, api_version, scopes)
 
-      try:
 
-         "Creating  a mimeMessage email object and converting it to a raw format in order to send it."
 
-         emailmsg = msg
+      "Creating  a mimeMessage email object and converting it to a raw format in order to send it."
 
-         mimeMessage = MIMEMultipart()
+      emailmsg = msg
 
-         mimeMessage['to'] = to
+      mimeMessage = MIMEMultipart()
 
-         mimeMessage['subject'] = subject
+      mimeMessage['to'] = to
 
-         mimeMessage.attach(MIMEText(emailmsg, 'plain'))
+      mimeMessage['subject'] = subject
 
-         raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode()
+      mimeMessage.attach(MIMEText(emailmsg, 'plain'))
 
-         message = service.users().messages().send(userId='me', body={'raw': raw_string}).execute()
+      raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode()
 
-         print('Your email has been sent')
+      message = services.users().messages().send(userId='me', body={'raw': raw_string}).execute()
 
-      except:
-       print('Check again if you mispronounced any field')
+      print('Your email has been sent')
+
+

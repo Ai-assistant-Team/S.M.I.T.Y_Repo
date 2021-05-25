@@ -16,7 +16,7 @@ def show_emails(Number_of_emails = 1):
 
     api_version = 'v1'
 
-    scopes = ['https://www.googleapis.com/auth/gmail.readonly']
+    scopes = ['https://mail.google.com/']
 
     """Creating a connection.
     
@@ -25,9 +25,9 @@ def show_emails(Number_of_emails = 1):
     
     """
 
-    service = Create_Service(client_secret_file, api_name, api_version, scopes)
+    services = Create_Service(client_secret_file, api_name, api_version, scopes)
 
-    results = service.users().messages().list(userId='me', labelIds=['INBOX'], maxResults = 20).execute()
+    results = services.users().messages().list(userId='me', labelIds=['INBOX'], maxResults = 20).execute()
     "Getting a number of emails from inbox.Limited to 20 in order not to overflow the system."
 
     messages = results.get('messages', [])
@@ -37,7 +37,7 @@ def show_emails(Number_of_emails = 1):
         print('Messages:\n')
         for Number_of_emails in messages[:Number_of_emails]:
 
-            msg = service.users().messages().get(userId='me', id=Number_of_emails['id']).execute()
+            msg = services.users().messages().get(userId='me', id=Number_of_emails['id']).execute()
             "Getting a specific message."
 
             print(msg['snippet'])
