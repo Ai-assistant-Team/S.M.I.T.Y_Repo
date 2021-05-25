@@ -14,3 +14,7 @@
         	if (request=="No"): #Checks if user wants another fun fact
            		break
         	#end of if>)
+		
+---------- <25/05/2021> ----------
+	<funFacts.py> :
+		<change 1> (Deleted : line 6 (<import randfacts>) of the code)
