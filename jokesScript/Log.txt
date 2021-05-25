@@ -14,3 +14,7 @@
         	if (request=="No"): #Checks if user wants another joke
            		break
         	#end of if>)
+		
+---------- <25/05/2021> ----------
+	<jokes.py> :
+		<change 1> (Deleted : line 6 (<import pyjokes>) of the code)
