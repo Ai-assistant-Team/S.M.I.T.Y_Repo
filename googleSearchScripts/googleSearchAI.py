@@ -13,6 +13,3 @@ def searching(query=""):
 
 
 
-def test():
-    query = input("Enter your search: ")
-    searching(query)
