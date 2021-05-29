@@ -3,6 +3,15 @@
 	<photoCapture.py>
 
 		Created
+		
+---------- <29/05/2021> ----------
+	
+	<photoCapture.py>
+		
+		<change 1>  : Deleted : line 16 (<capturing()>) of the code
+		<change 2>  : Replaced : <""> with <''> in line 6 of the code
+
+	
 
 
 
