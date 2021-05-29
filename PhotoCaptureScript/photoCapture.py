@@ -3,7 +3,7 @@ from ecapture import ecapture as ec
 
 def capturing():
 
-    ec.capture(0,"robo camera","img.jpg")
+    ec.capture(0,'robo camera','img.jpg')
 
 #The capture function takes three arguments:
 
@@ -13,5 +13,5 @@ def capturing():
 
 #Save name (It can be a variable or a string. If you don't wish to save the image, type False)
 
-capturing()
+
 
