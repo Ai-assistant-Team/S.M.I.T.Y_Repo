@@ -11,6 +11,11 @@
 	<videoCapture.py>
 		<change 1>  : Deleted : line 16 (<videocap()>) of the code
 		<change 2>  : Replaced : <""> with <''> in line 4 of the code
+		
+		
+	<videoTest.py>
+	
+		Created
 
 
 
