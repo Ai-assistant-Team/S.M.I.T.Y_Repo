@@ -1,3 +1,3 @@
 def test():
-    query = input("Enter your search: ")
+    query = input('Enter your search: ')
     searching(query)
