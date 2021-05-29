@@ -1,7 +1,7 @@
 from ecapture import ecapture as ec
 
 def videocap() :
-    ec.vidcapture(0,"Video","Demo.avi","q")
+    ec.vidcapture(0,'Video','Demo.avi','q')
 
 #The vidcapture function takes four arguments:
 
@@ -13,4 +13,4 @@ def videocap() :
 
 #Exit key (The key you press to stop recording the video. It can be ("q", "x", "a" or any other letter))
 
-videocap()
+
