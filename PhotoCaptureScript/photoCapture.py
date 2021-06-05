@@ -2,8 +2,13 @@ from ecapture import ecapture as ec
 #import the parts of the ecapture that are needed
 
 def capturing():
-
-    ec.capture(0,'robo camera','img.jpg')
+    try:
+        ec.capture(0,'robo camera','img.jpg')
+        
+    except IOError:
+        return 12
+    except:
+        return 1
 
 #The capture function takes three arguments:
 
