@@ -17,6 +17,13 @@
 	
 		Created
 
+---------- <05/06/2021> ----------
+
+	<videoCapture.py>
+	
+	<change 1>  : Added : <try...except> in line 5 of the code
+
+
 
 
 
