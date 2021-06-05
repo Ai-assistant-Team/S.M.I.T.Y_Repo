@@ -14,6 +14,12 @@
 	<photoTest.py>
 	
 		Created
+		
+---------- <29/05/2021> ----------
+	
+	<photoCapture.py>
+	
+		<change 1> : Added : <try...except> in line 5 of the code
 
 	
 
