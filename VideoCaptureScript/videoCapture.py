@@ -7,7 +7,7 @@ def videocap() :
     
     except IOError:
         return 12
-    except
+    except:
         return 1
    
 #The vidcapture function takes four arguments:
