@@ -1,8 +1,15 @@
 from ecapture import ecapture as ec
 
 def videocap() :
-    ec.vidcapture(0,'Video','Demo.avi','q')
-
+    
+    try:
+        ec.vidcapture(0,'Video','Demo.avi','q')
+    
+    except IOError:
+        return 12
+    except
+        return 1
+   
 #The vidcapture function takes four arguments:
 
 #Camera index(first connected webcam will be of index 0. The next webcam will be of index 1)
