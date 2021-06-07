@@ -847,6 +847,10 @@ def get_previous_month_name_image(event):
     elif month == 12:
         calendar_month_label.config(image = calendar_december)
 
+def go_to_my_websites(event):
+    my_websites.pack(fill='both', expand =1)
+    aplications.forget()
+
 
 screen = tk.Tk()
 screen.title("Home")
@@ -1039,11 +1043,56 @@ add_aplication_browse_to_files_button.place(relx = 0.83, rely = 0.366, width=((1
 add_aplication_cancel_button.place(relx=0.05, rely=0.858, width=((220/1920)*w), height=(97/1080)*h)
 add_aplication_add_button_button.place(relx=0.884, rely=0.8599, width=((162/1920)*w), height=(94/1080)*h)
 #############################################################################################################################################################################
+#   ww            ww
+#    ww    ww    ww
+#     ww  wwww  ww
+#      wwww  wwww
+#       ww    ww
+#############################################################################################################################################################################
+
+my_websites= tk.Frame()
+
+#BackGround
+        #open image
+my_websites_backGroundImage = Image.open("%s\\background.png"%(location))
+        #resize image
+my_websites_resized_backGroundImage = my_websites_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
+
+my_websites_new_backGroundImage = ImageTk.PhotoImage(my_websites_resized_backGroundImage)
+
+    #Label
+my_websites_backGroundImage_label = Label(my_websites, image=my_websites_new_backGroundImage, borderwidth=0)
+
+#header
+my_websites_header = Label(my_websites,borderwidth=0,background = "#0d0029")
+
+temp_image = Image.open("%s\\my websites\\title.png"%(location))
+a = int((512/1920)*w)+5
+b = int((56/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_title_image = ImageTk.PhotoImage(temp_image2)
+my_websites_title = Label(my_websites_header,image = my_websites_title_image, borderwidth=0)
+#my_websites_title_aktri_image = PhotoImage(file="%s\\akrh titlou.png"%(location))
+#my_websites_title_aktri = Label(my_websites_header,image = users_aplications_title_aktri_image, borderwidth=0)
+#my_websites_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
+#my_websites_cloce_button = tk.Button(my_websites_header,image = users_aplications_cloce_button_image, borderwidth=0, command = screen.destroy)
+#my_websites_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
+#my_websites_exit_fullscreen_button = tk.Button(my_websites_header,image = users_aplications_exit_fullscreen_button_image, borderwidth=0)
+#my_websites_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
+#my_websites_minimize_button = tk.Button(my_websites_header,image = users_aplications_minimize_button_image, borderwidth=0)
+#my_websites_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
+#my_websites_fullscreen_button = tk.Button(my_websites_header,image = users_aplications_fullscreen_button_image, borderwidth=0)
+
+my_websites_backGroundImage_label.place( relx=0.0, rely= 0.155 )
+my_websites_header.place(relx=0.0, rely= 0.0, width = w,height =171)
+my_websites_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=(512/1920)*w, height=(56/1080)*h)
+
+#############################################################################################################################################################################
 #    U     U         A       PPPPPPP  PPPPPPP SSSSSSS
 #    U     U        A A      P     P  P     P S
 #    U     U       A   A     PPPPPPP  PPPPPPP  SSSSS
 #    U     U      AAAAAAA    P        P             S
-#    UUUUUUU     A       A   P        P       SSSSSSS
+#     UUUUU      A       A   P        P       SSSSSSS
 #############################################################################################################################################################################
 
 users_aplications= tk.Frame()
@@ -1328,6 +1377,7 @@ aplications_change_save_location_button_Spotify = tk.Button(aplications_backGrou
 aplications_change_save_location_button_Messenger = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
         #Websites
 aplications_change_save_location_button_Websites = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
+aplications_change_save_location_button_Websites.bind("<Button-1>", go_to_my_websites)
         #Caclulator
 aplications_change_save_location_button_Caclulator = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
         #NoteBook
