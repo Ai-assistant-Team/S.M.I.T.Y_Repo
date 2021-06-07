@@ -62,8 +62,6 @@ class ImageLabel(tk.Label):
 def resize_gif(wi,hi):
     location = pathlib.Path(__file__).parent.absolute()
     # Output (max) size
-    print(wi)
-    print(hi)
     size = wi , hi
 
     # Open source
@@ -869,17 +867,62 @@ def users_urls_load(names,urls):
         urls[x] = temp.replace('\n','')
     f.close()
 
-def my_websites_go_to_add_website(event):
+def my_websites_go_to_add_website(event,number):
+    global website_number
+    website_number = number
     add_website.pack(fill='both', expand =1)
     my_websites.forget()
+
+def my_websites_exit_fullscreen(event):
+    screen.attributes('-fullscreen', False)
+    my_websites_cloce_button.place_forget()
+    my_websites_exit_fullscreen_button.place_forget()
+    my_websites_fullscreen_button.place(relx = 0.96, rely = 0.0,width=((62/1920)*w), height =(28/1080)*h)
+
+def my_websites_fullscreen(event):
+    screen.attributes('-fullscreen', True)
+    my_websites_fullscreen_button.place_forget()
+    my_websites_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+    my_websites_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+
 
 def add_website_go_to_users_aplications(event):
     my_websites.pack(fill='both', expand =1)
     add_website.forget()
 
-def add_a_website(event):
+def add_a_website(event,websites_name,websites_url):
+    names = ["ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE"]
+    urls = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
+    global website_number
+    location = pathlib.Path(__file__).parent.absolute()
+    f = open("%s\\users_urls.txt"%(location), "r")
+    for x in range(10):
+        names[x] = f.readline()
+        urls[x] = f.readline()
+    f.close()
+    names[website_number]= websites_name + '\n'
+    urls[website_number] = websites_url + '\n'
+    f = open("%s\\users_urls.txt"%(location), "w")
+    for b in range(10):
+        f.write(names[b])
+        f.write(urls[b])
+    f.close()
+
     my_websites.pack(fill='both', expand =1)
     add_website.forget()
+
+def add_websites_exit_fullscreen(event):
+    screen.attributes('-fullscreen', False)
+    add_website_cloce_button.place_forget()
+    add_website_exit_fullscreen_button.place_forget()
+    add_website_fullscreen_button.place(relx = 0.96, rely = 0.0,width=((62/1920)*w), height =(28/1080)*h)
+
+def add_websites_fullscreen(event):
+    screen.attributes('-fullscreen', True)
+    add_website_fullscreen_button.place_forget()
+    add_website_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+    add_website_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+
 
 screen = tk.Tk()
 screen.title("Home")
@@ -1042,8 +1085,7 @@ b = int((94/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 add_aplication_add_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
-add_aplication_add_button_button = Button(add_aplication_backGroundImage_label, text = ' ', image = add_aplication_add_button_image, borderwidth=0)
-add_aplication_add_button_button.bind("<Button-1>",add_a_website)
+add_aplication_add_button_button = Button(add_aplication_backGroundImage_label, text = ' ', image = add_aplication_add_button_image, borderwidth=0, command=lambda:add_a_website ("<Button-1>,",9))
 
 
 
@@ -1071,178 +1113,6 @@ add_aplication_location_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, heig
 add_aplication_browse_to_files_button.place(relx = 0.83, rely = 0.366, width=((164/1920)*w), height=(217/1080)*h)
 add_aplication_cancel_button.place(relx=0.05, rely=0.858, width=((220/1920)*w), height=(97/1080)*h)
 add_aplication_add_button_button.place(relx=0.884, rely=0.8599, width=((162/1920)*w), height=(94/1080)*h)
-
-#############################################################################################################################################################################
-#      A       DDDDDD      WW                WW
-#     A A      D     D      WW      WW      WW
-#    A   A     D      D      WW    WWWW    WW
-#   AAAAAAA    D      D       WW  WW  WW  WW
-#  A       A   D     D         WWWW    WWWW  
-# A         A  DDDDDD           WW      WW
-#############################################################################################################################################################################
-add_website = tk.Frame()
-#BackGround
-        #open image
-add_website_backGroundImage = Image.open("%s\\background.png"%(location))
-        #resize image
-add_website_resized_backGroundImage = add_website_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
-
-add_website_new_backGroundImage = ImageTk.PhotoImage(add_website_resized_backGroundImage)
-    #Label
-add_website_backGroundImage_label = Label(add_website, image=add_website_new_backGroundImage, borderwidth=0)
-#header
-add_website_header = Label(add_website,borderwidth=0,background = "#0d0029")
-
-temp_image = Image.open("%s\\Add website\\title.png"%(location))
-a = int((846/1920)*w)+5
-b = int((56/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_title_image = ImageTk.PhotoImage(temp_image2)
-add_website_title = Label(add_website_header,image = add_website_title_image, borderwidth=0)
-
-temp_image = Image.open("%s\\akrh titlou.png"%(location))
-a = int((142/1920)*w)+5
-b = int((108/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_title_aktri_image = ImageTk.PhotoImage(temp_image2)
-add_website_title_aktri = Label(add_website_header,image = add_website_title_aktri_image, borderwidth=0)
-
-temp_image = Image.open("%s\\exit_button.png"%(location))
-a = int((31/1920)*w)+5
-b = int((28/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_cloce_button_image = ImageTk.PhotoImage(temp_image2)
-add_website_cloce_button = tk.Button(add_website_header,image = add_website_cloce_button_image, borderwidth=0, command = screen.destroy)
-
-temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
-a = int((31/1920)*w)+5
-b = int((28/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
-add_website_exit_fullscreen_button = tk.Button(add_website_header,image = add_website_exit_fullscreen_button_image, borderwidth=0)
-
-temp_image = Image.open("%s\\minimize_button.png"%(location))
-a = int((31/1920)*w)+5
-b = int((28/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_minimize_button_image = ImageTk.PhotoImage(temp_image2)
-add_website_minimize_button = tk.Button(add_website_header,image = add_website_minimize_button_image, borderwidth=0)
-
-temp_image = Image.open("%s\\fullscreen_button.png"%(location))
-a = int((62/1920)*w)+5
-b = int((28/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
-add_website_fullscreen_button = tk.Button(add_website_header,image = add_website_fullscreen_button_image, borderwidth=0)
-
-add_aplication_exit_fullscreen_button.bind("<Button-1>", add_aplication_exit_fullscreen)
-add_aplication_fullscreen_button.bind("<Button-1>",add_aplication_fullscreen)
-add_aplication_minimize_button.bind("<Button-1>", minimize)
-
-#Home button
-    # setings button image
-temp_image = Image.open("%s\\home-button.png"%(location))
-a = int((43/1920)*w)+5
-b = int((43/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_home_button_image = ImageTk.PhotoImage(temp_image2)
-    #Add button
-add_website_home_button = tk.Button(add_website_header, text = ' ', image = add_website_home_button_image, borderwidth=0)
-add_website_home_button.bind("<Button-1>",add_aplications_go_to_home_page)
-
-#User button
-    # setings button image
-temp_image = Image.open("%s\\user-button.png"%(location))
-a = int((43/1920)*w)+5
-b = int((43/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_user_button_image = ImageTk.PhotoImage(temp_image2)
-    #Add button
-add_website_user_button = tk.Button(add_website_header, image = add_website_user_button_image, borderwidth=0)
-
-#user text label
-add_website_user_text_label =Label(add_website_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
-
-#Name label
-temp_image = Image.open("%s\\Add Aplications\\name.png"%(location))
-a = int((191/1920)*w)+5
-b = int((52/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_name_label_image = ImageTk.PhotoImage(temp_image2)
-add_website_name_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_name_label_image)
-
-#Location label
-temp_image = Image.open("%s\\Add Aplications\\location.png"%(location))
-a = int((268/1920)*w)+5
-b = int((56/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_location_label_image = ImageTk.PhotoImage(temp_image2)
-add_website_location_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_location_label_image)
-
-#name text spot label
-    #label
-temp_image = Image.open("%s\\Add Aplications\\text_spot.png"%(location))
-a = int(0.544*w)
-b = int((84/1080)*h)
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_text_spot_label_image = ImageTk.PhotoImage(temp_image2)
-add_website_name_text_spot_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_text_spot_label_image)
-    #input
-add_website_name_input = tk.Entry(add_website_name_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
-
-#location text spot label
-    #label
-add_website_location_text_spot_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_text_spot_label_image)
-    #input
-add_website_location_input = tk.Entry(add_website_location_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
-
-
-#Cancel button
-    # Define image
-temp_image = Image.open("%s\\Add Aplications\\Cancel.png"%(location))
-a = int((220/1920)*w)+5
-b = int((97/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_cancel_button_image = ImageTk.PhotoImage(temp_image2)
-    #define button
-add_website_cancel_button = Button(add_website_backGroundImage_label, text = ' ', image = add_website_cancel_button_image, borderwidth=0)
-add_website_cancel_button.bind("<Button-1>",add_website_go_to_users_aplications)
-#Add button
-    # Add image
-temp_image = Image.open("%s\\Add Aplications\\add.png"%(location))
-a = int((162/1920)*w)+5
-b = int((94/1080)*h)+5
-temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-add_website_add_button_image = ImageTk.PhotoImage(temp_image2)
-    #Add button
-add_website_add_button_button = Button(add_website_backGroundImage_label, text = ' ', image = add_website_add_button_image, borderwidth=0)
-add_website_add_button_button.bind("<Button-1>",add_a_website)
-
-
-
-#add to window
-add_website_backGroundImage_label.place( relx=0.0, rely= 0.15 )
-add_website_header.place(relx=0.0, y= 0.0, width = w,height =(171/1080)*h)
-add_website_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((846/1920)*w), height=(56/1080)*h)
-add_website_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
-add_website_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
-add_website_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
-add_website_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
-add_website_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
-add_website_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
-add_website_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
-
-
-add_website_name_label.place(relx = 0.05, rely = 0.2, width=((191/1920)*w), height=(53/1080)*h)
-add_website_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
-add_website_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(70/1080)*h)
-
-add_website_location_label.place(relx = 0.05, rely = 0.4, width=((268/1920)*w), height=(56/1080)*h)
-add_website_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.544, height=(84/1080)*h)
-add_website_location_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, height=(70/1080)*h)
-
-add_website_cancel_button.place(relx=0.05, rely=0.858, width=((220/1920)*w), height=(97/1080)*h)
-add_website_add_button_button.place(relx=0.884, rely=0.8599, width=((162/1920)*w), height=(94/1080)*h)
 #############################################################################################################################################################################
 #   ww            ww
 #    ww    ww    ww
@@ -1252,7 +1122,7 @@ add_website_add_button_button.place(relx=0.884, rely=0.8599, width=((162/1920)*w
 #############################################################################################################################################################################
 
 my_websites= tk.Frame()
-
+global website_number
 #BackGround
         #open image
 my_websites_backGroundImage = Image.open("%s\\background.png"%(location))
@@ -1294,6 +1164,7 @@ b = int((28/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 my_websites_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 my_websites_exit_fullscreen_button = tk.Button(my_websites_header,image = my_websites_exit_fullscreen_button_image, borderwidth=0)
+
 #minimize window
 temp_image = Image.open("%s\\minimize_button.png"%(location))
 a = int((31/1920)*w)+5
@@ -1309,6 +1180,10 @@ b = int((28/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 my_websites_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 my_websites_fullscreen_button = tk.Button(my_websites_header,image = my_websites_fullscreen_button_image, borderwidth=0)
+
+my_websites_exit_fullscreen_button.bind("<Button-1>", my_websites_exit_fullscreen)
+my_websites_fullscreen_button.bind("<Button-1>",my_websites_fullscreen)
+my_websites_minimize_button.bind("<Button-1>", minimize)
 
 #back button
     # Define image
@@ -1412,26 +1287,18 @@ b = int((62/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 change_save_url_button_image_2 = ImageTk.PhotoImage(temp_image2)
     #Add button
-my_websites_user_button_1 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
-my_websites_user_button_1.bind("<Button-1>",my_websites_go_to_add_website)
-my_websites_user_button_2 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
-my_websites_user_button_2.bind("<Button-1>",my_websites_go_to_add_website)
-my_websites_user_button_3 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
-my_websites_user_button_3.bind("<Button-1>",my_websites_go_to_add_website)
-my_websites_user_button_4 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
-my_websites_user_button_4.bind("<Button-1>",my_websites_go_to_add_website)
-my_websites_user_button_5 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
-my_websites_user_button_5.bind("<Button-1>",my_websites_go_to_add_website)
-my_websites_user_button_6 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
-my_websites_user_button_6.bind("<Button-1>",my_websites_go_to_add_website)
-my_websites_user_button_7 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
-my_websites_user_button_7.bind("<Button-1>",my_websites_go_to_add_website)
-my_websites_user_button_8 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
-my_websites_user_button_8.bind("<Button-1>",my_websites_go_to_add_website)
-my_websites_user_button_9 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
-my_websites_user_button_9.bind("<Button-1>",my_websites_go_to_add_website)
-my_websites_user_button_10 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
-my_websites_user_button_10.bind("<Button-1>",my_websites_go_to_add_website)
+
+
+my_websites_user_button_1 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",0))
+my_websites_user_button_2 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",1))
+my_websites_user_button_3 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",2))
+my_websites_user_button_4 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",3))
+my_websites_user_button_5 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",4))
+my_websites_user_button_6 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",5))
+my_websites_user_button_7 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",6))
+my_websites_user_button_8 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",7))
+my_websites_user_button_9 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",8))
+my_websites_user_button_10 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",9))
 
 my_websites_backGroundImage_label.place( relx=0.0, rely= 0.155 )
 my_websites_header.place(relx=0.0, rely= 0.0, width = w,height =171)
@@ -1479,6 +1346,175 @@ my_websites_user_button_7.place(relx=0.83, rely= 0.25, width=((90/1920)*w), heig
 my_websites_user_button_8.place(relx=0.83, rely= 0.425, width=((90/1920)*w), height=(62/1080)*h)
 my_websites_user_button_9.place(relx=0.83, rely= 0.6, width=((90/1920)*w), height=(62/1080)*h)
 my_websites_user_button_10.place(relx=0.83, rely= 0.775, width=((90/1920)*w), height=(62/1080)*h)
+
+#############################################################################################################################################################################
+#      A       DDDDDD      WW                WW
+#     A A      D     D      WW      WW      WW
+#    A   A     D      D      WW    WWWW    WW
+#   AAAAAAA    D      D       WW  WW  WW  WW
+#  A       A   D     D         WWWW    WWWW  
+# A         A  DDDDDD           WW      WW
+#############################################################################################################################################################################
+add_website = tk.Frame()
+#BackGround
+        #open image
+add_website_backGroundImage = Image.open("%s\\background.png"%(location))
+        #resize image
+add_website_resized_backGroundImage = add_website_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
+
+add_website_new_backGroundImage = ImageTk.PhotoImage(add_website_resized_backGroundImage)
+    #Label
+add_website_backGroundImage_label = Label(add_website, image=add_website_new_backGroundImage, borderwidth=0)
+#header
+add_website_header = Label(add_website,borderwidth=0,background = "#0d0029")
+
+temp_image = Image.open("%s\\Add website\\title.png"%(location))
+a = int((846/1920)*w)+5
+b = int((56/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_title_image = ImageTk.PhotoImage(temp_image2)
+add_website_title = Label(add_website_header,image = add_website_title_image, borderwidth=0)
+
+temp_image = Image.open("%s\\akrh titlou.png"%(location))
+a = int((142/1920)*w)+5
+b = int((108/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_title_aktri_image = ImageTk.PhotoImage(temp_image2)
+add_website_title_aktri = Label(add_website_header,image = add_website_title_aktri_image, borderwidth=0)
+
+temp_image = Image.open("%s\\exit_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_cloce_button_image = ImageTk.PhotoImage(temp_image2)
+add_website_cloce_button = tk.Button(add_website_header,image = add_website_cloce_button_image, borderwidth=0, command = screen.destroy)
+
+temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+add_website_exit_fullscreen_button = tk.Button(add_website_header,image = add_website_exit_fullscreen_button_image, borderwidth=0)
+
+temp_image = Image.open("%s\\minimize_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_minimize_button_image = ImageTk.PhotoImage(temp_image2)
+add_website_minimize_button = tk.Button(add_website_header,image = add_website_minimize_button_image, borderwidth=0)
+
+temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+a = int((62/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+add_website_fullscreen_button = tk.Button(add_website_header,image = add_website_fullscreen_button_image, borderwidth=0)
+
+add_website_exit_fullscreen_button.bind("<Button-1>", add_websites_exit_fullscreen)
+add_website_fullscreen_button.bind("<Button-1>",add_websites_fullscreen)
+add_website_minimize_button.bind("<Button-1>", minimize)
+
+#Home button
+    # setings button image
+temp_image = Image.open("%s\\home-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_home_button_image = ImageTk.PhotoImage(temp_image2)
+    #Add button
+add_website_home_button = tk.Button(add_website_header, text = ' ', image = add_website_home_button_image, borderwidth=0)
+add_website_home_button.bind("<Button-1>",add_aplications_go_to_home_page)
+
+#User button
+    # setings button image
+temp_image = Image.open("%s\\user-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_user_button_image = ImageTk.PhotoImage(temp_image2)
+    #Add button
+add_website_user_button = tk.Button(add_website_header, image = add_website_user_button_image, borderwidth=0)
+
+#user text label
+add_website_user_text_label =Label(add_website_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+
+#Name label
+temp_image = Image.open("%s\\Add Aplications\\name.png"%(location))
+a = int((191/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_name_label_image = ImageTk.PhotoImage(temp_image2)
+add_website_name_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_name_label_image)
+
+#Location label
+temp_image = Image.open("%s\\Add Aplications\\location.png"%(location))
+a = int((268/1920)*w)+5
+b = int((56/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_location_label_image = ImageTk.PhotoImage(temp_image2)
+add_website_location_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_location_label_image)
+
+#name text spot label
+    #label
+temp_image = Image.open("%s\\Add Aplications\\text_spot.png"%(location))
+a = int(0.544*w)
+b = int((84/1080)*h)
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_text_spot_label_image = ImageTk.PhotoImage(temp_image2)
+add_website_name_text_spot_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_text_spot_label_image)
+    #input
+add_website_name_input = tk.Entry(add_website_name_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+#location text spot label
+    #label
+add_website_location_text_spot_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_text_spot_label_image)
+    #input
+add_website_location_input = tk.Entry(add_website_location_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+
+#Cancel button
+    # Define image
+temp_image = Image.open("%s\\Add Aplications\\Cancel.png"%(location))
+a = int((220/1920)*w)+5
+b = int((97/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_cancel_button_image = ImageTk.PhotoImage(temp_image2)
+    #define button
+add_website_cancel_button = Button(add_website_backGroundImage_label, text = ' ', image = add_website_cancel_button_image, borderwidth=0)
+add_website_cancel_button.bind("<Button-1>",add_website_go_to_users_aplications)
+#Add button
+    # Add image
+temp_image = Image.open("%s\\Add Aplications\\add.png"%(location))
+a = int((162/1920)*w)+5
+b = int((94/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_website_add_button_image = ImageTk.PhotoImage(temp_image2)
+    #Add button
+add_website_add_button_button = Button(add_website_backGroundImage_label, text = ' ', image = add_website_add_button_image, borderwidth=0, command=lambda:add_a_website ("<Button-1>",str(add_website_name_input.get()),str(add_website_location_input.get())))
+
+
+
+#add to window
+add_website_backGroundImage_label.place( relx=0.0, rely= 0.15 )
+add_website_header.place(relx=0.0, y= 0.0, width = w,height =(171/1080)*h)
+add_website_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((846/1920)*w), height=(56/1080)*h)
+add_website_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
+add_website_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
+add_website_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
+add_website_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
+add_website_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+add_website_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+add_website_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+
+
+add_website_name_label.place(relx = 0.05, rely = 0.2, width=((191/1920)*w), height=(53/1080)*h)
+add_website_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
+add_website_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(70/1080)*h)
+
+add_website_location_label.place(relx = 0.05, rely = 0.4, width=((268/1920)*w), height=(56/1080)*h)
+add_website_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.544, height=(84/1080)*h)
+add_website_location_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, height=(70/1080)*h)
+
+add_website_cancel_button.place(relx=0.05, rely=0.858, width=((220/1920)*w), height=(97/1080)*h)
+add_website_add_button_button.place(relx=0.884, rely=0.8599, width=((162/1920)*w), height=(94/1080)*h)
 
 #############################################################################################################################################################################
 #    U     U         A       PPPPPPP  PPPPPPP SSSSSSS
@@ -2711,7 +2747,6 @@ home_page_backGroundImage_label = Label(home_page, image=home_page_new_backGroun
 #GIF
 a = int ((260/1920)*w)
 b = int ((270/1080)*h)
-print(a)
 resize_gif(a,b)
 home_page_gif_label = ImageLabel(home_page,borderwidth=0)
 home_page_gif_label.load('%s\\aaa.gif'%(location))
