@@ -1,0 +1,4 @@
+---------- 4/4/2021 ----------
+playVideoLocal.py :
+	Created playVideoLocal()
+	Created find()
