@@ -473,13 +473,13 @@ def add_aplication_exit_fullscreen (event):
     screen.attributes('-fullscreen', False)
     add_aplication_cloce_button.place_forget()
     add_aplication_exit_fullscreen_button.place_forget()
-    add_aplication_fullscreen_button.place(relx = 0.96, rely = 0.0, width=62, height=28)
+    add_aplication_fullscreen_button.place(relx = 0.96, rely = 0.0, width=((62/1920)*w), height=(28/1080)*h)
 
 def add_aplication_fullscreen (event):
     screen.attributes('-fullscreen', True)
     add_aplication_fullscreen_button.place_forget()
-    add_aplication_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-    add_aplication_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
+    add_aplication_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+    add_aplication_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
 def file_browse():
     location = filedialog.askopenfilename(initialdir="/", title="Select A File", filetypes=(("all files", "*.*"),("jpg files", "*.jpg")))
@@ -877,8 +877,8 @@ add_aplication_backGroundImage_label = Label(add_aplication, image=add_aplicatio
 add_aplication_header = Label(add_aplication,borderwidth=0,background = "#0d0029")
 
 temp_image = Image.open("%s\\Add Aplications\\title.png"%(location))
-a = int((847/1920)*w)+5
-b = int((52/1080)*h)+5
+a = int((1336/1920)*w)+5
+b = int((171/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 add_aplication_title_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_title = Label(add_aplication_header,image = add_aplication_title_image, borderwidth=0)
@@ -948,16 +948,16 @@ add_aplication_user_text_label =Label(add_aplication_header,text ="User", border
 
 #Name label
 temp_image = Image.open("%s\\Add Aplications\\name.png"%(location))
-a = int((847/1920)*w)+5
-b = int((52/1080)*h)+5
+a = int((191/1920)*w)+5
+b = int((53/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 add_aplication_name_label_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_name_label =Label(add_aplication_backGroundImage_label, borderwidth=0, image = add_aplication_name_label_image)
 
 #Location label
 temp_image = Image.open("%s\\Add Aplications\\location.png"%(location))
-a = int((847/1920)*w)+5
-b = int((52/1080)*h)+5
+a = int((268/1920)*w)+5
+b = int((56/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 add_aplication_location_label_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_location_label =Label(add_aplication_backGroundImage_label, borderwidth=0, image = add_aplication_location_label_image)
@@ -965,8 +965,8 @@ add_aplication_location_label =Label(add_aplication_backGroundImage_label, borde
 #name text spot label
     #label
 temp_image = Image.open("%s\\Add Aplications\\text_spot.png"%(location))
-a = int((847/1920)*w)+5
-b = int((52/1080)*h)+5
+a = int(0.544*w)
+b = int((84/1080)*h)
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 add_aplication_text_spot_label_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_name_text_spot_label =Label(add_aplication_backGroundImage_label, borderwidth=0, image = add_aplication_text_spot_label_image)
@@ -983,8 +983,8 @@ add_aplication_location_input = tk.Entry(add_aplication_location_text_spot_label
 #browse to files button
     # Define image
 temp_image = Image.open("%s\\Add Aplications\\browse_to_files.png"%(location))
-a = int((847/1920)*w)+5
-b = int((52/1080)*h)+5
+a = int((164/1920)*w)+5
+b = int((217/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 add_aplication_browse_to_files_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
@@ -994,8 +994,8 @@ add_aplication_browse_to_files_button.bind("<Button-1>",add_aplication_location)
 #Cancel button
     # Define image
 temp_image = Image.open("%s\\Add Aplications\\Cancel.png"%(location))
-a = int((847/1920)*w)+5
-b = int((52/1080)*h)+5
+a = int((220/1920)*w)+5
+b = int((97/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 add_aplication_cancel_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
@@ -1004,8 +1004,8 @@ add_aplication_cancel_button.bind("<Button-1>",add_aplication_go_to_users_aplica
 #Add button
     # Add image
 temp_image = Image.open("%s\\Add Aplications\\add.png"%(location))
-a = int((847/1920)*w)+5
-b = int((52/1080)*h)+5
+a = int((162/1920)*w)+5
+b = int((94/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 add_aplication_add_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
@@ -1016,29 +1016,34 @@ add_aplication_add_button_button.bind("<Button-1>",add_aplication_add_button)
 
 #add to window
 add_aplication_backGroundImage_label.place( relx=0.0, rely= 0.15 )
-add_aplication_header.place(relx=0.0, y= 0.0, width = w,height =171)
-add_aplication_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=1336, height=171)
-add_aplication_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=142, height=108)
-add_aplication_home_button.place(relx = 0.006, rely = 0.35, width=43, height=43)
-add_aplication_user_button.place(relx = 0.006, rely = 0.65, width=43, height=43)#-5x-5
-add_aplication_user_text_label.place(relx = 0.0295, rely = 0.7, width=44, height=43)
-add_aplication_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-add_aplication_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
-add_aplication_minimize_button.place(relx = 0.945, rely = 0.0, width=31, height=28)
+add_aplication_header.place(relx=0.0, y= 0.0, width = w,height =(171/1080)*h)
+add_aplication_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((1336/1920)*w), height=(171/1080)*h)
+add_aplication_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
+add_aplication_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
+add_aplication_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
+add_aplication_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
+add_aplication_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+add_aplication_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+add_aplication_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
 
-add_aplication_name_label.place(relx = 0.05, rely = 0.2, width=191, height=53)
-add_aplication_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=84)
-add_aplication_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, height=70)
+add_aplication_name_label.place(relx = 0.05, rely = 0.2, width=((191/1920)*w), height=(53/1080)*h)
+add_aplication_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
+add_aplication_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(70/1080)*h)
 
-add_aplication_location_label.place(relx = 0.05, rely = 0.4, width=268, height=56)
-add_aplication_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.544, height=84)
-add_aplication_location_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, height=70)
+add_aplication_location_label.place(relx = 0.05, rely = 0.4, width=((268/1920)*w), height=(56/1080)*h)
+add_aplication_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.544, height=(84/1080)*h)
+add_aplication_location_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, height=(70/1080)*h)
 
-add_aplication_browse_to_files_button.place(relx = 0.83, rely = 0.366, width=164, height=217)
-add_aplication_cancel_button.place(relx=0.05, rely=0.858, width=220, height=97)
-add_aplication_add_button_button.place(relx=0.884, rely=0.8599, width=162, height=94)
+add_aplication_browse_to_files_button.place(relx = 0.83, rely = 0.366, width=((164/1920)*w), height=(217/1080)*h)
+add_aplication_cancel_button.place(relx=0.05, rely=0.858, width=((220/1920)*w), height=(97/1080)*h)
+add_aplication_add_button_button.place(relx=0.884, rely=0.8599, width=((162/1920)*w), height=(94/1080)*h)
 #############################################################################################################################################################################
+#    U     U         A       PPPPPPP  PPPPPPP SSSSSSS
+#    U     U        A A      P     P  P     P S
+#    U     U       A   A     PPPPPPP  PPPPPPP  SSSSS
+#    U     U      AAAAAAA    P        P             S
+#    UUUUUUU     A       A   P        P       SSSSSSS
 #############################################################################################################################################################################
 
 users_aplications= tk.Frame()
