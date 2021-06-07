@@ -167,7 +167,7 @@ def get_comand(event):
     global message_history
     global line_count
     line_count = line_count +1
-    if line_count == 9:
+    if line_count == 8:
         line_count =0
         message_history =''
     message_history = message_history + '\nYou : ' + str(home_page_comand_text_field.get())
@@ -175,7 +175,7 @@ def get_comand(event):
     message_history = message_history + '\nS.M.I.T.Y : ' + process_comand(str(home_page_comand_text_field.get()))
     line_count = line_count +1
     message_history_label_text_field.config(text = message_history)
-    if line_count == 9:
+    if line_count == 8:
         line_count =0
         message_history =''
 
@@ -304,7 +304,7 @@ def settings_exit_fullscreen(event):
     screen.attributes('-fullscreen', False)
     settings_cloce_button.place_forget()
     settings_exit_fullscreen_button.place_forget()
-    settings_fullscreen_button.place(relx = 0.96, rely = 0.0, width=62, height=28)
+    settings_fullscreen_button.place(relx = 0.96, rely = 0.0, width=((62/1920)*w), height =(28/1080)*h)
     
 def activate_female(event):
     global gender
@@ -372,7 +372,7 @@ def settings_fullscreen(event):
     screen.attributes('-fullscreen', True)
     settings_fullscreen_button.place_forget()
     settings_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-    settings_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
+    settings_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
 
 def settings_go_to_home(event):
     home_page.pack(fill='both', expand =1)
@@ -852,6 +852,7 @@ screen = tk.Tk()
 screen.title("Home")
 w, h = screen.winfo_screenwidth(), screen.winfo_screenheight()
 screen.geometry("%dx%d+0+0" % (w, h))
+
 screen.attributes('-fullscreen', True)
 location = pathlib.Path(__file__).parent.absolute()
 #############################################################################################################################################################################
@@ -1318,19 +1319,50 @@ calendar_backGroundImage_label = Label(calendar, image=calendar_new_backGroundIm
 
 #header
 calendar_header = Label(calendar,borderwidth=0,background = "#0d0029")
-calendar_title_image = PhotoImage(file="%s\\Calendar\\title.png"%(location))
+
+temp_image = Image.open("%s\\Calendar\\title.png"%(location))
+a = int((977/1920)*w)+5
+b = int((44/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_title_image = ImageTk.PhotoImage(temp_image2)
 calendar_title = Label(calendar_header,image = calendar_title_image, borderwidth=0)
-calendar_title_aktri_image = PhotoImage(file="%s\\akrh titlou.png"%(location))
+
+temp_image = Image.open("%s\\akrh titlou.png"%(location))
+a = int((142/1920)*w)+5
+b = int((108/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_title_aktri_image = ImageTk.PhotoImage(temp_image2)
 calendar_title_aktri = Label(calendar_header,image = calendar_title_aktri_image, borderwidth=0)
 
 calendar_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
+temp_image = Image.open("%s\\exit_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_cloce_button_image = ImageTk.PhotoImage(temp_image2)
 calendar_cloce_button = tk.Button(calendar_header,image = calendar_cloce_button_image, borderwidth=0, command = screen.destroy)
-calendar_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
+
+temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 calendar_exit_fullscreen_button = tk.Button(calendar_header,image = calendar_exit_fullscreen_button_image, borderwidth=0)
-calendar_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
+
+temp_image = Image.open("%s\\minimize_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_minimize_button_image = ImageTk.PhotoImage(temp_image2)
 calendar_minimize_button = tk.Button(calendar_header,image = calendar_minimize_button_image, borderwidth=0)
-calendar_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
+
+temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 calendar_fullscreen_button = tk.Button(calendar_header,image = calendar_fullscreen_button_image, borderwidth=0)
+
 
 calendar_exit_fullscreen_button.bind("<Button-1>", calendar_exit_fullscreen)
 calendar_fullscreen_button.bind("<Button-1>",calendar_fullscreen)
@@ -1338,14 +1370,22 @@ calendar_minimize_button.bind("<Button-1>", minimize)
 
 #Home button
     # setings button image
-calendar_home_button_image = PhotoImage(file="%s\\home-button.png"%(location))
+temp_image = Image.open("%s\\home-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_home_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 calendar_home_button = tk.Button(calendar_header, text = ' ', image = calendar_home_button_image, borderwidth=0)
 calendar_home_button.bind("<Button-1>",calendar_go_to_home_page)
 
 #User button
     # setings button image
-calendar_user_button_image = PhotoImage(file="%s\\user-button.png"%(location))
+temp_image = Image.open("%s\\user-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_user_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 calendar_user_button = tk.Button(calendar_header, image = calendar_user_button_image, borderwidth=0)
 
@@ -1354,7 +1394,11 @@ calendar_user_text_label =Label(calendar_header,text ="User", borderwidth=0,back
 
 #back button
     # Define image
-calendar_back_button_image = PhotoImage(file="%s\\back_button.png"%(location))
+temp_image = Image.open("%s\\back_button.png"%(location))
+a = int((48/1920)*w)+5
+b = int((34/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_back_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
 calendar_back_button = tk.Button(calendar_header, text = ' ', image = calendar_back_button_image, borderwidth=0)
 calendar_back_button.bind("<Button-1>",calendar_go_to_home_page)
@@ -1362,16 +1406,67 @@ calendar_back_button.bind("<Button-1>",calendar_go_to_home_page)
 
 #Year
     #Load Year numbers
-calendar_zero = PhotoImage(file="%s\\Calendar\\year numbers\\0.png"%(location))
-calendar_one= PhotoImage(file="%s\\Calendar\\year numbers\\1.png"%(location))
-calendar_two = PhotoImage(file="%s\\Calendar\\year numbers\\2.png"%(location))
-calendar_three = PhotoImage(file="%s\\Calendar\\year numbers\\3.png"%(location))
-calendar_four = PhotoImage(file="%s\\Calendar\\year numbers\\4.png"%(location))
-calendar_five = PhotoImage(file="%s\\Calendar\\year numbers\\5.png"%(location))
-calendar_six = PhotoImage(file="%s\\Calendar\\year numbers\\6.png"%(location))
-calendar_seven = PhotoImage(file="%s\\Calendar\\year numbers\\7.png"%(location))
-calendar_eight= PhotoImage(file="%s\\Calendar\\year numbers\\8.png"%(location))
-calendar_nine = PhotoImage(file="%s\\Calendar\\year numbers\\9.png"%(location))
+temp_image = Image.open("%s\\Calendar\\year numbers\\0.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_zero = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\year numbers\\1.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_one = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\year numbers\\2.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_two = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\year numbers\\3.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_three = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\year numbers\\4.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_four = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\year numbers\\5.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_five = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\year numbers\\6.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_six = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\year numbers\\7.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_seven = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\year numbers\\8.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_eight = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\year numbers\\9.png"%(location))
+a = int((46/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_nine = ImageTk.PhotoImage(temp_image2)
+
+
 
 
     #deine image
@@ -1392,60 +1487,257 @@ get_year(year)
 
 
 #Load Calendar pictures
-    #sunday
-calendar_sunday_31 = PhotoImage(file="%s\\Calendar\\S-31.png"%(location))
-calendar_sunday_30 = PhotoImage(file="%s\\Calendar\\S-30.png"%(location))
-calendar_sunday_29 = PhotoImage(file="%s\\Calendar\\S-29.png"%(location))
-calendar_sunday_28 = PhotoImage(file="%s\\Calendar\\S-28.png"%(location))
-    #monday
-calendar_monday_31 = PhotoImage(file="%s\\Calendar\\M-31.png"%(location))
-calendar_monday_30 = PhotoImage(file="%s\\Calendar\\M-30.png"%(location))
-calendar_monday_29 = PhotoImage(file="%s\\Calendar\\M-29.png"%(location))
-calendar_monday_28 = PhotoImage(file="%s\\Calendar\\M-28.png"%(location))
-    #tuesday
-calendar_tuesday_31 = PhotoImage(file="%s\\Calendar\\TU-31.png"%(location))
-calendar_tuesday_30 = PhotoImage(file="%s\\Calendar\\TU-30.png"%(location))
-calendar_tuesday_29 = PhotoImage(file="%s\\Calendar\\TU-29.png"%(location))
-calendar_tuesday_28 = PhotoImage(file="%s\\Calendar\\TU-28.png"%(location))
-    #wednesday
-calendar_wednesday_31 = PhotoImage(file="%s\\Calendar\\W-31.png"%(location))
-calendar_wednesday_30 = PhotoImage(file="%s\\Calendar\\W-30.png"%(location))
-calendar_wednesday_29 = PhotoImage(file="%s\\Calendar\\W-29.png"%(location))
-calendar_wednesday_28 = PhotoImage(file="%s\\Calendar\\W-28.png"%(location))
-    #thursday
-calendar_thursday_31 = PhotoImage(file="%s\\Calendar\\THU-31.png"%(location))
-calendar_thursday_30 = PhotoImage(file="%s\\Calendar\\THU-30.png"%(location))
-calendar_thursday_29 = PhotoImage(file="%s\\Calendar\\THU-29.png"%(location))
-calendar_thursday_28 = PhotoImage(file="%s\\Calendar\\THU-28.png"%(location))
-    #friday
-calendar_friday_31 = PhotoImage(file="%s\\Calendar\\F-31.png"%(location))
-calendar_friday_30 = PhotoImage(file="%s\\Calendar\\F-31.png"%(location))
-calendar_friday_29 = PhotoImage(file="%s\\Calendar\\F-31.png"%(location))
-calendar_friday_28 = PhotoImage(file="%s\\Calendar\\F-31.png"%(location))
-    #saturday
-calendar_saturday_31 = PhotoImage(file="%s\\Calendar\\SAT-31.png"%(location))
-calendar_saturday_30 = PhotoImage(file="%s\\Calendar\\SAT-30.png"%(location))
-calendar_saturday_29 = PhotoImage(file="%s\\Calendar\\SAT-29.png"%(location))
-calendar_saturday_28 = PhotoImage(file="%s\\Calendar\\SAT-28.png"%(location))
+    #sunday----------------------------------------------
+temp_image = Image.open("%s\\Calendar\\S-31.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_sunday_31 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\S-30.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_sunday_30 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\S-29.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_sunday_29 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\S-28.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_sunday_28 = ImageTk.PhotoImage(temp_image2)
+
+    #monday--------------------------------------------------------------
+temp_image = Image.open("%s\\Calendar\\M-31.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_monday_31 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\M-30.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_monday_30 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\M-29.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_monday_29 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\M-28.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_monday_28 = ImageTk.PhotoImage(temp_image2)
+
+    #tuesday--------------------------------------------------------------
+temp_image = Image.open("%s\\Calendar\\TU-31.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_tuesday_31 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\TU-30.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_tuesday_30 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\TU-29.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_tuesday_29 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\TU-28.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_tuesday_28 = ImageTk.PhotoImage(temp_image2)
+
+    #wednesday--------------------------------------------------------------
+temp_image = Image.open("%s\\Calendar\\W-31.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_wednesday_31 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\W-30.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_wednesday_30 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\W-29.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_wednesday_29 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\W-28.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_wednesday_28 = ImageTk.PhotoImage(temp_image2)
+
+    #thursday--------------------------------------------------------------
+temp_image = Image.open("%s\\Calendar\\THU-31.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_thursday_31 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\THU-30.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_thursday_30 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\THU-29.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_thursday_29 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\THU-28.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_thursday_28 = ImageTk.PhotoImage(temp_image2)
+
+    #friday--------------------------------------------------------------
+temp_image = Image.open("%s\\Calendar\\F-31.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_friday_31 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\F-30.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_friday_30 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\F-29.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_friday_29 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\F-28.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_friday_28 = ImageTk.PhotoImage(temp_image2)
+
+    #saturday--------------------------------------------------------------
+temp_image = Image.open("%s\\Calendar\\SAT-31.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_saturday_31 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\SAT-30.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_saturday_30 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\SAT-29.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_saturday_29 = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\SAT-28.png"%(location))
+a = int((1494/1920)*w)+5
+b = int((725/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_saturday_28 = ImageTk.PhotoImage(temp_image2)
 
 calendar_month_days_label = Label(calendar_backGroundImage_label, borderwidth=0)
 choose_months_image(month,year)
 
 #Month
     #Load month imagies
-calendar_january = PhotoImage(file="%s\\Calendar\\Months_Imagies\\1.png"%(location))
-calendar_february = PhotoImage(file="%s\\Calendar\\Months_Imagies\\2.png"%(location))
-calendar_march = PhotoImage(file="%s\\Calendar\\Months_Imagies\\3.png"%(location))
-calendar_april = PhotoImage(file="%s\\Calendar\\Months_Imagies\\4.png"%(location))
-calendar_may = PhotoImage(file="%s\\Calendar\\Months_Imagies\\5.png"%(location))
-calendar_june = PhotoImage(file="%s\\Calendar\\Months_Imagies\\6.png"%(location))
-calendar_july = PhotoImage(file="%s\\Calendar\\Months_Imagies\\7.png"%(location))
-calendar_august = PhotoImage(file="%s\\Calendar\\Months_Imagies\\8.png"%(location))
-calendar_september = PhotoImage(file="%s\\Calendar\\Months_Imagies\\9.png"%(location))
-calendar_octomber = PhotoImage(file="%s\\Calendar\\Months_Imagies\\10.png"%(location))
-calendar_november = PhotoImage(file="%s\\Calendar\\Months_Imagies\\11.png"%(location))
-calendar_december = PhotoImage(file="%s\\Calendar\\Months_Imagies\\12.png"%(location))
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\1.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_january = ImageTk.PhotoImage(temp_image2)
 
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\2.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_february = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\3.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_march = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\4.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_april = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\5.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_may = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\6.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_june = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\7.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_july = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\8.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_august = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\9.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_september = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\10.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_octomber = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\11.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_november = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Calendar\\Months_Imagies\\12.png"%(location))
+a = int((323/1920)*w)+5
+b = int((65/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_december = ImageTk.PhotoImage(temp_image2)
 
 
 calendar_month_image = PhotoImage(file="%s\\Calendar\\Months_Imagies\\%d.png"%(location, month))
@@ -1473,29 +1765,29 @@ calendar_today_label = Label(calendar_month_days_label,image =calendar_today_lab
 #Add to screen
 calendar_backGroundImage_label.place( relx=0.0, rely= 0.155 )
 
-calendar_header.place(relx=0.0, rely= 0.0, width = w,height =171)
-calendar_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=977, height=44)
-calendar_title_aktri.place(relx = 0.92, rely = 0.41, width=142, height=108)
+calendar_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
+calendar_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((977/1920)*w), height =(44/1080)*h)
+calendar_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height =(108/1080)*h)
 
-calendar_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-calendar_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
-calendar_minimize_button.place(relx = 0.945, rely = 0.0, width=31, height=28)
+calendar_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+calendar_exit_fullscreen_button.place(relx = 0.965, rely = 0.0,width=((31/1920)*w), height =(28/1080)*h)
+calendar_minimize_button.place(relx = 0.945, rely = 0.0, width=((43/1920)*w), height =(28/1080)*h)
 
 
-calendar_home_button.place(relx = 0.006, rely = 0.35, width=43, height=43)
-calendar_user_button.place(relx = 0.006, rely = 0.65, width=43, height=43)#-5x-5
-calendar_user_text_label.place(relx = 0.0295, rely = 0.7, width=44, height=43)
-calendar_back_button.place(relx = 0.006, rely = 0.05, width=48, height=34)
+calendar_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
+calendar_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
+calendar_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height =(43/1080)*h)
+calendar_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
-calendar_month_label.place(relx = 0.38, rely = 0.03, width=323, height=65)
-calendar_year_label_background_label.place(relx = 0.65, rely = 0.03, width=184, height=65)
-calendar_year_fists_position.place(relx = 0.0, rely = 0.0, width=46, height=65)
-calendar_year_second_position.place(relx = 0.2527, rely = 0.0, width=46, height=65)
-calendar_year_third_position.place(relx = 0.5025, rely = 0.0, width=46, height=65)
-calendar_year_fourth_position.place(relx = 0.75, rely = 0.0, width=46, height=65)
-calendar_next_month_button.place(relx = 0.9, rely = 0.03, width=51, height=59)
-calendar_previous_month_button.place(relx = 0.1, rely = 0.03, width=51, height=59)
-calendar_month_days_label.place(relx = 0.5, rely = 0.55,anchor = "center", width=1494, height=725)
+calendar_month_label.place(relx = 0.38, rely = 0.03, width=((323/1920)*w), height =(65/1080)*h)
+calendar_year_label_background_label.place(relx = 0.65, rely = 0.03, width=((184/1920)*w), height =(65/1080)*h)
+calendar_year_fists_position.place(relx = 0.0, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
+calendar_year_second_position.place(relx = 0.2527, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
+calendar_year_third_position.place(relx = 0.5025, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
+calendar_year_fourth_position.place(relx = 0.75, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
+calendar_next_month_button.place(relx = 0.9, rely = 0.03, width=((51/1920)*w),height =(59/1080)*h)
+calendar_previous_month_button.place(relx = 0.1, rely = 0.03, width=((51/1920)*w), height =(59/1080)*h)
+calendar_month_days_label.place(relx = 0.5, rely = 0.55,anchor = "center", width=((1494/1920)*w), height =(725/1080)*h)
 
 calendar_today_label.place(relx = get_todays_x_rel_position(), rely = get_todays_y_rel_position(), width=191, height=107)
 
@@ -1525,17 +1817,46 @@ settings_backGroundImage_label = Label(settings, image=settings_new_backGroundIm
 
 #header
 settings_header = Label(settings,borderwidth=0,background = "#0d0029")
-settings_title_image = PhotoImage(file="%s\\Settings\\title.png"%(location))
+temp_image = Image.open("%s\\Settings\\title.png"%(location))
+a = int(((670/1920)*w)+5)
+b = int((57/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_title_image = ImageTk.PhotoImage(temp_image2)
 settings_title = Label(settings_header,image = settings_title_image, borderwidth=0)
-settings_title_aktri_image = PhotoImage(file="%s\\akrh titlou.png"%(location))
+
+temp_image = Image.open("%s\\akrh titlou.png"%(location))
+a = int((142/1920)*w)+5
+b = int((108/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_title_aktri_image = ImageTk.PhotoImage(temp_image2)
 settings_title_aktri = Label(settings_header,image = settings_title_aktri_image, borderwidth=0)
-settings_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
+
+temp_image = Image.open("%s\\exit_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_cloce_button_image = ImageTk.PhotoImage(temp_image2)
 settings_cloce_button = tk.Button(settings_header,image = settings_cloce_button_image, borderwidth=0, command = screen.destroy)
-settings_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
+
+temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 settings_exit_fullscreen_button = tk.Button(settings_header,image = settings_exit_fullscreen_button_image, borderwidth=0)
-settings_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
+
+temp_image = Image.open("%s\\minimize_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_minimize_button_image = ImageTk.PhotoImage(temp_image2)
 settings_minimize_button = tk.Button(settings_header,image = settings_minimize_button_image, borderwidth=0)
-settings_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
+
+temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+a = int((62/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 settings_fullscreen_button = tk.Button(settings_header,image = settings_fullscreen_button_image, borderwidth=0)
 
 settings_exit_fullscreen_button.bind("<Button-1>", settings_exit_fullscreen)
@@ -1545,14 +1866,22 @@ settings_minimize_button.bind("<Button-1>", minimize)
 
 #Home button
     # setings button image
-settings_home_button_image = PhotoImage(file="%s\\home-button.png"%(location))
+temp_image = Image.open("%s\\home-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_home_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 settings_home_button = tk.Button(settings_header, text = ' ', image = settings_home_button_image, borderwidth=0)
 settings_home_button.bind("<Button-1>",settings_go_to_home)
 
 #User button
     # setings button image
-settings_user_button_image = PhotoImage(file="%s\\user-button.png"%(location))
+temp_image = Image.open("%s\\user-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_user_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 settings_user_button = tk.Button(settings_header, image = settings_user_button_image, borderwidth=0)
 
@@ -1561,27 +1890,54 @@ settings_user_text_label =Label(settings_header,text ="User", borderwidth=0,back
 
 #back button
     # Define image
-settings_back_button_image = PhotoImage(file="%s\\back_button.png"%(location))
+temp_image = Image.open("%s\\back_button.png"%(location))
+a = int((48/1920)*w)+5
+b = int((34/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_back_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
 settings_back_button = tk.Button(settings_header, text = ' ', image = settings_back_button_image, borderwidth=0)
 
 settings_back_button.bind("<Button-1>",settings_go_to_home)
     
 
-#smity gender IS FEMALE
+#smity gender
     # Define image
-settings_smity_gender_label_image = PhotoImage(file="%s\\Settings\\smiti gender.png"%(location))
+temp_image = Image.open("%s\\Settings\\smiti gender.png"%(location))
+a = int((400/1920)*w)+5
+b = int((50/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_smity_gender_label_image = ImageTk.PhotoImage(temp_image2)
     #define label
 settings_smity_gender_label = Label(settings_backGroundImage_label, text = ' ', image = settings_smity_gender_label_image, borderwidth=0)
     #female button
         # Define image
-settings_female_on = PhotoImage(file="%s\\Settings\\female_on.png"%(location))
-settings_female_off = PhotoImage(file="%s\\Settings\\female_off.png"%(location))
+temp_image = Image.open("%s\\Settings\\female_on.png"%(location))
+a = int((148/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_female_on = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Settings\\female_off.png"%(location))
+a = int((148/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_female_off = ImageTk.PhotoImage(temp_image2)
         #define button
 settings_female_button = tk.Button(settings_backGroundImage_label, text = ' ', image = settings_female_on, borderwidth=0)
     #Male button
-settings_male_off = PhotoImage(file="%s\\Settings\\male_off.png"%(location))
-settings_male_on = PhotoImage(file="%s\\Settings\\male_on.png"%(location))
+temp_image = Image.open("%s\\Settings\\male_off.png"%(location))
+a = int((110/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_male_off = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Settings\\male_on.png"%(location))
+a = int((110/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_male_on = ImageTk.PhotoImage(temp_image2)
+
     #define button
 settings_male_button = tk.Button(settings_backGroundImage_label, text = ' ', image = settings_male_off, borderwidth=0)
 global gender
@@ -1595,7 +1951,11 @@ settings_male_button.bind("<Button-1>", activate_male)
 
 #Username name
     # Define image
-settings_user_name_label_image = PhotoImage(file="%s\\Settings\\user_name.png"%(location))
+temp_image = Image.open("%s\\Settings\\user_name.png"%(location))
+a = int((262/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_user_name_label_image = ImageTk.PhotoImage(temp_image2)
     #define label
 settings_username_label = Label(settings_backGroundImage_label, text = ' ', image = settings_user_name_label_image, borderwidth=0)
     #get name
@@ -1613,12 +1973,25 @@ settings_user_name_text_field.bind("<Button-1>", on_click)
 settings_user_name_text_field.bind("<Return>", get_name)
 
 #switch
-settings_switch_on = PhotoImage(file="%s\\Settings\\on_switch.png"%(location))
-settings_switch_off = PhotoImage(file="%s\\Settings\\off_switch.png"%(location))
+temp_image = Image.open("%s\\Settings\\on_switch.png"%(location))
+a = int((173/1920)*w)+5
+b = int((64/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_switch_on = ImageTk.PhotoImage(temp_image2)
+
+temp_image = Image.open("%s\\Settings\\off_switch.png"%(location))
+a = int((173/1920)*w)+5
+b = int((64/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_switch_off = ImageTk.PhotoImage(temp_image2)
 #All activated
 #voice control
     # Define image
-settings_voice_control_label_image = PhotoImage(file="%s\\Settings\\Voice control.png"%(location))
+temp_image = Image.open("%s\\Settings\\Voice control.png"%(location))
+a = int((354/1920)*w)+5
+b = int((50/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_voice_control_label_image = ImageTk.PhotoImage(temp_image2)
     #define label
 settings_voice_control_label = Label(settings_backGroundImage_label, text = ' ', image = settings_voice_control_label_image, borderwidth=0)
 settings_voice_control_button = tk.Button(settings_backGroundImage_label, text = ' ', image = settings_switch_on, borderwidth=0)
@@ -1628,7 +2001,11 @@ settings_voice_control_on = 1
     
 #speak key
     # Define image
-settings_speak_key_label_image = PhotoImage(file="%s\\Settings\\Speak key.png"%(location))
+temp_image = Image.open("%s\\Settings\\Speak key.png"%(location))
+a = int((264/1920)*w)+5
+b = int((60/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_speak_key_label_image = ImageTk.PhotoImage(temp_image2)
     #define label
 settings_speak_key_label = Label(settings_backGroundImage_label, text = ' ', image = settings_speak_key_label_image, borderwidth=0)
     #Define button
@@ -1640,7 +2017,11 @@ settings_speak_key_on = 1
 
 #voice wake up
     # Define image
-settings_wake_up_label_image = PhotoImage(file="%s\\Settings\\voise wake up.png"%(location))
+temp_image = Image.open("%s\\Settings\\voise wake up.png"%(location))
+a = int((357/1920)*w)+5
+b = int((60/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_wake_up_label_image = ImageTk.PhotoImage(temp_image2)
     #define label
 settings_wake_up_label = Label(settings_backGroundImage_label, text = ' ', image = settings_wake_up_label_image, borderwidth=0)
 #Define button
@@ -1655,13 +2036,21 @@ settings_speak_key_button.bind("<Button-1>", activate_deactivate_speak_key)
 settings_wake_up_button.bind("<Button-1>", activate_deactivate_wake_up)
 
 #info button
-settings_info_button_image = PhotoImage(file="%s\\Settings\\info_button.png"%(location))
+temp_image = Image.open("%s\\Settings\\info_button.png"%(location))
+a = int((206/1920)*w)+5
+b = int((275/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_info_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
 settings_info_button = tk.Button(settings_backGroundImage_label, text = ' ', image = settings_info_button_image, borderwidth=0)
 settings_info_button.bind("<Button-1>",settings_go_to_about)
 
 #Applications button
-settings_applicatons_button_image = PhotoImage(file="%s\\Settings\\applications.png"%(location))
+temp_image = Image.open("%s\\Settings\\applications.png"%(location))
+a = int((325/1920)*w)+5
+b = int((275/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+settings_applicatons_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
 settings_applications_button = tk.Button(settings_backGroundImage_label, text = ' ', image = settings_applicatons_button_image, borderwidth=0)
 settings_applications_button.bind("<Button-1>",settings_go_to_aplications)
@@ -1670,36 +2059,36 @@ settings_applications_button.bind("<Button-1>",settings_go_to_aplications)
 #add to Settings
 
 settings_backGroundImage_label.place( relx=0.0, rely= 0.155 )
-settings_header.place(relx=0.0, rely= 0.0, width = w,height =171)
-settings_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=670, height=57)
-settings_title_aktri.place(relx = 0.92, rely = 0.41, width=142, height=108)
-settings_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-settings_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
-settings_minimize_button.place(relx = 0.945, rely = 0.0, width=31, height=28)
+settings_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
+settings_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((670/1920)*w), height =(57/1080)*h)
+settings_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height =(108/1080)*h)
+settings_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+settings_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+settings_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
 
-settings_smity_gender_label.place(relx = 0.02, rely = 0.1, width=400, height=50)
-settings_female_button.place(relx = 0.91, rely = 0.1, width=148, height=43)
-settings_male_button.place(relx = 0.85, rely = 0.1, width=110, height=43)
+settings_smity_gender_label.place(relx = 0.02, rely = 0.1, width=((400/1920)*w), height =(50/1080)*h)
+settings_female_button.place(relx = 0.91, rely = 0.1, width=((148/1920)*w), height =(43/1080)*h)
+settings_male_button.place(relx = 0.85, rely = 0.1, width=((110/1920)*w), height =(43/1080)*h)
 
-settings_username_label.place(relx = 0.02, rely = 0.2, width=262, height=52)
-settings_user_name_text_field.place(relx = 0.85, rely = 0.2, width=273, height=52)
+settings_username_label.place(relx = 0.02, rely = 0.2, width=((262/1920)*w), height =(52/1080)*h)
+settings_user_name_text_field.place(relx = 0.85, rely = 0.2, width=((273/1920)*w), height =(52/1080)*h)
 
-settings_voice_control_label.place(relx = 0.02, rely = 0.3, width=354, height=50)
-settings_voice_control_button.place(relx = 0.9, rely = 0.3, width=173, height=64)
+settings_voice_control_label.place(relx = 0.02, rely = 0.3, width=((354/1920)*w), height =(50/1080)*h)
+settings_voice_control_button.place(relx = 0.9, rely = 0.3, width=((173/1920)*w), height =(64/1080)*h)
 
-settings_speak_key_label.place(relx = 0.12, rely = 0.4, width=264, height=60)
-settings_speak_key_button.place(relx = 0.85, rely = 0.385, width=173, height=64)
+settings_speak_key_label.place(relx = 0.12, rely = 0.4, width=((264/1920)*w), height =(60/1080)*h)
+settings_speak_key_button.place(relx = 0.85, rely = 0.385, width=((173/1920)*w), height =(64/1080)*h)
 
-settings_wake_up_label.place(relx = 0.12, rely = 0.5, width=357, height=60)
-settings_wake_up_button.place(relx = 0.85, rely = 0.485, width=173, height=64)
+settings_wake_up_label.place(relx = 0.12, rely = 0.5, width=((357/1920)*w), height =(60/1080)*h)
+settings_wake_up_button.place(relx = 0.85, rely = 0.485, width=((173/1920)*w), height =(64/1080)*h)
 
-settings_home_button.place(relx = 0.006, rely = 0.35, width=43, height=43)
-settings_user_button.place(relx = 0.006, rely = 0.65, width=43, height=43)#-5x-5
-settings_user_text_label.place(relx = 0.0295, rely = 0.7, width=44, height=43)
-settings_back_button.place(relx = 0.006, rely = 0.05, width=48, height=34)
+settings_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
+settings_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
+settings_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
+settings_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
-settings_info_button.place(relx = 0.1, rely = 0.625, width=206, height=275)
-settings_applications_button.place(relx = 0.8, rely = 0.625, width=325, height=275)
+settings_info_button.place(relx = 0.1, rely = 0.625,width=((206/1920)*w), height =(275/1080)*h)
+settings_applications_button.place(relx = 0.8, rely = 0.625, width=((325/1920)*w), height =(275/1080)*h)
 
 settings_load()
 
