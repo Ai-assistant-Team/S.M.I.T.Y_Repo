@@ -1152,6 +1152,81 @@ my_websites_user_button = tk.Button(my_websites_header, image = my_websites_user
 #user text label
 my_websites_user_text_label =Label(my_websites_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
+#Change / Save websites buttons
+    # Define image 1
+temp_image = Image.open("%s\\my websites\\change-save_url.png"%(location))
+a = int((376/1920)*w)+5
+b = int((57/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_change_open_url_button_image = ImageTk.PhotoImage(temp_image2)
+    # Define image 2
+temp_image = Image.open("%s\\my websites\\change-save_url_2.png"%(location))
+a = int((376/1920)*w)+5
+b = int((57/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_change_open_url_button_image_2 = ImageTk.PhotoImage(temp_image2)
+    #define button
+        #1
+my_websites_change_save_url_label_1 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image_2, borderwidth=0)
+        #2
+my_websites_change_save_url_label_2 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image_2, borderwidth=0)
+        #3
+my_websites_change_save_url_label_3 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image_2, borderwidth=0)
+        #4
+my_websites_change_save_url_label_4 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image_2, borderwidth=0)
+        #5
+my_websites_change_save_url_label_5 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image_2, borderwidth=0)
+        #6
+my_websites_change_save_url_label_6 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image, borderwidth=0)
+        #7
+my_websites_change_save_url_label_7 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image, borderwidth=0)
+        #8
+my_websites_change_save_url_label_8 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image, borderwidth=0)
+        #9
+my_websites_change_save_url_label_9 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image, borderwidth=0)
+        #10
+my_websites_change_save_url_label_10 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image, borderwidth=0)
+
+#names
+url_names = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
+
+my_websites_url_1_name =Label(my_websites_change_save_url_label_1,text ="ADD URL" , borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+my_websites_url_2_name =Label(my_websites_change_save_url_label_2,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+my_websites_url_3_name =Label(my_websites_change_save_url_label_3,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+my_websites_url_4_name =Label(my_websites_change_save_url_label_4,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+my_websites_url_5_name =Label(my_websites_change_save_url_label_5,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+my_websites_url_6_name =Label(my_websites_change_save_url_label_6,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+my_websites_url_7_name =Label(my_websites_change_save_url_label_7,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+my_websites_url_8_name =Label(my_websites_change_save_url_label_8,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+my_websites_url_9_name =Label(my_websites_change_save_url_label_9,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+my_websites_url_10_name =Label(my_websites_change_save_url_label_10,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+
+#change seve url
+    # setings button image
+temp_image = Image.open("%s\\my websites\\go_to.png"%(location))
+a = int((90/1920)*w)+5
+b = int((62/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_save_url_button_image = ImageTk.PhotoImage(temp_image2)
+#change seve ur2
+    # setings button image
+temp_image = Image.open("%s\\my websites\\go_to_2.png"%(location))
+a = int((90/1920)*w)+5
+b = int((62/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_save_url_button_image_2 = ImageTk.PhotoImage(temp_image2)
+    #Add button
+my_websites_user_button_1 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
+my_websites_user_button_2 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
+my_websites_user_button_3 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
+my_websites_user_button_4 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
+my_websites_user_button_5 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image, borderwidth=0)
+my_websites_user_button_6 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
+my_websites_user_button_7 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
+my_websites_user_button_8 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
+my_websites_user_button_9 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
+my_websites_user_button_10 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0)
+
 my_websites_backGroundImage_label.place( relx=0.0, rely= 0.155 )
 my_websites_header.place(relx=0.0, rely= 0.0, width = w,height =171)
 my_websites_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=(512/1920)*w, height=(56/1080)*h)
@@ -1164,7 +1239,40 @@ my_websites_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), he
 my_websites_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
 my_websites_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
+my_websites_change_save_url_label_1.place(relx=0.255, rely= 0.075, width=((376/1920)*w), height=(57/1080)*h)
+my_websites_change_save_url_label_2.place(relx=0.255, rely=0.25, width=((376/1920)*w), height=(57/1080)*h)
+my_websites_change_save_url_label_3.place(relx=0.255, rely=0.425, width=((376/1920)*w), height=(57/1080)*h)
+my_websites_change_save_url_label_4.place(relx=0.255,rely=0.6, width=((376/1920)*w), height=(57/1080)*h)
+my_websites_change_save_url_label_5.place(relx=0.255, rely=0.775, width=((376/1920)*w), height=(57/1080)*h)
 
+my_websites_change_save_url_label_6.place(relx=0.61, rely= 0.075, width=((376/1920)*w), height=(57/1080)*h)
+my_websites_change_save_url_label_7.place(relx=0.61, rely= 0.25, width=((376/1920)*w), height=(57/1080)*h)
+my_websites_change_save_url_label_8.place(relx=0.61, rely= 0.425, width=((376/1920)*w), height=(57/1080)*h)
+my_websites_change_save_url_label_9.place(relx=0.61, rely= 0.6, width=((376/1920)*w), height=(57/1080)*h)
+my_websites_change_save_url_label_10.place(relx=0.61, rely= 0.775, width=((376/1920)*w), height=(57/1080)*h)
+
+my_websites_url_1_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+my_websites_url_2_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+my_websites_url_3_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+my_websites_url_4_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+my_websites_url_5_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+my_websites_url_6_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+my_websites_url_7_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+my_websites_url_8_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+my_websites_url_9_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+my_websites_url_10_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+
+my_websites_user_button_1.place(relx=0.47, rely= 0.075, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_2.place(relx=0.47, rely= 0.25, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_3.place(relx=0.47, rely= 0.425, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_4.place(relx=0.47, rely= 0.6, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_5.place(relx=0.47, rely= 0.775, width=((90/1920)*w), height=(62/1080)*h)
+
+my_websites_user_button_6.place(relx=0.86, rely= 0.075, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_7.place(relx=0.86, rely= 0.25, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_8.place(relx=0.86, rely= 0.425, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_9.place(relx=0.86, rely= 0.6, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_10.place(relx=0.86, rely= 0.775, width=((90/1920)*w), height=(62/1080)*h)
 
 #############################################################################################################################################################################
 #    U     U         A       PPPPPPP  PPPPPPP SSSSSSS
