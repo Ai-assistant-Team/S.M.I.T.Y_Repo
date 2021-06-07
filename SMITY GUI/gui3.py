@@ -1082,17 +1082,47 @@ aplications_backGroundImage_label = Label(aplications, image=aplications_new_bac
 
 #header
 aplications_header = Label(aplications,borderwidth=0,background = "#0d0029")
-aplications_title_image = PhotoImage(file="%s\\Aplications\\title.png"%(location))
+
+temp_image = Image.open("%s\\Aplications\\title.png"%(location))
+a = int((847/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_title_image = ImageTk.PhotoImage(temp_image2)
 aplications_title = Label(aplications_header,image = aplications_title_image, borderwidth=0)
-aplications_title_aktri_image = PhotoImage(file="%s\\akrh titlou.png"%(location))
+
+temp_image = Image.open("%s\\akrh titlou.png"%(location))
+a = int((142/1920)*w)+5
+b = int((108/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_title_aktri_image = ImageTk.PhotoImage(temp_image2)
 aplications_title_aktri = Label(aplications_header,image = aplications_title_aktri_image, borderwidth=0)
-aplications_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
+
+temp_image = Image.open("%s\\exit_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_cloce_button_image = ImageTk.PhotoImage(temp_image2)
 aplications_cloce_button = tk.Button(aplications_header,image = aplications_cloce_button_image, borderwidth=0, command = screen.destroy)
-aplications_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
+
+temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 aplications_exit_fullscreen_button = tk.Button(aplications_header,image = aplications_exit_fullscreen_button_image, borderwidth=0)
-aplications_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
+
+temp_image = Image.open("%s\\minimize_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_minimize_button_image = ImageTk.PhotoImage(temp_image2)
 aplications_minimize_button = tk.Button(aplications_header,image = aplications_minimize_button_image, borderwidth=0)
-aplications_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
+
+temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+a = int((62/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 aplications_fullscreen_button = tk.Button(aplications_header,image = aplications_fullscreen_button_image, borderwidth=0)
 
 aplications_exit_fullscreen_button.bind("<Button-1>", aplications_exit_fullscreen)
@@ -1101,14 +1131,22 @@ aplications_minimize_button.bind("<Button-1>", minimize)
 
 #Home button
     # setings button image
-aplications_home_button_image = PhotoImage(file="%s\\home-button.png"%(location))
+temp_image = Image.open("%s\\home-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_home_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 aplications_home_button = tk.Button(aplications_header, text = ' ', image = aplications_home_button_image, borderwidth=0)
 aplications_home_button.bind("<Button-1>",aplications_go_to_home_page)
 
 #User button
     # setings button image
-aplications_user_button_image = PhotoImage(file="%s\\user-button.png"%(location))
+temp_image = Image.open("%s\\user-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_user_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 aplications_user_button = tk.Button(aplications_header, image = aplications_user_button_image, borderwidth=0)
 
@@ -1117,52 +1155,104 @@ aplications_user_text_label =Label(aplications_header,text ="User", borderwidth=
 
 #back button
     # Define image
-aplications_back_button_image = PhotoImage(file="%s\\back_button.png"%(location))
+temp_image = Image.open("%s\\back_button.png"%(location))
+a = int((48/1920)*w)+5
+b = int((34/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_back_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
 aplications_back_button = tk.Button(aplications_header, text = ' ', image = aplications_back_button_image, borderwidth=0)
 aplications_back_button.bind("<Button-1>",aplications_go_to_settings)
 
 #Icon labels
         #Excel
-aplications_excel_icon_image = PhotoImage(file="%s\\Aplications\\excel-icon.png"%(location))
+temp_image = Image.open("%s\\Aplications\\excel-icon.png"%(location))
+a = int((102/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_excel_icon_image = ImageTk.PhotoImage(temp_image2)
 aplications_excel_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_excel_icon_image)
         #Word
-aplications_word_icon_image = PhotoImage(file="%s\\Aplications\\word-icon.png"%(location))
+temp_image = Image.open("%s\\Aplications\\word-icon.png"%(location))
+a = int((102/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_word_icon_image = ImageTk.PhotoImage(temp_image2)
 aplications_word_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_word_icon_image)
         #Acces
-aplications_acces_icon_image = PhotoImage(file="%s\\Aplications\\acces-icon.png"%(location))
+temp_image = Image.open("%s\\Aplications\\acces-icon.png"%(location))
+a = int((102/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_acces_icon_image = ImageTk.PhotoImage(temp_image2)
 aplications_acces_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_acces_icon_image)
         #Power Point
-aplications_power_point_icon_image = PhotoImage(file="%s\\Aplications\\power-point-icon.png"%(location))
+temp_image = Image.open("%s\\Aplications\\power-point-icon.png"%(location))
+a = int((162/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_power_point_icon_image = ImageTk.PhotoImage(temp_image2)
 aplications_power_point_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_power_point_icon_image)
         #Spotify
-aplications_spotify_icon_image = PhotoImage(file=("%s\\Aplications\\spotify-icon.png"%(location)))
+temp_image = Image.open("%s\\Aplications\\spotify-icon.png"%(location))
+a = int((102/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_spotify_icon_image = ImageTk.PhotoImage(temp_image2)
 aplications_spotify_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_spotify_icon_image)
         #Messenger
-aplications_messenger_icon_image = PhotoImage(file="%s\\Aplications\\messenger-icon.png"%(location))
+temp_image = Image.open("%s\\Aplications\\messenger-icon.png"%(location))
+a = int((102/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_messenger_icon_image = ImageTk.PhotoImage(temp_image2)
 aplications_messenger_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_messenger_icon_image)
         #Websites
-aplications_websites_icon_image = PhotoImage(file="%s\\Aplications\\web-icon.png"%(location))
+temp_image = Image.open("%s\\Aplications\\web-icon.png"%(location))
+a = int((102/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_websites_icon_image = ImageTk.PhotoImage(temp_image2)
 aplications_websites_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_websites_icon_image)
         #Caclulator
-aplications_cuclulator_icon_image = PhotoImage(file="%s\\Aplications\\calculator-icon.png"%(location))
+temp_image = Image.open("%s\\Aplications\\calculator-icon.png"%(location))
+a = int((102/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_cuclulator_icon_image = ImageTk.PhotoImage(temp_image2)
 aplications_cuclulator_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_cuclulator_icon_image)
         #NoteBook
-aplications_notebook_icon_image = PhotoImage(file="%s\\Aplications\\notebook-icon.png"%(location))
+temp_image = Image.open("%s\\Aplications\\notebook-icon.png"%(location))
+a = int((102/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_notebook_icon_image = ImageTk.PhotoImage(temp_image2)
 aplications_notebook_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_notebook_icon_image)
         #Users Applications
-aplications_users_applications_button_image = PhotoImage(file="%s\\Aplications\\users-applications.png"%(location))
+temp_image = Image.open("%s\\Aplications\\users-applications.png"%(location))
+a = int((102/1920)*w)+5
+b = int((137/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_users_applications_button_image = ImageTk.PhotoImage(temp_image2)
 aplications_users_applications_button =tk.Button(aplications_backGroundImage_label, borderwidth=0, image = aplications_users_applications_button_image)
 aplications_users_applications_button.bind("<Button-1>",aplications_go_to_users_aplications)
         #Your applications text label
-aplications_your_applications_text_label_image = PhotoImage(file="%s\\Aplications\\your_applications-label-text.png"%(location))
+temp_image = Image.open("%s\\Aplications\\your_applications-label-text.png"%(location))
+a = int((285/1920)*w)+5
+b = int((39/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_your_applications_text_label_image = ImageTk.PhotoImage(temp_image2)
 aplications_your_applications_text_label =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_your_applications_text_label_image)
 
 
 
 #Change / Save location Buttons
     # Define image
-aplications_change_save_location_button_image = PhotoImage(file="%s\\Aplications\\change-save location-button2.png"%(location))
+temp_image = Image.open("%s\\Aplications\\change-save location-button2.png"%(location))
+a = int((376/1920)*w)+5
+b = int((57/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+aplications_change_save_location_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
         #Excel button
 aplications_change_save_location_button_excel = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
@@ -1186,42 +1276,42 @@ aplications_change_save_location_button_NoteBook = tk.Button(aplications_backGro
 
 #add to window
 aplications_backGroundImage_label.place( relx=0.0, rely= 0.155 )
-aplications_header.place(relx=0.0, rely= 0.0, width = w,height =171)
-aplications_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=847, height=52)
-aplications_title_aktri.place(relx = 0.92, rely = 0.41, width=142, height=108)
-aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
-aplications_minimize_button.place(relx = 0.945, rely = 0.0, width=31, height=28)
+aplications_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
+aplications_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((847/1920)*w), height=(52/1080)*h)
+aplications_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height=(108/1080)*h)
+aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+aplications_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
-aplications_home_button.place(relx = 0.006, rely = 0.35, width=43, height=43)
-aplications_user_button.place(relx = 0.006, rely = 0.65, width=43, height=43)#-5x-5
-aplications_user_text_label.place(relx = 0.0295, rely = 0.7, width=44, height=43)
-aplications_back_button.place(relx = 0.006, rely = 0.05, width=48, height=34)
+aplications_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
+aplications_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)
+aplications_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
+aplications_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height=(34/1080)*h)
 
 
-aplications_excel_icon.place(relx=0.2, rely= 0.05, width = 102,height =137)#+0.175
-aplications_word_icon.place(relx=0.2, rely= 0.225, width = 102,height =137)
-aplications_acces_icon.place(relx=0.2, rely= 0.4, width = 102,height =137)
-aplications_power_point_icon.place(relx=0.2, rely= 0.575, width = 162,height =137)
-aplications_spotify_icon.place(relx=0.2, rely= 0.75, width = 102,height =137)
+aplications_excel_icon.place(relx=0.2, rely= 0.05, width = ((102/1920)*w),height =(137/1080)*h)#+0.175
+aplications_word_icon.place(relx=0.2, rely= 0.225, width = ((102/1920)*w),height =(137/1080)*h)
+aplications_acces_icon.place(relx=0.2, rely= 0.4, width = ((102/1920)*w),height =(137/1080)*h)
+aplications_power_point_icon.place(relx=0.2, rely= 0.575, width = ((162/1920)*w),height =(137/1080)*h)
+aplications_spotify_icon.place(relx=0.2, rely= 0.75, width = ((102/1920)*w),height =(137/1080)*h)
 
-aplications_change_save_location_button_excel.place(relx=0.255, rely= 0.075, width=376, height=57)
-aplications_change_save_location_button_word.place(relx=0.255, rely=0.25, width=376, height=57)
-aplications_change_save_location_button_acces.place(relx=0.255, rely=0.425, width=376, height=57)
-aplications_change_save_location_button_Power_Point.place(relx=0.255,rely=0.6, width=376, height=57)
-aplications_change_save_location_button_Spotify.place(relx=0.255, rely=0.775, width=376, height=57)
+aplications_change_save_location_button_excel.place(relx=0.255, rely= 0.075, width=((376/1920)*w), height=(57/1080)*h)
+aplications_change_save_location_button_word.place(relx=0.255, rely=0.25, width=((376/1920)*w), height=(57/1080)*h)
+aplications_change_save_location_button_acces.place(relx=0.255, rely=0.425, width=((376/1920)*w), height=(57/1080)*h)
+aplications_change_save_location_button_Power_Point.place(relx=0.255,rely=0.6, width=((376/1920)*w), height=(57/1080)*h)
+aplications_change_save_location_button_Spotify.place(relx=0.255, rely=0.775, width=((376/1920)*w), height=(57/1080)*h)
 
-aplications_messenger_icon.place(relx=0.55, rely= 0.05, width = 102,height =137)#+0.175
-aplications_websites_icon.place(relx=0.55, rely= 0.225, width = 102,height =137)
-aplications_cuclulator_icon.place(relx=0.55, rely= 0.4, width = 102,height =137)
-aplications_notebook_icon.place(relx=0.55, rely= 0.575, width = 102,height =137)
-aplications_users_applications_button.place(relx=0.55, rely= 0.75, width = 102,height =137)
+aplications_messenger_icon.place(relx=0.55, rely= 0.05, width = ((102/1920)*w),height =(137/1080)*h)#+0.175
+aplications_websites_icon.place(relx=0.55, rely= 0.225, width = ((102/1920)*w),height =(137/1080)*h)
+aplications_cuclulator_icon.place(relx=0.55, rely= 0.4, width = ((102/1920)*w),height =(137/1080)*h)
+aplications_notebook_icon.place(relx=0.55, rely= 0.575, width = ((102/1920)*w),height =(137/1080)*h)
+aplications_users_applications_button.place(relx=0.55, rely= 0.75, width =((102/1920)*w),height =(137/1080)*h)
 
-aplications_change_save_location_button_Messenger.place(relx=0.61, rely= 0.075, width=376, height=57)
-aplications_change_save_location_button_Websites.place(relx=0.61, rely= 0.25, width=376, height=57)
-aplications_change_save_location_button_Caclulator.place(relx=0.61, rely= 0.425, width=376, height=57)
-aplications_change_save_location_button_NoteBook.place(relx=0.61, rely= 0.6, width=376, height=57)
-aplications_your_applications_text_label.place(relx=0.61, rely= 0.8, width=285, height=39)
+aplications_change_save_location_button_Messenger.place(relx=0.61, rely= 0.075, width=((376/1920)*w), height=(57/1080)*h)
+aplications_change_save_location_button_Websites.place(relx=0.61, rely= 0.25, width=((376/1920)*w), height=(57/1080)*h)
+aplications_change_save_location_button_Caclulator.place(relx=0.61, rely= 0.425, width=((376/1920)*w), height=(57/1080)*h)
+aplications_change_save_location_button_NoteBook.place(relx=0.61, rely= 0.6, width=((376/1920)*w), height=(57/1080)*h)
+aplications_your_applications_text_label.place(relx=0.61, rely= 0.8, width=((285/1920)*w), height=(39/1080)*h)
 
 
 #############################################################################################################################################################################
@@ -1279,12 +1369,11 @@ temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 about_page_minimize_button_image = ImageTk.PhotoImage(temp_image2)
 about_page_minimize_button = tk.Button(about_page_header,image = about_page_minimize_button_image, borderwidth=0)
 
-about_page_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
 temp_image = Image.open("%s\\Calendar\\title.png"%(location))
 a = int((62/1920)*w)+5
 b = int((28/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-calendar_title_image = ImageTk.PhotoImage(temp_image2)
+about_page_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 about_page_fullscreen_button = tk.Button(about_page_header,image = about_page_fullscreen_button_image, borderwidth=0)
 
 about_page_exit_fullscreen_button.bind("<Button-1>", about_page_exit_fullscreen)
