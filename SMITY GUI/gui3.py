@@ -851,6 +851,14 @@ def go_to_my_websites(event):
     my_websites.pack(fill='both', expand =1)
     aplications.forget()
 
+def my_websites_go_to_aplications(event):
+    aplications.pack(fill='both', expand =1)
+    my_websites.forget()
+
+def my_websites_go_to_home_page(event):
+    home_page.pack(fill='both', expand =1)
+    my_websites.forget()
+
 
 screen = tk.Tk()
 screen.title("Home")
@@ -1065,27 +1073,98 @@ my_websites_backGroundImage_label = Label(my_websites, image=my_websites_new_bac
 
 #header
 my_websites_header = Label(my_websites,borderwidth=0,background = "#0d0029")
-
+#title
 temp_image = Image.open("%s\\my websites\\title.png"%(location))
 a = int((512/1920)*w)+5
 b = int((56/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 my_websites_title_image = ImageTk.PhotoImage(temp_image2)
 my_websites_title = Label(my_websites_header,image = my_websites_title_image, borderwidth=0)
-#my_websites_title_aktri_image = PhotoImage(file="%s\\akrh titlou.png"%(location))
-#my_websites_title_aktri = Label(my_websites_header,image = users_aplications_title_aktri_image, borderwidth=0)
-#my_websites_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
-#my_websites_cloce_button = tk.Button(my_websites_header,image = users_aplications_cloce_button_image, borderwidth=0, command = screen.destroy)
-#my_websites_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
-#my_websites_exit_fullscreen_button = tk.Button(my_websites_header,image = users_aplications_exit_fullscreen_button_image, borderwidth=0)
-#my_websites_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
-#my_websites_minimize_button = tk.Button(my_websites_header,image = users_aplications_minimize_button_image, borderwidth=0)
-#my_websites_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
-#my_websites_fullscreen_button = tk.Button(my_websites_header,image = users_aplications_fullscreen_button_image, borderwidth=0)
+#akri titlou
+temp_image = Image.open("%s\\akrh titlou.png"%(location))
+a = int((142/1920)*w)+5
+b = int((108/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_title_aktri_image = ImageTk.PhotoImage(temp_image2)
+my_websites_title_aktri = Label(my_websites_header,image = my_websites_title_aktri_image, borderwidth=0)
+#exit button
+temp_image = Image.open("%s\\exit_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_cloce_button_image = ImageTk.PhotoImage(temp_image2)
+my_websites_cloce_button = tk.Button(my_websites_header,image = my_websites_cloce_button_image, borderwidth=0, command = screen.destroy)
+#exit fullscreen button
+temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+my_websites_exit_fullscreen_button = tk.Button(my_websites_header,image = my_websites_exit_fullscreen_button_image, borderwidth=0)
+#minimize window
+temp_image = Image.open("%s\\minimize_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_minimize_button_image = ImageTk.PhotoImage(temp_image2)
+my_websites_minimize_button = tk.Button(my_websites_header,image = my_websites_minimize_button_image, borderwidth=0)
+#fullscreen button
+my_websites_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
+temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+a = int((62/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+my_websites_fullscreen_button = tk.Button(my_websites_header,image = my_websites_fullscreen_button_image, borderwidth=0)
+
+#back button
+    # Define image
+temp_image = Image.open("%s\\back_button.png"%(location))
+a = int((48/1920)*w)+5
+b = int((34/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_back_button_image = ImageTk.PhotoImage(temp_image2)
+    #define button
+my_websites_back_button = tk.Button(my_websites_header, text = ' ', image = my_websites_back_button_image, borderwidth=0)
+my_websites_back_button.bind("<Button-1>",my_websites_go_to_aplications)
+
+#Home button
+    # setings button image
+temp_image = Image.open("%s\\home-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_home_button_image = ImageTk.PhotoImage(temp_image2)
+    #Add button
+my_websites_home_button = tk.Button(my_websites_header, text = ' ', image = my_websites_home_button_image, borderwidth=0)
+my_websites_home_button.bind("<Button-1>",my_websites_go_to_home_page)
+
+#User button
+    # setings button image
+temp_image = Image.open("%s\\user-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+my_websites_user_button_image = ImageTk.PhotoImage(temp_image2)
+    #Add button
+my_websites_user_button = tk.Button(my_websites_header, image = my_websites_user_button_image, borderwidth=0)
+
+#user text label
+my_websites_user_text_label =Label(my_websites_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
 my_websites_backGroundImage_label.place( relx=0.0, rely= 0.155 )
 my_websites_header.place(relx=0.0, rely= 0.0, width = w,height =171)
 my_websites_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=(512/1920)*w, height=(56/1080)*h)
+my_websites_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height =(108/1080)*h)
+my_websites_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+my_websites_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+my_websites_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+my_websites_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
+my_websites_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
+my_websites_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
+my_websites_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
+
+
 
 #############################################################################################################################################################################
 #    U     U         A       PPPPPPP  PPPPPPP SSSSSSS
