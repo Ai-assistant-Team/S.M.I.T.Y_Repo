@@ -391,13 +391,14 @@ def about_page_exit_fullscreen(event):
     screen.attributes('-fullscreen', False)
     about_page_cloce_button.place_forget()
     about_page_exit_fullscreen_button.place_forget()
-    about_page_fullscreen_button.place(relx = 0.96, rely = 0.0, width=62, height=28)
+    about_page_fullscreen_button.place(relx = 0.96, rely = 0.0, width=((62/1920)*w), height =(28/1080)*h)
 
 def about_page_fullscreen(event):
     screen.attributes('-fullscreen', True)
     about_page_fullscreen_button.place_forget()
     about_page_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-    about_page_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
+    about_page_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+
 
 def about_page_go_to_settings(event):
     settings.pack(fill='both', expand =1)
@@ -1242,18 +1243,48 @@ about_page_backGroundImage_label = Label(about_page, image=about_page_new_backGr
 
 #Header
 about_page_header = Label(about_page,borderwidth=0,background = "#0d0029")
-about_page_title_image = PhotoImage(file="%s\\About\\title.png"%(location))
+
+temp_image = Image.open("%s\\About\\title.png"%(location))
+a = int((422/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+about_page_title_image = ImageTk.PhotoImage(temp_image2)
 about_page_title = Label(about_page_header,image = about_page_title_image, borderwidth=0)
-about_page_title_aktri_image = PhotoImage(file="%s\\akrh titlou.png"%(location))
+
+temp_image = Image.open("%s\\akrh titlou.png"%(location))
+a = int((142/1920)*w)+5
+b = int((108/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+about_page_title_aktri_image = ImageTk.PhotoImage(temp_image2)
 about_page_title_aktri = Label(about_page_header,image = about_page_title_aktri_image, borderwidth=0)
 
-about_page_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
+temp_image = Image.open("%s\\exit_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+about_page_cloce_button_image = ImageTk.PhotoImage(temp_image2)
 about_page_cloce_button = tk.Button(about_page_header,image = about_page_cloce_button_image, borderwidth=0, command = screen.destroy)
-about_page_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
+
+temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+about_page_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 about_page_exit_fullscreen_button = tk.Button(about_page_header,image = about_page_exit_fullscreen_button_image, borderwidth=0)
-about_page_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
+
+temp_image = Image.open("%s\\minimize_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+about_page_minimize_button_image = ImageTk.PhotoImage(temp_image2)
 about_page_minimize_button = tk.Button(about_page_header,image = about_page_minimize_button_image, borderwidth=0)
+
 about_page_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
+temp_image = Image.open("%s\\Calendar\\title.png"%(location))
+a = int((62/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+calendar_title_image = ImageTk.PhotoImage(temp_image2)
 about_page_fullscreen_button = tk.Button(about_page_header,image = about_page_fullscreen_button_image, borderwidth=0)
 
 about_page_exit_fullscreen_button.bind("<Button-1>", about_page_exit_fullscreen)
@@ -1285,16 +1316,16 @@ about_page_user_text_label =Label(about_page_header,text ="User", borderwidth=0,
 
 #add to window
 about_page_backGroundImage_label.place( relx=0.0, rely= 0.155 )
-about_page_header.place(relx=0.0, rely= 0.0, width = w,height =171)
-about_page_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=422, height=52)
-about_page_title_aktri.place(relx = 0.92, rely = 0.41, width=142, height=108)
-about_page_back_button.place(relx = 0.006, rely = 0.05, width=48, height=34)
-about_page_home_button.place(relx = 0.006, rely = 0.35, width=43, height=43)
-about_page_user_button.place(relx = 0.006, rely = 0.65, width=43, height=43)#-5x-5
-about_page_user_text_label.place(relx = 0.0295, rely = 0.7, width=44, height=43)
-about_page_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-about_page_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
-about_page_minimize_button.place(relx = 0.945, rely = 0.0, width=31, height=28)
+about_page_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
+about_page_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((422/1920)*w), height =(52/1080)*h)
+about_page_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height =(108/1080)*h)
+about_page_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
+about_page_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
+about_page_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
+about_page_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height =(43/1080)*h)
+about_page_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+about_page_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+about_page_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
 
 
 #############################################################################################################################################################################
