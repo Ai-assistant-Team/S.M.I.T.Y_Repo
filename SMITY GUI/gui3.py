@@ -871,23 +871,51 @@ add_aplication_backGroundImage = Image.open("%s\\background.png"%(location))
 add_aplication_resized_backGroundImage = add_aplication_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
 
 add_aplication_new_backGroundImage = ImageTk.PhotoImage(add_aplication_resized_backGroundImage)
-
     #Label
 add_aplication_backGroundImage_label = Label(add_aplication, image=add_aplication_new_backGroundImage, borderwidth=0)
-
 #header
 add_aplication_header = Label(add_aplication,borderwidth=0,background = "#0d0029")
-add_aplication_title_image = PhotoImage(file="%s\\Add Aplications\\title.png"%(location))
+
+temp_image = Image.open("%s\\Add Aplications\\title.png"%(location))
+a = int((847/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_title_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_title = Label(add_aplication_header,image = add_aplication_title_image, borderwidth=0)
-add_aplication_title_aktri_image = PhotoImage(file="%s\\akrh titlou.png"%(location))
+
+temp_image = Image.open("%s\\akrh titlou.png"%(location))
+a = int((142/1920)*w)+5
+b = int((108/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_title_aktri_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_title_aktri = Label(add_aplication_header,image = add_aplication_title_aktri_image, borderwidth=0)
-add_aplication_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
+
+temp_image = Image.open("%s\\exit_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_cloce_button_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_cloce_button = tk.Button(add_aplication_header,image = add_aplication_cloce_button_image, borderwidth=0, command = screen.destroy)
-add_aplication_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
+
+temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_exit_fullscreen_button = tk.Button(add_aplication_header,image = add_aplication_exit_fullscreen_button_image, borderwidth=0)
-add_aplication_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
+
+temp_image = Image.open("%s\\minimize_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_minimize_button_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_minimize_button = tk.Button(add_aplication_header,image = add_aplication_minimize_button_image, borderwidth=0)
-add_aplication_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
+
+temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+a = int((62/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_fullscreen_button = tk.Button(add_aplication_header,image = add_aplication_fullscreen_button_image, borderwidth=0)
 
 add_aplication_exit_fullscreen_button.bind("<Button-1>", add_aplication_exit_fullscreen)
@@ -896,14 +924,22 @@ add_aplication_minimize_button.bind("<Button-1>", minimize)
 
 #Home button
     # setings button image
-add_aplication_home_button_image = PhotoImage(file="%s\\home-button.png"%(location))
+temp_image = Image.open("%s\\home-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_home_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 add_aplication_home_button = tk.Button(add_aplication_header, text = ' ', image = add_aplication_home_button_image, borderwidth=0)
 add_aplication_home_button.bind("<Button-1>",add_aplications_go_to_home_page)
 
 #User button
     # setings button image
-add_aplication_user_button_image = PhotoImage(file="%s\\user-button.png"%(location))
+temp_image = Image.open("%s\\user-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_user_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 add_aplication_user_button = tk.Button(add_aplication_header, image = add_aplication_user_button_image, borderwidth=0)
 
@@ -911,16 +947,28 @@ add_aplication_user_button = tk.Button(add_aplication_header, image = add_aplica
 add_aplication_user_text_label =Label(add_aplication_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
 #Name label
-add_aplication_name_label_image = PhotoImage(file="%s\\Add Aplications\\name.png"%(location))
+temp_image = Image.open("%s\\Add Aplications\\name.png"%(location))
+a = int((847/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_name_label_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_name_label =Label(add_aplication_backGroundImage_label, borderwidth=0, image = add_aplication_name_label_image)
 
 #Location label
-add_aplication_location_label_image = PhotoImage(file="%s\\Add Aplications\\location.png"%(location))
+temp_image = Image.open("%s\\Add Aplications\\location.png"%(location))
+a = int((847/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_location_label_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_location_label =Label(add_aplication_backGroundImage_label, borderwidth=0, image = add_aplication_location_label_image)
 
 #name text spot label
     #label
-add_aplication_text_spot_label_image = PhotoImage(file="%s\\Add Aplications\\text_spot.png"%(location))
+temp_image = Image.open("%s\\Add Aplications\\text_spot.png"%(location))
+a = int((847/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_text_spot_label_image = ImageTk.PhotoImage(temp_image2)
 add_aplication_name_text_spot_label =Label(add_aplication_backGroundImage_label, borderwidth=0, image = add_aplication_text_spot_label_image)
     #input
 add_aplication_name_input = tk.Entry(add_aplication_name_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
@@ -934,20 +982,32 @@ add_aplication_location_input = tk.Entry(add_aplication_location_text_spot_label
 
 #browse to files button
     # Define image
-add_aplication_browse_to_files_button_image = PhotoImage(file="%s\\Add Aplications\\browse_to_files.png"%(location))
+temp_image = Image.open("%s\\Add Aplications\\browse_to_files.png"%(location))
+a = int((847/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_browse_to_files_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
 add_aplication_browse_to_files_button = tk.Button(add_aplication_backGroundImage_label, image = add_aplication_browse_to_files_button_image, borderwidth=0)
 add_aplication_browse_to_files_button.bind("<Button-1>",add_aplication_location)
 
 #Cancel button
     # Define image
-add_aplication_cancel_button_image = PhotoImage(file="%s\\Add Aplications\\Cancel.png"%(location))
+temp_image = Image.open("%s\\Add Aplications\\Cancel.png"%(location))
+a = int((847/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_cancel_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
 add_aplication_cancel_button = Button(add_aplication_backGroundImage_label, text = ' ', image = add_aplication_cancel_button_image, borderwidth=0)
 add_aplication_cancel_button.bind("<Button-1>",add_aplication_go_to_users_aplications)
 #Add button
     # Add image
-add_aplication_add_button_image = PhotoImage(file="%s\\Add Aplications\\add.png"%(location))
+temp_image = Image.open("%s\\Add Aplications\\add.png"%(location))
+a = int((847/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+add_aplication_add_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 add_aplication_add_button_button = Button(add_aplication_backGroundImage_label, text = ' ', image = add_aplication_add_button_image, borderwidth=0)
 add_aplication_add_button_button.bind("<Button-1>",add_aplication_add_button)
