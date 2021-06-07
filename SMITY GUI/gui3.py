@@ -412,13 +412,13 @@ def aplications_exit_fullscreen(event):
     screen.attributes('-fullscreen', False)
     aplications_cloce_button.place_forget()
     aplications_exit_fullscreen_button.place_forget()
-    aplications_fullscreen_button.place(relx = 0.96, rely = 0.0, width=62, height=28)
+    aplications_fullscreen_button.place(relx = 0.96, rely = 0.0,width=((62/1920)*w), height =(28/1080)*h)
 
 def aplications_fullscreen(event):
     screen.attributes('-fullscreen', True)
     aplications_fullscreen_button.place_forget()
-    aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-    aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
+    aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+    aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
 def aplications_go_to_settings(event):
     settings.pack(fill='both', expand =1)
@@ -848,7 +848,6 @@ def get_previous_month_name_image(event):
         calendar_month_label.config(image = calendar_december)
 
 
-
 screen = tk.Tk()
 screen.title("Home")
 w, h = screen.winfo_screenwidth(), screen.winfo_screenheight()
@@ -864,8 +863,6 @@ location = pathlib.Path(__file__).parent.absolute()
 #  A       A   D     D           A       A    PP          PP
 # A         A  DDDDDD           A         A   PP          PP
 #############################################################################################################################################################################
-
-
 add_aplication = tk.Frame()
 #BackGround
         #open image
@@ -1244,8 +1241,6 @@ temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 aplications_your_applications_text_label_image = ImageTk.PhotoImage(temp_image2)
 aplications_your_applications_text_label =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_your_applications_text_label_image)
 
-
-
 #Change / Save location Buttons
     # Define image
 temp_image = Image.open("%s\\Aplications\\change-save location-button2.png"%(location))
@@ -1312,8 +1307,6 @@ aplications_change_save_location_button_Websites.place(relx=0.61, rely= 0.25, wi
 aplications_change_save_location_button_Caclulator.place(relx=0.61, rely= 0.425, width=((376/1920)*w), height=(57/1080)*h)
 aplications_change_save_location_button_NoteBook.place(relx=0.61, rely= 0.6, width=((376/1920)*w), height=(57/1080)*h)
 aplications_your_applications_text_label.place(relx=0.61, rely= 0.8, width=((285/1920)*w), height=(39/1080)*h)
-
-
 #############################################################################################################################################################################
 #     A      BBBBBBB
 #    A A     B      B
@@ -1415,8 +1408,6 @@ about_page_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),
 about_page_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
 about_page_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
 about_page_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
-
-
 #############################################################################################################################################################################
 #    CCCCCC
 #   CCC
@@ -1425,7 +1416,6 @@ about_page_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), 
 #    CCCCCCC
 #############################################################################################################################################################################
 calendar = tk.Frame(screen)
-
 #BackGround
     #open image
 calendar_backgroundImage = Image.open("%s\\background.png"%(location))
@@ -1523,7 +1513,6 @@ calendar_back_button_image = ImageTk.PhotoImage(temp_image2)
 calendar_back_button = tk.Button(calendar_header, text = ' ', image = calendar_back_button_image, borderwidth=0)
 calendar_back_button.bind("<Button-1>",calendar_go_to_home_page)
 
-
 #Year
     #Load Year numbers
 temp_image = Image.open("%s\\Calendar\\year numbers\\0.png"%(location))
@@ -1586,10 +1575,7 @@ b = int((65/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 calendar_nine = ImageTk.PhotoImage(temp_image2)
 
-
-
-
-    #deine image
+#deine image
 
 calendar_year_label_background_label =Label(calendar_backGroundImage_label, borderwidth=0)
 calendar_year_fists_position = Label(calendar_year_label_background_label,image =calendar_zero ,borderwidth = 0)
@@ -1604,7 +1590,6 @@ global year
 month = now.month
 year = now.year
 get_year(year)
-
 
 #Load Calendar pictures
     #sunday----------------------------------------------
@@ -1910,8 +1895,6 @@ calendar_previous_month_button.place(relx = 0.1, rely = 0.03, width=((51/1920)*w
 calendar_month_days_label.place(relx = 0.5, rely = 0.55,anchor = "center", width=((1494/1920)*w), height =(725/1080)*h)
 
 calendar_today_label.place(relx = get_todays_x_rel_position(), rely = get_todays_y_rel_position(), width=191, height=107)
-
-
 #############################################################################################################################################################################
 #  SSSSSSSS
 #  S
@@ -1919,11 +1902,7 @@ calendar_today_label.place(relx = get_todays_x_rel_position(), rely = get_todays
 #         S
 #  SSSSSSSS
 #############################################################################################################################################################################
-
-
-
 settings = tk.Frame(screen)
-
 #BackGround
         #open image
 settings_backGroundImage = Image.open("%s\\background.png"%(location))
@@ -1983,7 +1962,6 @@ settings_exit_fullscreen_button.bind("<Button-1>", settings_exit_fullscreen)
 settings_fullscreen_button.bind("<Button-1>",settings_fullscreen)
 settings_minimize_button.bind("<Button-1>", minimize)
 
-
 #Home button
     # setings button image
 temp_image = Image.open("%s\\home-button.png"%(location))
@@ -2020,7 +1998,6 @@ settings_back_button = tk.Button(settings_header, text = ' ', image = settings_b
 
 settings_back_button.bind("<Button-1>",settings_go_to_home)
     
-
 #smity gender
     # Define image
 temp_image = Image.open("%s\\Settings\\smiti gender.png"%(location))
@@ -2066,8 +2043,6 @@ gender = 'female'
     
 settings_female_button.bind("<Button-1>", activate_female)
 settings_male_button.bind("<Button-1>", activate_male)
-    
-
 
 #Username name
     # Define image
@@ -2134,7 +2109,6 @@ settings_speak_key_button = tk.Button(settings_backGroundImage_label, text = ' '
 global settings_speak_key_on
 settings_speak_key_on = 1
 
-
 #voice wake up
     # Define image
 temp_image = Image.open("%s\\Settings\\voise wake up.png"%(location))
@@ -2149,7 +2123,6 @@ settings_wake_up_button = tk.Button(settings_backGroundImage_label, text = ' ', 
     #ON OFF veriable
 global settings_wake_up_on
 settings_wake_up_on = 1
-
 
 settings_voice_control_button.bind("<Button-1>", activate_deactivate_voice_control)
 settings_speak_key_button.bind("<Button-1>", activate_deactivate_speak_key)
@@ -2175,9 +2148,7 @@ settings_applicatons_button_image = ImageTk.PhotoImage(temp_image2)
 settings_applications_button = tk.Button(settings_backGroundImage_label, text = ' ', image = settings_applicatons_button_image, borderwidth=0)
 settings_applications_button.bind("<Button-1>",settings_go_to_aplications)
 
-
 #add to Settings
-
 settings_backGroundImage_label.place( relx=0.0, rely= 0.155 )
 settings_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
 settings_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((670/1920)*w), height =(57/1080)*h)
@@ -2211,7 +2182,6 @@ settings_info_button.place(relx = 0.1, rely = 0.625,width=((206/1920)*w), height
 settings_applications_button.place(relx = 0.8, rely = 0.625, width=((325/1920)*w), height =(275/1080)*h)
 
 settings_load()
-
 #############################################################################################################################################################################
 #    H    H
 #    H    H
@@ -2230,7 +2200,6 @@ home_page_new_backGroundImage = ImageTk.PhotoImage(home_page_resized_backGroundI
 
     #Label
 home_page_backGroundImage_label = Label(home_page, image=home_page_new_backGroundImage, borderwidth=0)
-
 #GIF
 a = int ((260/1920)*w)
 b = int ((270/1080)*h)
