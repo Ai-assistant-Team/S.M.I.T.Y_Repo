@@ -859,6 +859,15 @@ def my_websites_go_to_home_page(event):
     home_page.pack(fill='both', expand =1)
     my_websites.forget()
 
+def users_urls_load(names,urls):
+    location = pathlib.Path(__file__).parent.absolute()
+    f = open("%s\\users_urls.txt"%(location), "r")
+    for x in range(10):
+        temp = f.readline()
+        names[x] = temp.replace('\n','')
+        temp = f.readline()
+        urls[x] = temp.replace('\n','')
+    f.close()
 
 screen = tk.Tk()
 screen.title("Home")
@@ -1187,19 +1196,22 @@ my_websites_change_save_url_label_9 = Label(my_websites_backGroundImage_label, t
         #10
 my_websites_change_save_url_label_10 = Label(my_websites_backGroundImage_label, text = ' ', image = my_websites_change_open_url_button_image, borderwidth=0)
 
-#names
-url_names = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
+#load urls ans names
+websites_names = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
+websites_url = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
 
-my_websites_url_1_name =Label(my_websites_change_save_url_label_1,text ="ADD URL" , borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
-my_websites_url_2_name =Label(my_websites_change_save_url_label_2,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
-my_websites_url_3_name =Label(my_websites_change_save_url_label_3,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
-my_websites_url_4_name =Label(my_websites_change_save_url_label_4,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
-my_websites_url_5_name =Label(my_websites_change_save_url_label_5,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
-my_websites_url_6_name =Label(my_websites_change_save_url_label_6,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
-my_websites_url_7_name =Label(my_websites_change_save_url_label_7,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
-my_websites_url_8_name =Label(my_websites_change_save_url_label_8,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
-my_websites_url_9_name =Label(my_websites_change_save_url_label_9,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
-my_websites_url_10_name =Label(my_websites_change_save_url_label_10,text ="ADD URL", borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 35))
+users_urls_load(websites_names,websites_url)
+
+my_websites_url_1_name =Label(my_websites_change_save_url_label_1,text = websites_names[0] , borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+my_websites_url_2_name =Label(my_websites_change_save_url_label_2,text = websites_names[1], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+my_websites_url_3_name =Label(my_websites_change_save_url_label_3,text = websites_names[2], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+my_websites_url_4_name =Label(my_websites_change_save_url_label_4,text = websites_names[3], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+my_websites_url_5_name =Label(my_websites_change_save_url_label_5,text = websites_names[4], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+my_websites_url_6_name =Label(my_websites_change_save_url_label_6,text = websites_names[5], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+my_websites_url_7_name =Label(my_websites_change_save_url_label_7,text = websites_names[6], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+my_websites_url_8_name =Label(my_websites_change_save_url_label_8,text = websites_names[7], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+my_websites_url_9_name =Label(my_websites_change_save_url_label_9,text = websites_names[8], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+my_websites_url_10_name =Label(my_websites_change_save_url_label_10,text = websites_names[9], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
 
 #change seve url
     # setings button image
@@ -1268,11 +1280,11 @@ my_websites_user_button_3.place(relx=0.47, rely= 0.425, width=((90/1920)*w), hei
 my_websites_user_button_4.place(relx=0.47, rely= 0.6, width=((90/1920)*w), height=(62/1080)*h)
 my_websites_user_button_5.place(relx=0.47, rely= 0.775, width=((90/1920)*w), height=(62/1080)*h)
 
-my_websites_user_button_6.place(relx=0.86, rely= 0.075, width=((90/1920)*w), height=(62/1080)*h)
-my_websites_user_button_7.place(relx=0.86, rely= 0.25, width=((90/1920)*w), height=(62/1080)*h)
-my_websites_user_button_8.place(relx=0.86, rely= 0.425, width=((90/1920)*w), height=(62/1080)*h)
-my_websites_user_button_9.place(relx=0.86, rely= 0.6, width=((90/1920)*w), height=(62/1080)*h)
-my_websites_user_button_10.place(relx=0.86, rely= 0.775, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_6.place(relx=0.83, rely= 0.075, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_7.place(relx=0.83, rely= 0.25, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_8.place(relx=0.83, rely= 0.425, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_9.place(relx=0.83, rely= 0.6, width=((90/1920)*w), height=(62/1080)*h)
+my_websites_user_button_10.place(relx=0.83, rely= 0.775, width=((90/1920)*w), height=(62/1080)*h)
 
 #############################################################################################################################################################################
 #    U     U         A       PPPPPPP  PPPPPPP SSSSSSS
