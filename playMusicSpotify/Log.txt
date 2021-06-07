@@ -1,0 +1,70 @@
+---------- 4/4/2021 ----------
+playMusicSpotify.py :
+	Created spotifyAuth()
+
+
+---------- 5/4/2021 ----------
+playMusicSpotify.py :
+	Created getFirstAvailableDevice()
+	Created searchForId(q,TYPE)
+	songbyTitle(songName,songArtist)
+
+
+---------- 7/4/2021 ----------
+playMusicSpotify.py :
+	Created songsbyArtist(artist)
+	Created playAlbumOrPlaylist(TYPE, name)
+
+
+---------- 12/4/2021 ----------
+playMusicSpotify.py :
+	Created resumePlayback()
+	Created pausePlayback()
+	Created playNext()
+	Created playPrev()
+
+
+---------- 15/4/2021 ----------
+playMusicSpotify.py :
+	Created addToQueue(songName)
+	Created seek(whereTo)
+	Created repeatControl(whatToRepeat)
+	Created shuffleControl(active)
+	Created volumeControl(volumeLevel)
+
+
+---------- 20/4/2021 ----------
+playMusicSpotify.py :
+	Created playEpisode(epName)
+	Created playShow(showName)
+
+
+---------- 24/4/2021 ----------
+playMusicSpotify.py :
+	Created playlistCreate(username, playlistName, isPublic, isCollab, description)
+	Created playlistAddTracks(username, playlistName, trackNameList, position)
+	Created playlistRemoveTracks(playlistName, trackNameList)
+	Created playlistFollow(playlistName)
+	Created playlistUnfollow(playlistName)
+
+
+---------- 29/4/2021 ----------
+playMusicSpotify.py :
+	Created artistFollow(artistNameList)
+	Created artistUnfollow(artistNameList)
+	Created userFollow(userNameList)
+	Created userUnfollow(userNameList)
+
+
+---------- 4/5/2021 ----------
+playMusicSpotify.py :
+	Created saveTracks(trackNameList)
+	Created deleteSavedTracks(trackNameList)
+	Created saveShows(showNameList)
+	Created deleteSavedShows(showNameList)
+	Created saveAlbums(albumNameList)
+	Created deleteSavedAlbums(albumNameList)
+
+
+	
+
