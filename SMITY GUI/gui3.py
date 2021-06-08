@@ -947,7 +947,25 @@ def change_location_go_to_home_page(event):
     home_page.pack(fill='both', expand =1)
     change_location.forget()
 
-def change_location(event,name,location):
+def change_protgram_location(event,name,file_location):
+    names = ["Excel", "Word", "Acces", "Power Point", "Spotify", "Messenger", "Caclulator", "NoteBook"]
+    urls = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
+    
+    location = pathlib.Path(__file__).parent.absolute()
+    f = open("%s\\program_locations.txt"%(location), "r")
+    for x in range(8):
+        urls[x] = f.readline()
+        urls[x] = str(urls[x])
+    f.close()
+    for j in range(8):
+        if name == names[j]:
+            names[j] = name + '\n'
+            urls[j] = str(file_location)+'\n'
+            break
+    f = open("%s\\program_locations2.txt"%(location), "w")
+    for b in range(8):
+        f.write(urls[b])
+    f.close()
     users_aplications.pack(fill='both', expand =1)
     change_location.forget()
 
@@ -1770,7 +1788,7 @@ b = int((94/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 change_location_add_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
-change_location_add_button_button = Button(change_location_backGroundImage_label, text = ' ', image = change_location_add_button_image, borderwidth=0, command=lambda:change_location ("<Button-1>",str(add_website_name_input.get()),str(add_website_location_input.get())))
+change_location_add_button_button = Button(change_location_backGroundImage_label, text = ' ', image = change_location_add_button_image, borderwidth=0, command=lambda:change_protgram_location ("<Button-1>",str(change_location_name_input.get()),str(change_location_location_input.get())))
 
 
 
