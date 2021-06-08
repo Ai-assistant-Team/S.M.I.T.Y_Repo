@@ -957,6 +957,7 @@ def change_protgram_location(event,name,file_location):
     location = pathlib.Path(__file__).parent.absolute()
     f = open("%s\\program_locations.txt"%(location), "r")
     for x in range(8):
+        a = f.readline()
         urls[x] = f.readline()
         urls[x] = str(urls[x])
     f.close()
@@ -968,6 +969,7 @@ def change_protgram_location(event,name,file_location):
             break
     f = open("%s\\program_locations.txt"%(location), "w")
     for b in range(8):
+        f.write(names[b])
         f.write(urls[b])
     f.close()
     aplications.pack(fill='both', expand =1)
