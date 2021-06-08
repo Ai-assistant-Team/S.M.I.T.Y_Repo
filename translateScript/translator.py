@@ -11,7 +11,7 @@ def translateText(textToTranslate,lang):
         #Translate text from source language to destination language
         translated = translator.translate(textToTranslate,dest=lang)
     except:
-        return print('Wrong input.')
+        return 1
     #Show the translated text on screen
     return translated.text
 
