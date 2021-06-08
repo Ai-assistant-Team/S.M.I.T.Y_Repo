@@ -18,6 +18,6 @@ def screenshot():
         file_path = filedialog.asksaveasfilename(defaultextension='.png')
         myScreenshot.save(file_path)
     except:
-        return False
-    return True
+        return 1
+    return 0
 
