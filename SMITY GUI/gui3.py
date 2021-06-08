@@ -430,6 +430,10 @@ def aplications_go_to_users_aplications(event):
     users_aplications.pack(fill='both', expand =1)
     aplications.forget()
 
+def aplications_go_to_change_location(event):
+    change_location.pack(fill='both', expand =1)
+    aplications.forget()
+
 def users_aplications_exit_fullscreen(event):
     screen.attributes('-fullscreen', False)
     users_aplications_cloce_button.place_forget()
@@ -893,7 +897,7 @@ def add_website_go_to_users_aplications(event):
 def add_a_website(event,websites_name,websites_url):
     names = ["ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE"]
     urls = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
-    global website_number
+    
     location = pathlib.Path(__file__).parent.absolute()
     f = open("%s\\users_urls.txt"%(location), "r")
     for x in range(10):
@@ -922,6 +926,31 @@ def add_websites_fullscreen(event):
     add_website_fullscreen_button.place_forget()
     add_website_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
     add_website_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+
+def change_location_exit_fullscreen(event):
+    screen.attributes('-fullscreen', False)
+    change_location_cloce_button.place_forget()
+    change_location_exit_fullscreen_button.place_forget()
+    change_location_fullscreen_button.place(relx = 0.96, rely = 0.0,width=((62/1920)*w), height =(28/1080)*h)
+
+def change_location_fullscreen(event):
+    screen.attributes('-fullscreen', True)
+    change_location_fullscreen_button.place_forget()
+    change_location_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+    change_location_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+
+def change_location_go_to_users_aplications(event):
+    users_aplications.pack(fill='both', expand =1)
+    change_location.forget()
+
+def change_location_go_to_home_page(event):
+    home_page.pack(fill='both', expand =1)
+    change_location.forget()
+
+def change_location(event,name,location):
+    users_aplications.pack(fill='both', expand =1)
+    change_location.forget()
+
 
 
 screen = tk.Tk()
@@ -1122,7 +1151,6 @@ add_aplication_add_button_button.place(relx=0.884, rely=0.8599, width=((162/1920
 #############################################################################################################################################################################
 
 my_websites= tk.Frame()
-global website_number
 #BackGround
         #open image
 my_websites_backGroundImage = Image.open("%s\\background.png"%(location))
@@ -1356,6 +1384,7 @@ my_websites_user_button_10.place(relx=0.83, rely= 0.775, width=((90/1920)*w), he
 # A         A  DDDDDD           WW      WW
 #############################################################################################################################################################################
 add_website = tk.Frame()
+
 #BackGround
         #open image
 add_website_backGroundImage = Image.open("%s\\background.png"%(location))
@@ -1600,6 +1629,174 @@ users_aplications_user_text_label.place(relx = 0.0295, rely = 0.7, width=44, hei
 users_aplications_back_button.place(relx = 0.006, rely = 0.05, width=48, height=34)
 
 users_aplications_add_apication_button.place(relx = 0.9, rely = 0.8, width=131, height=130)
+#############################################################################################################################################################################
+#   CCCCC   LL
+#  CC       LL
+# CC        LL
+#  CC       LL
+#   CCCCC   LLLLLLLL
+#############################################################################################################################################################################
+change_location = tk.Frame()
+
+#BackGround
+        #open image
+change_location_backGroundImage = Image.open("%s\\background.png"%(location))
+        #resize image
+change_location_resized_backGroundImage = change_location_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
+
+change_location_new_backGroundImage = ImageTk.PhotoImage(change_location_resized_backGroundImage)
+    #Label
+change_location_backGroundImage_label = Label(change_location, image=change_location_new_backGroundImage, borderwidth=0)
+#header
+change_location_header = Label(change_location,borderwidth=0,background = "#0d0029")
+
+temp_image = Image.open("%s\\change location\\title.png"%(location))
+a = int((705/1920)*w)+5
+b = int((56/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_title_image = ImageTk.PhotoImage(temp_image2)
+change_location_title = Label(change_location_header,image = change_location_title_image, borderwidth=0)
+
+temp_image = Image.open("%s\\akrh titlou.png"%(location))
+a = int((142/1920)*w)+5
+b = int((108/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_title_aktri_image = ImageTk.PhotoImage(temp_image2)
+change_location_title_aktri = Label(change_location_header,image = change_location_title_aktri_image, borderwidth=0)
+
+temp_image = Image.open("%s\\exit_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_cloce_button_image = ImageTk.PhotoImage(temp_image2)
+change_location_cloce_button = tk.Button(change_location_header,image = change_location_cloce_button_image, borderwidth=0, command = screen.destroy)
+
+temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+change_location_exit_fullscreen_button = tk.Button(change_location_header,image = change_location_exit_fullscreen_button_image, borderwidth=0)
+
+temp_image = Image.open("%s\\minimize_button.png"%(location))
+a = int((31/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_minimize_button_image = ImageTk.PhotoImage(temp_image2)
+change_location_minimize_button = tk.Button(change_location_header,image = change_location_minimize_button_image, borderwidth=0)
+
+temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+a = int((62/1920)*w)+5
+b = int((28/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+change_location_fullscreen_button = tk.Button(change_location_header,image = change_location_fullscreen_button_image, borderwidth=0)
+
+change_location_exit_fullscreen_button.bind("<Button-1>", change_location_exit_fullscreen)
+change_location_fullscreen_button.bind("<Button-1>",change_location_fullscreen)
+change_location_minimize_button.bind("<Button-1>", minimize)
+
+#Home button
+    # setings button image
+temp_image = Image.open("%s\\home-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_home_button_image = ImageTk.PhotoImage(temp_image2)
+    #Add button
+change_location_home_button = tk.Button(change_location_header, text = ' ', image = change_location_home_button_image, borderwidth=0)
+change_location_home_button.bind("<Button-1>",change_location_go_to_home_page)
+
+#User button
+    # setings button image
+temp_image = Image.open("%s\\user-button.png"%(location))
+a = int((43/1920)*w)+5
+b = int((43/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_user_button_image = ImageTk.PhotoImage(temp_image2)
+    #Add button
+change_location_user_button = tk.Button(change_location_header, image = change_location_user_button_image, borderwidth=0)
+
+#user text label
+change_location_user_text_label =Label(change_location_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+
+#Name label
+temp_image = Image.open("%s\\Add Aplications\\name.png"%(location))
+a = int((191/1920)*w)+5
+b = int((52/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_name_label_image = ImageTk.PhotoImage(temp_image2)
+change_location_name_label =Label(change_location_backGroundImage_label, borderwidth=0, image = change_location_name_label_image)
+
+#Location label
+temp_image = Image.open("%s\\Add Aplications\\location.png"%(location))
+a = int((268/1920)*w)+5
+b = int((56/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_location_label_image = ImageTk.PhotoImage(temp_image2)
+change_location_location_label =Label(change_location_backGroundImage_label, borderwidth=0, image = change_location_location_label_image)
+
+#name text spot label
+    #label
+temp_image = Image.open("%s\\Add Aplications\\text_spot.png"%(location))
+a = int(0.544*w)
+b = int((84/1080)*h)
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_text_spot_label_image = ImageTk.PhotoImage(temp_image2)
+change_location_name_text_spot_label =Label(change_location_backGroundImage_label, borderwidth=0, image = change_location_text_spot_label_image)
+    #input
+change_location_name_input = tk.Entry(change_location_name_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+#location text spot label
+    #label
+change_location_location_text_spot_label =Label(change_location_backGroundImage_label, borderwidth=0, image = change_location_text_spot_label_image)
+    #input
+change_location_location_input = tk.Entry(change_location_location_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+
+#Cancel button
+    # Define image
+temp_image = Image.open("%s\\Add Aplications\\Cancel.png"%(location))
+a = int((220/1920)*w)+5
+b = int((97/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_cancel_button_image = ImageTk.PhotoImage(temp_image2)
+    #define button
+change_location_cancel_button = Button(change_location_backGroundImage_label, text = ' ', image = change_location_cancel_button_image, borderwidth=0)
+change_location_cancel_button.bind("<Button-1>",change_location_go_to_users_aplications)
+#Add button
+    # Add image
+temp_image = Image.open("%s\\Add Aplications\\add.png"%(location))
+a = int((162/1920)*w)+5
+b = int((94/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_add_button_image = ImageTk.PhotoImage(temp_image2)
+    #Add button
+change_location_add_button_button = Button(change_location_backGroundImage_label, text = ' ', image = change_location_add_button_image, borderwidth=0, command=lambda:change_location ("<Button-1>",str(add_website_name_input.get()),str(add_website_location_input.get())))
+
+
+
+#add to window
+change_location_backGroundImage_label.place( relx=0.0, rely= 0.15 )
+change_location_header.place(relx=0.0, y= 0.0, width = w,height =(171/1080)*h)
+change_location_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((705/1920)*w), height=(56/1080)*h)
+change_location_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
+change_location_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
+change_location_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
+change_location_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
+change_location_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+change_location_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+change_location_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+
+
+change_location_name_label.place(relx = 0.05, rely = 0.2, width=((191/1920)*w), height=(53/1080)*h)
+change_location_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
+change_location_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(70/1080)*h)
+
+change_location_location_label.place(relx = 0.05, rely = 0.4, width=((268/1920)*w), height=(56/1080)*h)
+change_location_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.544, height=(84/1080)*h)
+change_location_location_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, height=(70/1080)*h)
+
+change_location_cancel_button.place(relx=0.05, rely=0.858, width=((220/1920)*w), height=(97/1080)*h)
+change_location_add_button_button.place(relx=0.884, rely=0.8599, width=((162/1920)*w), height=(94/1080)*h)
 
 #############################################################################################################################################################################
 #           A       PPPPPPP  PPPPPPP SSSSSSS
@@ -1794,23 +1991,31 @@ aplications_change_save_location_button_image = ImageTk.PhotoImage(temp_image2)
     #define button
         #Excel button
 aplications_change_save_location_button_excel = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
+aplications_change_save_location_button_excel.bind("<Button-1>", aplications_go_to_change_location)
         #Word
 aplications_change_save_location_button_word = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
+aplications_change_save_location_button_word.bind("<Button-1>", aplications_go_to_change_location)
         #Acces
 aplications_change_save_location_button_acces = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
+aplications_change_save_location_button_acces.bind("<Button-1>", aplications_go_to_change_location)
         #Power Point
 aplications_change_save_location_button_Power_Point = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
+aplications_change_save_location_button_Power_Point.bind("<Button-1>", aplications_go_to_change_location)
         #Spotify
 aplications_change_save_location_button_Spotify = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
+aplications_change_save_location_button_Spotify.bind("<Button-1>", aplications_go_to_change_location)
         #Messenger
 aplications_change_save_location_button_Messenger = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
+aplications_change_save_location_button_Messenger.bind("<Button-1>", aplications_go_to_change_location)
         #Websites
 aplications_change_save_location_button_Websites = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
 aplications_change_save_location_button_Websites.bind("<Button-1>", go_to_my_websites)
         #Caclulator
 aplications_change_save_location_button_Caclulator = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
+aplications_change_save_location_button_Caclulator.bind("<Button-1>", aplications_go_to_change_location)
         #NoteBook
 aplications_change_save_location_button_NoteBook = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
+aplications_change_save_location_button_NoteBook.bind("<Button-1>", aplications_go_to_change_location)
 
 
 #add to window
