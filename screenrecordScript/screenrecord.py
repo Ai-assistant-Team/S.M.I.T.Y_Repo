@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import filedialog
 
 def screenRecord():
+  
     
         # Specify resolution
         resolution = (1920, 1080)
@@ -19,7 +20,7 @@ def screenRecord():
         filename = filedialog.asksaveasfilename(defaultextension='.mp4')
         #if the user doesnt give a file name the record ends
         if(not filename):
-                return False
+                return 1
   
         # Specify frames rate. We can choose any 
         # value and experiment with it
@@ -65,6 +66,6 @@ def screenRecord():
         # Destroy all windows
         cv2.destroyAllWindows()
         
-        return True
+        return 0
 
 
