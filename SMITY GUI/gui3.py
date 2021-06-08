@@ -966,11 +966,11 @@ def change_protgram_location(event,name,file_location):
             names[j] = name + '\n'
             urls[j] = str(file_location)+'\n'
             break
-    f = open("%s\\program_locations2.txt"%(location), "w")
+    f = open("%s\\program_locations.txt"%(location), "w")
     for b in range(8):
         f.write(urls[b])
     f.close()
-    users_aplications.pack(fill='both', expand =1)
+    aplications.pack(fill='both', expand =1)
     change_location.forget()
 
 
