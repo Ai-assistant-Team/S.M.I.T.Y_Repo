@@ -33,21 +33,24 @@ def create_send(msg='',  to='', subject=''):
 
 
       "Creating  a mimeMessage email object and converting it to a raw format in order to send it."
+      try:
+            emailmsg = msg
 
-      emailmsg = msg
+            mimeMessage = MIMEMultipart()
 
-      mimeMessage = MIMEMultipart()
+            mimeMessage['to'] = to
 
-      mimeMessage['to'] = to
+            mimeMessage['subject'] = subject
 
-      mimeMessage['subject'] = subject
+            mimeMessage.attach(MIMEText(emailmsg, 'plain'))
 
-      mimeMessage.attach(MIMEText(emailmsg, 'plain'))
+            raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode()
 
-      raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode()
+            message = services.users().messages().send(userId='me', body={'raw': raw_string}).execute()
 
-      message = services.users().messages().send(userId='me', body={'raw': raw_string}).execute()
+            return 0
 
-      print('Your email has been sent')
+      except to:
+            return 1
 
 

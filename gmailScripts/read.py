@@ -46,9 +46,10 @@ def show_emails(Number_of_emails = 1):
             print('\n')
 
             time.sleep(1)
+        return 0
 
     except messages:
-        print('No messages')
+        return 1
 
 
 

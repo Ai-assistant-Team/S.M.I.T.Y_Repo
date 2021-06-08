@@ -47,8 +47,13 @@ def Create_Service(client_secret_file, api_name, api_version, *scopes):
         service = build(api_name, api_version, credentials=cred)
         print(api_name, 'service created successfully')
         return service
+
+    except scopes:
+        return 2
+
+    except ConnectionError:
+        return 10
+
     except Exception as e:
-        print('Unable to connect.')
-        print(e)
-        return None
+        return 1
 
