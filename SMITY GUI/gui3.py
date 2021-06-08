@@ -951,7 +951,7 @@ def change_location_go_to_home_page(event):
     change_location.forget()
 
 def change_protgram_location(event,name,file_location):
-    names = ["Excel", "Word", "Acces", "Power Point", "Spotify", "Messenger", "Caclulator", "NoteBook"]
+    names = ["excel", "word", "acces", "power point", "spotify", "messenger", "caclulator", "notebook"]
     urls = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
     
     location = pathlib.Path(__file__).parent.absolute()
@@ -960,6 +960,7 @@ def change_protgram_location(event,name,file_location):
         urls[x] = f.readline()
         urls[x] = str(urls[x])
     f.close()
+    name = name.lower()
     for j in range(8):
         if name == names[j]:
             names[j] = name + '\n'
