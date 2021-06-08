@@ -943,6 +943,9 @@ def change_location_go_to_users_aplications(event):
     users_aplications.pack(fill='both', expand =1)
     change_location.forget()
 
+def change_location_browse_to_files(event):
+    change_location_location_input.insert(0, file_browse())
+
 def change_location_go_to_home_page(event):
     home_page.pack(fill='both', expand =1)
     change_location.forget()
@@ -1735,6 +1738,17 @@ change_location_user_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 change_location_user_button = tk.Button(change_location_header, image = change_location_user_button_image, borderwidth=0)
 
+#browse to files button
+    # Define image
+temp_image = Image.open("%s\\Add Aplications\\browse_to_files.png"%(location))
+a = int((164/1920)*w)+5
+b = int((217/1080)*h)+5
+temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+change_location_browse_to_files_button_image = ImageTk.PhotoImage(temp_image2)
+    #define button
+change_location_browse_to_files_button = tk.Button(change_location_backGroundImage_label, image = change_location_browse_to_files_button_image, borderwidth=0)
+change_location_browse_to_files_button.bind("<Button-1>",change_location_browse_to_files)
+
 #user text label
 change_location_user_text_label =Label(change_location_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
@@ -1808,6 +1822,8 @@ change_location_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)
 change_location_name_label.place(relx = 0.05, rely = 0.2, width=((191/1920)*w), height=(53/1080)*h)
 change_location_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
 change_location_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(70/1080)*h)
+
+change_location_browse_to_files_button.place(relx = 0.83, rely = 0.366, width=((164/1920)*w), height=(217/1080)*h)
 
 change_location_location_label.place(relx = 0.05, rely = 0.4, width=((268/1920)*w), height=(56/1080)*h)
 change_location_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.544, height=(84/1080)*h)
