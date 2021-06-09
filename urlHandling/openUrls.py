@@ -5,8 +5,20 @@ Created on Tue Mar 23 08:45:24 2021
 @author: Θόδωρος
 """
 
-def openUrl(url):
+import webbrowser                                           # imports the needed library
+
+def openUrl(url=''):
     #made by Οικονομίδης Θεόδωρος
-    import webbrowser                                           # imports the needed library
+        
+    try:
+        
+        webbrowser.open_new(url)                            # opens the given url, using a webbrowser
+
+        return 0
     
-    webbrowser.open_new(url)                                    # opens the given url, using a webbrowser
+    except:
+        
+        return 14                                           # 14 : Problem occured while opening url.
+        
+    
+#end of openUrl
