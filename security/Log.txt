@@ -1,0 +1,15 @@
+---------- 01/05/2021 ----------
+	text.py <version 1.0> : Created.
+
+	file.py <version 1.0> : Created.
+
+---------- 09/06/2021 ----------
+	text.py 	 <version 2.0> : 
+		(1) Extracted function "produceFernet" to a separate file.
+		(2) Modified code to comply with new Policies.
+
+	file.py 	 <version 2.0> : 
+		(1) Extracted function "produceFernet" to a separate file.
+		(2) Modified code to comply with new Policies.
+
+	produceFernet.py <version 1.0> : Created.
