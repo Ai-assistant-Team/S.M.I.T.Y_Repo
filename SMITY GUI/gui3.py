@@ -83,7 +83,7 @@ def resize_gif(wi,hi):
     om = next(frames) # Handle first frame separately
     om.info = im.info # Copy sequence info
     om.save("aaa.gif", save_all=True, append_images=list(frames))
-
+"""
 def process_comand(comand):
     if comand.__contains__('calendar'):
         calendar.pack(fill='both', expand =1)
@@ -159,7 +159,7 @@ def process_comand(comand):
         elif comand.__contains__('spotify'):
             open_program('spotify')
             return 'Spotify is open'
-        
+ """       
 
 def get_comand(event):
     global message_history
@@ -170,7 +170,7 @@ def get_comand(event):
         message_history =''
     message_history = message_history + '\nYou : ' + str(home_page_comand_text_field.get())
     message_history_label_text_field.config(text = message_history)
-    message_history = message_history + '\nS.M.I.T.Y : ' + process_comand(str(home_page_comand_text_field.get()))
+    message_history = message_history + '\nS.M.I.T.Y : ' + str(home_page_comand_text_field.get())
     line_count = line_count +1
     message_history_label_text_field.config(text = message_history)
     if line_count == 8:
