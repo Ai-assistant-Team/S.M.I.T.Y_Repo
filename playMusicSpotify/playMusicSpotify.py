@@ -14,8 +14,8 @@ def spotifyAuth(): #used to authenticate the user with the spotify platform
    import tkinter
 
    try:
-       CLIENT_ID = '84111f363e3844c39baef8c37a040683' #id given to the app when registered in the spotify dashboard
-       CLIENT_SECRET = '28bc71b306b244c1ace762ee3950af1f' #secret id given to the app when registered in the spotify dashboard
+       CLIENT_ID = 'f1c84641b9c34faa8bb20510ee8c9c40' #id given to the app when registered in the spotify dashboard
+       CLIENT_SECRET = '1a17fbde2fd04a38a7939ce0b2120f76' #secret id given to the app when registered in the spotify dashboard
        scope = "user-read-playback-state user-modify-playback-state playlist-modify-public playlist-modify-private user-follow-read user-follow-modify user-library-read user-library-modify"
        #the permissions required for the various functions of this script
        redirect_uri = "http://localhost:8080" #the url where the users are redirected to when they log in
