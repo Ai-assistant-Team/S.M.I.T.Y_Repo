@@ -4,8 +4,8 @@ import wikipedia                                            # importing wikipedi
 ## This function is searching wikipedia the thing you want to learn about
 ##
 
-def Wiki_Search(toSearch):                                          # declaring a function
-    try:                                                            # incase something goes wrong
-        return(wikipedia.WikipediaPage(toSearch).summary)           # returns wikipedia info
-    except:                                                         # if something go wrong it will print Error
-        print('Error')
+def Wiki_Search(toSearch):                                              # declaring a function
+        try:                                                            # incase something goes wrong
+            return(wikipedia.WikipediaPage(toSearch).summary)           # returns wikipedia info
+        except Exception:
+            return 1
