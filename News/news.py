@@ -1,30 +1,50 @@
 from ClearTheTxtOfLinks import clear_the_txt_of_links
 from ClearTheTxtOfLinks import get_list_from_txt
-from ClearTheTxtOfLinks import create_txt_with_links
 from ClearTheTxtOfLinks import update_txt
 from getTitleFromArticle import get_title_from_article
+import webbrowser
 
 
 def get_news():
     news_titles =""
-    create_txt_with_links()
-    clear_the_txt_of_links()
     list_of_links = []
     list_of_links = get_list_from_txt(list_of_links)
     totall = int(list_of_links[0])
-    num_of_pages = int(list_of_links[1])
-    links_sended = num_of_pages
+    used = int(list_of_links[1])
+    start = int(list_of_links[2])
+    end = int(list_of_links[3])
     
-    if(int(num_of_pages) + 5 < totall):
-        num_of_pages = num_of_pages + 5
-        start = num_of_pages + 3
-        for x in range(start,totall):
-            #news_titles = news_titles + get_title_from_article(list_of_links[x]) + '\n'
+    if(used < totall):
+        if (used + 5 < totall):
+            step = 5
+        else:
+            step = totall-used
+
+        for x in range(start,end+1):
             news_titles = news_titles + get_title_from_article(list_of_links[x]) + '\n'
-            links_sended = links_sended +1
-            if links_sended == num_of_pages:
-                break
-    
-    list_of_links[1] = str(links_sended) + '\n'
-    update_txt(list_of_links)
+
+        used = used +step
+        start = start +step
+        end = end +step
+        list_of_links[1] = str(used) + '\n'
+        list_of_links[2] = str(start) + '\n'
+        list_of_links[3] = str(end) + '\n'
+        update_txt(list_of_links)
+    else:
+        news_titles = "No more news aveliable"
     return news_titles
+
+def open_news_page(title):
+    list_of_links = []
+    list_of_links = get_list_from_txt(list_of_links)
+    fount = 'no'
+    end = int(list_of_links[1]) + 4
+    for x in range(4,end):
+        if (get_title_from_article(list_of_links[x]) == title):
+            fount = 'yes'
+            webbrowser.open_new_tab(list_of_links[x])
+            break
+    if fount == 'no':
+        return 'Title not found'
+    else:
+        return 'Title found'
