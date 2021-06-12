@@ -1,0 +1,29 @@
+---------- <07/05/2021> ----------
+
+	<videoCapture.py>
+
+		Created
+		
+		
+---------- <29/05/2021> ----------
+
+
+	<videoCapture.py>
+		<change 1>  : Deleted : line 16 (<videocap()>) of the code
+		<change 2>  : Replaced : <""> with <''> in line 4 of the code
+		
+		
+	<videoTest.py>
+	
+		Created
+
+---------- <05/06/2021> ----------
+
+	<videoCapture.py>
+	
+	<change 1>  : Added : <try...except> in line 5 of the code
+
+
+
+
+

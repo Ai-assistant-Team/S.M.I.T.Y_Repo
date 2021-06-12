@@ -1,0 +1,20 @@
+---------- <06/05/2021> ----------
+	<jokes.py> :
+		<change 1> (Replaced : <for i in range(253)> with <for i in range(9, 105)> in line 11 of the code)
+
+		<change 2> (Moved : <import pyjokes> from line 10 to line 7 of the code)
+
+		<change 3> (Deleted : lines 15-24 (<...>) of the code)
+		(<request = input("Do you want to see another Joke? Yes/No: ") #Asks user if we wants another joke
+        
+        	if (request!="Yes" and request!="No"): #Checks if answer isn't "Yes" or "No"
+            		print("Invalid Answer") #Prints that the answer is not valid
+            		break
+        	#end of if
+        	if (request=="No"): #Checks if user wants another joke
+           		break
+        	#end of if>)
+		
+---------- <25/05/2021> ----------
+	<jokes_testCase.py> :
+		<change 1> (Deleted : line 6 (<import pyjokes>) of the code)

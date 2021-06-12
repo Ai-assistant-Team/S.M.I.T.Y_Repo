@@ -1,0 +1,6 @@
+
+---------- 08/05/2021 ----------
+	openUrls.py <version 1.0> : Created. (extracted googleMapsSearch.py and googleMapsDirections.py)
+
+---------- 08/06/2021 ----------
+	openUrls.py <version 1.1> : Modified code to comply with new Policies

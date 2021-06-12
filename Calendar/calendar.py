@@ -1,296 +1,164 @@
 import datetime
-from event import Event
-
-def get_time(time, day):
-    #get time from user
-    time_of_the_event = input("What time this event is going to happen ? ")
-    time_of_the_event = time_of_the_event.split(":")
-    time_of_the_event[0] = int( time_of_the_event[0])
-    time_of_the_event[1] = int( time_of_the_event[1])
-    #check if hour if between 0 and 23 
-    while time_of_the_event[0] >23 or time_of_the_event[0] <0:
-        print (" Από 0 έως 23 ώρες πάει ρε βλακα! άντε βάλε τη σωστή ώρα")
-        time_of_the_event[0] = input ("Give the hour of the event: ")
-    #check if minutes if between 0 and 59
-    while time_of_the_event[1] >59 or time_of_the_event[1] <0:
-        print (" Από 0 έως 59 ώρες πάει ρε βλακα! άντε βάλε τη σωστή ώρα")
-        time_of_the_event[0] = input ("Give the minutes of the event: ")
-    if day == "today":
-    # if the event is today check the the user gives a time after the present time
-        while time[0] > time_of_the_event[0] or (time[1] > time_of_the_event[1] and time[0] == time_of_the_event[0] ):
-            time_of_the_event = input("Unless you can travel to the past give a future time ")
-            time_of_the_event = time_of_the_event.split(":")
-            time_of_the_event[0] = int( time_of_the_event[0])
-            time_of_the_event[1] = int( time_of_the_event[1])
-    #replace current time with the time of the event
-    time[0] = time_of_the_event[0]
-    time[1] = time_of_the_event[1]
+import pathlib
 
 
+def turn_text_to_date(users_input):
+    try:
+        #todays date
+        todays_date_and_hour = datetime.datetime.now()
+        date = [0,0,0000]
+        date[0] = todays_date_and_hour.day
+        date[1] = todays_date_and_hour.month
+        date[2] = todays_date_and_hour.year
 
-def tomorrow(date):
-    if date[0] < 28  :
-        #if the date is before 27 of the month add 1 day
-        date[0] = date[0] +1
-    elif date[1] == 2:
-        #if the month is february
-        if date[2] % 4 == 0 and (date[2] % 100 != 0 or date[2] % 400 == 0):
-            #if february has 29 days
-            if date[0] < 29:
-                date[0] = date[0] +1
-            elif date[0] == 29:
-                date[0] = 1
-                date[1] = 3
-        else:
-            #if february has 28 days
-            if date[0] == 28:
-                date[0] = 1
-                date[1] = 3
-    elif date[1] == 4 or date[1] == 6 or date[1] == 9 or date[1] == 11:
-        #if the month has 30 days
-        if date[0] < 30:
+        if users_input == 'tomorrow':
             date[0] = date[0] +1
-        else:
-            date[0] = 1
-            date[1] = date[1] +1
-    elif date[1] == 1 or date[1] == 3 or date[1] == 5 or date[1] == 7 or date[1] == 8 or date[1] == 10 or date[1] == 12:
-        #if month has 31 days
-        if date[0] < 31:
-            date[0] = date[0] +1
-        elif date[0] == 31 and date[1] < 12:
-            date[0] = 1
-            date[1] = date[1] +1
-        elif date[0] == 31 and date[1] == 12:
-            #if the year changes
-            date[0] = 1
-            date[1] = 1
-            date[2] = date[2] +1
-
-
-def the_day_after_tomorrow(date):
-    if ( date[0] < 27 ) :
-        #if the date is before 27 of the month add 2 days
-        date[0] = date[0] +2
-    elif date[1] == 2:
-        #if the month is february
-        if date[2] % 4 == 0 and (date[2] % 100 != 0 or date[2] % 400 == 0):
-            #if february has 29 days
-            if date[0] == 27:
-                date[0] = date[0] +2
-            elif date[0] == 28:
-                date[0] = 1
-                date[1] = 3
-            elif date[0] == 29:
-                date[0] = 2
-                date[1] = 3
-        else:
-            #if February has 28 days
-            if date[0] == 27:
-                date[0] = 1
-                date[1] = 3
-            elif date[0] == 28:
-                date[0] = 2
-                date[1] = 3
-    elif date[1] == 4 or date[1] == 6 or date[1] == 9 or date[1] == 11:
-        #if the month has 30 days
-        if date[0] < 29:
+            return '/'.join([str(elem) for elem in date])
+        elif users_input == 'the day after tomorrow':
             date[0] = date[0] +2
-        elif date[0] == 29:
-            date[0] = 1
-            date[1] = date[1] +1
-        elif date[0] == 30:
-            date[0] = 2
-            date[1] = date[1] +1
-    elif date[1] == 1 or date[1] == 3 or date[1] == 5 or date[1] == 7 or date[1] == 8 or date[1] == 10 or date[1] == 12:
-        #if the month has 31 days
-        if date[0] < 30:
-            date[0] = date[0] +2
-        elif date[0] == 30 and date[1] < 12:
-            date[0] = 1
-            date[1] = date[1] +1
-        elif date[0] == 30 and date[1] == 12:
-            #if the year ends
-            date[0] = 1
-            date[1] = 1
-            date[2] = date[2] +1
-        elif date[0] == 31 and date[1] < 12:
-            date[0] = 2
-            date[1] = date[1]+1
-        elif date[0] == 31 and date[1] == 12:
-            #if the year changes
-            date[0] = 2
-            date[1] = 1
-            date[2] = date[2] +1
+            return '/'.join([str(elem) for elem in date])
+        return users_input
+    except:
+        return 0
 
-def create_event(listOfEvents):
+def show_me(date):
+    location = pathlib.Path(__file__).parent.absolute()
+    events_found =''
+    f = open("%s\\calendar_record.txt"%(location), "r")
+    while 5>4:
+        line = f.readline()
+        if not line:
+            break
+        temp = date + '\n'
+        if line == temp:
+            events_found = events_found + line.replace("\n", " ")
+            line = f.readline()
+            events_found = events_found + line.replace("\n", " ")
+            line = f.readline()
+            events_found = events_found + line
+    f.close()
+    return events_found
 
-    #Present Time
-    time = datetime.datetime.now()
-    time = time.strftime("%H:%M")
-    time = time.split(":")
-    #turn time from str to int
-    time[0] = int( time[0])
-    time[1] = int( time[1])
-
-    #Present day - Month - Year
-    date = datetime.datetime.now()
-    date = date.strftime("%d-%m-%Y")
-    date = date.split("-")
-    #turn time from str to int
-    date[0] = int (date[0])
-    date[1] = int (date[1])
-    date[2] = int (date[2])
-
-    description = input ("What do you have to do? ")
-    whene_is_the_event_happening = input("Whene is this event is going to happen ?")
-    if whene_is_the_event_happening == "today":
-        get_time(time,"today")
-        listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
-    elif whene_is_the_event_happening == "tomorrow":
-            tomorrow(date)
-            get_time(time,"tomorrow")
-            listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
-    elif whene_is_the_event_happening == "the day after tomorrow":
-        the_day_after_tomorrow(date)
-        #get_time(time,"the day after tomorrow")
-        listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
-        #get secific date from user
-    elif whene_is_the_event_happening == "next week":
-        next_week(date)
-        get_time(time,"next week")
-        listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
-    elif whene_is_the_event_happening == "next month":
-        next_month(date)
-        get_time(time,"next month")
-        listOfEvents.append(Event(date[2],date[1],date[0],time[0],time[1],description))
-    else:
-        whene_is_the_event_happening = whene_is_the_event_happening.split("-")
-        whene_is_the_event_happening[0] = int (whene_is_the_event_happening[0])
-        whene_is_the_event_happening[1] = int (whene_is_the_event_happening[1])
-        whene_is_the_event_happening[2] = int (whene_is_the_event_happening[2])
-        #check if the date that the user gave is today
-        if whene_is_the_event_happening[0] == date [0] and whene_is_the_event_happening[1] == date [1] and whene_is_the_event_happening[2] == date [2]:
-            today(date, time)
-        else:
-            specific_date ( whene_is_the_event_happening,date, time)
-            listOfEvents.append(Event(whene_is_the_event_happening[2],whene_is_the_event_happening[1],whene_is_the_event_happening[0],time[0],time[1],description))
-
-
-
-
-def specific_date (whene_is_the_event_happening,date, time):
-
-     #if the user gives a specific date check that the date is in the future not in the past
-    while(whene_is_the_event_happening[2] < date[2] ):
-        whene_is_the_event_happening[2] = input ("the year of the event must the present year or in the future ")
-        whene_is_the_event_happening[2] = int(whene_is_the_event_happening[2])
-    while(whene_is_the_event_happening[1] < date[1] and whene_is_the_event_happening[2] == date[2]  ):
-        whene_is_the_event_happening[1] = input ("the month of the event must the present year or in the future ")
-        whene_is_the_event_happening[1] = int(whene_is_the_event_happening[1])
-    while(whene_is_the_event_happening[0] < date[0] and whene_is_the_event_happening[1] == date[1] and whene_is_the_event_happening[2] == date[2] ):
-        whene_is_the_event_happening[0] = input ("the day of the event must the present year or in the future ")
-        whene_is_the_event_happening[0] = int(whene_is_the_event_happening[0])
-
-    get_time(time,"date")
-    
-
-def show_me(comand , listOfEvents):
-
-    #Present Time
-    time = datetime.datetime.now()
-    time = time.strftime("%H:%M")
-    time = time.split(":")
-    #turn time from str to int
-    #hour
-    time[0] = int( time[0])
-    #minutes
-    time[1] = int( time[1])
-
-    #Present day - Month - Year
-    date = datetime.datetime.now()
-    date = date.strftime("%d-%m-%Y")
-    date = date.split("-")
-    #turn time from str to int
-    #Year
-    date[0] = int (date[0])
-    #month
-    date[1] = int (date[1])
-    #day
-    date[2] = int (date[2])
-
-    if comand == "show me my tasks for today":
-        for x in listOfEvents:
-            if x.day == date[0] and x.month == date[1] and x.year == date[2] and (x.hour > time[0] or (x.hour == time[0] and x.minutes >= time[1])):
-                    print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
-    elif comand == "show me my tasks for tomorrow":
-        tomorrow(date)
-        for x in listOfEvents:
-            if x.day == date[0] and x.month == date[1] and x.year == date[2] :
-                print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
-    elif comand == "show me my tasks for the day after tomorrow":
-        the_day_after_tomorrow(date)
-        for x in listOfEvents:
-            if x.day == date[0] and x.month == date[1] and x.year == date[2] :
-                print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
-    elif comand.find("for the next") != -1:
-        comand = comand.split("show me my tasks for the next ")
-        #temporary variable
-        temp = comand[1].split(" days")
-        days = temp[0]
-        days = int(days)
-        print (days)
-        show_my_tasks_for_X_days(days,date,listOfEvents)
-    else:
-        comand = comand.split("-")
-        date[0] = int (comand[0])
-        date[1] = int (comand[1])
-        date[2] = int (comand[2])
-        for x in listOfEvents:
-            if x.day == date[0] and x.month == date[1] and x.year == date[2] :
-                print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
+def show_me_in_range(date1,date2):
+    events_found =''
+    while 5>4:
+        a =show_me(date1)
+        events_found = events_found +a
+        if date1 == date2:
+            break
+        date1 = next_day(date1)
+    return events_found
         
             
-def show_my_tasks_for_X_days(x_days,date,listOfEvents):
-    for y in range(date[0]+1, x_days+date[0]+1):
-        #Search for every y in the listOfEvents for matches
-        for x in listOfEvents:
-            if x.day == y and x.month == date[1] and x.year == date[2] :
-                print(x.year,x.month,x.day,x.hour, x.minutes, x.description)
+def next_day (date):
+    try:
+        date = date.split("/")
+        date[0] = int (date[0])
+        date[1] = int (date[1])
+        date[2] = int (date[2])
+
+        if date[0] < 28  :
+            #if the date is before 27 of the month add 1 day
+            date[0] = date[0] +1
+        elif date[1] == 2:
+            #if the month is february
+            if date[2] % 4 == 0 and (date[2] % 100 != 0 or date[2] % 400 == 0):
+                #if february has 29 days
+                if date[0] < 29:
+                    date[0] = date[0] +1
+                elif date[0] == 29:
+                    date[0] = 1
+                    date[1] = 3
+            else:
+                #if february has 28 days
+                if date[0] == 28:
+                    date[0] = 1
+                    date[1] = 3
+        elif date[1] == 4 or date[1] == 6 or date[1] == 9 or date[1] == 11:
+            #if the month has 30 days
+            if date[0] < 30:
+                date[0] = date[0] +1
+            else:
+                date[0] = 1
+                date[1] = date[1] +1
+        elif date[1] == 1 or date[1] == 3 or date[1] == 5 or date[1] == 7 or date[1] == 8 or date[1] == 10 or date[1] == 12:
+            #if month has 31 days
+            if date[0] < 31:
+                date[0] = date[0] +1
+            elif date[0] == 31 and date[1] < 12:
+                date[0] = 1
+                date[1] = date[1] +1
+            elif date[0] == 31 and date[1] == 12:
+                #if the year changes
+                date[0] = 1
+                date[1] = 1
+                date[2] = date[2] +1
+        return '/'.join([str(elem) for elem in date])
+    except:
+        return 1
 
 
+
+def put_on_record(something):
+    try:
+        location = pathlib.Path(__file__).parent.absolute()
+        f = open("%s\\calendar_record.txt"%(location), "a+")
+        f.write(something)
+        f.write('\n')
+        f.close()
+        return 0
+    except:
+        return 1
+
+def get_description(description):
+    put_on_record(description)
+
+def get_date(date):
+    try:
+        #todays date
+        todays_date_and_hour = datetime.datetime.now()
+        #split
+        date = date.split("/")
+        #turn time from str to int
+        day = int (date[0])
+        month = int (date[1])
+        year = int (date[2])
+        print(str(todays_date_and_hour.year),' ',str(todays_date_and_hour.month),' ',str(todays_date_and_hour.day))
+        print(str(year),' ',str(month),' ',str(day))
+        #Check
+        if todays_date_and_hour.year > year:
+            return 'The year of the event must in the present or in the future not in the past YOU IDIOT'
+        if todays_date_and_hour.year == year and todays_date_and_hour.month > month:
+            return 'The month of the event must in the present or in the future not in the past YOU IDIOT'
+        if todays_date_and_hour.year == year and todays_date_and_hour.month == month and todays_date_and_hour.day > day:
+            return 'The day of the event must in the present or in the future not in the past YOU IDIOT'
+        return '/'.join([str(elem) for elem in date])
+    except:
+        return 1
     
-    
-def next_week(date):
-    for x in range (7):
-        tomorrow(date)
 
-def next_month(date):
-    #if the month has 30 days
-    if date[1] == 4 or date[1] == 6 or date[1] == 9 or date[1] == 11:
-        days_of_month = int(30)
-    #if the month has 31 days
-    elif date[1] == 1 or date[1] == 3 or date[1] == 5 or date[1] == 7 or date[1] == 8 or date[1] == 10 or date[1] == 12:
-        days_of_month = int(31)
-    for x in range (days_of_month):
-        tomorrow(date)
-
-
-
-def test2(listOfEvents):
-    listOfEvents.append(Event(2021,4,10,15,50,"ddd"))
-    listOfEvents.append(Event(2021,4,8,6,00,"ffff"))
-    listOfEvents.append(Event(2021,4,9,7,22,"rrrr"))
-    listOfEvents.append(Event(2021,4,11,15,30,"wwwww"))
-
-
-def test(listOfEvents):
-    create_event(listOfEvents)
-    create_event(listOfEvents)
-    print( listOfEvents[0].day , listOfEvents[0].month , listOfEvents[0].year , listOfEvents[0].hour, listOfEvents[0].minutes, listOfEvents[0].description)
-    print( listOfEvents[1].day , listOfEvents[1].month , listOfEvents[1].year , listOfEvents[1].hour, listOfEvents[1].minutes, listOfEvents[1].description)
-
-listOfEvents = []
-test2(listOfEvents)
-#DD-MM-YY
-show_me("show me my tasks for the next 4 days",listOfEvents)
-p = input("enter to exit")
+def get_time(time_of_the_event,date):
+    try:
+        date = date.split("/")
+        #turn time from str to int
+        day = int (date[0])
+        month = int (date[1])
+        year = int (date[2])
+        #todays date and time
+        todays_date_and_time = datetime.datetime.now()
+        #split
+        time_of_the_event = time_of_the_event.split(":")
+        #str -> int
+        hour = int( time_of_the_event[0])
+        minutes = int( time_of_the_event[1])
+        #check if hour if between 0 and 23 
+        if hour >23 or hour <0:
+            return 'The hour of the event must be between 0 and 24. YOU IDIOT'
+        if minutes >59 or minutes <0:
+            return 'The minutes of the event must be between 0 and 59. YOU IDIOT'
+        if day== todays_date_and_time.day and month == todays_date_and_time.month and year== todays_date_and_time.year:
+            if hour < todays_date_and_time.hour or (hour == todays_date_and_time.hour and minutes< todays_date_and_time.minute) :
+                return 'Unless you time travel you can not schedule something in the past'
+        return ':'.join([str(elem) for elem in time_of_the_event])
+    except:
+        return 1

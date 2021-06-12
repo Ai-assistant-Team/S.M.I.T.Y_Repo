@@ -1,0 +1,25 @@
+
+---------- 23/03/2021 ----------
+	googleMapsDirections.py <version 1.0> : Created.
+
+	googleMapsSearch.py 	<version 1.0> : Created.
+
+---------- 08/05/2021 ----------
+	googleMapsDirections.py <version 1.1> : Extracted function "openUrl" to a separate file.
+
+	googleMapsSearch.py 	<version 1.1> : Extracted function "openUrl" to a separate file.
+
+
+---------- 08/06/2021 ----------
+	googleMapsDirections.py 	  <version 1.2> : 
+		(1) Modified code to comply with new Policies 
+		(2) Fixed problem caused by the extraction of function "openUrl" in previous version
+
+	googleMapsDirections_testCases.py <version 1.0> : Created.	
+
+---------- 08/06/2021 ----------
+	googleMapsSearch.py 	      <version 1.2> : 
+		(1) Modified code to comply with new Policies 
+		(2) Fixed problem caused by the extraction of function "openUrl" in previous version
+
+	googleMapsSearch_testCases.py <version 1.0> : Created.
