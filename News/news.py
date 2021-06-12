@@ -1,7 +1,7 @@
 from ClearTheTxtOfLinks import clear_the_txt_of_links
 from ClearTheTxtOfLinks import get_list_from_txt
 from ClearTheTxtOfLinks import update_txt
-from getTitleFromArticle import get_title_from_article
+from GetTitleFromArticle import get_title_from_article
 import webbrowser
 
 
