@@ -1,6 +1,55 @@
 import datetime
 import pathlib
 
+def clear_string(string):
+    date = ''
+    time = ''
+    description = ''
+    string = string.replace('add to calendar at ', '')
+    string = string.replace('at ', '')
+    try:
+        for x in range(len(string)):
+            if string[x] =='/':
+                if x >= 2:
+                    if (int(string[x-2]) == 1 and int(string[x-1]) < 3) or (int(string[x-2]) == 0 and int(string[x-1]) < 9):
+                        if string[x+3] == '/' and ((int(string[x+1]) == 1 and int(string[x+2]) < 3) or (int(string[x+1]) == 0 and int(string[x+2]) < 9)):
+                            a = 4
+                            while (string[x+a] != ' '):
+                                a=a+1
+                            start = x-2
+                            end =x+a
+                            for a in range(start,end):
+                                date = date + string[a]
+                            break
+    except:
+        return 1
+    try:
+        string = string.replace(date, '')
+        string = string.replace(' ', '',1)
+        for x in range(len(string)):
+            if string[x] == ':':
+                if x < 2:
+                    return 1
+                time = string[x-2]+string[x-1]+string[x]+string[x+1]+string[x+2]
+    except:
+        return 1
+    a = time +' '
+    description = string.replace(a, '')
+
+    if date == '' or time == '' or description == '':
+        return "Wrong input"
+    else:
+        date = get_date(date)
+        if date.__contains__('of the event must in the present or in the future not in the past YOU IDIOT'):
+            return date
+        time = get_time(time,date)
+        if time.__contains__('of the event must be between') or time.__contains__('Unless you time travel you can not schedule something in the past'):
+            return time
+        put_on_record(date)
+        put_on_record(time)
+        get_description(description)
+        return 0
+
 
 def turn_text_to_date(users_input):
     try:
