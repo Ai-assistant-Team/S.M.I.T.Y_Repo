@@ -4,8 +4,6 @@ Created on Sun Apr  4 15:08:49 2021
 
 @author: nickk
 """
-#from ......... import username (to get the username when S.M.I.T.Y is finished)
-username = "" #when S.M.I.T.Y is finished delete this line
 
 def spotifyAuth(): #used to authenticate the user with the spotify platform
     
@@ -16,15 +14,15 @@ def spotifyAuth(): #used to authenticate the user with the spotify platform
    try:
        CLIENT_ID = 'f1c84641b9c34faa8bb20510ee8c9c40' #id given to the app when registered in the spotify dashboard
        CLIENT_SECRET = '1a17fbde2fd04a38a7939ce0b2120f76' #secret id given to the app when registered in the spotify dashboard
-       scope = "user-read-playback-state user-modify-playback-state playlist-modify-public playlist-modify-private user-follow-read user-follow-modify user-library-read user-library-modify"
+       scope = 'user-read-playback-state user-modify-playback-state playlist-modify-public playlist-modify-private user-follow-read user-follow-modify user-library-read user-library-modify'
        #the permissions required for the various functions of this script
-       redirect_uri = "http://localhost:8080" #the url where the users are redirected to when they log in
+       redirect_uri = 'http://localhost:8080' #the url where the users are redirected to when they log in
          
-       token = util.prompt_for_user_token(username, scope, CLIENT_ID, CLIENT_SECRET, redirect_uri) #The authentication
+       token = util.prompt_for_user_token('', scope, CLIENT_ID, CLIENT_SECRET, redirect_uri) #The authentication
        sp = spotipy.Spotify(auth=token)                                                            #proccess
        return sp
    except:
-       tkinter.messagebox.showerror(title="Username Error", message="Wrong Username or Spotify premium not activated")
+       return 1
 
 def getFirstAvailableDevice(): #used to return the first available device running spotify (more commonly browser,desktop or mobile)
     import tkinter
@@ -38,7 +36,7 @@ def getFirstAvailableDevice(): #used to return the first available device runnin
     except:
         window = tkinter.Tk()
         window.withdraw()
-        tkinter.messagebox.showerror(title="Device Error", message="No device detected")
+        tkinter.messagebox.showerror(title='Device Error', message='No device detected')
 
 def searchForId(q,TYPE): #used to search for an id in the spotify database given a query e.g song name and a type e.g track
     try:
@@ -57,11 +55,11 @@ def songbyTitle(songName,songArtist): #plays a song given a name and an optional
         deviceID = getFirstAvailableDevice()
     
         if(songArtist == None):
-            trackId = searchForId(songName, "track")
-            sp.start_playback(deviceID, uris=["spotify:track:"+trackId])
+            trackId = searchForId(songName, 'track')
+            sp.start_playback(deviceID, uris=['spotify:track:'+trackId])
         else:
-            trackId = searchForId("track:"+songName+" artist:"+songArtist, "track")
-            sp.start_playback(deviceID, uris=["spotify:track:"+trackId])
+            trackId = searchForId('track:'+songName+' artist:'+songArtist, 'track')
+            sp.start_playback(deviceID, uris=['spotify:track:'+trackId])
     except:
         return 1
 
@@ -71,8 +69,8 @@ def playEpisode(epName): #plays a podcast episode given its name
         
         deviceID = getFirstAvailableDevice()
         
-        epId = searchForId(epName, "episode")
-        sp.start_playback(deviceID, uris=["spotify:episode:"+epId])
+        epId = searchForId(epName, 'episode')
+        sp.start_playback(deviceID, uris=['spotify:episode:'+epId])
     except:
         return 1
 
@@ -82,8 +80,8 @@ def playShow(showName): #plays a podcast from the beginning given its name
         
         deviceID = getFirstAvailableDevice()
         
-        showId = searchForId(showName, "show")
-        sp.start_playback(deviceID, "spotify:show:"+showId)
+        showId = searchForId(showName, 'show')
+        sp.start_playback(deviceID, 'spotify:show:'+showId)
     except:
         return 1
              
@@ -94,8 +92,8 @@ def songsbyArtist(artist): #plays the top song from an artist's profile given th
     
         deviceID = getFirstAvailableDevice()
         
-        artistId = searchForId(artist, "artist")
-        sp.start_playback(deviceID, "spotify:artist:"+artistId)
+        artistId = searchForId(artist, 'artist')
+        sp.start_playback(deviceID, 'spotify:artist:'+artistId)
     except:
         return 1
     
@@ -107,10 +105,10 @@ def playAlbumOrPlaylist(TYPE, name): #plays and album or a playlist from an arti
         deviceID = getFirstAvailableDevice()
         
         Id = searchForId(name, TYPE)
-        if(TYPE=="album"):
-            sp.start_playback(deviceID, "spotify:album:"+Id)
+        if(TYPE=='album'):
+            sp.start_playback(deviceID, 'spotify:album:'+Id)
         else:
-            sp.start_playback(deviceID, "spotify:playlist:"+Id)
+            sp.start_playback(deviceID, 'spotify:playlist:'+Id)
     except:
         return 1
         
@@ -164,7 +162,7 @@ def addToQueue(songName): #adds a song to the end of a user's playback queue
     
         deviceID = getFirstAvailableDevice()
         
-        itemID = searchForId(songName, "track")
+        itemID = searchForId(songName, 'track')
         sp.add_to_queue(itemID, deviceID)
     except:
         return 1
@@ -197,7 +195,7 @@ def shuffleControl(active): #controls the repeat function of spotify (input = Tr
         sp = spotifyAuth()
     
         deviceID = getFirstAvailableDevice()
-        if(active == "True"):
+        if(active == 'True'):
             active = True
         else:
             active = False
@@ -222,12 +220,12 @@ def playlistCreate(username, playlistName, isPublic, isCollab, description): #cr
     try:
         sp = spotifyAuth()
         
-        if(isPublic == "True"):
+        if(isPublic == 'True'):
             isPublic = True
         else:
             isPublic = False
             
-        if(isCollab == "True"):
+        if(isCollab == 'True'):
             isCollab = True
         else:
             isCollab = False
@@ -242,9 +240,9 @@ def playlistAddTracks(username, playlistName, trackNameList, position): #adds gi
       
         trackIDList = []
         for track in trackNameList:
-            trackID = searchForId(track, "track")
+            trackID = searchForId(track, 'track')
             trackIDList.append(trackID)
-        playlistId = searchForId(playlistName, "playlist")
+        playlistId = searchForId(playlistName, 'playlist')
         sp.user_playlist_add_tracks(username, playlistId, trackIDList, position)
     except:
         return 1
@@ -256,9 +254,9 @@ def playlistRemoveTracks(playlistName, trackNameList): #removes given tracks fro
        
         trackIDList = []
         for track in trackNameList:
-            trackID = searchForId(track, "track")
+            trackID = searchForId(track, 'track')
             trackIDList.append(trackID)
-        playlistId = searchForId(playlistName, "playlist")
+        playlistId = searchForId(playlistName, 'playlist')
         sp.playlist_remove_all_occurrences_of_items(playlistId, trackIDList, snapshot_id=None)
     except:
         return 1
@@ -268,7 +266,7 @@ def playlistFollow(playlistName): #follows given playlist
     try:
         sp = spotifyAuth()
        
-        playlistId = searchForId(playlistName, "playlist")
+        playlistId = searchForId(playlistName, 'playlist')
         sp.current_user_follow_playlist(playlistId)
     except:
         return 1
@@ -278,7 +276,7 @@ def playlistUnfollow(playlistName): #unfollows given playlist
     try:
         sp = spotifyAuth()
        
-        playlistId = searchForId(playlistName, "playlist")
+        playlistId = searchForId(playlistName, 'playlist')
         sp.current_user_unfollow_playlist(playlistId)
     except:
         return 1
@@ -290,7 +288,7 @@ def artistFollow(artistNameList): #follows given artist/artists
        
         artistIdList = []
         for artist in artistNameList:
-            artistId = searchForId(artist, "artist")
+            artistId = searchForId(artist, 'artist')
             artistIdList.append(artistId)
         sp.user_follow_artists(artistIdList)
     except:
@@ -303,7 +301,7 @@ def artistUnfollow(artistNameList): #unfollows given artist/artists
         
         artistIdList = []
         for artist in artistNameList:
-            artistId = searchForId(artist, "artist")
+            artistId = searchForId(artist, 'artist')
             artistIdList.append(artistId)
         sp.user_unfollow_artists(artistIdList)
     except:
@@ -334,7 +332,7 @@ def saveTracks(trackNameList): #saves given track/tracks to the user's library
     
         trackIDList = []
         for trackName in trackNameList:
-            trackID = searchForId(trackName, "track")
+            trackID = searchForId(trackName, 'track')
             trackIDList.append(trackID)
             
         isSaved = sp.current_user_saved_tracks_contains(trackIDList) 
@@ -352,7 +350,7 @@ def deleteSavedTracks(trackNameList): #removes given track/tracks from the user'
       
         trackIDList = []
         for trackName in trackNameList:
-            trackID = searchForId(trackName, "track")
+            trackID = searchForId(trackName, 'track')
             trackIDList.append(trackID)
             
         isSaved = sp.current_user_saved_tracks_contains(trackIDList)
@@ -370,7 +368,7 @@ def saveShows(showNameList): #saves given podcast/podcasts to the user's library
        
         showIDList = []
         for showName in showNameList:
-            showID = searchForId(showName, "show")
+            showID = searchForId(showName, 'show')
             showIDList.append(showID)
             
         isSaved = sp.current_user_saved_shows_contains(showIDList)
@@ -388,7 +386,7 @@ def deleteSavedShows(showNameList): #removes given podcast/podcasts from the use
         
         showIDList = []
         for showName in showNameList:
-            showID = searchForId(showName, "show")
+            showID = searchForId(showName, 'show')
             showIDList.append(showID)
             
         isSaved = sp.current_user_saved_shows_contains(showIDList)
@@ -406,7 +404,7 @@ def saveAlbums(albumNameList): #saves given album/albums to the user's library
         
         albumIDList = []
         for albumName in albumNameList:
-            albumID = searchForId(albumName, "album")
+            albumID = searchForId(albumName, 'album')
             albumIDList.append(albumID)
         
         isSaved = sp.current_user_saved_albums_contains(albumIDList)
@@ -424,7 +422,7 @@ def deleteSavedAlbums(albumNameList): #removes given album/albums from the user'
        
         albumIDList = []
         for albumName in albumNameList:
-            albumID = searchForId(albumName, "album")
+            albumID = searchForId(albumName, 'album')
             albumIDList.append(albumID)
         
         isSaved = sp.current_user_saved_albums_contains(albumIDList)
@@ -434,3 +432,4 @@ def deleteSavedAlbums(albumNameList): #removes given album/albums from the user'
         sp.current_user_saved_albums_delete(albumIDList)
     except:
         return 1
+
