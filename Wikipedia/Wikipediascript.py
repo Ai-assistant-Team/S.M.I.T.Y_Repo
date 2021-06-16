@@ -7,5 +7,5 @@ import wikipedia                                            # importing wikipedi
 def Wiki_Search(toSearch):                                              # declaring a function
         try:                                                            # incase something goes wrong
             return(wikipedia.WikipediaPage(toSearch).summary)           # returns wikipedia info
-        except Exception:
+        except Exception:                                               # 1 : Undefined Error
             return 1
