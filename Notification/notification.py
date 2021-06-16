@@ -5,7 +5,7 @@ try:
    
    def Notify(content, title='Notification!'):
       toaster.show_toast(title, content, threaded=True, # Show notification whenever needed
-      icon_path=None, duration=180)  # 180seconds
+      icon_path=None, duration=180)  # 180 seconds
       
    return 0
       
