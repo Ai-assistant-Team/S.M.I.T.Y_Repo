@@ -30,4 +30,3 @@ def resize_gif(w,h):
     om.info = im.info # Copy sequence info
     om.save("out.gif", save_all=True, append_images=list(frames))
 
-resize_gif(w,h)
