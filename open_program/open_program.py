@@ -2,6 +2,7 @@ import webbrowser
 import subprocess
 from program import Program
 import pathlib
+from openUrls import openUrl
 
 def open_program(program_name):
     listOfPrograms =[]
@@ -15,7 +16,6 @@ def open_program(program_name):
         found = 'N'
         for program in listOfPrograms:
             if program.name == program_name:
-                print(program.name)
                 found = 'Y'
                 # if the type of the program is .exe
                 try:
@@ -28,15 +28,15 @@ def open_program(program_name):
         if found == "N":
             for website in listOfwebsites:
                 if website.name == program_name:
-                    print(website.name)
                     found = 'Y'
-                    try:
-                        webbrowser.open_new_tab(website.location)
-                    except:
+                    b = openUrl(website.location)
+                    if b == 14:
                         return 14
                     #open the last used browewr and go to the url that is in the program.location
         if found == 'N':
             return 1
+        if found == 'Y':
+            return 0
 
 
 #installation of programs, adding the to the list of Programs
