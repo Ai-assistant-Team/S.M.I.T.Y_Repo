@@ -12,4 +12,6 @@ def funFacts():
         fact = randfacts.getFact() #Generates a fun fact
         print(fact) #Prints the fun fact
         
+        return 0
+        
 funFacts()
