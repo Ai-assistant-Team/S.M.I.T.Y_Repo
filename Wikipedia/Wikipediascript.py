@@ -9,3 +9,5 @@ def Wiki_Search(toSearch):                                              # declar
             return(wikipedia.WikipediaPage(toSearch).summary)           # returns wikipedia info
         except Exception:                                               # 1 : Undefined Error
             return 1
+
+#end of Wikipediascript
