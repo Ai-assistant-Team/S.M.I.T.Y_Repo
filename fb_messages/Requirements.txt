@@ -1,0 +1,5 @@
+Libraries :
+	Selenium
+
+Others :
+	Chrome Browser
