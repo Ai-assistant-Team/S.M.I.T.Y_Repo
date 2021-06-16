@@ -1,0 +1,13 @@
+---------13/04/2021---------
+      README.txt
+      credentials.json
+      __init__.py
+      Google.py
+      gmail.py
+      read.py
+      send.py
+      
+---------16/06/2021--------- 
+      requirements.txt
+      read.py,send,Google:
+        Added :correct return values
