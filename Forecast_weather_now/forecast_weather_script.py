@@ -12,7 +12,7 @@ from datetime import datetime  # imports time related functions
 def Forecast_weather_now(city=""):
     try:
         API_key = "ebb3e7cd4040c8390449e4fb314a5923"
-        
+
         r = requests.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API_key + "")
         # GET request With the HTTPS services to the url that gets use the Data in a json format
 
@@ -34,10 +34,12 @@ def Forecast_weather_now(city=""):
             # using the main and temp keys finds the temprature from the dictionary(in F) converts it to Celsium and storring it to temp_city
 
             temp_min = ((
-                        API_data["main"]["temp_min"]) - 273.15)  # same routine for the minimum temprature as with temp_city
+                            API_data["main"][
+                                "temp_min"]) - 273.15)  # same routine for the minimum temprature as with temp_city
 
             temp_max = ((
-                        API_data["main"]["temp_max"]) - 273.15)  # same routine for the maximum temprature as with temp_city
+                            API_data["main"][
+                                "temp_max"]) - 273.15)  # same routine for the maximum temprature as with temp_city
 
             weather_desc = ((API_data["weather"][0][
                 "description"]))  # a dictionary which has only a single array element 0 and inside of it nests another dictionary
@@ -50,24 +52,12 @@ def Forecast_weather_now(city=""):
             # Basic visuals for the forecast_weather script
             # Basically the implementation of the variables above into a bunch of print commands
 
-            print("--------------------------------------------------------------")
 
-            print("Today's forecast in {} {}".format(city,
-                                                    date_time))  # format puts the variables into the "{}" from left to right
 
-            print("--------------------------------------------------------------")
+            weather = "--------------------------------------------------------------\n" + "Today's forecast in {} {}".format(city,
+                     date_time) + "\n--------------------------------------------------------------\n" + "The temprature is: {:.2f} °C".format(temp_city) + "\n        The temprature will flaxuate between {:.2f}°C to {:.2f}°C\n".format(temp_min, temp_max)
 
-            print("The temprature is: {:.2f} °C".format(
-                temp_city))  # .2f is the amount of the demicals it is allowed to print
-
-            print("        The temprature will flaxuate between {:.2f}°C to {:.2f}°C".format(temp_min, temp_max))
-
-            print("Current weather Status: {}".format(weather_desc))
-
-            print("\nHumidity now: {}%".format(humidity))
-
-            return 0
-
+            return weather
     except ConnectionError:
         return 10
 
