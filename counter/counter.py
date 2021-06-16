@@ -27,9 +27,10 @@ def countTo(to,countFrom=1,speed="Normal"):  #3 variables
                 print(countFrom)
                 time.sleep(0.5)
                 countFrom += 1
+        return 0
     except:
         return 1
-    return 0
+    
   
 #function to count down from a number to 1. The default number to count down to is 1 but the user can 
 #switch it and start counting down to another number. He can also choose a speed to count down. The default speed
@@ -51,9 +52,10 @@ def countDown(countDownFrom,countDownTo=1,speed="Normal"):
                     print(countDownFrom)
                     time.sleep(0.5)
                     countDownFrom -= 1
+        return 0 
     except:
         return 1
-    return 0        
+           
             
 
 
