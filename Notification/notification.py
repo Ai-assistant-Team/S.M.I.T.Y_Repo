@@ -8,7 +8,7 @@ from win10toast import ToastNotifier # python -m pip install win10toast
 try:
    toaster = ToastNotifier() # One-time initialization
    
-   def Notify(content, title='Notification!'):
+   def notify(content, title='Notification!'):
       toaster.show_toast(title, content, threaded=True, # Show notification whenever needed
       icon_path=None, duration=180)  # 180 seconds
       
