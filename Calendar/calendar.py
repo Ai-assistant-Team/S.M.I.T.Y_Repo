@@ -150,8 +150,6 @@ def get_date(date):
         day = int (date[0])
         month = int (date[1])
         year = int (date[2])
-        print(str(todays_date_and_hour.year),' ',str(todays_date_and_hour.month),' ',str(todays_date_and_hour.day))
-        print(str(year),' ',str(month),' ',str(day))
         #Check
         if todays_date_and_hour.year > year:
             return 'The year of the event must in the present or in the future not in the past YOU IDIOT'
