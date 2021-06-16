@@ -1,0 +1,15 @@
+---------- 23/04/2021 ----------
+          Added forecast_weather_script.py
+          Added forecast_Weather.txt
+
+          
+---------- 16/05/2021 ----------
+          Added __init__.py
+          
+---------- 16/06/2021 ----------
+          Added forecast_weather_script_TestCase.py
+          Added requirements.txt
+          Modified forecast_weather_script.py :{row 57-58}
+          
+          
+    
