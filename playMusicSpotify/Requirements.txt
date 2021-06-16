@@ -1,0 +1,6 @@
+Libraries:
+      spotipy
+      tkinter
+      
+Other:
+      spotify premium membership
