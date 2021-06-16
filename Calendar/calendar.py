@@ -63,7 +63,7 @@ def show_me_in_range(date1,date2):
         while 5>4:
             a =show_me(date1)
             if a == 1:
-                return 1
+                return 8
             events_found = events_found +a
             if date1 == date2:
                 break
