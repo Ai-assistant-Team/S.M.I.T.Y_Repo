@@ -4,22 +4,22 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 
-"""This file's purpose is to create a token via authenticating to google's api client.
-"""
+##This file's purpose is to create a token via authenticating to google's api client.
+
 
 
 def Create_Service(client_secret_file, api_name, api_version, *scopes):
-    """Searching for a pre existing token,if not found in the current folder it creates it.
+##    Searching for a pre existing token,if not found in the current folder it creates it.
+##
+##       Args:
+##            client_secret_file :Numbers of emails that will be displayed.
+##            api_version : The version of the api currently the version is 1.
+##            api_name : The name of the api.
+##            scopes : The privileges provided from google to us.
 
-        Args:
-            client_secret_file :Numbers of emails that will be displayed.
-            api_version : The version of the api currently the version is 1.
-            api_name : The name of the api.
-            scopes : The privileges provided from google to us.
 
-
-        """
-#  print(client_secret_file, api_name, api_version, scopes, sep='-')
+        
+##  print(client_secret_file, api_name, api_version, scopes, sep='-')
 
     scopes = [scope for scope in scopes[0]]
 
@@ -27,25 +27,29 @@ def Create_Service(client_secret_file, api_name, api_version, *scopes):
     cred = None
 
     pickle_file = f'token_{api_name}_{api_version}.pickle'
-    print(pickle_file)
-
+    #Creates a searchable name 
+    
     if os.path.exists(pickle_file):
         with open(pickle_file, 'rb') as token:
             cred = pickle.load(token)
+    #Searches if the credentials file exists
 
     if not cred or not cred.valid:
         if cred and cred.expired and cred.refresh_token:
             cred.refresh(Request())
+            #if the token is not valid it refreshes the existing one
         else:
             flow = InstalledAppFlow.from_client_secrets_file(client_secret_file, scopes)
             cred = flow.run_local_server(port=0)
+            #if the creds does not exist it creates new
 
         with open(pickle_file, 'wb') as token:
             pickle.dump(cred, token)
-
+            #open the pickle_file
     try:
         service = build(api_name, api_version, credentials=cred)
         print(api_name, 'service created successfully')
+        #Creates a survice and returns it to read or send scripts
         return service
 
     except scopes:
