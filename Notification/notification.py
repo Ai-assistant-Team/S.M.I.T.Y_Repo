@@ -1,3 +1,8 @@
+"""
+Created on We Jun 16 20:16:19 2021
+@author: manolispolymeneris
+"""
+
 from win10toast import ToastNotifier # python -m pip install win10toast
 
 try:
