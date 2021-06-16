@@ -9,8 +9,10 @@ import requests  # Allows us to send HTTPS requests
 from datetime import datetime  # imports time related functions
 
 
-def Forecast_weather_now(city="", API_key=""):
+def Forecast_weather_now(city=""):
     try:
+        API_key = "ebb3e7cd4040c8390449e4fb314a5923"
+        
         r = requests.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API_key + "")
         # GET request With the HTTPS services to the url that gets use the Data in a json format
 
@@ -70,10 +72,4 @@ def Forecast_weather_now(city="", API_key=""):
         return 10
 
 
-def test():
-    city = "Albania"  # # variable for the city that I want to choose
-    API_key = "ebb3e7cd4040c8390449e4fb314a5923"  # DISCLAIMER I did not include my API_key , you can get yours at openweather.org
-    Forecast_weather_now(city, API_key)
 
-
-test()
