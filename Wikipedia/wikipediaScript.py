@@ -10,4 +10,4 @@ def Wiki_Search(toSearch):                                              # declar
         except Exception:                                               # 1 : Undefined Error
             return 1
 
-#end of Wikipediascript
+#end of wikipediaScript
