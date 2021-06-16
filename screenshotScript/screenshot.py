@@ -17,7 +17,8 @@ def screenshot():
     try:
         file_path = filedialog.asksaveasfilename(defaultextension='.png')
         myScreenshot.save(file_path)
+        return 0
     except:
         return 1
-    return 0
+    
 
