@@ -10,8 +10,8 @@ def translateText(textToTranslate,lang):
     
         #Translate text from source language to destination language
         translated = translator.translate(textToTranslate,dest=lang)
+   
+        #Show the translated text on screen
+        return translated.text
     except:
         return 1
-    #Show the translated text on screen
-    return translated.text
-
