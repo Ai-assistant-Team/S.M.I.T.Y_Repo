@@ -20,7 +20,7 @@ def searching(query=''):
 
         
         
-def internet_on():
+def internet_on():                                                  #this function checks the internet connection locally
    try:
         response = urlopen('https://www.google.com/', timeout=10)
         return False
