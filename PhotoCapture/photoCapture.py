@@ -5,6 +5,8 @@ def capturing():
     try:
         ec.capture(0,'robo camera','img.jpg')
         
+        return 0
+        
     except IOError:
         return 12
     except:

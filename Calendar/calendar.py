@@ -1,6 +1,55 @@
 import datetime
 import pathlib
 
+def clear_string(string):
+    date = ''
+    time = ''
+    description = ''
+    string = string.replace('add to calendar at ', '')
+    string = string.replace('at ', '')
+    try:
+        for x in range(len(string)):
+            if string[x] =='/':
+                if x >= 2:
+                    if (int(string[x-2]) == 1 and int(string[x-1]) < 3) or (int(string[x-2]) == 0 and int(string[x-1]) < 9):
+                        if string[x+3] == '/' and ((int(string[x+1]) == 1 and int(string[x+2]) < 3) or (int(string[x+1]) == 0 and int(string[x+2]) < 9)):
+                            a = 4
+                            while (string[x+a] != ' '):
+                                a=a+1
+                            start = x-2
+                            end =x+a
+                            for a in range(start,end):
+                                date = date + string[a]
+                            break
+    except:
+        return 1
+    try:
+        string = string.replace(date, '')
+        string = string.replace(' ', '',1)
+        for x in range(len(string)):
+            if string[x] == ':':
+                if x < 2:
+                    return 1
+                time = string[x-2]+string[x-1]+string[x]+string[x+1]+string[x+2]
+    except:
+        return 1
+    a = time +' '
+    description = string.replace(a, '')
+
+    if date == '' or time == '' or description == '':
+        return "Wrong input"
+    else:
+        date = get_date(date)
+        if date.__contains__('of the event must in the present or in the future not in the past YOU IDIOT'):
+            return date
+        time = get_time(time,date)
+        if time.__contains__('of the event must be between') or time.__contains__('Unless you time travel you can not schedule something in the past'):
+            return time
+        put_on_record(date)
+        put_on_record(time)
+        get_description(description)
+        return 0
+
 
 def turn_text_to_date(users_input):
     try:
@@ -19,35 +68,45 @@ def turn_text_to_date(users_input):
             return '/'.join([str(elem) for elem in date])
         return users_input
     except:
-        return 0
+        return 1
 
 def show_me(date):
-    location = pathlib.Path(__file__).parent.absolute()
-    events_found =''
-    f = open("%s\\calendar_record.txt"%(location), "r")
-    while 5>4:
-        line = f.readline()
-        if not line:
-            break
-        temp = date + '\n'
-        if line == temp:
-            events_found = events_found + line.replace("\n", " ")
+    try:
+        location = pathlib.Path(__file__).parent.absolute()
+        events_found =''
+        f = open("%s\\calendar_record.txt"%(location), "r")
+        while 5>4:
             line = f.readline()
-            events_found = events_found + line.replace("\n", " ")
-            line = f.readline()
-            events_found = events_found + line
-    f.close()
-    return events_found
+            if not line:
+                break
+            temp = date + '\n'
+            if line == temp:
+                events_found = events_found + line.replace("\n", " ")
+                line = f.readline()
+                events_found = events_found + line.replace("\n", " ")
+                line = f.readline()
+                events_found = events_found + line
+        f.close()
+        return events_found
+    except :
+        return 8
 
 def show_me_in_range(date1,date2):
-    events_found =''
-    while 5>4:
-        a =show_me(date1)
-        events_found = events_found +a
-        if date1 == date2:
-            break
-        date1 = next_day(date1)
-    return events_found
+    try:
+        events_found =''
+        while 5>4:
+            a =show_me(date1)
+            if a == 1:
+                return 1
+            events_found = events_found +a
+            if date1 == date2:
+                break
+            date1 = next_day(date1)
+            if date1 == 1:
+                return 1
+        return events_found
+    except:
+        return 1
         
             
 def next_day (date):
@@ -94,7 +153,7 @@ def next_day (date):
                 date[1] = 1
                 date[2] = date[2] +1
         return '/'.join([str(elem) for elem in date])
-    except:
+    except :
         return 1
 
 
@@ -108,10 +167,12 @@ def put_on_record(something):
         f.close()
         return 0
     except:
-        return 1
+        return 9
 
 def get_description(description):
-    put_on_record(description)
+    a = put_on_record(description)
+    if a == 1:
+        return 9
 
 def get_date(date):
     try:
@@ -160,5 +221,5 @@ def get_time(time_of_the_event,date):
             if hour < todays_date_and_time.hour or (hour == todays_date_and_time.hour and minutes< todays_date_and_time.minute) :
                 return 'Unless you time travel you can not schedule something in the past'
         return ':'.join([str(elem) for elem in time_of_the_event])
-    except:
+    except :
         return 1

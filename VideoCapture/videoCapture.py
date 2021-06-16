@@ -4,6 +4,8 @@ def videocap() :
     
     try:
         ec.vidcapture(0,'Video','Demo.avi','q')
+        
+        return 0
     
     except IOError:
         return 12
