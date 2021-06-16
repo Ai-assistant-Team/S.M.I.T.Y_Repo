@@ -14,6 +14,4 @@ def jokes():
             return joke #Returns and prints the joke
         
     except:
-        return 1
-
-jokes()
+        return 1 #Undefined error
