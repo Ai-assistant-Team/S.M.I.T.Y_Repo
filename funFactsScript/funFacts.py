@@ -14,6 +14,4 @@ def funFacts():
             return fact #Returns and prints the fun fact
     
     except:
-        return 1
-        
-funFacts()
+        return 1 #Undefined error
