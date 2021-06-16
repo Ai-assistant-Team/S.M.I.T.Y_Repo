@@ -5,7 +5,6 @@ from newspaper import Article
 def get_title_from_article(url):
     try:
         #A new article from TOI
-        #url = "https://www.news.gr/ellada/article/2555711/egklima-koropi-profilakistike-o-76chronos-gia-ti-dolofonia-tou-giou-tou.html"
         #For different language newspaper refer above table
         toi_article = Article(url, language="el") # el for Greek
         #To download the article
