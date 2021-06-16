@@ -4,8 +4,7 @@ from Calendar import show_me
 
 
 #test()
-string = "add to calendar at 12/10/2022 at 12:35 dentist apointment"
-a =clear_string(string)
+a = make_event('12/10/2022','12:35','dentist apointment')
 print (a)
 print(show_me('12/10/2022'))
 p = input("enter to exit")
