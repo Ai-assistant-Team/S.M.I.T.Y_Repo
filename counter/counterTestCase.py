@@ -1,5 +1,7 @@
 import time #library to slow the system in order to count in a specific speed
 
+from counter import *
+
 def countTo(to,countFrom=1,speed="Normal"):  #3 variables
 
     try:
