@@ -18,3 +18,7 @@
 ---------- <25/05/2021> ----------
 	<funFacts_testCase.py> :
 		<change 1> (Deleted : line 6 (<import randfacts>) of the code)
+		
+---------- <16/06/2021> ----------
+	<funFacts.py> :
+		<change 1> (Added : line 15 (<return 0>) of the code)
