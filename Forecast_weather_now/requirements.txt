@@ -1,2 +1,2 @@
-Import libraries :
+Download libraries :
 1. requests
