@@ -1,0 +1,5 @@
+S.M.I.T.Y. Gender : femele
+Username : 
+Voice control : 1
+Speak key : 0
+Voice wake up : 1
