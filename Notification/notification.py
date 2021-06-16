@@ -5,8 +5,7 @@ try:
    toaster = ToastNotifier() # One-time initialization
    
    def checkNotif():
-      # Show notification whenever needed
-      toaster.show_toast("Notification!", "Alert!", threaded=True,
+      toaster.show_toast("Notification!", "Alert!", threaded=True, # Show notification whenever needed
       icon_path=None, duration=180)  # 180seconds
       
       return 0
