@@ -10,8 +10,6 @@ def shutdownDev():
 def shutdownDevTimer(t):
     import time
     
-    while(t>0):
-        time.sleep(1)
-        t = int(t)-1;
+    time.sleep(t)
     
     shutdownDev()
