@@ -10,8 +10,8 @@ def funFacts():
     
     for i in range(5142): #Runs the list with fun facts
         fact = randfacts.getFact() #Generates a fun fact
-        print(fact) #Prints the fun fact
+        return fact #Returns and prints the fun fact
         
-        return 0
+        return 1
         
 funFacts()
