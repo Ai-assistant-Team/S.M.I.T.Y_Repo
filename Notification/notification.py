@@ -1,5 +1,4 @@
 from win10toast import ToastNotifier # python -m pip install win10toast
-#made by Γεωργία Βαλκάνη
 
 try:
    toaster = ToastNotifier() # One-time initialization
