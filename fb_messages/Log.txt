@@ -1,0 +1,7 @@
+---------- 09/5/2021 ----------
+	fb_messages.py <version 1.0> : Created 
+
+---------- 06/16/2021 ----------
+	fb_messages.py 		<version 2.0>
+		(1) Fixed problem caused by the need of username and password of the user
+		(2) Made to install and use the chromedriver without user interference
