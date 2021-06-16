@@ -8,7 +8,7 @@ try:
       toaster.show_toast("Notification!", "Alert!", threaded=True, # Show notification whenever needed
       icon_path=None, duration=180)  # 180seconds
       
-      return 0
+   return 0
       
 except:
    return 1
