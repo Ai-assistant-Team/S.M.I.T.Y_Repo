@@ -5,13 +5,13 @@ Created on Sat May 8
 
 import os
 import pyttsx3
+def t2s():
+    text = 'hello world'  #Here you write what you want to hear
+    engine = pyttsx3.init()
 
-text = 'hello world'  #Here you write what you want to hear
-engine = pyttsx3.init()
+    def t2s(text):
 
-def t2s(text):
+        engine.say(text)
+        engine.runAndWait() 
 
-    engine.say(text)
-    engine.runAndWait() 
-
-t2s(text)
+    t2s(text)
