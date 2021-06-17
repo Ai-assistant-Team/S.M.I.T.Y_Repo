@@ -2,16 +2,20 @@
 import pathlib
 import requests
 from bs4 import BeautifulSoup
+from SMITY.definePATH import RESOURCES_PATH
+import os
+
+DIRNAME = 'News'
 
 def create_txt_with_links():
     try:
         urls = 'https://www.news.gr/'
         grab = requests.get(urls)
         soup = BeautifulSoup(grab.text, 'html.parser')
-
-        # opening a file in write mode
         try:
-            f = open("links.txt", "w")
+            filename = os.path.join(RESOURCES_PATH, DIRNAME, 'links.txt')
+            # opening a file in write mode
+            f = open(filename, 'w')
             # traverse paragraphs from soup
             for link in soup.find_all("a"):
                 data = link.get('href')
@@ -21,14 +25,15 @@ def create_txt_with_links():
             return 0
         except:
             return 9
+        return 0
     except:
         return 10
 
 
 def update_txt(list_of_links):
     try:
-        location = pathlib.Path(__file__).parent.absolute()
-        file = open('%s\\links.txt'%(location),'w')
+        location = os.path.join(RESOURCES_PATH, DIRNAME, 'links.txt')
+        file = open(location,'w')
         for link in list_of_links:
             file.write(link)
         # Closing file
@@ -41,8 +46,8 @@ def update_txt(list_of_links):
 def clear_the_txt_of_links():
     #open file
     try:
-        location = pathlib.Path(__file__).parent.absolute()
-        file = open('%s\\links.txt'%(location))
+        location = os.path.join(RESOURCES_PATH, DIRNAME, 'links.txt')
+        file = open(location,'r')
 
         list_of_links = []
         new_list_of_links = []
@@ -72,7 +77,7 @@ def clear_the_txt_of_links():
             if(a.__contains__("https://www.news.gr/") and a > "https://www.news.gr/\n" and a.__contains__("/article/")):
                 new_list_of_links2.append(a)
         #open file
-        file = open('%s\\links.txt'%(location),'w')
+        file = open(location,'w')
         file.write(str(len(new_list_of_links2)))
         file.write('\n')
         file.write('0\n')
@@ -89,8 +94,8 @@ def clear_the_txt_of_links():
 
 def get_list_from_txt(list_of_links):
     try:
-        location = pathlib.Path(__file__).parent.absolute()
-        file = open('%s\\links.txt'%(location))
+        location = os.path.join(RESOURCES_PATH, DIRNAME, 'links.txt')
+        file = open(location,'r')
         for line in file:
             list_of_links.append(line)
         return list_of_links
