@@ -11,7 +11,8 @@ c = CurrencyRates()
 #amount= the amount you are converting
 
 def cconvert(c1, c2, amount):       #Converts the amount from currency 1 to currency 2
-    fin=(c.convert(c1, c2, amount)) 
-    return fin
-
- 
+    try:
+        fin=(c.convert(c1, c2, amount)) 
+        return fin
+    except:
+        return 1
