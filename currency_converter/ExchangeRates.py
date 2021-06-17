@@ -6,12 +6,12 @@ Created on Sat May 8
 from forex_python.converter import CurrencyRates
 
 c = CurrencyRates()
-currency1 = 'USD'  #Currency you are converting from 
-currency2 = 'EUR'  #Currency you are converting to
+#c1 = 'USD'  #Currency you are converting from 
+#c2 = 'EUR'  #Currency you are converting to
+#amount= the amount you are converting
 
+def cconvert(c1, c2, amount):       #Converts the amount from currency 1 to currency 2
+    fin=(c.convert(c1, c2, amount)) 
+    return fin
 
-
-def currencyconverter(currency1, currency2):
-    print(c.get_rate(currency1, currency2))
-
-currencyconverter(currency1, currency2)
+ 
