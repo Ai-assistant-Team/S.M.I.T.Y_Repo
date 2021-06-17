@@ -24,7 +24,7 @@ def get_news():
             else:
                 step = totall-used
 
-            for x in range(start,end+1):
+            for x in range(start,end):
                 title_article =  get_title_from_article(list_of_links[x])
                 if title_article == 10:
                     return 10
