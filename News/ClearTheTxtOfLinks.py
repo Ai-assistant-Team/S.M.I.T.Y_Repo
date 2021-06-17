@@ -10,14 +10,17 @@ def create_txt_with_links():
         soup = BeautifulSoup(grab.text, 'html.parser')
 
         # opening a file in write mode
-        f = open("links.txt", "w")
-        # traverse paragraphs from soup
-        for link in soup.find_all("a"):
-            data = link.get('href')
-            f.write(data)
-            f.write("\n")
-        f.close()
-        return 0
+        try:
+            f = open("links.txt", "w")
+            # traverse paragraphs from soup
+            for link in soup.find_all("a"):
+                data = link.get('href')
+                f.write(data)
+                f.write("\n")
+            f.close()
+            return 0
+        except:
+            return 9
     except:
         return 10
 
