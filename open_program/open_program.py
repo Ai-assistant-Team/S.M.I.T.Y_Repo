@@ -17,7 +17,8 @@ def open_program(program_name):
         for program in listOfPrograms:
             if program.name == program_name:
                 found = 'Y'
-                # if the type of the program is .exe
+                if program.location == 'NOT FOUND':
+                    return 3
                 try:
                     #go to the program.locatino and start the executable file t
                     subprocess.Popen(program.location)
