@@ -10,11 +10,13 @@ import pathlib
 from tkinter import filedialog
 
 from spotipy.client import Spotify
-from Calendar import *
-from playMusicSpotify import *
-from translator import translateText
-from open_program import *
-from alarmClock import *
+import os
+
+from SMITY.definePATH import PATH_TO_GUI
+from SMITY.definePATH import MY_OUTPUT
+from SMITY.definePATH import PATH_TO_SETTINGS 
+
+MAX_LINES = 7
 
 
 def main():
@@ -66,7 +68,7 @@ def main():
         size = wi , hi
 
         # Open source
-        im = Image.open('%s\\Home_page\\home_page_gif3.gif'%(location))
+        im = Image.open(os.path.join(PATH_TO_GUI,'Home_page','home_page_gif3.gif'))
 
         # Get sequence iterator
         frames = ImageSequence.Iterator(im)
@@ -84,99 +86,6 @@ def main():
         om = next(frames) # Handle first frame separately
         om.info = im.info # Copy sequence info
         om.save("aaa.gif", save_all=True, append_images=list(frames))
-
-    def process_comand(comand):
-        if comand.__contains__('calendar'):
-            calendar.pack(fill='both', expand =1)
-            home_page.forget()
-        elif comand.__contains__("settings"):
-            home_page_go_to_setings("Button-1>")
-        elif comand.__contains__('show me my tasks for ' ):
-            date = comand.replace('show me my tasks for ','')
-            date =turn_text_to_date(date)
-            return show_me(date)
-        elif comand.__contains__('spotify'):
-            open_program('spotify')
-            time.sleep(8)
-            if comand.__contains__('from spotify') and comand.__contains__('play'):
-                if comand.__contains__('by'):
-                    comand = comand.replace('play ','')
-                    comand = comand.replace(' from spotify','')
-                    comand2=comand.split(" by ")
-                    song_name = comand2[0]
-                    artist_name = comand2[1]
-                    songbyTitle(song_name,artist_name)
-                    return "Playing "+ song_name
-                else:
-                    comand = comand.replace('play ','')
-                    comand = comand.replace(' from spotify','')
-                    songbyTitle(comand,None)
-                    return "Playing "+ comand
-            elif comand.__contains__('pause'):
-                pausePlayback()
-                return 'Playback Paused'
-            elif comand.__contains__('resume'):
-                resumePlayback()
-                return 'Playback Resumed'
-            elif (comand.__contains__('add') and comand.__contains__('queue')):
-                song = comand.replace('add ','')
-                song  = song.replace(' to queue','')
-                addToQueue(song)
-                return song+' Added To The Queue'
-            elif comand.__contains__('next song'):
-                playNext()
-                return 'Skiped To Next Track'
-            elif comand.__contains__('Previous song'):
-                playPrev()
-                return 'Skipped To Previous Track'
-        elif comand.__contains__('translate'):
-            comand = comand.replace('translate ','')
-            comand2=comand.split(" to ")
-            text = comand2[0]
-            language = comand2[1]
-            return str(translateText(text,language))
-        elif (comand.__contains__('open')):
-            if comand.__contains__('notepad'):
-                open_program('notepad')
-                return 'Notepad is open'
-            elif comand.__contains__('calculator'):
-                open_program('calculator')
-                return 'Calculator is open'
-            elif comand.__contains__('messenger'):
-                open_program('messenger')
-                return 'Messenger is open'
-            elif comand.__contains__('exlel'):
-                open_program('exlel')
-                return 'Exlel is open'
-            elif comand.__contains__('word'):
-                open_program('word')
-                return 'Word is open'
-            elif comand.__contains__('powerpoint'):
-                open_program('powerpoint')
-                return 'Powerpoint is open'
-            elif comand.__contains__('access'):
-                open_program('access')
-                return 'Sccess is open'
-            elif comand.__contains__('spotify'):
-                open_program('spotify')
-                return 'Spotify is open'
-            
-
-    def get_comand(event):
-        global message_history
-        global line_count
-        line_count = line_count +1
-        if line_count == 8:
-            line_count =0
-            message_history =''
-        message_history = message_history + '\nYou : ' + str(home_page_comand_text_field.get())
-        message_history_label_text_field.config(text = message_history)
-        message_history = message_history + '\nS.M.I.T.Y : ' + process_comand(str(home_page_comand_text_field.get()))
-        line_count = line_count +1
-        message_history_label_text_field.config(text = message_history)
-        if line_count == 8:
-            line_count =0
-            message_history =''
 
     def home_page_go_to_setings(event):
         settings.pack(fill='both', expand =1)
@@ -204,9 +113,7 @@ def main():
         global settings_speak_key_on
         global settings_wake_up_on
         global user_name
-        location = pathlib.Path(__file__).parent.absolute()
-
-        f = open('%s\\settings.txt'%(location), "w")
+        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'w')
         #Gender
         f.write('S.M.I.T.Y. Gender : ')
         f.write(gender)
@@ -244,9 +151,8 @@ def main():
         global settings_speak_key_on
         global settings_wake_up_on
         global user_name
-        location = pathlib.Path(__file__).parent.absolute()
 
-        f = open('%s\\settings.txt'%(location), "r")
+        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
         load_gender = f.readline()
         load_username = f.readline()
         load_settings_voice_control_on = f.readline()
@@ -263,7 +169,7 @@ def main():
             settings_male_button.config(image = settings_male_off)
             gender = 'femele'
         #User name
-        load_username = load_username.replace('Username : ','')
+        load_username = load_username.replace('Username: ','')
         load_username = load_username.replace('\n','')
         settings_user_name_text_field.delete(0, tk.END)
         settings_user_name_text_field.insert(0, load_username)
@@ -444,29 +350,29 @@ def main():
         change_location_name_input.insert(0, name)
         aplications.forget()
 
-    def users_aplications_exit_fullscreen(event):
-        screen.attributes('-fullscreen', False)
-        users_aplications_cloce_button.place_forget()
-        users_aplications_exit_fullscreen_button.place_forget()
-        users_aplications_fullscreen_button.place(relx = 0.96, rely = 0.0, width=62, height=28)
+    # def users_aplications_exit_fullscreen(event):
+    #     screen.attributes('-fullscreen', False)
+    #     users_aplications_cloce_button.place_forget()
+    #     users_aplications_exit_fullscreen_button.place_forget()
+    #     users_aplications_fullscreen_button.place(relx = 0.96, rely = 0.0, width=62, height=28)
 
-    def users_aplications_fullscreen(event):
-        screen.attributes('-fullscreen', True)
-        users_aplications_fullscreen_button.place_forget()
-        users_aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-        users_aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
+    # def users_aplications_fullscreen(event):
+    #     screen.attributes('-fullscreen', True)
+    #     users_aplications_fullscreen_button.place_forget()
+    #     users_aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
+    #     users_aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
 
-    def users_aplications_go_to_settings(event):
-        settings.pack(fill='both', expand =1)
-        users_aplications.forget()
+    # def users_aplications_go_to_settings(event):
+    #     settings.pack(fill='both', expand =1)
+    #     users_aplications.forget()
 
-    def users_aplications_go_to_home_page(event):
-        home_page.pack(fill='both', expand =1)
-        users_aplications.forget()
+    # def users_aplications_go_to_home_page(event):
+    #     home_page.pack(fill='both', expand =1)
+    #     users_aplications.forget()
 
-    def users_aplications_go_to_add_aplications(event):
-        add_aplication.pack(fill='both', expand =1)
-        users_aplications.forget()
+    # def users_aplications_go_to_add_aplications(event):
+    #     add_aplication.pack(fill='both', expand =1)
+    #     users_aplications.forget()
 
     def add_aplication_go_to_users_aplications(event):
         users_aplications.pack(fill='both', expand =1)
@@ -478,20 +384,21 @@ def main():
         add_aplication.forget()
 
     def add_aplication_add_button(event,program_name,program_url):
-        names = ["excel", "word", "acces", "power point", "spotify", "messernger", "calculator", "notepad"]
+        names = ["Excel", "Word\n", "Acces\n", "Power Point\n", "Spotify\n", "Messernger\n", "Calculator\n", "Notepad\n"]
         location = ["ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location"]
-        
+        program_name = program_name +'\n'
+
         location = pathlib.Path(__file__).parent.absolute()
-        f = open("%s\\program_locations.txt"%(location), "r")
+        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'r')
         for x in range(8):
             names[x] = f.readline()
             location[x] = f.readline()
         f.close()
-        f = open("%s\\program_locations.txt"%(location), "w")
+        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'w')
         for b in range(8):
             f.write(names[b])
             if names[b] == program_name:
-                f.write(program_url)
+                f.write(program_url)+'\n'
             else:
                 f.write(location[b])
         f.close()
@@ -726,7 +633,7 @@ def main():
         elif(year <9000):
             calendar_year_fists_position.config(image = calendar_eight )
         elif(year <10000):
-            calendar_year_fists_position.config(image = calendar_eight )
+            calendar_year_fists_position.config(image = calendar_nine )
 
     def get_year_second_digit(year):
         if(year>=0 and year <100):
@@ -748,7 +655,7 @@ def main():
         elif(year <900):
             calendar_year_second_position.config(image = calendar_eight )
         elif(year <1000):
-            calendar_year_second_position.config(image = calendar_eight )
+            calendar_year_second_position.config(image = calendar_nine )
 
     def get_year_third_digit(year):
         if(year>=0 and year <10):
@@ -770,7 +677,7 @@ def main():
         elif(year <90):
             calendar_year_third_position.config(image = calendar_eight )
         elif(year <100):
-            calendar_year_third_position.config(image = calendar_eight )
+            calendar_year_third_position.config(image = calendar_nine )
 
     def get_year_fourth_digit(year):
         if(year>=0 and year <1):
@@ -792,7 +699,7 @@ def main():
         elif(year <9):
             calendar_year_fourth_position.config(image = calendar_eight )
         elif(year <10):
-            calendar_year_fourth_position.config(image = calendar_eight )
+            calendar_year_fourth_position.config(image = calendar_nine )
 
     def get_year(year):
         get_year_first_digit(year)
@@ -889,8 +796,7 @@ def main():
         my_websites.forget()
 
     def users_urls_load(names,urls):
-        location = pathlib.Path(__file__).parent.absolute()
-        f = open("%s\\users_urls.txt"%(location), "r")
+        f = open(os.path.join(PATH_TO_SETTINGS,'users_urls.txt'),'r')
         for x in range(10):
             temp = f.readline()
             names[x] = temp.replace('\n','')
@@ -925,15 +831,14 @@ def main():
         names = ["ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE"]
         urls = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
         
-        location = pathlib.Path(__file__).parent.absolute()
-        f = open("%s\\users_urls.txt"%(location), "r")
+        f = open(os.path.join(PATH_TO_SETTINGS,'users_urls.txt'),'r')
         for x in range(10):
             names[x] = f.readline()
             urls[x] = f.readline()
         f.close()
         names[website_number]= websites_name + '\n'
         urls[website_number] = websites_url + '\n'
-        f = open("%s\\users_urls.txt"%(location), "w")
+        f = open(os.path.join(PATH_TO_SETTINGS,'users_urls.txt'),'w')
         for b in range(10):
             f.write(names[b])
             f.write(urls[b])
@@ -991,11 +896,11 @@ def main():
         change_location.forget()
 
     def change_protgram_location(event,name,file_location):
-        names = ["excel", "word", "acces", "power point", "spotify", "messenger", "caclulator", "notebook"]
+        names = ["Excel", "Word", "Acces", "Power Point", "Spotify", "Messenger", "Caclulator", "Notebook"]
         urls = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
         
-        location = pathlib.Path(__file__).parent.absolute()
-        f = open("%s\\program_locations.txt"%(location), "r")
+        
+        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'r')
         for x in range(8):
             a = f.readline()
             urls[x] = f.readline()
@@ -1004,13 +909,13 @@ def main():
         name = name.lower()
         for j in range(8):
             if name == names[j]:
-                names[j] = name + '\n'
-                urls[j] = str(file_location)+'\n'
+                names[j] = name
+                urls[j] = str(file_location)
                 break
-        f = open("%s\\program_locations.txt"%(location), "w")
+        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'w')
         for b in range(8):
-            f.write(names[b])
-            f.write(urls[b])
+            f.write(names[b] + '\n')
+            f.write(urls[b] + '\n')
         f.close()
         aplications.pack(fill='both', expand =1)
         change_location.forget()
@@ -1033,7 +938,7 @@ def main():
     add_aplication = tk.Frame()
     #BackGround
             #open image
-    add_aplication_backGroundImage = Image.open("%s\\background.png"%(location))
+    add_aplication_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
             #resize image
     add_aplication_resized_backGroundImage = add_aplication_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
 
@@ -1043,42 +948,42 @@ def main():
     #header
     add_aplication_header = Label(add_aplication,borderwidth=0,background = "#0d0029")
 
-    temp_image = Image.open("%s\\Add_Aplications\\title.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','title.png'))
     a = int((1336/1920)*w)+5
     b = int((171/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_aplication_title_image = ImageTk.PhotoImage(temp_image2)
     add_aplication_title = Label(add_aplication_header,image = add_aplication_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_aplication_title_aktri_image = ImageTk.PhotoImage(temp_image2)
     add_aplication_title_aktri = Label(add_aplication_header,image = add_aplication_title_aktri_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\exit_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_aplication_cloce_button_image = ImageTk.PhotoImage(temp_image2)
     add_aplication_cloce_button = tk.Button(add_aplication_header,image = add_aplication_cloce_button_image, borderwidth=0, command = screen.destroy)
 
-    temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_aplication_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
     add_aplication_exit_fullscreen_button = tk.Button(add_aplication_header,image = add_aplication_exit_fullscreen_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\minimize_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_aplication_minimize_button_image = ImageTk.PhotoImage(temp_image2)
     add_aplication_minimize_button = tk.Button(add_aplication_header,image = add_aplication_minimize_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
     a = int((62/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1091,7 +996,7 @@ def main():
 
     #User button
         # setings button image
-    temp_image = Image.open("%s\\user-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1103,7 +1008,7 @@ def main():
     add_aplication_user_text_label =Label(add_aplication_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Name label
-    temp_image = Image.open("%s\\Add_Aplications\\name.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','name.png'))
     a = int((191/1920)*w)+5
     b = int((53/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1111,7 +1016,7 @@ def main():
     add_aplication_name_label =Label(add_aplication_backGroundImage_label, borderwidth=0, image = add_aplication_name_label_image)
 
     #Location label
-    temp_image = Image.open("%s\\Add_Aplications\\location.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','location.png'))
     a = int((268/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1120,7 +1025,7 @@ def main():
 
     #name text spot label
         #label
-    temp_image = Image.open("%s\\Add_Aplications\\text_spot.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','text_spot.png'))
     a = int(0.544*w)
     b = int((84/1080)*h)
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1138,7 +1043,7 @@ def main():
 
     #browse to files button
         # Define image
-    temp_image = Image.open("%s\\Add_Aplications\\browse_to_files.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','browse_to_files.png'))
     a = int((164/1920)*w)+5
     b = int((217/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1149,7 +1054,7 @@ def main():
 
     #Cancel button
         # Define image
-    temp_image = Image.open("%s\\Add_Aplications\\Cancel.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','Cancel.png'))
     a = int((220/1920)*w)+5
     b = int((97/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1159,7 +1064,7 @@ def main():
     add_aplication_cancel_button.bind("<Button-1>",add_aplication_go_to_users_aplications)
     #Add button
         # Add image
-    temp_image = Image.open("%s\\Add_Aplications\\add.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','add.png'))
     a = int((162/1920)*w)+5
     b = int((94/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1203,7 +1108,7 @@ def main():
     my_websites= tk.Frame()
     #BackGround
             #open image
-    my_websites_backGroundImage = Image.open("%s\\background.png"%(location))
+    my_websites_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
             #resize image
     my_websites_resized_backGroundImage = my_websites_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
 
@@ -1215,28 +1120,28 @@ def main():
     #header
     my_websites_header = Label(my_websites,borderwidth=0,background = "#0d0029")
     #title
-    temp_image = Image.open("%s\\my_websites\\title.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'my_websites','title.png'))
     a = int((512/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     my_websites_title_image = ImageTk.PhotoImage(temp_image2)
     my_websites_title = Label(my_websites_header,image = my_websites_title_image, borderwidth=0)
     #akri titlou
-    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     my_websites_title_aktri_image = ImageTk.PhotoImage(temp_image2)
     my_websites_title_aktri = Label(my_websites_header,image = my_websites_title_aktri_image, borderwidth=0)
     #exit button
-    temp_image = Image.open("%s\\exit_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     my_websites_cloce_button_image = ImageTk.PhotoImage(temp_image2)
     my_websites_cloce_button = tk.Button(my_websites_header,image = my_websites_cloce_button_image, borderwidth=0, command = screen.destroy)
     #exit fullscreen button
-    temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1244,15 +1149,14 @@ def main():
     my_websites_exit_fullscreen_button = tk.Button(my_websites_header,image = my_websites_exit_fullscreen_button_image, borderwidth=0)
 
     #minimize window
-    temp_image = Image.open("%s\\minimize_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     my_websites_minimize_button_image = ImageTk.PhotoImage(temp_image2)
     my_websites_minimize_button = tk.Button(my_websites_header,image = my_websites_minimize_button_image, borderwidth=0)
     #fullscreen button
-    my_websites_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
-    temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
     a = int((62/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1265,7 +1169,7 @@ def main():
 
     #back button
         # Define image
-    temp_image = Image.open("%s\\back_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
     a = int((48/1920)*w)+5
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1276,7 +1180,7 @@ def main():
 
     #Home button
         # setings button image
-    temp_image = Image.open("%s\\home-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1287,7 +1191,7 @@ def main():
 
     #User button
         # setings button image
-    temp_image = Image.open("%s\\user-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1300,13 +1204,13 @@ def main():
 
     #Change / Save websites buttons
         # Define image 1
-    temp_image = Image.open("%s\\my_websites\\change-save_url.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'my_websites','change-save_url.png'))
     a = int((376/1920)*w)+5
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     my_websites_change_open_url_button_image = ImageTk.PhotoImage(temp_image2)
         # Define image 2
-    temp_image = Image.open("%s\\my_websites\\change-save_url_2.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'my_websites','change-save_url_2.png'))
     a = int((376/1920)*w)+5
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1352,14 +1256,14 @@ def main():
 
     #change seve url
         # setings button image
-    temp_image = Image.open("%s\\my_websites\\go_to.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'my_websites','go_to.png'))
     a = int((90/1920)*w)+5
     b = int((62/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_save_url_button_image = ImageTk.PhotoImage(temp_image2)
     #change seve ur2
         # setings button image
-    temp_image = Image.open("%s\\my_websites\\go_to_2.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'my_websites','go_to_2.png'))
     a = int((90/1920)*w)+5
     b = int((62/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1437,7 +1341,7 @@ def main():
 
     #BackGround
             #open image
-    add_website_backGroundImage = Image.open("%s\\background.png"%(location))
+    add_website_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
             #resize image
     add_website_resized_backGroundImage = add_website_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
 
@@ -1447,42 +1351,42 @@ def main():
     #header
     add_website_header = Label(add_website,borderwidth=0,background = "#0d0029")
 
-    temp_image = Image.open("%s\\Add_website\\title.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_website','title.png'))
     a = int((846/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_website_title_image = ImageTk.PhotoImage(temp_image2)
     add_website_title = Label(add_website_header,image = add_website_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_website_title_aktri_image = ImageTk.PhotoImage(temp_image2)
     add_website_title_aktri = Label(add_website_header,image = add_website_title_aktri_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\exit_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_website_cloce_button_image = ImageTk.PhotoImage(temp_image2)
     add_website_cloce_button = tk.Button(add_website_header,image = add_website_cloce_button_image, borderwidth=0, command = screen.destroy)
 
-    temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_website_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
     add_website_exit_fullscreen_button = tk.Button(add_website_header,image = add_website_exit_fullscreen_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\minimize_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_website_minimize_button_image = ImageTk.PhotoImage(temp_image2)
     add_website_minimize_button = tk.Button(add_website_header,image = add_website_minimize_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
     a = int((62/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1495,7 +1399,7 @@ def main():
 
     #Home button
         # setings button image
-    temp_image = Image.open("%s\\home-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1506,7 +1410,7 @@ def main():
 
     #User button
         # setings button image
-    temp_image = Image.open("%s\\user-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1518,7 +1422,7 @@ def main():
     add_website_user_text_label =Label(add_website_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Name label
-    temp_image = Image.open("%s\\Add_Aplications\\name.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','name.png'))
     a = int((191/1920)*w)+5
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1526,7 +1430,7 @@ def main():
     add_website_name_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_name_label_image)
 
     #Location label
-    temp_image = Image.open("%s\\Add_Aplications\\location.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','location.png'))
     a = int((268/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1535,7 +1439,7 @@ def main():
 
     #name text spot label
         #label
-    temp_image = Image.open("%s\\Add_Aplications\\text_spot.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','text_spot.png'))
     a = int(0.544*w)
     b = int((84/1080)*h)
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1551,7 +1455,7 @@ def main():
 
     #Cancel button
         # Define image
-    temp_image = Image.open("%s\\Add_Aplications\\Cancel.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','Cancel.png'))
     a = int((220/1920)*w)+5
     b = int((97/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1561,7 +1465,7 @@ def main():
     add_website_cancel_button.bind("<Button-1>",add_website_go_to_users_aplications)
     #Add button
         # Add image
-    temp_image = Image.open("%s\\Add_Aplications\\add.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','add.png'))
     a = int((162/1920)*w)+5
     b = int((94/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1607,7 +1511,7 @@ def main():
 
     #BackGround
             #open image
-    users_aplications_backGroundImage = Image.open("%s\\background.png"%(location))
+    users_aplications_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
             #resize image
     users_aplications_resized_backGroundImage = users_aplications_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
 
@@ -1615,70 +1519,70 @@ def main():
 
         #Label
     users_aplications_backGroundImage_label = Label(users_aplications, image=users_aplications_new_backGroundImage, borderwidth=0)
-
+    
     #header
-    users_aplications_header = Label(users_aplications,borderwidth=0,background = "#0d0029")
-    users_aplications_title_image = PhotoImage(file="%s\\Users_Aplications\\title.png"%(location))
-    users_aplications_title = Label(users_aplications_header,image = users_aplications_title_image, borderwidth=0)
-    users_aplications_title_aktri_image = PhotoImage(file="%s\\akrh_titlou.png"%(location))
-    users_aplications_title_aktri = Label(users_aplications_header,image = users_aplications_title_aktri_image, borderwidth=0)
-    users_aplications_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
-    users_aplications_cloce_button = tk.Button(users_aplications_header,image = users_aplications_cloce_button_image, borderwidth=0, command = screen.destroy)
-    users_aplications_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
-    users_aplications_exit_fullscreen_button = tk.Button(users_aplications_header,image = users_aplications_exit_fullscreen_button_image, borderwidth=0)
-    users_aplications_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
-    users_aplications_minimize_button = tk.Button(users_aplications_header,image = users_aplications_minimize_button_image, borderwidth=0)
-    users_aplications_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
-    users_aplications_fullscreen_button = tk.Button(users_aplications_header,image = users_aplications_fullscreen_button_image, borderwidth=0)
+    # users_aplications_header = Label(users_aplications,borderwidth=0,background = "#0d0029")
+    # users_aplications_title_image = PhotoImage(file="%s\\Users_Aplications\\title.png"%(location))
+    # users_aplications_title = Label(users_aplications_header,image = users_aplications_title_image, borderwidth=0)
+    # users_aplications_title_aktri_image = PhotoImage(file="%s\\akrh_titlou.png"%(location))
+    # users_aplications_title_aktri = Label(users_aplications_header,image = users_aplications_title_aktri_image, borderwidth=0)
+    # users_aplications_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
+    # users_aplications_cloce_button = tk.Button(users_aplications_header,image = users_aplications_cloce_button_image, borderwidth=0, command = screen.destroy)
+    # users_aplications_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
+    # users_aplications_exit_fullscreen_button = tk.Button(users_aplications_header,image = users_aplications_exit_fullscreen_button_image, borderwidth=0)
+    # users_aplications_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
+    # users_aplications_minimize_button = tk.Button(users_aplications_header,image = users_aplications_minimize_button_image, borderwidth=0)
+    # users_aplications_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
+    # users_aplications_fullscreen_button = tk.Button(users_aplications_header,image = users_aplications_fullscreen_button_image, borderwidth=0)
 
-    users_aplications_exit_fullscreen_button.bind("<Button-1>", users_aplications_exit_fullscreen)
-    users_aplications_fullscreen_button.bind("<Button-1>",users_aplications_fullscreen)
-    users_aplications_minimize_button.bind("<Button-1>", minimize)
+    # users_aplications_exit_fullscreen_button.bind("<Button-1>", users_aplications_exit_fullscreen)
+    # users_aplications_fullscreen_button.bind("<Button-1>",users_aplications_fullscreen)
+    # users_aplications_minimize_button.bind("<Button-1>", minimize)
 
-    #Home button
-        # setings button image
-    users_aplications_home_button_image = PhotoImage(file="%s\\home-button.png"%(location))
-        #Add button
-    users_aplications_home_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_home_button_image, borderwidth=0)
-    users_aplications_home_button.bind("<Button-1>",users_aplications_go_to_home_page)
+    # #Home button
+    #     # setings button image
+    # users_aplications_home_button_image = PhotoImage(file="%s\\home-button.png"%(location))
+    #     #Add button
+    # users_aplications_home_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_home_button_image, borderwidth=0)
+    # users_aplications_home_button.bind("<Button-1>",users_aplications_go_to_home_page)
 
-    #User button
-        # setings button image
-    users_aplications_user_button_image = PhotoImage(file="%s\\user-button.png"%(location))
-        #Add button
-    users_aplications_user_button = tk.Button(users_aplications_header, image = users_aplications_user_button_image, borderwidth=0)
+    # #User button
+    #     # setings button image
+    # users_aplications_user_button_image = PhotoImage(file="%s\\user-button.png"%(location))
+    #     #Add button
+    # users_aplications_user_button = tk.Button(users_aplications_header, image = users_aplications_user_button_image, borderwidth=0)
 
-    #user text label
-    users_aplications_user_text_label =Label(users_aplications_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    # #user text label
+    # users_aplications_user_text_label =Label(users_aplications_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
-    #back button
-        # Define image
-    users_aplications_back_button_image = PhotoImage(file="%s\\back_button.png"%(location))
-        #define button
-    users_aplications_back_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_back_button_image, borderwidth=0)
-    users_aplications_back_button.bind("<Button-1>",users_aplications_go_to_settings)
+    # #back button
+    #     # Define image
+    # users_aplications_back_button_image = PhotoImage(file="%s\\back_button.png"%(location))
+    #     #define button
+    # users_aplications_back_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_back_button_image, borderwidth=0)
+    # users_aplications_back_button.bind("<Button-1>",users_aplications_go_to_settings)
 
-    #add aplication button
-        #Define image
-    users_aplications_add_apication_button_image = PhotoImage(file="%s\\Users_Aplications\\pluss_button.png"%(location))
-        #define button
-    users_aplications_add_apication_button = tk.Button(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_add_apication_button_image, borderwidth=0)
-    users_aplications_add_apication_button.bind("<Button-1>",users_aplications_go_to_add_aplications)
+    # #add aplication button
+    #     #Define image
+    # users_aplications_add_apication_button_image = PhotoImage(file="%s\\Users_Aplications\\pluss_button.png"%(location))
+    #     #define button
+    # users_aplications_add_apication_button = tk.Button(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_add_apication_button_image, borderwidth=0)
+    # users_aplications_add_apication_button.bind("<Button-1>",users_aplications_go_to_add_aplications)
 
     users_aplications_backGroundImage_label.place( relx=0.0, rely= 0.155 )
-    users_aplications_header.place(relx=0.0, rely= 0.0, width = w,height =171)
-    users_aplications_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=800, height=66)
-    users_aplications_title_aktri.place(relx = 0.92, rely = 0.41, width=142, height=108)
-    users_aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-    users_aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
-    users_aplications_minimize_button.place(relx = 0.945, rely = 0.0, width=31, height=28)
+    # users_aplications_header.place(relx=0.0, rely= 0.0, width = w,height =171)
+    # users_aplications_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=800, height=66)
+    # users_aplications_title_aktri.place(relx = 0.92, rely = 0.41, width=142, height=108)
+    # users_aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
+    # users_aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
+    # users_aplications_minimize_button.place(relx = 0.945, rely = 0.0, width=31, height=28)
 
-    users_aplications_home_button.place(relx = 0.006, rely = 0.35, width=43, height=43)
-    users_aplications_user_button.place(relx = 0.006, rely = 0.65, width=43, height=43)#-5x-5
-    users_aplications_user_text_label.place(relx = 0.0295, rely = 0.7, width=44, height=43)
-    users_aplications_back_button.place(relx = 0.006, rely = 0.05, width=48, height=34)
+    # users_aplications_home_button.place(relx = 0.006, rely = 0.35, width=43, height=43)
+    # users_aplications_user_button.place(relx = 0.006, rely = 0.65, width=43, height=43)#-5x-5
+    # users_aplications_user_text_label.place(relx = 0.0295, rely = 0.7, width=44, height=43)
+    # users_aplications_back_button.place(relx = 0.006, rely = 0.05, width=48, height=34)
 
-    users_aplications_add_apication_button.place(relx = 0.9, rely = 0.8, width=131, height=130)
+    # users_aplications_add_apication_button.place(relx = 0.9, rely = 0.8, width=131, height=130)
     #############################################################################################################################################################################
     #   CCCCC   LL
     #  CC       LL
@@ -1690,7 +1594,7 @@ def main():
 
     #BackGround
             #open image
-    change_location_backGroundImage = Image.open("%s\\background.png"%(location))
+    change_location_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
             #resize image
     change_location_resized_backGroundImage = change_location_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
 
@@ -1700,42 +1604,42 @@ def main():
     #header
     change_location_header = Label(change_location,borderwidth=0,background = "#0d0029")
 
-    temp_image = Image.open("%s\\change_location\\title.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'change_location','title.png'))
     a = int((705/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_location_title_image = ImageTk.PhotoImage(temp_image2)
     change_location_title = Label(change_location_header,image = change_location_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_location_title_aktri_image = ImageTk.PhotoImage(temp_image2)
     change_location_title_aktri = Label(change_location_header,image = change_location_title_aktri_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\exit_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_location_cloce_button_image = ImageTk.PhotoImage(temp_image2)
     change_location_cloce_button = tk.Button(change_location_header,image = change_location_cloce_button_image, borderwidth=0, command = screen.destroy)
 
-    temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_location_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
     change_location_exit_fullscreen_button = tk.Button(change_location_header,image = change_location_exit_fullscreen_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\minimize_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_location_minimize_button_image = ImageTk.PhotoImage(temp_image2)
     change_location_minimize_button = tk.Button(change_location_header,image = change_location_minimize_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
     a = int((62/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1748,7 +1652,7 @@ def main():
 
     #Home button
         # setings button image
-    temp_image = Image.open("%s\\home-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1759,7 +1663,7 @@ def main():
 
     #User button
         # setings button image
-    temp_image = Image.open("%s\\user-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1769,7 +1673,7 @@ def main():
 
     #browse to files button
         # Define image
-    temp_image = Image.open("%s\\Add_Aplications\\browse_to_files.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','browse_to_files.png'))
     a = int((164/1920)*w)+5
     b = int((217/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1782,7 +1686,7 @@ def main():
     change_location_user_text_label =Label(change_location_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Name label
-    temp_image = Image.open("%s\\Add_Aplications\\name.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','name.png'))
     a = int((191/1920)*w)+5
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1790,7 +1694,7 @@ def main():
     change_location_name_label =Label(change_location_backGroundImage_label, borderwidth=0, image = change_location_name_label_image)
 
     #Location label
-    temp_image = Image.open("%s\\Add_Aplications\\location.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','location.png'))
     a = int((268/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1799,7 +1703,7 @@ def main():
 
     #name text spot label
         #label
-    temp_image = Image.open("%s\\Add_Aplications\\text_spot.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','text_spot.png'))
     a = int(0.544*w)
     b = int((84/1080)*h)
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1815,7 +1719,7 @@ def main():
 
     #Cancel button
         # Define image
-    temp_image = Image.open("%s\\Add_Aplications\\Cancel.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','Cancel.png'))
     a = int((220/1920)*w)+5
     b = int((97/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1825,7 +1729,7 @@ def main():
     change_location_cancel_button.bind("<Button-1>",change_location_go_to_aplications)
     #Add button
         # Add image
-    temp_image = Image.open("%s\\Add_Aplications\\add.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','add.png'))
     a = int((162/1920)*w)+5
     b = int((94/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1871,7 +1775,7 @@ def main():
     aplications= tk.Frame()
     #BackGround
             #open image
-    aplications_backGroundImage = Image.open("%s\\background.png"%(location))
+    aplications_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
             #resize image
     aplications_resized_backGroundImage = aplications_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
 
@@ -1883,42 +1787,42 @@ def main():
     #header
     aplications_header = Label(aplications,borderwidth=0,background = "#0d0029")
 
-    temp_image = Image.open("%s\\Aplications\\title.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','title.png'))
     a = int((847/1920)*w)+5
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_title_image = ImageTk.PhotoImage(temp_image2)
     aplications_title = Label(aplications_header,image = aplications_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_title_aktri_image = ImageTk.PhotoImage(temp_image2)
     aplications_title_aktri = Label(aplications_header,image = aplications_title_aktri_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\exit_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_cloce_button_image = ImageTk.PhotoImage(temp_image2)
     aplications_cloce_button = tk.Button(aplications_header,image = aplications_cloce_button_image, borderwidth=0, command = screen.destroy)
 
-    temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
     aplications_exit_fullscreen_button = tk.Button(aplications_header,image = aplications_exit_fullscreen_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\minimize_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_minimize_button_image = ImageTk.PhotoImage(temp_image2)
     aplications_minimize_button = tk.Button(aplications_header,image = aplications_minimize_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
     a = int((62/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1931,7 +1835,7 @@ def main():
 
     #Home button
         # setings button image
-    temp_image = Image.open("%s\\home-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1942,7 +1846,7 @@ def main():
 
     #User button
         # setings button image
-    temp_image = Image.open("%s\\user-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1955,7 +1859,7 @@ def main():
 
     #back button
         # Define image
-    temp_image = Image.open("%s\\back_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
     a = int((48/1920)*w)+5
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1966,70 +1870,72 @@ def main():
 
     #Icon labels
             #Excel
-    temp_image = Image.open("%s\\Aplications\\excel-icon.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','excel-icon.png'))
     a = int((102/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_excel_icon_image = ImageTk.PhotoImage(temp_image2)
     aplications_excel_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_excel_icon_image)
             #Word
-    temp_image = Image.open("%s\\Aplications\\word-icon.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','word-icon.png'))
     a = int((102/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_word_icon_image = ImageTk.PhotoImage(temp_image2)
     aplications_word_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_word_icon_image)
             #Acces
-    temp_image = Image.open("%s\\Aplications\\acces-icon.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','acces-icon.png'))
     a = int((102/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_acces_icon_image = ImageTk.PhotoImage(temp_image2)
     aplications_acces_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_acces_icon_image)
             #Power Point
-    temp_image = Image.open("%s\\Aplications\\power-point-icon.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','power-point-icon.png'))
     a = int((162/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_power_point_icon_image = ImageTk.PhotoImage(temp_image2)
     aplications_power_point_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_power_point_icon_image)
             #Spotify
-    temp_image = Image.open("%s\\Aplications\\spotify-icon.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','spotify-icon.png'))
     a = int((102/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_spotify_icon_image = ImageTk.PhotoImage(temp_image2)
     aplications_spotify_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_spotify_icon_image)
             #Messenger
-    temp_image = Image.open("%s\\Aplications\\messenger-icon.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','messenger-icon.png'))
     a = int((102/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_messenger_icon_image = ImageTk.PhotoImage(temp_image2)
     aplications_messenger_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_messenger_icon_image)
             #Websites
-    temp_image = Image.open("%s\\Aplications\\web-icon.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','web-icon.png'))
     a = int((102/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_websites_icon_image = ImageTk.PhotoImage(temp_image2)
     aplications_websites_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_websites_icon_image)
             #Caclulator
-    temp_image = Image.open("%s\\Aplications\\calculator-icon.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','calculator-icon.png'))
     a = int((102/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_cuclulator_icon_image = ImageTk.PhotoImage(temp_image2)
     aplications_cuclulator_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_cuclulator_icon_image)
             #NoteBook
-    temp_image = Image.open("%s\\Aplications\\notebook-icon.png"%(location))
+
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','notebook-icon.png'))
     a = int((102/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_notebook_icon_image = ImageTk.PhotoImage(temp_image2)
     aplications_notebook_icon =Label(aplications_backGroundImage_label, borderwidth=0, image = aplications_notebook_icon_image)
             #Users Applications
-    temp_image = Image.open("%s\\Aplications\\users-applications.png"%(location))
+
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','users-applications.png'))
     a = int((102/1920)*w)+5
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2037,7 +1943,8 @@ def main():
     aplications_users_applications_button =tk.Button(aplications_backGroundImage_label, borderwidth=0, image = aplications_users_applications_button_image)
     aplications_users_applications_button.bind("<Button-1>",aplications_go_to_users_aplications)
             #Your applications text label
-    temp_image = Image.open("%s\\Aplications\\your_applications-label-text.png"%(location))
+    
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','your_applications-label-text.png'))
     a = int((285/1920)*w)+5
     b = int((39/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2046,7 +1953,7 @@ def main():
 
     #Change / Save location Buttons
         # Define image
-    temp_image = Image.open("%s\\Aplications\\change-save_location-button2.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','change-save_location-button2.png'))
     a = int((376/1920)*w)+5
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2123,7 +2030,7 @@ def main():
     about_page = tk.Frame(screen)
     #BackGround
             #open image
-    about_page_backGroundImage = Image.open("%s\\About\\background.png"%(location))
+    about_page_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
             #resize image
     about_page_resized_backGroundImage = about_page_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
     about_page_new_backGroundImage = ImageTk.PhotoImage(about_page_resized_backGroundImage)
@@ -2133,43 +2040,44 @@ def main():
     #Header
     about_page_header = Label(about_page,borderwidth=0,background = "#0d0029")
 
-    temp_image = Image.open("%s\\About\\title.png"%(location))
+    
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'About','title.png'))
     a = int((422/1920)*w)+5
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_title_image = ImageTk.PhotoImage(temp_image2)
     about_page_title = Label(about_page_header,image = about_page_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_title_aktri_image = ImageTk.PhotoImage(temp_image2)
     about_page_title_aktri = Label(about_page_header,image = about_page_title_aktri_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\exit_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_cloce_button_image = ImageTk.PhotoImage(temp_image2)
     about_page_cloce_button = tk.Button(about_page_header,image = about_page_cloce_button_image, borderwidth=0, command = screen.destroy)
 
-    temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
     about_page_exit_fullscreen_button = tk.Button(about_page_header,image = about_page_exit_fullscreen_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\minimize_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_minimize_button_image = ImageTk.PhotoImage(temp_image2)
     about_page_minimize_button = tk.Button(about_page_header,image = about_page_minimize_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\Calendar\\title.png"%(location))
-    a = int((62/1920)*w)+5
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
+    a = int((43/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2181,21 +2089,33 @@ def main():
 
     #back button
         # Define image
-    about_page_back_button_image = PhotoImage(file="%s\\back_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
+    a = int((48/1920)*w)+5
+    b = int((34/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    about_page_back_button_image = ImageTk.PhotoImage(temp_image2)
         #define button
     about_page_back_button = tk.Button(about_page_header, text = ' ', image = about_page_back_button_image, borderwidth=0)
     about_page_back_button.bind("<Button-1>",about_page_go_to_settings)
 
     #Home button
         # setings button image
-    about_page_home_button_image = PhotoImage(file="%s\\home-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
+    a = int((43/1920)*w)+5
+    b = int((43/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    about_page_home_button_image = ImageTk.PhotoImage(temp_image2)
         #Add button
     about_page_home_button = tk.Button(about_page_header, text = ' ', image = about_page_home_button_image, borderwidth=0)
     about_page_home_button.bind("<Button-1>",about_page_go_to_home_page)
 
     #User button
         # setings button image
-    about_page_user_button_image = PhotoImage(file="%s\\user-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
+    a = int((43/1920)*w)+5
+    b = int((43/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    about_page_user_button_image = ImageTk.PhotoImage(temp_image2)
         #Add button
     about_page_user_button = tk.Button(about_page_header, text = ' ', image = about_page_user_button_image, borderwidth=0)
     #user text label
@@ -2205,7 +2125,7 @@ def main():
     #add to window
     about_page_backGroundImage_label.place( relx=0.0, rely= 0.155 )
     about_page_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
-    about_page_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((422/1920)*w), height =(52/1080)*h)
+    about_page_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((422/1920)*w), height =(55/1080)*h)
     about_page_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height =(108/1080)*h)
     about_page_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
     about_page_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
@@ -2224,7 +2144,7 @@ def main():
     calendar = tk.Frame(screen)
     #BackGround
         #open image
-    calendar_backgroundImage = Image.open("%s\\background.png"%(location))
+    calendar_backgroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
     #resize image
     calendar_resized_backGroundImage = calendar_backgroundImage.resize((w, h-160),Image.ANTIALIAS)
 
@@ -2236,44 +2156,44 @@ def main():
     #header
     calendar_header = Label(calendar,borderwidth=0,background = "#0d0029")
 
-    temp_image = Image.open("%s\\Calendar\\title.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','title.png'))
     a = int((977/1920)*w)+5
     b = int((44/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_title_image = ImageTk.PhotoImage(temp_image2)
     calendar_title = Label(calendar_header,image = calendar_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_title_aktri_image = ImageTk.PhotoImage(temp_image2)
     calendar_title_aktri = Label(calendar_header,image = calendar_title_aktri_image, borderwidth=0)
 
-    calendar_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
-    temp_image = Image.open("%s\\exit_button.png"%(location))
+    
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_cloce_button_image = ImageTk.PhotoImage(temp_image2)
     calendar_cloce_button = tk.Button(calendar_header,image = calendar_cloce_button_image, borderwidth=0, command = screen.destroy)
 
-    temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
     calendar_exit_fullscreen_button = tk.Button(calendar_header,image = calendar_exit_fullscreen_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\minimize_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_minimize_button_image = ImageTk.PhotoImage(temp_image2)
     calendar_minimize_button = tk.Button(calendar_header,image = calendar_minimize_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\fullscreen_button.png"%(location))
-    a = int((31/1920)*w)+5
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
+    a = int((43/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2286,7 +2206,7 @@ def main():
 
     #Home button
         # setings button image
-    temp_image = Image.open("%s\\home-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2297,7 +2217,7 @@ def main():
 
     #User button
         # setings button image
-    temp_image = Image.open("%s\\user-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2310,7 +2230,7 @@ def main():
 
     #back button
         # Define image
-    temp_image = Image.open("%s\\back_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
     a = int((48/1920)*w)+5
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2321,61 +2241,61 @@ def main():
 
     #Year
         #Load Year numbers
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\0.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','0.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_zero = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\1.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','1.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_one = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\2.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','2.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_two = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\3.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','3.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_three = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\4.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','4.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_four = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\5.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','5.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_five = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\6.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','6.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_six = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\7.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','7.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_seven = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\8.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','8.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_eight = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year_numbers\\9.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','9.png'))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2399,175 +2319,175 @@ def main():
 
     #Load Calendar pictures
         #sunday----------------------------------------------
-    temp_image = Image.open("%s\\Calendar\\S-31.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','S-31.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_sunday_31 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\S-30.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','S-30.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_sunday_30 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\S-29.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','S-29.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_sunday_29 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\S-28.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','S-28.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_sunday_28 = ImageTk.PhotoImage(temp_image2)
 
         #monday--------------------------------------------------------------
-    temp_image = Image.open("%s\\Calendar\\M-31.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','M-30.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_monday_31 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\M-30.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','M-30.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_monday_30 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\M-29.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','M-29.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_monday_29 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\M-28.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','M-28.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_monday_28 = ImageTk.PhotoImage(temp_image2)
 
         #tuesday--------------------------------------------------------------
-    temp_image = Image.open("%s\\Calendar\\TU-31.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','TU-31.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_tuesday_31 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\TU-30.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','TU-30.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_tuesday_30 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\TU-29.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','TU-29.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_tuesday_29 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\TU-28.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','TU-28.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_tuesday_28 = ImageTk.PhotoImage(temp_image2)
 
         #wednesday--------------------------------------------------------------
-    temp_image = Image.open("%s\\Calendar\\W-31.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','W-31.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_wednesday_31 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\W-30.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','W-30.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_wednesday_30 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\W-29.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','W-29.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_wednesday_29 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\W-28.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','W-28.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_wednesday_28 = ImageTk.PhotoImage(temp_image2)
 
         #thursday--------------------------------------------------------------
-    temp_image = Image.open("%s\\Calendar\\THU-31.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','THU-31.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_thursday_31 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\THU-30.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','THU-30.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_thursday_30 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\THU-29.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','THU-29.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_thursday_29 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\THU-28.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','THU-28.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_thursday_28 = ImageTk.PhotoImage(temp_image2)
 
         #friday--------------------------------------------------------------
-    temp_image = Image.open("%s\\Calendar\\F-31.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','F-31.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_friday_31 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\F-30.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','F-30.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_friday_30 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\F-29.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','F-29.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_friday_29 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\F-28.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','F-28.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_friday_28 = ImageTk.PhotoImage(temp_image2)
 
         #saturday--------------------------------------------------------------
-    temp_image = Image.open("%s\\Calendar\\SAT-31.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','SAT-31.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_saturday_31 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\SAT-30.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','SAT-30.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_saturday_30 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\SAT-29.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','SAT-29.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_saturday_29 = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\SAT-28.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','SAT-28.png'))
     a = int((1494/1920)*w)+5
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2578,90 +2498,102 @@ def main():
 
     #Month
         #Load month imagies
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\1.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','1.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_january = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\2.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','2.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_february = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\3.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','3.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_march = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\4.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','4.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_april = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\5.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','5.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_may = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\6.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','6.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_june = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\7.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','7.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_july = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\8.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','8.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_august = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\9.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','9.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_september = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\10.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','10.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_octomber = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\11.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','11.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_november = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\Months_Imagies\\12.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','12.png'))
     a = int((323/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_december = ImageTk.PhotoImage(temp_image2)
 
 
-    calendar_month_image = PhotoImage(file="%s\\Calendar\\Months_Imagies\\%d.png"%(location, month))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','%d.png'%(month)))
+    a = int(((323/1920)*w)+5)
+    b = int((65/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    calendar_month_image = ImageTk.PhotoImage(temp_image2)
         #define button
     calendar_month_label = Label(calendar_backGroundImage_label, text = ' ', image = calendar_month_image, borderwidth=0) 
 
     #Next Month
-    calendar_next_month_button_image = PhotoImage(file="%s\\Calendar\\next_month_button_image.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','next_month_button_image.png'))
+    a = int(((51/1920)*w)+5)
+    b = int((59/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    calendar_next_month_button_image = ImageTk.PhotoImage(temp_image2)
         #define button
     calendar_next_month_button = tk.Button(calendar_backGroundImage_label, text = ' ', image = calendar_next_month_button_image, borderwidth=0)
 
     #previous  Month
-    calendar_previous_month_button_image = PhotoImage(file="%s\\Calendar\\previous_month_button_image.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','previous_month_button_image.png'))
+    a = int(((51/1920)*w)+5)
+    b = int((59/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    calendar_previous_month_button_image = ImageTk.PhotoImage(temp_image2)
         #define button
     calendar_previous_month_button = tk.Button(calendar_backGroundImage_label, text = ' ', image = calendar_previous_month_button_image, borderwidth=0)
 
@@ -2670,7 +2602,11 @@ def main():
 
     #today fond
 
-    calendar_today_label_image = PhotoImage(file="%s\\Calendar\\today_numbers\\%d.png"%(location,now.day))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','today_numbers','%d.png'%(now.day)))
+    a = int(((191/1920)*w)+5)
+    b = int((107/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    calendar_today_label_image = ImageTk.PhotoImage(temp_image2)
     calendar_today_label = Label(calendar_month_days_label,image =calendar_today_label_image, borderwidth=0)
 
     #Add to screen
@@ -2682,7 +2618,7 @@ def main():
 
     calendar_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
     calendar_exit_fullscreen_button.place(relx = 0.965, rely = 0.0,width=((31/1920)*w), height =(28/1080)*h)
-    calendar_minimize_button.place(relx = 0.945, rely = 0.0, width=((43/1920)*w), height =(28/1080)*h)
+    calendar_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
 
 
     calendar_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
@@ -2700,7 +2636,7 @@ def main():
     calendar_previous_month_button.place(relx = 0.1, rely = 0.03, width=((51/1920)*w), height =(59/1080)*h)
     calendar_month_days_label.place(relx = 0.5, rely = 0.55,anchor = "center", width=((1494/1920)*w), height =(725/1080)*h)
 
-    calendar_today_label.place(relx = get_todays_x_rel_position(), rely = get_todays_y_rel_position(), width=191, height=107)
+    calendar_today_label.place(relx = get_todays_x_rel_position(), rely = get_todays_y_rel_position(), width=((191/1920)*w), height=(107/1080)*h)
     #############################################################################################################################################################################
     #  SSSSSSSS
     #  S
@@ -2711,7 +2647,7 @@ def main():
     settings = tk.Frame(screen)
     #BackGround
             #open image
-    settings_backGroundImage = Image.open("%s\\background.png"%(location))
+    settings_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
             #resize image
     settings_resized_backGroundImage = settings_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
 
@@ -2722,21 +2658,21 @@ def main():
 
     #header
     settings_header = Label(settings,borderwidth=0,background = "#0d0029")
-    temp_image = Image.open("%s\\Settings\\title.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','title.png'))
     a = int(((670/1920)*w)+5)
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_title_image = ImageTk.PhotoImage(temp_image2)
     settings_title = Label(settings_header,image = settings_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_title_aktri_image = ImageTk.PhotoImage(temp_image2)
     settings_title_aktri = Label(settings_header,image = settings_title_aktri_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\exit_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2744,22 +2680,21 @@ def main():
     settings_cloce_button = tk.Button(settings_header,image = settings_cloce_button_image, borderwidth=0, command = screen.destroy)
 
 
-
-    temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
     settings_exit_fullscreen_button = tk.Button(settings_header,image = settings_exit_fullscreen_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\minimize_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_minimize_button_image = ImageTk.PhotoImage(temp_image2)
     settings_minimize_button = tk.Button(settings_header,image = settings_minimize_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
     a = int((62/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2772,7 +2707,7 @@ def main():
 
     #Home button
         # setings button image
-    temp_image = Image.open("%s\\home-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2783,7 +2718,7 @@ def main():
 
     #User button
         # setings button image
-    temp_image = Image.open("%s\\user-button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
     a = int((43/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2796,7 +2731,7 @@ def main():
 
     #back button
         # Define image
-    temp_image = Image.open("%s\\back_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
     a = int((48/1920)*w)+5
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2808,7 +2743,7 @@ def main():
         
     #smity gender
         # Define image
-    temp_image = Image.open("%s\\Settings\\smiti gender.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','smiti_gender.png'))
     a = int((400/1920)*w)+5
     b = int((50/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2817,13 +2752,13 @@ def main():
     settings_smity_gender_label = Label(settings_backGroundImage_label, text = ' ', image = settings_smity_gender_label_image, borderwidth=0)
         #female button
             # Define image
-    temp_image = Image.open("%s\\Settings\\female_on.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','female_on.png'))
     a = int((148/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_female_on = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Settings\\female_off.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','female_off.png'))
     a = int((148/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2831,13 +2766,13 @@ def main():
             #define button
     settings_female_button = tk.Button(settings_backGroundImage_label, text = ' ', image = settings_female_on, borderwidth=0)
         #Male button
-    temp_image = Image.open("%s\\Settings\\male_off.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','male_off.png'))
     a = int((110/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_male_off = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Settings\\male_on.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','male_on.png'))
     a = int((110/1920)*w)+5
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2854,7 +2789,7 @@ def main():
 
     #Username name
         # Define image
-    temp_image = Image.open("%s\\Settings\\user_name.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','user_name.png'))
     a = int((262/1920)*w)+5
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2878,13 +2813,13 @@ def main():
     settings_user_name_text_field.bind("<Return>", get_name)
 
     #switch
-    temp_image = Image.open("%s\\Settings\\on_switch.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','on_switch.png'))
     a = int((173/1920)*w)+5
     b = int((64/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_switch_on = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Settings\\off_switch.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','off_switch.png'))
     a = int((173/1920)*w)+5
     b = int((64/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2892,7 +2827,7 @@ def main():
     #All activated
     #voice control
         # Define image
-    temp_image = Image.open("%s\\Settings\\Voice control.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','Voice_control.png'))
     a = int((354/1920)*w)+5
     b = int((50/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2906,7 +2841,7 @@ def main():
         
     #speak key
         # Define image
-    temp_image = Image.open("%s\\Settings\\Speak key.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','Speak_key.png'))
     a = int((264/1920)*w)+5
     b = int((60/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2921,7 +2856,7 @@ def main():
 
     #voice wake up
         # Define image
-    temp_image = Image.open("%s\\Settings\\voise wake up.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','voise_wake_up.png'))
     a = int((357/1920)*w)+5
     b = int((60/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2939,7 +2874,7 @@ def main():
     settings_wake_up_button.bind("<Button-1>", activate_deactivate_wake_up)
 
     #info button
-    temp_image = Image.open("%s\\Settings\\info_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','info_button.png'))
     a = int((206/1920)*w)+5
     b = int((275/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2949,7 +2884,7 @@ def main():
     settings_info_button.bind("<Button-1>",settings_go_to_about)
 
     #Applications button
-    temp_image = Image.open("%s\\Settings\\applications.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','applications.png'))
     a = int((325/1920)*w)+5
     b = int((275/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3002,7 +2937,7 @@ def main():
     home_page = tk.Frame(screen)
     #BackGround
             #open image
-    home_page_backGroundImage = Image.open("%s\\background.png"%(location))
+    home_page_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
             #resize image
     home_page_resized_backGroundImage = home_page_backGroundImage.resize((w, h-171),Image.ANTIALIAS)
 
@@ -3015,12 +2950,12 @@ def main():
     b = int ((270/1080)*h)
     resize_gif(a,b)
     home_page_gif_label = ImageLabel(home_page,borderwidth=0)
-    home_page_gif_label.load('%s\\aaa.gif'%(location))
+    home_page_gif_label.load(os.path.join(PATH_TO_GUI,'aaa.gif'))
 
     #header
     home_page_header = Label(home_page,borderwidth=0,background = "#0d0029")
     #home_page_title_image
-    temp_image = Image.open("%s\\Home_page\\title.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Home_page','title.png'))
     a = int((405/1920)*w)+5
     b = int((171/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3028,7 +2963,8 @@ def main():
 
     home_page_title = Label(home_page_header,image = home_page_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
+    
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'akrh_titlou.png'))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3036,7 +2972,7 @@ def main():
 
     home_page_title_aktri = Label(home_page_header,image = home_page_title_aktri_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\exit_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'exit_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3044,7 +2980,7 @@ def main():
 
     home_page_cloce_button = tk.Button(home_page_header,image = home_page_cloce_button_image, borderwidth=0, command = screen.destroy)
 
-    temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3052,7 +2988,7 @@ def main():
 
     home_page_exit_fullscreen_button = tk.Button(home_page_header,image = home_page_exit_fullscreen_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\minimize_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'minimize_button.png'))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3060,7 +2996,7 @@ def main():
 
     home_page_minimize_button = tk.Button(home_page_header,image = home_page_minimize_button_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\fullscreen_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'fullscreen_button.png'))
     a = int((62/1920)*w)+5
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3074,7 +3010,7 @@ def main():
 
     #Calendar button
         # setings button image
-    temp_image = Image.open("%s\\Home_page\\calendar_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','calendar_button.png'))
     a = int((36/1920)*w)+5
     b = int((40/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3085,7 +3021,7 @@ def main():
 
     #Settings button
         # setings button image
-    temp_image = Image.open("%s\\settings_button.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'settings_button.png'))
     a = int((39/1920)*w)+5
     b = int((40/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3097,7 +3033,7 @@ def main():
 
     #weather
         # weather button image
-    temp_image = Image.open("%s\\Home_page\\weather.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','weather.png'))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3107,7 +3043,7 @@ def main():
 
     #questions
         # questions button image
-    temp_image = Image.open("%s\\Home_page\\questions.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','questions.png'))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3117,7 +3053,7 @@ def main():
 
     #time
         # time button image
-    temp_image = Image.open("%s\\Home_page\\time.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','time.png'))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3127,7 +3063,7 @@ def main():
 
     #news
         # news button image
-    temp_image = Image.open("%s\\Home_page\\news.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','news.png'))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3137,7 +3073,7 @@ def main():
 
     #calls
         # calls button image
-    temp_image = Image.open("%s\\Home_page\\calls.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','calls.png'))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3147,7 +3083,7 @@ def main():
 
     #maps
         # maps button image
-    temp_image = Image.open("%s\\Home_page\\maps.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','maps.png'))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3157,7 +3093,7 @@ def main():
 
     #mail
         # mail button image
-    temp_image = Image.open("%s\\Home_page\\mail.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','mail.png'))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3167,7 +3103,7 @@ def main():
 
     #music
         # music button image
-    temp_image = Image.open("%s\\Home_page\\music.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','music.png'))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3181,7 +3117,7 @@ def main():
 
     #Mic button
         # Mic button image
-    temp_image = Image.open("%s\\Home_page\\microphone.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','microphone.png'))
     a = int((23/1920)*w)+5
     b = int((45/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3190,11 +3126,64 @@ def main():
     home_page_mic_button = tk.Button(home_page_bottom_line, text = ' ', image = home_page_mic_button_image, borderwidth=0)
 
     #message history)
-    temp_image = Image.open("%s\\Home_page\\message_history.png"%(location))
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','message_history.png'))
     a = int((950/1920)*w)
     b = int((325/1080)*h)+1
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     message_history_label_image = ImageTk.PhotoImage(temp_image2)
+
+    def get_command_update():
+        try:
+            with open(MY_OUTPUT, 'r') as file:
+                content = file.read()
+                lines = content.splitlines()
+                last_lines = lines[-MAX_LINES:]
+                # message_history	= '\n'.join(last_lines)
+        
+                string = ''
+                for line in last_lines:
+                    string += line + '\n'
+                string = string[:-1]
+                print(string)
+                message_history_label_text_field.config(text = string)
+        except:
+            return 1
+
+
+    def output(*content):
+        try:
+            for item in content :
+                with open(MY_OUTPUT, 'a') as file:
+                    file.write(item + '\n')
+                get_command_update()
+        except:
+            return 1
+
+    def getWrittenCommand():
+        try:
+            output('User : ' + str(home_page_comand_text_field.get().rstrip()))
+        except:
+            return 1
+
+    def input(content):
+        pass
+    def get_comand(event):
+        # deprecated
+        # global message_history
+        # global line_count
+        # line_count = line_count +1
+        # if line_count == MAX_LINES +1:
+        #     line_count =0
+        #     message_history =''
+        # message_history = message_history + '\nYou : ' + str(home_page_comand_text_field.get())
+        # message_history_label_text_field.config(text = message_history)
+        # message_history = message_history + '\nS.M.I.T.Y : ' + process_comand(str(home_page_comand_text_field.get()))
+        # line_count = line_count +1
+        # message_history_label_text_field.config(text = message_history)
+        # if line_count == MAX_LINES +1:
+        #     line_count =0
+        #     message_history =''
+        getWrittenCommand()
 
     message_history_label = Label(home_page, image = message_history_label_image, borderwidth =0)
     global message_history
@@ -3213,8 +3202,8 @@ def main():
     home_page_comand_text_field.bind("<Return>",get_comand)
 
     #Enter button
-        # setings button image
-    temp_image = Image.open("%s\\Home_page\\enter_button.png"%(location))
+        # setings button image os.path.join(PATH_TO_GUI, 'Settings'
+    temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','enter_button.png'))
     a = int((54/1920)*w)+5
     b = int((38/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3249,6 +3238,8 @@ def main():
 
     message_history_label.place(relx = 0.005, rely = 0.64, width=((950/1920)*w), height=(325/1080)*h)
     message_history_label_text_field.place(relx = 0.008, rely = 0.03, relwidth=0.9, relheight=0.9)
+
+
 
     home_page_bottom_line.place(relx=0.0, rely= 0.9515, relwidth = 1.0,height =52)
     home_page_enter_button.place(relx = 0.965, rely = 0.13, width=((54/1920)*w), height=(38/1080)*h)
