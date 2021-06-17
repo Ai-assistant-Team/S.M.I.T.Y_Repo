@@ -66,7 +66,7 @@ def main():
         size = wi , hi
 
         # Open source
-        im = Image.open('%s\\Home page\\home page gif3.gif'%(location))
+        im = Image.open('%s\\Home_page\\home_page_gif3.gif'%(location))
 
         # Get sequence iterator
         frames = ImageSequence.Iterator(im)
@@ -257,11 +257,11 @@ def main():
         if(load_gender == 'S.M.I.T.Y. Gender : male\n'):
             settings_female_button.config(image = settings_female_off)
             settings_male_button.config(image = settings_male_on)
-            gender = 'male'
+            gender = 'mele'
         else:
             settings_female_button.config(image = settings_female_on)
             settings_male_button.config(image = settings_male_off)
-            gender = 'female'
+            gender = 'femele'
         #User name
         load_username = load_username.replace('Username : ','')
         load_username = load_username.replace('\n','')
@@ -438,8 +438,10 @@ def main():
         users_aplications.pack(fill='both', expand =1)
         aplications.forget()
 
-    def aplications_go_to_change_location(event):
+    def aplications_go_to_change_location(event,name):
         change_location.pack(fill='both', expand =1)
+        change_location_name_input.delete(0, tk.END)
+        change_location_name_input.insert(0, name)
         aplications.forget()
 
     def users_aplications_exit_fullscreen(event):
@@ -469,12 +471,30 @@ def main():
     def add_aplication_go_to_users_aplications(event):
         users_aplications.pack(fill='both', expand =1)
         add_aplication.forget()
+        
 
     def add_aplications_go_to_home_page(event):
         home_page.pack(fill='both', expand =1)
         add_aplication.forget()
 
-    def add_aplication_add_button(event):
+    def add_aplication_add_button(event,program_name,program_url):
+        names = ["excel", "word", "acces", "power point", "spotify", "messernger", "calculator", "notepad"]
+        location = ["ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location"]
+        
+        location = pathlib.Path(__file__).parent.absolute()
+        f = open("%s\\program_locations.txt"%(location), "r")
+        for x in range(8):
+            names[x] = f.readline()
+            location[x] = f.readline()
+        f.close()
+        f = open("%s\\program_locations.txt"%(location), "w")
+        for b in range(8):
+            f.write(names[b])
+            if names[b] == program_name:
+                f.write(program_url)
+            else:
+                f.write(location[b])
+        f.close()
         users_aplications.pack(fill='both', expand =1)
         add_aplication.forget()
 
@@ -918,7 +938,8 @@ def main():
             f.write(names[b])
             f.write(urls[b])
         f.close()
-        
+
+        my_websites.pack(fill='both', expand =1)
         my_websites.pack(fill='both', expand =1)
         names = [str. rstrip(name) for name in names ]
         my_websites_url_1_name.config(text = names[0])
@@ -932,23 +953,7 @@ def main():
         my_websites_url_9_name.config(text = names[8])
         my_websites_url_10_name.config(text = names[9])
         add_website.forget()
-        
-
-    def load_buttons_text_websites():
-        websites_names = ["ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE"]
-        websites_url = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
-
-        users_urls_load(websites_names,websites_url)
-        my_websites_url_1_name.label['text'] = "Text updated" 
-        my_websites_url_2_name.config(my_websites_change_save_url_label_2,text = websites_names[1], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
-        my_websites_url_3_name.config(my_websites_change_save_url_label_3,text = websites_names[2], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
-        my_websites_url_4_name.config(my_websites_change_save_url_label_4,text = websites_names[3], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
-        my_websites_url_5_name.config(my_websites_change_save_url_label_5,text = websites_names[4], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
-        my_websites_url_6_name.config(my_websites_change_save_url_label_6,text = websites_names[5], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
-        my_websites_url_7_name.config(my_websites_change_save_url_label_7,text = websites_names[6], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
-        my_websites_url_8_name.config(my_websites_change_save_url_label_8,text = websites_names[7], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
-        my_websites_url_9_name.config(my_websites_change_save_url_label_9,text = websites_names[8], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
-        my_websites_url_10_name.config(my_websites_change_save_url_label_10,text = websites_names[9], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+        add_website.forget()
 
     def add_websites_exit_fullscreen(event):
         screen.attributes('-fullscreen', False)
@@ -974,8 +979,8 @@ def main():
         change_location_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
         change_location_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
-    def change_location_go_to_users_aplications(event):
-        users_aplications.pack(fill='both', expand =1)
+    def change_location_go_to_aplications(event):
+        aplications.pack(fill='both', expand =1)
         change_location.forget()
 
     def change_location_browse_to_files(event):
@@ -1038,14 +1043,14 @@ def main():
     #header
     add_aplication_header = Label(add_aplication,borderwidth=0,background = "#0d0029")
 
-    temp_image = Image.open("%s\\Add Aplications\\title.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\title.png"%(location))
     a = int((1336/1920)*w)+5
     b = int((171/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_aplication_title_image = ImageTk.PhotoImage(temp_image2)
     add_aplication_title = Label(add_aplication_header,image = add_aplication_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh titlou.png"%(location))
+    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1084,17 +1089,6 @@ def main():
     add_aplication_fullscreen_button.bind("<Button-1>",add_aplication_fullscreen)
     add_aplication_minimize_button.bind("<Button-1>", minimize)
 
-    #Home button
-        # setings button image
-    temp_image = Image.open("%s\\home-button.png"%(location))
-    a = int((43/1920)*w)+5
-    b = int((43/1080)*h)+5
-    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-    add_aplication_home_button_image = ImageTk.PhotoImage(temp_image2)
-        #Add button
-    add_aplication_home_button = tk.Button(add_aplication_header, text = ' ', image = add_aplication_home_button_image, borderwidth=0)
-    add_aplication_home_button.bind("<Button-1>",add_aplications_go_to_home_page)
-
     #User button
         # setings button image
     temp_image = Image.open("%s\\user-button.png"%(location))
@@ -1109,7 +1103,7 @@ def main():
     add_aplication_user_text_label =Label(add_aplication_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Name label
-    temp_image = Image.open("%s\\Add Aplications\\name.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\name.png"%(location))
     a = int((191/1920)*w)+5
     b = int((53/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1117,7 +1111,7 @@ def main():
     add_aplication_name_label =Label(add_aplication_backGroundImage_label, borderwidth=0, image = add_aplication_name_label_image)
 
     #Location label
-    temp_image = Image.open("%s\\Add Aplications\\location.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\location.png"%(location))
     a = int((268/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1126,7 +1120,7 @@ def main():
 
     #name text spot label
         #label
-    temp_image = Image.open("%s\\Add Aplications\\text_spot.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\text_spot.png"%(location))
     a = int(0.544*w)
     b = int((84/1080)*h)
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1144,7 +1138,7 @@ def main():
 
     #browse to files button
         # Define image
-    temp_image = Image.open("%s\\Add Aplications\\browse_to_files.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\browse_to_files.png"%(location))
     a = int((164/1920)*w)+5
     b = int((217/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1155,7 +1149,7 @@ def main():
 
     #Cancel button
         # Define image
-    temp_image = Image.open("%s\\Add Aplications\\Cancel.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\Cancel.png"%(location))
     a = int((220/1920)*w)+5
     b = int((97/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1165,13 +1159,13 @@ def main():
     add_aplication_cancel_button.bind("<Button-1>",add_aplication_go_to_users_aplications)
     #Add button
         # Add image
-    temp_image = Image.open("%s\\Add Aplications\\add.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\add.png"%(location))
     a = int((162/1920)*w)+5
     b = int((94/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_aplication_add_button_image = ImageTk.PhotoImage(temp_image2)
         #Add button
-    add_aplication_add_button_button = Button(add_aplication_backGroundImage_label, text = ' ', image = add_aplication_add_button_image, borderwidth=0, command=lambda:add_aplication_add_button ("<Button-1>,",9))
+    add_aplication_add_button_button = Button(add_aplication_backGroundImage_label, text = ' ', image = add_aplication_add_button_image, borderwidth=0, command=lambda:add_aplication_add_button ("<Button-1>",str(add_aplication_name_input.get()),str(add_aplication_location_input.get())))
 
 
 
@@ -1180,7 +1174,6 @@ def main():
     add_aplication_header.place(relx=0.0, y= 0.0, width = w,height =(171/1080)*h)
     add_aplication_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((1336/1920)*w), height=(171/1080)*h)
     add_aplication_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
-    add_aplication_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
     add_aplication_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
     add_aplication_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
     add_aplication_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
@@ -1222,14 +1215,14 @@ def main():
     #header
     my_websites_header = Label(my_websites,borderwidth=0,background = "#0d0029")
     #title
-    temp_image = Image.open("%s\\my websites\\title.png"%(location))
+    temp_image = Image.open("%s\\my_websites\\title.png"%(location))
     a = int((512/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     my_websites_title_image = ImageTk.PhotoImage(temp_image2)
     my_websites_title = Label(my_websites_header,image = my_websites_title_image, borderwidth=0)
     #akri titlou
-    temp_image = Image.open("%s\\akrh titlou.png"%(location))
+    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1307,13 +1300,13 @@ def main():
 
     #Change / Save websites buttons
         # Define image 1
-    temp_image = Image.open("%s\\my websites\\change-save_url.png"%(location))
+    temp_image = Image.open("%s\\my_websites\\change-save_url.png"%(location))
     a = int((376/1920)*w)+5
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     my_websites_change_open_url_button_image = ImageTk.PhotoImage(temp_image2)
         # Define image 2
-    temp_image = Image.open("%s\\my websites\\change-save_url_2.png"%(location))
+    temp_image = Image.open("%s\\my_websites\\change-save_url_2.png"%(location))
     a = int((376/1920)*w)+5
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1359,14 +1352,14 @@ def main():
 
     #change seve url
         # setings button image
-    temp_image = Image.open("%s\\my websites\\go_to.png"%(location))
+    temp_image = Image.open("%s\\my_websites\\go_to.png"%(location))
     a = int((90/1920)*w)+5
     b = int((62/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_save_url_button_image = ImageTk.PhotoImage(temp_image2)
     #change seve ur2
         # setings button image
-    temp_image = Image.open("%s\\my websites\\go_to_2.png"%(location))
+    temp_image = Image.open("%s\\my_websites\\go_to_2.png"%(location))
     a = int((90/1920)*w)+5
     b = int((62/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1454,14 +1447,14 @@ def main():
     #header
     add_website_header = Label(add_website,borderwidth=0,background = "#0d0029")
 
-    temp_image = Image.open("%s\\Add website\\title.png"%(location))
+    temp_image = Image.open("%s\\Add_website\\title.png"%(location))
     a = int((846/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_website_title_image = ImageTk.PhotoImage(temp_image2)
     add_website_title = Label(add_website_header,image = add_website_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh titlou.png"%(location))
+    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1525,7 +1518,7 @@ def main():
     add_website_user_text_label =Label(add_website_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Name label
-    temp_image = Image.open("%s\\Add Aplications\\name.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\name.png"%(location))
     a = int((191/1920)*w)+5
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1533,7 +1526,7 @@ def main():
     add_website_name_label =Label(add_website_backGroundImage_label, borderwidth=0, image = add_website_name_label_image)
 
     #Location label
-    temp_image = Image.open("%s\\Add Aplications\\location.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\location.png"%(location))
     a = int((268/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1542,7 +1535,7 @@ def main():
 
     #name text spot label
         #label
-    temp_image = Image.open("%s\\Add Aplications\\text_spot.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\text_spot.png"%(location))
     a = int(0.544*w)
     b = int((84/1080)*h)
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1558,7 +1551,7 @@ def main():
 
     #Cancel button
         # Define image
-    temp_image = Image.open("%s\\Add Aplications\\Cancel.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\Cancel.png"%(location))
     a = int((220/1920)*w)+5
     b = int((97/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1568,7 +1561,7 @@ def main():
     add_website_cancel_button.bind("<Button-1>",add_website_go_to_users_aplications)
     #Add button
         # Add image
-    temp_image = Image.open("%s\\Add Aplications\\add.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\add.png"%(location))
     a = int((162/1920)*w)+5
     b = int((94/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1625,9 +1618,9 @@ def main():
 
     #header
     users_aplications_header = Label(users_aplications,borderwidth=0,background = "#0d0029")
-    users_aplications_title_image = PhotoImage(file="%s\\Users Aplications\\title.png"%(location))
+    users_aplications_title_image = PhotoImage(file="%s\\Users_Aplications\\title.png"%(location))
     users_aplications_title = Label(users_aplications_header,image = users_aplications_title_image, borderwidth=0)
-    users_aplications_title_aktri_image = PhotoImage(file="%s\\akrh titlou.png"%(location))
+    users_aplications_title_aktri_image = PhotoImage(file="%s\\akrh_titlou.png"%(location))
     users_aplications_title_aktri = Label(users_aplications_header,image = users_aplications_title_aktri_image, borderwidth=0)
     users_aplications_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
     users_aplications_cloce_button = tk.Button(users_aplications_header,image = users_aplications_cloce_button_image, borderwidth=0, command = screen.destroy)
@@ -1667,7 +1660,7 @@ def main():
 
     #add aplication button
         #Define image
-    users_aplications_add_apication_button_image = PhotoImage(file="%s\\Users Aplications\\pluss_button.png"%(location))
+    users_aplications_add_apication_button_image = PhotoImage(file="%s\\Users_Aplications\\pluss_button.png"%(location))
         #define button
     users_aplications_add_apication_button = tk.Button(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_add_apication_button_image, borderwidth=0)
     users_aplications_add_apication_button.bind("<Button-1>",users_aplications_go_to_add_aplications)
@@ -1707,14 +1700,14 @@ def main():
     #header
     change_location_header = Label(change_location,borderwidth=0,background = "#0d0029")
 
-    temp_image = Image.open("%s\\change location\\title.png"%(location))
+    temp_image = Image.open("%s\\change_location\\title.png"%(location))
     a = int((705/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_location_title_image = ImageTk.PhotoImage(temp_image2)
     change_location_title = Label(change_location_header,image = change_location_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh titlou.png"%(location))
+    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1776,7 +1769,7 @@ def main():
 
     #browse to files button
         # Define image
-    temp_image = Image.open("%s\\Add Aplications\\browse_to_files.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\browse_to_files.png"%(location))
     a = int((164/1920)*w)+5
     b = int((217/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1789,7 +1782,7 @@ def main():
     change_location_user_text_label =Label(change_location_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Name label
-    temp_image = Image.open("%s\\Add Aplications\\name.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\name.png"%(location))
     a = int((191/1920)*w)+5
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1797,7 +1790,7 @@ def main():
     change_location_name_label =Label(change_location_backGroundImage_label, borderwidth=0, image = change_location_name_label_image)
 
     #Location label
-    temp_image = Image.open("%s\\Add Aplications\\location.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\location.png"%(location))
     a = int((268/1920)*w)+5
     b = int((56/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1806,7 +1799,7 @@ def main():
 
     #name text spot label
         #label
-    temp_image = Image.open("%s\\Add Aplications\\text_spot.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\text_spot.png"%(location))
     a = int(0.544*w)
     b = int((84/1080)*h)
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1822,17 +1815,17 @@ def main():
 
     #Cancel button
         # Define image
-    temp_image = Image.open("%s\\Add Aplications\\Cancel.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\Cancel.png"%(location))
     a = int((220/1920)*w)+5
     b = int((97/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_location_cancel_button_image = ImageTk.PhotoImage(temp_image2)
         #define button
     change_location_cancel_button = Button(change_location_backGroundImage_label, text = ' ', image = change_location_cancel_button_image, borderwidth=0)
-    change_location_cancel_button.bind("<Button-1>",change_location_go_to_users_aplications)
+    change_location_cancel_button.bind("<Button-1>",change_location_go_to_aplications)
     #Add button
         # Add image
-    temp_image = Image.open("%s\\Add Aplications\\add.png"%(location))
+    temp_image = Image.open("%s\\Add_Aplications\\add.png"%(location))
     a = int((162/1920)*w)+5
     b = int((94/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -1897,7 +1890,7 @@ def main():
     aplications_title_image = ImageTk.PhotoImage(temp_image2)
     aplications_title = Label(aplications_header,image = aplications_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh titlou.png"%(location))
+    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2053,39 +2046,33 @@ def main():
 
     #Change / Save location Buttons
         # Define image
-    temp_image = Image.open("%s\\Aplications\\change-save location-button2.png"%(location))
+    temp_image = Image.open("%s\\Aplications\\change-save_location-button2.png"%(location))
     a = int((376/1920)*w)+5
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_change_save_location_button_image = ImageTk.PhotoImage(temp_image2)
         #define button
             #Excel button
-    aplications_change_save_location_button_excel = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
-    aplications_change_save_location_button_excel.bind("<Button-1>", aplications_go_to_change_location)
+    aplications_change_save_location_button_excel = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0, command=lambda:aplications_go_to_change_location ("<Button-1>",'Excel'))
+    #aplications_change_save_location_button_excel.bind("<Button-1>", aplications_go_to_change_location)
             #Word
-    aplications_change_save_location_button_word = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
-    aplications_change_save_location_button_word.bind("<Button-1>", aplications_go_to_change_location)
+    aplications_change_save_location_button_word = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0, command=lambda:aplications_go_to_change_location ("<Button-1>",'Word'))
             #Acces
-    aplications_change_save_location_button_acces = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
-    aplications_change_save_location_button_acces.bind("<Button-1>", aplications_go_to_change_location)
+    aplications_change_save_location_button_acces = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0, command=lambda:aplications_go_to_change_location ("<Button-1>",'Acces'))
             #Power Point
-    aplications_change_save_location_button_Power_Point = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
-    aplications_change_save_location_button_Power_Point.bind("<Button-1>", aplications_go_to_change_location)
+    aplications_change_save_location_button_Power_Point = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0, command=lambda:aplications_go_to_change_location ("<Button-1>",'Power Point'))
             #Spotify
-    aplications_change_save_location_button_Spotify = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
-    aplications_change_save_location_button_Spotify.bind("<Button-1>", aplications_go_to_change_location)
+    aplications_change_save_location_button_Spotify = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0, command=lambda:aplications_go_to_change_location("<Button-1>",'Spotify'))
             #Messenger
-    aplications_change_save_location_button_Messenger = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
-    aplications_change_save_location_button_Messenger.bind("<Button-1>", aplications_go_to_change_location)
+    aplications_change_save_location_button_Messenger = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0, command=lambda:aplications_go_to_change_location ("<Button-1>",'Messenger'))
             #Websites
     aplications_change_save_location_button_Websites = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
     aplications_change_save_location_button_Websites.bind("<Button-1>", go_to_my_websites)
             #Caclulator
-    aplications_change_save_location_button_Caclulator = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
-    aplications_change_save_location_button_Caclulator.bind("<Button-1>", aplications_go_to_change_location)
+    aplications_change_save_location_button_Caclulator = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0, command=lambda:aplications_go_to_change_location ("<Button-1>",'Caclulator'))
             #NoteBook
-    aplications_change_save_location_button_NoteBook = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0)
-    aplications_change_save_location_button_NoteBook.bind("<Button-1>", aplications_go_to_change_location)
+    aplications_change_save_location_button_NoteBook = tk.Button(aplications_backGroundImage_label, text = ' ', image = aplications_change_save_location_button_image, borderwidth=0, command=lambda:aplications_go_to_change_location ("<Button-1>",'Notepad'))
+
 
 
     #add to window
@@ -2153,7 +2140,7 @@ def main():
     about_page_title_image = ImageTk.PhotoImage(temp_image2)
     about_page_title = Label(about_page_header,image = about_page_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh titlou.png"%(location))
+    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2256,7 +2243,7 @@ def main():
     calendar_title_image = ImageTk.PhotoImage(temp_image2)
     calendar_title = Label(calendar_header,image = calendar_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh titlou.png"%(location))
+    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2334,61 +2321,61 @@ def main():
 
     #Year
         #Load Year numbers
-    temp_image = Image.open("%s\\Calendar\\year numbers\\0.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\0.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_zero = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year numbers\\1.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\1.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_one = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year numbers\\2.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\2.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_two = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year numbers\\3.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\3.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_three = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year numbers\\4.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\4.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_four = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year numbers\\5.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\5.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_five = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year numbers\\6.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\6.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_six = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year numbers\\7.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\7.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_seven = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year numbers\\8.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\8.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_eight = ImageTk.PhotoImage(temp_image2)
 
-    temp_image = Image.open("%s\\Calendar\\year numbers\\9.png"%(location))
+    temp_image = Image.open("%s\\Calendar\\year_numbers\\9.png"%(location))
     a = int((46/1920)*w)+5
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -2683,7 +2670,7 @@ def main():
 
     #today fond
 
-    calendar_today_label_image = PhotoImage(file="%s\\Calendar\\today numbers\\%d.png"%(location,now.day))
+    calendar_today_label_image = PhotoImage(file="%s\\Calendar\\today_numbers\\%d.png"%(location,now.day))
     calendar_today_label = Label(calendar_month_days_label,image =calendar_today_label_image, borderwidth=0)
 
     #Add to screen
@@ -2742,7 +2729,7 @@ def main():
     settings_title_image = ImageTk.PhotoImage(temp_image2)
     settings_title = Label(settings_header,image = settings_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh titlou.png"%(location))
+    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3033,7 +3020,7 @@ def main():
     #header
     home_page_header = Label(home_page,borderwidth=0,background = "#0d0029")
     #home_page_title_image
-    temp_image = Image.open("%s\\Home page\\title.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\title.png"%(location))
     a = int((405/1920)*w)+5
     b = int((171/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3041,7 +3028,7 @@ def main():
 
     home_page_title = Label(home_page_header,image = home_page_title_image, borderwidth=0)
 
-    temp_image = Image.open("%s\\akrh titlou.png"%(location))
+    temp_image = Image.open("%s\\akrh_titlou.png"%(location))
     a = int((142/1920)*w)+5
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3087,7 +3074,7 @@ def main():
 
     #Calendar button
         # setings button image
-    temp_image = Image.open("%s\\Home page\\calendar_button.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\calendar_button.png"%(location))
     a = int((36/1920)*w)+5
     b = int((40/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3110,7 +3097,7 @@ def main():
 
     #weather
         # weather button image
-    temp_image = Image.open("%s\\Home page\\weather.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\weather.png"%(location))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3120,7 +3107,7 @@ def main():
 
     #questions
         # questions button image
-    temp_image = Image.open("%s\\Home page\\questions.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\questions.png"%(location))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3130,7 +3117,7 @@ def main():
 
     #time
         # time button image
-    temp_image = Image.open("%s\\Home page\\time.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\time.png"%(location))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3140,7 +3127,7 @@ def main():
 
     #news
         # news button image
-    temp_image = Image.open("%s\\Home page\\news.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\news.png"%(location))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3150,7 +3137,7 @@ def main():
 
     #calls
         # calls button image
-    temp_image = Image.open("%s\\Home page\\calls.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\calls.png"%(location))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3160,7 +3147,7 @@ def main():
 
     #maps
         # maps button image
-    temp_image = Image.open("%s\\Home page\\maps.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\maps.png"%(location))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3170,7 +3157,7 @@ def main():
 
     #mail
         # mail button image
-    temp_image = Image.open("%s\\Home page\\mail.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\mail.png"%(location))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3180,7 +3167,7 @@ def main():
 
     #music
         # music button image
-    temp_image = Image.open("%s\\Home page\\music.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\music.png"%(location))
     a = int((200/1920)*w)+5
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3194,7 +3181,7 @@ def main():
 
     #Mic button
         # Mic button image
-    temp_image = Image.open("%s\\Home page\\microphone.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\microphone.png"%(location))
     a = int((23/1920)*w)+5
     b = int((45/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3203,7 +3190,7 @@ def main():
     home_page_mic_button = tk.Button(home_page_bottom_line, text = ' ', image = home_page_mic_button_image, borderwidth=0)
 
     #message history)
-    temp_image = Image.open("%s\\Home page\\message_history.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\message_history.png"%(location))
     a = int((950/1920)*w)
     b = int((325/1080)*h)+1
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
@@ -3227,7 +3214,7 @@ def main():
 
     #Enter button
         # setings button image
-    temp_image = Image.open("%s\\Home page\\enter_button.png"%(location))
+    temp_image = Image.open("%s\\Home_page\\enter_button.png"%(location))
     a = int((54/1920)*w)+5
     b = int((38/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
