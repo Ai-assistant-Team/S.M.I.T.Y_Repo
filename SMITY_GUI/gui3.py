@@ -6,7 +6,6 @@ import tkinter as tk
 from PIL import Image, ImageSequence, ImageTk
 from itertools import count, cycle
 import datetime
-import pathlib
 from tkinter import filedialog
 
 from spotipy.client import Spotify
@@ -63,7 +62,6 @@ def main():
                 self.after(self.delay, self.next_frame)
 
     def resize_gif(wi,hi):
-        location = pathlib.Path(__file__).parent.absolute()
         # Output (max) size
         size = wi , hi
 
@@ -926,7 +924,7 @@ def main():
     screen.geometry("%dx%d+0+0" % (w, h))
 
     screen.attributes('-fullscreen', True)
-    location = pathlib.Path(__file__).parent.absolute()
+    
     #############################################################################################################################################################################
     #      A       DDDDDD                A        PPPPPPPP    PPPPPPPP
     #     A A      D     D              A A       PP      PP  PP      PP
