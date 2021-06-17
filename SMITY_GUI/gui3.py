@@ -16,6 +16,7 @@ from translator import translateText
 from open_program import *
 from alarmClock import *
 
+
 def main():
     class ImageLabel(tk.Label):
         """
@@ -202,15 +203,17 @@ def main():
         global settings_voice_control_on
         global settings_speak_key_on
         global settings_wake_up_on
+        global user_name
         location = pathlib.Path(__file__).parent.absolute()
-        f = open("%s\\settings.txt"%(location), "w")
+
+        f = open('%s\\settings.txt'%(location), "w")
         #Gender
         f.write('S.M.I.T.Y. Gender : ')
         f.write(gender)
         f.write('\n')
         #Username
-        f.write('Username : ')
-        f.write(str(settings_user_name_text_field.get()))
+        u_n = 'Username : ' + user_name
+        f.write(u_n)
         f.write('\n')
         #Voice control
         if(settings_voice_control_on == 0):
@@ -240,8 +243,10 @@ def main():
         global settings_voice_control_on
         global settings_speak_key_on
         global settings_wake_up_on
+        global user_name
         location = pathlib.Path(__file__).parent.absolute()
-        f = open("%s\\settings.txt"%(location), "r")
+
+        f = open('%s\\settings.txt'%(location), "r")
         load_gender = f.readline()
         load_username = f.readline()
         load_settings_voice_control_on = f.readline()
@@ -252,16 +257,17 @@ def main():
         if(load_gender == 'S.M.I.T.Y. Gender : male\n'):
             settings_female_button.config(image = settings_female_off)
             settings_male_button.config(image = settings_male_on)
-            gender = 'mele'
+            gender = 'male'
         else:
             settings_female_button.config(image = settings_female_on)
             settings_male_button.config(image = settings_male_off)
-            gender = 'femele'
+            gender = 'female'
         #User name
         load_username = load_username.replace('Username : ','')
         load_username = load_username.replace('\n','')
         settings_user_name_text_field.delete(0, tk.END)
         settings_user_name_text_field.insert(0, load_username)
+        user_name = load_username
         #Voice control
         if(load_settings_voice_control_on == 'Voice control : 1\n'):
             settings_voice_control_on = 1
@@ -378,10 +384,12 @@ def main():
         settings.forget()
 
     def settings_go_to_about(event):
+        settings_save()
         about_page.pack(fill='both', expand =1)
         settings.forget()
 
     def settings_go_to_aplications(event):
+        settings_save()
         aplications.pack(fill='both', expand =1)
         settings.forget()
 
@@ -467,7 +475,6 @@ def main():
         add_aplication.forget()
 
     def add_aplication_add_button(event):
-        print(str(add_aplication_name_input.get()) + "\n"+str(add_aplication_location_input.get()))
         users_aplications.pack(fill='both', expand =1)
         add_aplication.forget()
 
@@ -911,9 +918,37 @@ def main():
             f.write(names[b])
             f.write(urls[b])
         f.close()
-
+        
         my_websites.pack(fill='both', expand =1)
+        names = [str. rstrip(name) for name in names ]
+        my_websites_url_1_name.config(text = names[0])
+        my_websites_url_2_name.config(text = names[1])
+        my_websites_url_3_name.config(text = names[2])
+        my_websites_url_4_name.config(text = names[3])
+        my_websites_url_5_name.config(text = names[4])
+        my_websites_url_6_name.config(text = names[5])
+        my_websites_url_7_name.config(text = names[6])
+        my_websites_url_8_name.config(text = names[7])
+        my_websites_url_9_name.config(text = names[8])
+        my_websites_url_10_name.config(text = names[9])
         add_website.forget()
+        
+
+    def load_buttons_text_websites():
+        websites_names = ["ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE"]
+        websites_url = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
+
+        users_urls_load(websites_names,websites_url)
+        my_websites_url_1_name.label['text'] = "Text updated" 
+        my_websites_url_2_name.config(my_websites_change_save_url_label_2,text = websites_names[1], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+        my_websites_url_3_name.config(my_websites_change_save_url_label_3,text = websites_names[2], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+        my_websites_url_4_name.config(my_websites_change_save_url_label_4,text = websites_names[3], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+        my_websites_url_5_name.config(my_websites_change_save_url_label_5,text = websites_names[4], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+        my_websites_url_6_name.config(my_websites_change_save_url_label_6,text = websites_names[5], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+        my_websites_url_7_name.config(my_websites_change_save_url_label_7,text = websites_names[6], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+        my_websites_url_8_name.config(my_websites_change_save_url_label_8,text = websites_names[7], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+        my_websites_url_9_name.config(my_websites_change_save_url_label_9,text = websites_names[8], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+        my_websites_url_10_name.config(my_websites_change_save_url_label_10,text = websites_names[9], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
 
     def add_websites_exit_fullscreen(event):
         screen.attributes('-fullscreen', False)
@@ -1136,7 +1171,7 @@ def main():
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     add_aplication_add_button_image = ImageTk.PhotoImage(temp_image2)
         #Add button
-    add_aplication_add_button_button = Button(add_aplication_backGroundImage_label, text = ' ', image = add_aplication_add_button_image, borderwidth=0, command=lambda:add_a_website ("<Button-1>,",9))
+    add_aplication_add_button_button = Button(add_aplication_backGroundImage_label, text = ' ', image = add_aplication_add_button_image, borderwidth=0, command=lambda:add_aplication_add_button ("<Button-1>,",9))
 
 
 
@@ -2721,6 +2756,8 @@ def main():
     settings_cloce_button_image = ImageTk.PhotoImage(temp_image2)
     settings_cloce_button = tk.Button(settings_header,image = settings_cloce_button_image, borderwidth=0, command = screen.destroy)
 
+
+
     temp_image = Image.open("%s\\exit_fullscreen_button.png"%(location))
     a = int((31/1920)*w)+5
     b = int((28/1080)*h)+5
@@ -2838,7 +2875,7 @@ def main():
         #define label
     settings_username_label = Label(settings_backGroundImage_label, text = ' ', image = settings_user_name_label_image, borderwidth=0)
         #get name
-
+    global user_name
     settings_user_name_text_field =tk.Entry(settings_backGroundImage_label, font = ("", 35), fg = "#47d9fe", width =100 , borderwidth =0,background = "#1f0830")
     settings_u_name ="<user name>"
 
@@ -2846,7 +2883,9 @@ def main():
         event.widget.delete(0, tk.END)
 
     def get_name(event):
-        print(str(settings_user_name_text_field.get()))
+        global user_name
+        user_name = str(settings_user_name_text_field.get())
+        
     settings_user_name_text_field.insert(0, settings_u_name)
     settings_user_name_text_field.bind("<Button-1>", on_click)
     settings_user_name_text_field.bind("<Return>", get_name)
