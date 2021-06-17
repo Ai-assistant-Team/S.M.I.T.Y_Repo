@@ -386,7 +386,6 @@ def main():
         location = ["ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location"]
         program_name = program_name +'\n'
 
-        location = pathlib.Path(__file__).parent.absolute()
         f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'r')
         for x in range(8):
             names[x] = f.readline()
@@ -1518,69 +1517,230 @@ def main():
         #Label
     users_aplications_backGroundImage_label = Label(users_aplications, image=users_aplications_new_backGroundImage, borderwidth=0)
     
+    users_aplications= tk.Frame()
+    #BackGround
+            #open image
+    users_aplications_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
+            #resize image
+    users_aplications_resized_backGroundImage = users_aplications_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
+
+    users_aplications_new_backGroundImage = ImageTk.PhotoImage(users_aplications_resized_backGroundImage)
+
+        #Label
+    users_aplications_backGroundImage_label = Label(users_aplications, image=users_aplications_new_backGroundImage, borderwidth=0)
+
     #header
-    # users_aplications_header = Label(users_aplications,borderwidth=0,background = "#0d0029")
-    # users_aplications_title_image = PhotoImage(file="%s\\Users_Aplications\\title.png"%(location))
-    # users_aplications_title = Label(users_aplications_header,image = users_aplications_title_image, borderwidth=0)
-    # users_aplications_title_aktri_image = PhotoImage(file="%s\\akrh_titlou.png"%(location))
-    # users_aplications_title_aktri = Label(users_aplications_header,image = users_aplications_title_aktri_image, borderwidth=0)
-    # users_aplications_cloce_button_image = PhotoImage(file="%s\\exit_button.png"%(location))
-    # users_aplications_cloce_button = tk.Button(users_aplications_header,image = users_aplications_cloce_button_image, borderwidth=0, command = screen.destroy)
-    # users_aplications_exit_fullscreen_button_image = PhotoImage(file="%s\\exit_fullscreen_button.png"%(location))
-    # users_aplications_exit_fullscreen_button = tk.Button(users_aplications_header,image = users_aplications_exit_fullscreen_button_image, borderwidth=0)
-    # users_aplications_minimize_button_image =PhotoImage(file="%s\\minimize_button.png"%(location))
-    # users_aplications_minimize_button = tk.Button(users_aplications_header,image = users_aplications_minimize_button_image, borderwidth=0)
-    # users_aplications_fullscreen_button_image = PhotoImage(file="%s\\fullscreen_button.png"%(location))
-    # users_aplications_fullscreen_button = tk.Button(users_aplications_header,image = users_aplications_fullscreen_button_image, borderwidth=0)
+    users_aplications_header = Label(users_aplications,borderwidth=0,background = "#0d0029")
+    #title
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Users_Aplications','title.png'))
+    a = int((512/1920)*w)+5
+    b = int((56/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_title_image = ImageTk.PhotoImage(temp_image2)
+    users_aplications_title = Label(users_aplications_header,image = users_aplications_title_image, borderwidth=0)
+    #akri titlou
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
+    a = int((142/1920)*w)+5
+    b = int((108/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_title_aktri_image = ImageTk.PhotoImage(temp_image2)
+    users_aplications_title_aktri = Label(users_aplications_header,image = users_aplications_title_aktri_image, borderwidth=0)
+    #exit button
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
+    a = int((31/1920)*w)+5
+    b = int((28/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_cloce_button_image = ImageTk.PhotoImage(temp_image2)
+    users_aplications_cloce_button = tk.Button(users_aplications_header,image = users_aplications_cloce_button_image, borderwidth=0, command = screen.destroy)
+    #exit fullscreen button
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
+    a = int((31/1920)*w)+5
+    b = int((28/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+    users_aplications_exit_fullscreen_button = tk.Button(users_aplications_header,image = users_aplications_exit_fullscreen_button_image, borderwidth=0)
 
-    # users_aplications_exit_fullscreen_button.bind("<Button-1>", users_aplications_exit_fullscreen)
-    # users_aplications_fullscreen_button.bind("<Button-1>",users_aplications_fullscreen)
-    # users_aplications_minimize_button.bind("<Button-1>", minimize)
+    #minimize window
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
+    a = int((31/1920)*w)+5
+    b = int((28/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_minimize_button_image = ImageTk.PhotoImage(temp_image2)
+    users_aplications_minimize_button = tk.Button(users_aplications_header,image = users_aplications_minimize_button_image, borderwidth=0)
+    #fullscreen button
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
+    a = int((62/1920)*w)+5
+    b = int((28/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+    users_aplications_fullscreen_button = tk.Button(users_aplications_header,image = users_aplications_fullscreen_button_image, borderwidth=0)
 
-    # #Home button
-    #     # setings button image
-    # users_aplications_home_button_image = PhotoImage(file="%s\\home-button.png"%(location))
-    #     #Add button
-    # users_aplications_home_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_home_button_image, borderwidth=0)
-    # users_aplications_home_button.bind("<Button-1>",users_aplications_go_to_home_page)
+    users_aplications_exit_fullscreen_button.bind("<Button-1>", my_websites_exit_fullscreen)
+    users_aplications_fullscreen_button.bind("<Button-1>",my_websites_fullscreen)
+    users_aplications_minimize_button.bind("<Button-1>", minimize)
 
-    # #User button
-    #     # setings button image
-    # users_aplications_user_button_image = PhotoImage(file="%s\\user-button.png"%(location))
-    #     #Add button
-    # users_aplications_user_button = tk.Button(users_aplications_header, image = users_aplications_user_button_image, borderwidth=0)
+    #back button
+        # Define image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
+    a = int((48/1920)*w)+5
+    b = int((34/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_back_button_image = ImageTk.PhotoImage(temp_image2)
+        #define button
+    users_aplications_back_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_back_button_image, borderwidth=0)
+    users_aplications_back_button.bind("<Button-1>",my_websites_go_to_aplications)
 
-    # #user text label
-    # users_aplications_user_text_label =Label(users_aplications_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    #Home button
+        # setings button image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
+    a = int((43/1920)*w)+5
+    b = int((43/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_home_button_image = ImageTk.PhotoImage(temp_image2)
+        #Add button
+    users_aplications_home_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_home_button_image, borderwidth=0)
+    users_aplications_home_button.bind("<Button-1>",my_websites_go_to_home_page)
 
-    # #back button
-    #     # Define image
-    # users_aplications_back_button_image = PhotoImage(file="%s\\back_button.png"%(location))
-    #     #define button
-    # users_aplications_back_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_back_button_image, borderwidth=0)
-    # users_aplications_back_button.bind("<Button-1>",users_aplications_go_to_settings)
+    #User button
+        # setings button image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
+    a = int((43/1920)*w)+5
+    b = int((43/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_user_button_image = ImageTk.PhotoImage(temp_image2)
+        #Add button
+    users_aplications_user_button = tk.Button(users_aplications_header, image = users_aplications_user_button_image, borderwidth=0)
 
-    # #add aplication button
-    #     #Define image
-    # users_aplications_add_apication_button_image = PhotoImage(file="%s\\Users_Aplications\\pluss_button.png"%(location))
-    #     #define button
-    # users_aplications_add_apication_button = tk.Button(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_add_apication_button_image, borderwidth=0)
-    # users_aplications_add_apication_button.bind("<Button-1>",users_aplications_go_to_add_aplications)
+    #user text label
+    users_aplications_user_text_label =Label(users_aplications_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+
+    #Change / Save websites buttons
+        # Define image 1
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'my_websites','change-save_url.png'))
+    a = int((376/1920)*w)+5
+    b = int((57/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_change_open_url_button_image = ImageTk.PhotoImage(temp_image2)
+        # Define image 2
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'my_websites','change-save_url_2.png'))
+    a = int((376/1920)*w)+5
+    b = int((57/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_change_open_url_button_image_2 = ImageTk.PhotoImage(temp_image2)
+        #define button
+            #1
+    users_aplications_change_save_url_label_1 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image_2, borderwidth=0)
+            #2
+    users_aplications_change_save_url_label_2 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image_2, borderwidth=0)
+            #3
+    users_aplications_change_save_url_label_3 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image_2, borderwidth=0)
+            #4
+    users_aplications_change_save_url_label_4 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image_2, borderwidth=0)
+            #5
+    users_aplications_change_save_url_label_5 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image_2, borderwidth=0)
+            #6
+    users_aplications_change_save_url_label_6 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image, borderwidth=0)
+            #7
+    users_aplications_change_save_url_label_7 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image, borderwidth=0)
+            #8
+    users_aplications_change_save_url_label_8 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image, borderwidth=0)
+            #9
+    users_aplications_change_save_url_label_9 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image, borderwidth=0)
+            #10
+    users_aplications_change_save_url_label_10 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image, borderwidth=0)
+
+    #load urls ans names
+    users_aplications_names = ["ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE"]
+    users_aplications_url = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
+
+    users_urls_load(users_aplications_names,users_aplications_url)
+
+    users_aplications_url_1_name =Label(users_aplications_change_save_url_label_1,text = users_aplications_names[0] , borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+    users_aplications_url_2_name =Label(users_aplications_change_save_url_label_2,text = users_aplications_names[1], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+    users_aplications_url_3_name =Label(users_aplications_change_save_url_label_3,text = users_aplications_names[2], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+    users_aplications_url_4_name =Label(users_aplications_change_save_url_label_4,text = users_aplications_names[3], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+    users_aplications_url_5_name =Label(users_aplications_change_save_url_label_5,text = users_aplications_names[4], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+    users_aplications_url_6_name =Label(users_aplications_change_save_url_label_6,text = users_aplications_names[5], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+    users_aplications_url_7_name =Label(users_aplications_change_save_url_label_7,text = users_aplications_names[6], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+    users_aplications_url_8_name =Label(users_aplications_change_save_url_label_8,text = users_aplications_names[7], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+    users_aplications_url_9_name =Label(users_aplications_change_save_url_label_9,text = users_aplications_names[8], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+    users_aplications_url_10_name =Label(users_aplications_change_save_url_label_10,text = users_aplications_names[9], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
+
+    #change seve url
+        # setings button image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'my_websites','go_to.png'))
+    a = int((90/1920)*w)+5
+    b = int((62/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_change_save_url_button_image = ImageTk.PhotoImage(temp_image2)
+    #change seve ur2
+        # setings button image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'my_websites','go_to_2.png'))
+    a = int((90/1920)*w)+5
+    b = int((62/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    users_aplications_change_save_url_button_image_2 = ImageTk.PhotoImage(temp_image2)
+        #Add button
+
+
+    users_aplications__user_button_1 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",0))
+    users_aplications__user_button_2 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",1))
+    users_aplications__user_button_3 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",2))
+    users_aplications__user_button_4 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",3))
+    users_aplications__user_button_5 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",4))
+    users_aplications__user_button_6 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",5))
+    users_aplications__user_button_7 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",6))
+    users_aplications__user_button_8 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",7))
+    users_aplications__user_button_9 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",8))
+    users_aplications__user_button_10 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",9))
 
     users_aplications_backGroundImage_label.place( relx=0.0, rely= 0.155 )
-    # users_aplications_header.place(relx=0.0, rely= 0.0, width = w,height =171)
-    # users_aplications_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=800, height=66)
-    # users_aplications_title_aktri.place(relx = 0.92, rely = 0.41, width=142, height=108)
-    # users_aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-    # users_aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
-    # users_aplications_minimize_button.place(relx = 0.945, rely = 0.0, width=31, height=28)
+    users_aplications_header.place(relx=0.0, rely= 0.0, width = w,height =171)
+    users_aplications_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=(512/1920)*w, height=(56/1080)*h)
+    users_aplications_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height =(108/1080)*h)
+    users_aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+    users_aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+    users_aplications_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+    users_aplications_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
+    users_aplications_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
+    users_aplications_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
+    users_aplications_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
-    # users_aplications_home_button.place(relx = 0.006, rely = 0.35, width=43, height=43)
-    # users_aplications_user_button.place(relx = 0.006, rely = 0.65, width=43, height=43)#-5x-5
-    # users_aplications_user_text_label.place(relx = 0.0295, rely = 0.7, width=44, height=43)
-    # users_aplications_back_button.place(relx = 0.006, rely = 0.05, width=48, height=34)
+    users_aplications_change_save_url_label_1.place(relx=0.255, rely= 0.075, width=((376/1920)*w), height=(57/1080)*h)
+    users_aplications_change_save_url_label_2.place(relx=0.255, rely=0.25, width=((376/1920)*w), height=(57/1080)*h)
+    users_aplications_change_save_url_label_3.place(relx=0.255, rely=0.425, width=((376/1920)*w), height=(57/1080)*h)
+    users_aplications_change_save_url_label_4.place(relx=0.255,rely=0.6, width=((376/1920)*w), height=(57/1080)*h)
+    users_aplications_change_save_url_label_5.place(relx=0.255, rely=0.775, width=((376/1920)*w), height=(57/1080)*h)
 
-    # users_aplications_add_apication_button.place(relx = 0.9, rely = 0.8, width=131, height=130)
+    users_aplications_change_save_url_label_6.place(relx=0.61, rely= 0.075, width=((376/1920)*w), height=(57/1080)*h)
+    users_aplications_change_save_url_label_7.place(relx=0.61, rely= 0.25, width=((376/1920)*w), height=(57/1080)*h)
+    users_aplications_change_save_url_label_8.place(relx=0.61, rely= 0.425, width=((376/1920)*w), height=(57/1080)*h)
+    users_aplications_change_save_url_label_9.place(relx=0.61, rely= 0.6, width=((376/1920)*w), height=(57/1080)*h)
+    users_aplications_change_save_url_label_10.place(relx=0.61, rely= 0.775, width=((376/1920)*w), height=(57/1080)*h)
+
+    users_aplications_url_1_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+    users_aplications_url_2_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+    users_aplications_url_3_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+    users_aplications_url_4_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+    users_aplications_url_5_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+    users_aplications_url_6_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+    users_aplications_url_7_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+    users_aplications_url_8_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+    users_aplications_url_9_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+    users_aplications_url_10_name.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(45/1080)*h)
+
+    users_aplications__user_button_1.place(relx=0.47, rely= 0.075, width=((90/1920)*w), height=(62/1080)*h)
+    users_aplications__user_button_2.place(relx=0.47, rely= 0.25, width=((90/1920)*w), height=(62/1080)*h)
+    users_aplications__user_button_3.place(relx=0.47, rely= 0.425, width=((90/1920)*w), height=(62/1080)*h)
+    users_aplications__user_button_4.place(relx=0.47, rely= 0.6, width=((90/1920)*w), height=(62/1080)*h)
+    users_aplications__user_button_5.place(relx=0.47, rely= 0.775, width=((90/1920)*w), height=(62/1080)*h)
+
+    users_aplications__user_button_6.place(relx=0.83, rely= 0.075, width=((90/1920)*w), height=(62/1080)*h)
+    users_aplications__user_button_7.place(relx=0.83, rely= 0.25, width=((90/1920)*w), height=(62/1080)*h)
+    users_aplications__user_button_8.place(relx=0.83, rely= 0.425, width=((90/1920)*w), height=(62/1080)*h)
+    users_aplications__user_button_9.place(relx=0.83, rely= 0.6, width=((90/1920)*w), height=(62/1080)*h)
+    users_aplications__user_button_10.place(relx=0.83, rely= 0.775, width=((90/1920)*w), height=(62/1080)*h)
+
     #############################################################################################################################################################################
     #   CCCCC   LL
     #  CC       LL
