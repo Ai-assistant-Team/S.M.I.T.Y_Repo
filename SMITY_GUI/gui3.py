@@ -981,7 +981,20 @@ def user_aplications_go_to_home_page(event):
 def users_programs_go_to_add_add_aplication(event,number):
     global program_number
     program_number = number
+    add_aplication_name_input.delete(0, tk.END)
+    add_aplication_location_input.delete(0, tk.END)
+    f = open(os.path.join(PATH_TO_SETTINGS,'users_programs.txt'),'r')
+    for x in range (10):
+        p_name = f.readline()
+        p_url = f.readline()
+        if x == number:
+            break
+    p_name = p_name.replace('\n','')
+    p_url = p_url.replace('\n','')
+    add_aplication_name_input.insert(0,str(p_name))
+    add_aplication_location_input.insert(0,str(p_url))
     add_aplication.pack(fill='both', expand =1)
+
     users_aplications.forget()
 
 def change_location_exit_fullscreen(event):
@@ -1415,7 +1428,7 @@ my_websites_user_button_9 = tk.Button(my_websites_backGroundImage_label, image =
 my_websites_user_button_10 = tk.Button(my_websites_backGroundImage_label, image = change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",9))
 
 my_websites_backGroundImage_label.place( relx=0.0, rely= 0.155 )
-my_websites_header.place(relx=0.0, rely= 0.0, width = w,height =171)
+my_websites_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
 my_websites_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=(512/1920)*w, height=(56/1080)*h)
 my_websites_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height =(108/1080)*h)
 my_websites_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
@@ -1615,7 +1628,7 @@ add_website_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w),
 
 
 add_website_name_label.place(relx = 0.05, rely = 0.2, width=((191/1920)*w), height=(53/1080)*h)
-add_website_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
+add_website_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.54, height=(84/1080)*h)
 add_website_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(70/1080)*h)
 
 add_website_location_label.place(relx = 0.05, rely = 0.4, width=((268/1920)*w), height=(56/1080)*h)
