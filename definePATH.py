@@ -2,18 +2,24 @@
 # Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
 #
 
+# Sources : https://stackoverflow.com/questions/6227590/finding-the-users-my-documents-path
 
 ## This script defines constants that store the paths to the root (RESOURCES)
 ## and and first level directories that contain the needed files for the other scripts to work
 import os
 
-# Get absolute path of root Folder
-root = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
+# Get absolute path to user's Documents Folder
+root = os.path.expanduser('~\\Documents')
+# Get absolute path of project's root Folder
+# root = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))
 
 # Root
-RESOURCES_PATH = os.path.join(root, 'Resources')
+ROOT_PATH = os.path.join(root, 'SMITY')
 
-# First Level Subfolders
+# Resources Folder (contains everything S.M.I.T.Y. needs)
+RESOURCES_PATH = os.path.join(ROOT_PATH, 'Resources')
+
+# First Level Resources Subfolders
 PATH_TO_NEWS = os.path.join(root, RESOURCES_PATH, 'News')
 PATH_TO_GUI = os.path.join(root, RESOURCES_PATH, 'GUI')
 MY_OUTPUT = os.path.join(root, PATH_TO_GUI, 'output.txt')
