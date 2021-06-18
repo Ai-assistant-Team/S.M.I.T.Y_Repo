@@ -8,7 +8,6 @@ from itertools import count, cycle
 import datetime
 from tkinter import filedialog
 
-from spotipy.client import Spotify
 import os
 
 from SMITY.definePATH import PATH_TO_GUI
