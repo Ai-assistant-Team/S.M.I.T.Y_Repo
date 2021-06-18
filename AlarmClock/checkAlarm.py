@@ -1,3 +1,7 @@
+"""
+Created on Fri Jun 18 
+@author: Τάσος Παπαδόπουλος
+"""
 import datetime
 
 def checkTime():
@@ -7,7 +11,7 @@ def checkTime():
         with open("hours.txt", "r") as f:
 
 
-            a = [a.strip() for a in f]
+            a = [a.strip() for a in f] #
 
         s = []
 
