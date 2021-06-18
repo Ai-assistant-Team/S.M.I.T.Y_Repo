@@ -7,9 +7,7 @@ def getTime():
         now = datetime.now()
 
         current_time = now.strftime("%H:%M:%S")
-        print("Current Time =", current_time)
-
-        return 0
+        return("Current Time =", current_time)
     except :
         return 1
 
