@@ -104,6 +104,18 @@ def main():
         calendar.pack(fill='both', expand =1)
         home_page.forget()
 
+    def home_page_mic():
+        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+        a1= f.readline()
+        a2= f.readline()
+        a3= f.readline()
+        a4= f.readline()
+        f.close()
+        if a4 == 'Speak key : 1\n':
+            home_page_mic_button.config(state ='normal')
+        else:
+            home_page_mic_button.config(state ='disable')
+
     def settings_save():
         global gender
         global settings_voice_control_on
@@ -294,6 +306,7 @@ def main():
     def settings_go_to_home(event):
         home_page.pack(fill='both', expand =1)
         settings_save()
+        home_page_mic()
         settings.forget()
 
     def settings_go_to_about(event):
@@ -441,10 +454,6 @@ def main():
         users_aplications.pack(fill='both', expand =1)
         add_aplication.forget()
         
-
-    def add_aplications_go_to_home_page(event):
-        home_page.pack(fill='both', expand =1)
-        add_aplication.forget()
 
     def add_aplication_add_button(event,program_name,program_location):
         names = ["ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM"]
@@ -982,10 +991,6 @@ def main():
     def change_location_browse_to_files(event):
         change_location_location_input.insert(0, file_browse())
 
-    def change_location_go_to_home_page(event):
-        home_page.pack(fill='both', expand =1)
-        change_location.forget()
-
     def change_protgram_location(event,name,file_location):
         names = ["Excel", "Word", "Acces", "Power Point", "Spotify", "Messenger", "Caclulator", "Notebook"]
         urls = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
@@ -1512,16 +1517,6 @@ def main():
     add_website_fullscreen_button.bind("<Button-1>",add_websites_fullscreen)
     add_website_minimize_button.bind("<Button-1>", minimize)
 
-    #Home button
-        # setings button image
-    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
-    a = int((43/1920)*w)+5
-    b = int((43/1080)*h)+5
-    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-    add_website_home_button_image = ImageTk.PhotoImage(temp_image2)
-        #Add button
-    add_website_home_button = tk.Button(add_website_header, text = ' ', image = add_website_home_button_image, borderwidth=0)
-    add_website_home_button.bind("<Button-1>",add_aplications_go_to_home_page)
 
     #User button
         # setings button image
@@ -1600,7 +1595,6 @@ def main():
     add_website_header.place(relx=0.0, y= 0.0, width = w,height =(171/1080)*h)
     add_website_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((846/1920)*w), height=(56/1080)*h)
     add_website_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
-    add_website_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
     add_website_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
     add_website_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     add_website_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
@@ -1936,16 +1930,6 @@ def main():
     change_location_fullscreen_button.bind("<Button-1>",change_location_fullscreen)
     change_location_minimize_button.bind("<Button-1>", minimize)
 
-    #Home button
-        # setings button image
-    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
-    a = int((43/1920)*w)+5
-    b = int((43/1080)*h)+5
-    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
-    change_location_home_button_image = ImageTk.PhotoImage(temp_image2)
-        #Add button
-    change_location_home_button = tk.Button(change_location_header, text = ' ', image = change_location_home_button_image, borderwidth=0)
-    change_location_home_button.bind("<Button-1>",change_location_go_to_home_page)
 
     #User button
         # setings button image
@@ -2038,7 +2022,6 @@ def main():
     change_location_header.place(relx=0.0, y= 0.0, width = w,height =(171/1080)*h)
     change_location_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((705/1920)*w), height=(56/1080)*h)
     change_location_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
-    change_location_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
     change_location_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
     change_location_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     change_location_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
@@ -3639,8 +3622,7 @@ def main():
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_mic_button_image = ImageTk.PhotoImage(temp_image2)
         #Add button
-    home_page_mic_button = tk.Button(home_page_bottom_line, text = ' ', image = home_page_mic_button_image, borderwidth=0)
-
+    home_page_mic_button = tk.Button(home_page_bottom_line, text = ' ', image = home_page_mic_button_image, borderwidth=0)        
     #message history)
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','message_history.png'))
     a = int((950/1920)*w)
@@ -3739,7 +3721,7 @@ def main():
     home_page_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
     home_page_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
-    home_page_gif_label.place(relx = 0.5, rely = 0.5,anchor ="center", width=((gif_w/1920)*w))
+    home_page_gif_label.place(relx = 0.5, rely = 0.5,anchor ="center", width=((260/1920)*w))
 
     home_page_weather_button.place(relx = 0.06, rely = 0.506,anchor ="center", width=((200/1920)*w), height=(185/1080)*h)
     home_page_questions_button.place(relx = 0.17, rely = 0.519,anchor ="center", width=((200/1920)*w), height=(185/1080)*h)
