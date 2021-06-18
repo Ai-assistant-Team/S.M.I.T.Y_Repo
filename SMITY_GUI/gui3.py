@@ -415,6 +415,7 @@ def main():
         settings2_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
     def settings2_location(event):
+        settings2_music_path_location_input.delete(0, tk.END)
         settings2_music_path_location_input.insert(0, filedialog.askdirectory())
 
     def settings2_load_spotify_username_and_music_path():
@@ -3461,9 +3462,9 @@ def main():
         #Label
     home_page_backGroundImage_label = Label(home_page, image=home_page_new_backGroundImage, borderwidth=0)
     #GIF
-    a = int ((260/1920)*w)
-    b = int ((270/1080)*h)
-    resize_gif(a,b)
+    gif_w = int ((260/1920)*w)
+    gif_h = int ((270/1080)*h)
+    resize_gif(gif_w,gif_h)
     home_page_gif_label = ImageLabel(home_page,borderwidth=0)
     home_page_gif_label.load(os.path.join(PATH_TO_GUI,'aaa.gif'))
 
@@ -3659,7 +3660,6 @@ def main():
                 for line in last_lines:
                     string += line + '\n'
                 string = string[:-1]
-                print(string)
                 message_history_label_text_field.config(text = string)
         except:
             return 1
@@ -3730,7 +3730,7 @@ def main():
     #add to Home page
     home_page.pack(fill='both', expand =1)
     home_page_backGroundImage_label.place( relx=0.0, rely= 0.15 )
-    home_page_header.place(relx=0.0, y= 0.0, relwidth = 1.0,height =171)
+    home_page_header.place(relx=0.0, y= 0.0, relwidth = 1.0,height =(171/1080)*h)
     home_page_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((405/1920)*w), height=(171/1080)*h)
     home_page_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height=(108/1080)*h)
     home_page_calendar_button.place(relx = 0.006, rely = 0.65, width=((36/1920)*w), height=(40/1080)*h)
@@ -3739,7 +3739,7 @@ def main():
     home_page_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
     home_page_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
-    home_page_gif_label.place(relx = 0.5, rely = 0.5,anchor ="center", width=((260/1920)*w))
+    home_page_gif_label.place(relx = 0.5, rely = 0.5,anchor ="center", width=((gif_w/1920)*w))
 
     home_page_weather_button.place(relx = 0.06, rely = 0.506,anchor ="center", width=((200/1920)*w), height=(185/1080)*h)
     home_page_questions_button.place(relx = 0.17, rely = 0.519,anchor ="center", width=((200/1920)*w), height=(185/1080)*h)
@@ -3754,7 +3754,7 @@ def main():
     message_history_label.place(relx = 0.005, rely = 0.64, width=((950/1920)*w), height=(325/1080)*h)
     message_history_label_text_field.place(relx = 0.008, rely = 0.03, relwidth=0.9, relheight=0.9)
 
-    home_page_bottom_line.place(relx=0.0, rely= 0.9515, relwidth = 1.0,height =52)
+    home_page_bottom_line.place(relx=0.0, rely= 0.9515, relwidth = 1.0,height =(52/1080)*h)
     home_page_enter_button.place(relx = 0.965, rely = 0.13, width=((54/1920)*w), height=(38/1080)*h)
     home_page_mic_button.place(relx = 0.005, rely = 0.06, width=((23/1920)*w), height=(45/1080)*h)
     home_page_comand_text_field.place(relx=0.03, rely= 0.12, relwidth = 0.3,height =(36/1080)*h)
