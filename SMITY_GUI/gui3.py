@@ -117,7 +117,7 @@ def main():
         f.write(gender)
         f.write('\n')
         #Username
-        u_n = 'Username : ' + user_name
+        u_n = 'Username: ' + user_name
         f.write(u_n)
         f.write('\n')
         #Voice control
@@ -348,29 +348,34 @@ def main():
         change_location_name_input.insert(0, name)
         aplications.forget()
 
-    # def users_aplications_exit_fullscreen(event):
-    #     screen.attributes('-fullscreen', False)
-    #     users_aplications_cloce_button.place_forget()
-    #     users_aplications_exit_fullscreen_button.place_forget()
-    #     users_aplications_fullscreen_button.place(relx = 0.96, rely = 0.0, width=62, height=28)
+    def settings_go_to_settings2(event):
+        settings.forget()
+        settings2.pack(fill='both', expand =1)
 
-    # def users_aplications_fullscreen(event):
-    #     screen.attributes('-fullscreen', True)
-    #     users_aplications_fullscreen_button.place_forget()
-    #     users_aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
-    #     users_aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
+    def settings2_go_to_home_page(event):
+        settings2.forget()
+        home_page.pack(fill='both', expand =1)
 
-    # def users_aplications_go_to_settings(event):
-    #     settings.pack(fill='both', expand =1)
-    #     users_aplications.forget()
+    def settings2_go_to_settings(event):
+        settings2.forget()
+        settings.pack(fill='both', expand =1)
 
-    # def users_aplications_go_to_home_page(event):
-    #     home_page.pack(fill='both', expand =1)
-    #     users_aplications.forget()
 
-    # def users_aplications_go_to_add_aplications(event):
-    #     add_aplication.pack(fill='both', expand =1)
-    #     users_aplications.forget()
+    def settings2_exit_fullscreen(event):
+        screen.attributes('-fullscreen', False)
+        settings2_cloce_button.place_forget()
+        settings2_exit_fullscreen_button.place_forget()
+        settings2_fullscreen_button.place(relx = 0.96, rely = 0.0,width=((62/1920)*w), height =(28/1080)*h)
+
+    def settings2_fullscreen(event):
+        screen.attributes('-fullscreen', True)
+        settings2_fullscreen_button.place_forget()
+        settings2_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+        settings2_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+
+    def settings2_location(event):
+        settings2_music_path_location_input.insert(0, filedialog.askdirectory())
+
 
     def add_aplication_go_to_users_aplications(event):
         users_aplications.pack(fill='both', expand =1)
@@ -381,25 +386,35 @@ def main():
         home_page.pack(fill='both', expand =1)
         add_aplication.forget()
 
-    def add_aplication_add_button(event,program_name,program_url):
-        names = ["Excel", "Word\n", "Acces\n", "Power Point\n", "Spotify\n", "Messernger\n", "Calculator\n", "Notepad\n"]
-        location = ["ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location"]
-        program_name = program_name +'\n'
-
-        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'r')
-        for x in range(8):
+    def add_aplication_add_button(event,program_name,program_location):
+        names = ["ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM"]
+        location = ["ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location"]
+        program_name = program_name
+        global program_number
+        f = open(os.path.join(PATH_TO_SETTINGS,'users_programs.txt'),'r')
+        for x in range(10):
             names[x] = f.readline()
             location[x] = f.readline()
         f.close()
-        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'w')
-        for b in range(8):
+        names[program_number] = program_name +'\n'
+        location[program_number] = program_location +'\n'
+        f = open(os.path.join(PATH_TO_SETTINGS,'users_programs.txt'),'w')
+        for b in range(10):
             f.write(names[b])
-            if names[b] == program_name:
-                f.write(program_url)+'\n'
-            else:
-                f.write(location[b])
+            f.write(location[b])
         f.close()
         users_aplications.pack(fill='both', expand =1)
+        names = [str. rstrip(name) for name in names ]
+        users_aplications_url_1_name.config(text = names[0])
+        users_aplications_url_2_name.config(text = names[1])
+        users_aplications_url_3_name.config(text = names[2])
+        users_aplications_url_4_name.config(text = names[3])
+        users_aplications_url_5_name.config(text = names[4])
+        users_aplications_url_6_name.config(text = names[5])
+        users_aplications_url_7_name.config(text = names[6])
+        users_aplications_url_8_name.config(text = names[7])
+        users_aplications_url_9_name.config(text = names[8])
+        users_aplications_url_10_name.config(text = names[9])
         add_aplication.forget()
 
     def add_aplication_exit_fullscreen (event):
@@ -801,6 +816,7 @@ def main():
             urls[x] = temp.replace('\n','')
         f.close()
 
+
     def my_websites_go_to_add_website(event,number):
         global website_number
         website_number = number
@@ -842,7 +858,6 @@ def main():
         f.close()
 
         my_websites.pack(fill='both', expand =1)
-        my_websites.pack(fill='both', expand =1)
         names = [str. rstrip(name) for name in names ]
         my_websites_url_1_name.config(text = names[0])
         my_websites_url_2_name.config(text = names[1])
@@ -854,7 +869,6 @@ def main():
         my_websites_url_8_name.config(text = names[7])
         my_websites_url_9_name.config(text = names[8])
         my_websites_url_10_name.config(text = names[9])
-        add_website.forget()
         add_website.forget()
 
     def add_websites_exit_fullscreen(event):
@@ -868,6 +882,26 @@ def main():
         add_website_fullscreen_button.place_forget()
         add_website_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
         add_website_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+
+    def users_programs_load(names,urls):
+        f = open(os.path.join(PATH_TO_SETTINGS,'users_programs.txt'),'r')
+        for x in range(10):
+            temp = f.readline()
+            names[x] = temp.replace('\n','')
+            temp = f.readline()
+            urls[x] = temp.replace('\n','')
+        f.close()
+    
+    def users_programs_go_to_aplications(event):
+        aplications.pack(fill='both', expand =1)
+        users_aplications.forget()
+
+
+    def users_programs_go_to_add_add_aplication(event,number):
+        global program_number
+        program_number = number
+        add_aplication.pack(fill='both', expand =1)
+        users_aplications.forget()
 
     def change_location_exit_fullscreen(event):
         screen.attributes('-fullscreen', False)
@@ -912,10 +946,23 @@ def main():
         f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'w')
         for b in range(8):
             f.write(names[b] + '\n')
-            f.write(urls[b] + '\n')
+            f.write(urls[b] )
         f.close()
+
         aplications.pack(fill='both', expand =1)
         change_location.forget()
+    
+    def users_apps_exit_fullscreen (event):
+        screen.attributes('-fullscreen', False)
+        users_aplications_cloce_button.place_forget()
+        users_aplications_exit_fullscreen_button.place_forget()
+        users_aplications_fullscreen_button.place(relx = 0.96, rely = 0.0,width=((62/1920)*w), height =(28/1080)*h)
+
+    def users_apps_fullscreen(event):
+        screen.attributes('-fullscreen', True)
+        users_aplications_fullscreen_button.place_forget()
+        users_aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
+        users_aplications_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
     screen = tk.Tk()
     screen.title("Home")
@@ -1575,8 +1622,8 @@ def main():
     users_aplications_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
     users_aplications_fullscreen_button = tk.Button(users_aplications_header,image = users_aplications_fullscreen_button_image, borderwidth=0)
 
-    users_aplications_exit_fullscreen_button.bind("<Button-1>", my_websites_exit_fullscreen)
-    users_aplications_fullscreen_button.bind("<Button-1>",my_websites_fullscreen)
+    users_aplications_exit_fullscreen_button.bind("<Button-1>", users_apps_exit_fullscreen)
+    users_aplications_fullscreen_button.bind("<Button-1>",users_apps_fullscreen)
     users_aplications_minimize_button.bind("<Button-1>", minimize)
 
     #back button
@@ -1588,7 +1635,7 @@ def main():
     users_aplications_back_button_image = ImageTk.PhotoImage(temp_image2)
         #define button
     users_aplications_back_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_back_button_image, borderwidth=0)
-    users_aplications_back_button.bind("<Button-1>",my_websites_go_to_aplications)
+    users_aplications_back_button.bind("<Button-1>",users_programs_go_to_aplications)
 
     #Home button
         # setings button image
@@ -1650,10 +1697,10 @@ def main():
     users_aplications_change_save_url_label_10 = Label(users_aplications_backGroundImage_label, text = ' ', image = users_aplications_change_open_url_button_image, borderwidth=0)
 
     #load urls ans names
-    users_aplications_names = ["ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE"]
+    users_aplications_names = ["ADD WEBSITE" ,"ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE"]
     users_aplications_url = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
 
-    users_urls_load(users_aplications_names,users_aplications_url)
+    users_programs_load(users_aplications_names,users_aplications_url)
 
     users_aplications_url_1_name =Label(users_aplications_change_save_url_label_1,text = users_aplications_names[0] , borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
     users_aplications_url_2_name =Label(users_aplications_change_save_url_label_2,text = users_aplications_names[1], borderwidth=0,background = "#167f95",fg = "#47d9fe", font = ("", 30))
@@ -1683,16 +1730,16 @@ def main():
         #Add button
 
 
-    users_aplications__user_button_1 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",0))
-    users_aplications__user_button_2 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",1))
-    users_aplications__user_button_3 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",2))
-    users_aplications__user_button_4 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",3))
-    users_aplications__user_button_5 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",4))
-    users_aplications__user_button_6 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",5))
-    users_aplications__user_button_7 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",6))
-    users_aplications__user_button_8 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",7))
-    users_aplications__user_button_9 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",8))
-    users_aplications__user_button_10 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:my_websites_go_to_add_website ("<Button-1>",9))
+    users_aplications__user_button_1 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",0))
+    users_aplications__user_button_2 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",1))
+    users_aplications__user_button_3 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",2))
+    users_aplications__user_button_4 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",3))
+    users_aplications__user_button_5 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",4))
+    users_aplications__user_button_6 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",5))
+    users_aplications__user_button_7 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",6))
+    users_aplications__user_button_8 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",7))
+    users_aplications__user_button_9 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",8))
+    users_aplications__user_button_10 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",9))
 
     users_aplications_backGroundImage_label.place( relx=0.0, rely= 0.155 )
     users_aplications_header.place(relx=0.0, rely= 0.0, width = w,height =171)
@@ -2796,6 +2843,178 @@ def main():
 
     calendar_today_label.place(relx = get_todays_x_rel_position(), rely = get_todays_y_rel_position(), width=((191/1920)*w), height=(107/1080)*h)
     #############################################################################################################################################################################
+    #  SSSSSSSS  22  22
+    #  S         22  22 
+    #  SSSSSSSS  22  22
+    #         S  22  22
+    #  SSSSSSSS  22  22
+    #############################################################################################################################################################################
+    settings2 = tk.Frame(screen)
+    #BackGround
+            #open image
+    settings2_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
+            #resize image
+    settings2_resized_backGroundImage = settings2_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
+
+    settings2_new_backGroundImage = ImageTk.PhotoImage(settings2_resized_backGroundImage)
+
+        #Label
+    settings2_backGroundImage_label = Label(settings2, image=settings2_new_backGroundImage, borderwidth=0)
+    #header
+    settings2_header = Label(settings2,borderwidth=0,background = "#0d0029")
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','title.png'))
+    a = int(((670/1920)*w)+5)
+    b = int((57/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_title_image = ImageTk.PhotoImage(temp_image2)
+    settings2_title = Label(settings2_header,image = settings2_title_image, borderwidth=0)
+
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
+    a = int((142/1920)*w)+5
+    b = int((108/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_title_aktri_image = ImageTk.PhotoImage(temp_image2)
+    settings2_title_aktri = Label(settings2_header,image = settings2_title_aktri_image, borderwidth=0)
+
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
+    a = int((31/1920)*w)+5
+    b = int((28/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_cloce_button_image = ImageTk.PhotoImage(temp_image2)
+    settings2_cloce_button = tk.Button(settings2_header,image = settings2_cloce_button_image, borderwidth=0, command = screen.destroy)
+
+
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
+    a = int((31/1920)*w)+5
+    b = int((28/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+    settings2_exit_fullscreen_button = tk.Button(settings2_header,image = settings2_exit_fullscreen_button_image, borderwidth=0)
+
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
+    a = int((31/1920)*w)+5
+    b = int((28/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_minimize_button_image = ImageTk.PhotoImage(temp_image2)
+    settings2_minimize_button = tk.Button(settings2_header,image = settings2_minimize_button_image, borderwidth=0)
+
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
+    a = int((62/1920)*w)+5
+    b = int((28/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
+    settings2_fullscreen_button = tk.Button(settings2_header,image = settings2_fullscreen_button_image, borderwidth=0)
+
+    settings2_exit_fullscreen_button.bind("<Button-1>", settings2_exit_fullscreen)
+    settings2_fullscreen_button.bind("<Button-1>",settings2_fullscreen)
+    settings2_minimize_button.bind("<Button-1>", minimize)
+
+    #Home button
+        # setings button image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
+    a = int((43/1920)*w)+5
+    b = int((43/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_home_button_image = ImageTk.PhotoImage(temp_image2)
+
+    #Add button
+    settings2_home_button = tk.Button(settings2_header, text = ' ', image = settings2_home_button_image, borderwidth=0)
+    settings2_home_button.bind("<Button-1>",settings2_go_to_home_page)
+
+    #User button
+        # setings button image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
+    a = int((43/1920)*w)+5
+    b = int((43/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_user_button_image = ImageTk.PhotoImage(temp_image2)
+        #Add button
+    settings2_user_button = tk.Button(settings2_header, image = settings2_user_button_image, borderwidth=0)
+
+    #user text label
+    settings2_user_text_label =Label(settings2_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+
+    #back button
+        # Define image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
+    a = int((48/1920)*w)+5
+    b = int((34/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_back_button_image = ImageTk.PhotoImage(temp_image2)
+        #define button
+    settings2_back_button = tk.Button(settings2_header, text = ' ', image = settings2_back_button_image, borderwidth=0)
+
+    settings2_back_button.bind("<Button-1>",settings2_go_to_settings)
+
+     #name text spot label
+        #label
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','text_spot.png'))
+    a = int(0.544*w)
+    b = int((84/1080)*h)
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_text_spot_label_image = ImageTk.PhotoImage(temp_image2)
+    settings2_spotify_user_name_text_spot_label =Label(settings2_backGroundImage_label, borderwidth=0, image = settings2_text_spot_label_image)
+        #input
+    settings2_spotify_user_name_input = tk.Entry(settings2_spotify_user_name_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+    
+    settings2_music_path_location_text_spot_label =Label(settings2_backGroundImage_label, borderwidth=0, image = settings2_text_spot_label_image)
+        #input
+    settings2_music_path_location_input = tk.Entry(settings2_music_path_location_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+
+    #browse to files button
+        # Define image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','browse_to_files.png'))
+    a = int((164/1920)*w)+5
+    b = int((217/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_browse_to_files_button_image = ImageTk.PhotoImage(temp_image2)
+        #define button
+    settings2_browse_to_files_button = tk.Button(settings2_backGroundImage_label, image = settings2_browse_to_files_button_image, borderwidth=0)
+    settings2_browse_to_files_button.bind("<Button-1>",settings2_location)
+
+    #spotify username
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','spotify_username.png'))
+    a = int((331/1920)*w)+5
+    b = int((60/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_spotify_username_image = ImageTk.PhotoImage(temp_image2)
+    settings2_spotify_username = Label(settings2_backGroundImage_label,image = settings2_spotify_username_image, borderwidth=0)
+
+    #music path
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','music_path.png'))
+    a = int((331/1920)*w)+5
+    b = int((60/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings2_music_path_image = ImageTk.PhotoImage(temp_image2)
+    settings2_smusic_path = Label(settings2_backGroundImage_label,image = settings2_music_path_image, borderwidth=0)
+
+
+    #add to Settings
+    settings2_backGroundImage_label.place( relx=0.0, rely= 0.155 )
+    settings2_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
+    settings2_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((670/1920)*w), height =(57/1080)*h)
+    settings2_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height =(108/1080)*h)
+    settings2_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+    settings2_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+    settings2_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
+
+    settings2_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
+    settings2_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
+    settings2_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
+    settings2_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
+
+    settings2_spotify_user_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
+    settings2_spotify_user_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(70/1080)*h)
+    settings2_spotify_username.place(relx = 0.05, rely = 0.185, width=((331/1920)*w), height=(60/1080)*h)
+
+    settings2_music_path_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.544, height=(84/1080)*h)
+    settings2_music_path_location_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, height=(70/1080)*h)
+    settings2_smusic_path.place(relx = 0.05, rely = 0.38, width=((331/1920)*w), height=(60/1080)*h)
+
+    settings2_browse_to_files_button.place(relx = 0.83, rely = 0.366, width=((164/1920)*w), height=(217/1080)*h)
+
+
+    #############################################################################################################################################################################
     #  SSSSSSSS
     #  S
     #  SSSSSSSS
@@ -2898,6 +3117,18 @@ def main():
     settings_back_button = tk.Button(settings_header, text = ' ', image = settings_back_button_image, borderwidth=0)
 
     settings_back_button.bind("<Button-1>",settings_go_to_home)
+
+    #Next button
+        # Define image
+    temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button2.png'))
+    a = int((48/1920)*w)+5
+    b = int((34/1080)*h)+5
+    temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
+    settings_next_button_image = ImageTk.PhotoImage(temp_image2)
+        #define button
+    settings_next_button = tk.Button(settings_header, text = ' ', image = settings_next_button_image, borderwidth=0)
+
+    settings_next_button.bind("<Button-1>",settings_go_to_settings2)
         
     #smity gender
         # Define image
@@ -3051,6 +3282,8 @@ def main():
     settings_applications_button = tk.Button(settings_backGroundImage_label, text = ' ', image = settings_applicatons_button_image, borderwidth=0)
     settings_applications_button.bind("<Button-1>",settings_go_to_aplications)
 
+    settings_load()
+
     #add to Settings
     settings_backGroundImage_label.place( relx=0.0, rely= 0.155 )
     settings_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
@@ -3080,11 +3313,12 @@ def main():
     settings_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
     settings_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
     settings_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
+    settings_next_button.place(relx = 0.04, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
     settings_info_button.place(relx = 0.1, rely = 0.625,width=((206/1920)*w), height =(275/1080)*h)
     settings_applications_button.place(relx = 0.8, rely = 0.625, width=((325/1920)*w), height =(275/1080)*h)
 
-    settings_load()
+    
     #############################################################################################################################################################################
     #    H    H
     #    H    H
