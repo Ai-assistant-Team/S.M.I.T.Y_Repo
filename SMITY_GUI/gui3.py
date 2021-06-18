@@ -74,7 +74,8 @@ def main():
         def thumbnails(frames):
             for frame in frames:
                 thumbnail = frame.copy()
-                thumbnail.thumbnail(size, Image.ANTIALIAS)
+                #thumbnail.thumbnail(size, Image.ANTIALIAS)
+                thumbnail = thumbnail.resize(size, Image.ANTIALIAS)
                 yield thumbnail
 
         frames = thumbnails(frames)
@@ -82,7 +83,7 @@ def main():
         # Save output
         om = next(frames) # Handle first frame separately
         om.info = im.info # Copy sequence info
-        om.save("aaa.gif", save_all=True, append_images=list(frames))
+        om.save(os.path.join(PATH_TO_GUI, 'aaa.gif'), save_all=True, append_images=list(frames))
 
     def home_page_go_to_setings(event):
         settings.pack(fill='both', expand =1)
