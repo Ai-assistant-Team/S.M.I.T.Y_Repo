@@ -12,7 +12,7 @@ def produceFernet(aKey, prime5dig):
     
     try:
     
-        prime5dig = prime5dig                                                    #This is a constant used to produce the salt
+        # prime5dig This is a constant used to produce the salt
         salt = prime5dig.to_bytes(16, 'big')                                     #I do not use random salt, because then I would have to save the salt value somewhere, 
                                                                                      #in order to be able to decrypt the encrypted message at any time
     
