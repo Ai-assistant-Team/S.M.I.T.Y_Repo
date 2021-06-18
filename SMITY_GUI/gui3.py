@@ -111,6 +111,14 @@ def main():
         global settings_speak_key_on
         global settings_wake_up_on
         global user_name
+        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+        a = f.readline()
+        a = f.readline()
+        a = f.readline()
+        a = f.readline()
+        a = f.readline()
+        s = f.readline()
+        m = f.readline()
         f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'w')
         #Gender
         f.write('S.M.I.T.Y. Gender : ')
@@ -141,6 +149,8 @@ def main():
             f.write('Voice wake up : 2\n')
         else:
             f.write('Voice wake up : 1\n')
+        f.write(s)
+        f.write(m)
         f.close()
 
     def settings_load():
@@ -352,6 +362,27 @@ def main():
         settings.forget()
         settings2.pack(fill='both', expand =1)
 
+    def seve_settings2(event):
+        spotify_u_n = str(settings2_spotify_user_name_input.get())
+        music_p = str(settings2_music_path_location_input.get())
+        set_list = ['f','f','f','f','f','f','f',]
+        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+        set_list[0] = f.readline()
+        set_list[1] = f.readline()
+        set_list[2] = f.readline()
+        set_list[3] = f.readline()
+        set_list[4] = f.readline()
+        set_list[5] = 'Spotify username : '+ spotify_u_n+'\n'
+        set_list[6] = 'Music path : '+ music_p+'\n'
+        f.close()
+        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'w')
+        for x in range (7):
+            f.write(set_list[x] )
+        f.close()
+    
+
+
+
     def settings2_go_to_home_page(event):
         settings2.forget()
         home_page.pack(fill='both', expand =1)
@@ -375,6 +406,24 @@ def main():
 
     def settings2_location(event):
         settings2_music_path_location_input.insert(0, filedialog.askdirectory())
+
+    def settings2_load_spotify_username_and_music_path():
+        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+        a = f.readline()
+        b = f.readline()
+        c = f.readline()
+        d = f.readline()
+        e = f.readline()
+        user_name = f.readline()
+        path = f.readline()
+        f.close()
+
+        user_name = user_name.replace('Spotify username : ','')
+        path = path.replace('Music path : ','')
+
+        settings2_spotify_user_name_input.insert(0, user_name)
+        settings2_music_path_location_input.insert(0, path)
+
 
 
     def add_aplication_go_to_users_aplications(event):
@@ -937,11 +986,12 @@ def main():
             urls[x] = f.readline()
             urls[x] = str(urls[x])
         f.close()
-        name = name.lower()
+        
+
         for j in range(8):
             if name == names[j]:
                 names[j] = name
-                urls[j] = str(file_location)
+                urls[j] = str.rstrip(str(file_location)) + '\n'
                 break
         f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'w')
         for b in range(8):
@@ -1049,7 +1099,12 @@ def main():
     add_aplication_user_button = tk.Button(add_aplication_header, image = add_aplication_user_button_image, borderwidth=0)
 
     #user text label
-    add_aplication_user_text_label =Label(add_aplication_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    add_aplication_user_text_label =Label(add_aplication_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Name label
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','name.png'))
@@ -1124,7 +1179,7 @@ def main():
     add_aplication_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((1336/1920)*w), height=(171/1080)*h)
     add_aplication_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
     add_aplication_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
-    add_aplication_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
+    add_aplication_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     add_aplication_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
     add_aplication_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
     add_aplication_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
@@ -1244,7 +1299,12 @@ def main():
     my_websites_user_button = tk.Button(my_websites_header, image = my_websites_user_button_image, borderwidth=0)
 
     #user text label
-    my_websites_user_text_label =Label(my_websites_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    my_websites_user_text_label =Label(my_websites_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Change / Save websites buttons
         # Define image 1
@@ -1335,7 +1395,7 @@ def main():
     my_websites_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
     my_websites_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
     my_websites_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
-    my_websites_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
+    my_websites_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     my_websites_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
     my_websites_change_save_url_label_1.place(relx=0.255, rely= 0.075, width=((376/1920)*w), height=(57/1080)*h)
@@ -1463,7 +1523,12 @@ def main():
     add_website_user_button = tk.Button(add_website_header, image = add_website_user_button_image, borderwidth=0)
 
     #user text label
-    add_website_user_text_label =Label(add_website_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    add_website_user_text_label =Label(add_website_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Name label
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','name.png'))
@@ -1526,7 +1591,7 @@ def main():
     add_website_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
     add_website_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
     add_website_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
-    add_website_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
+    add_website_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     add_website_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
     add_website_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
     add_website_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
@@ -1659,7 +1724,12 @@ def main():
     users_aplications_user_button = tk.Button(users_aplications_header, image = users_aplications_user_button_image, borderwidth=0)
 
     #user text label
-    users_aplications_user_text_label =Label(users_aplications_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    users_aplications_user_text_label =Label(users_aplications_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #Change / Save websites buttons
         # Define image 1
@@ -1750,7 +1820,7 @@ def main():
     users_aplications_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
     users_aplications_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
     users_aplications_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
-    users_aplications_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
+    users_aplications_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     users_aplications_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
     users_aplications_change_save_url_label_1.place(relx=0.255, rely= 0.075, width=((376/1920)*w), height=(57/1080)*h)
@@ -1888,7 +1958,13 @@ def main():
     change_location_browse_to_files_button.bind("<Button-1>",change_location_browse_to_files)
 
     #user text label
-    change_location_user_text_label =Label(change_location_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    change_location_user_text_label =Label(change_location_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+
 
     #Name label
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','name.png'))
@@ -1951,7 +2027,7 @@ def main():
     change_location_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
     change_location_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
     change_location_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
-    change_location_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
+    change_location_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     change_location_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
     change_location_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
     change_location_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
@@ -2060,7 +2136,12 @@ def main():
     aplications_user_button = tk.Button(aplications_header, image = aplications_user_button_image, borderwidth=0)
 
     #user text label
-    aplications_user_text_label =Label(aplications_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    aplications_user_text_label =Label(aplications_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #back button
         # Define image
@@ -2198,7 +2279,7 @@ def main():
 
     aplications_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height=(43/1080)*h)
     aplications_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)
-    aplications_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height=(43/1080)*h)
+    aplications_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     aplications_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height=(34/1080)*h)
 
 
@@ -2235,7 +2316,7 @@ def main():
     about_page = tk.Frame(screen)
     #BackGround
             #open image
-    about_page_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'background.png'))
+    about_page_backGroundImage = Image.open(os.path.join(PATH_TO_GUI,'About','background.png'))
             #resize image
     about_page_resized_backGroundImage = about_page_backGroundImage.resize((w, h-160),Image.ANTIALIAS)
     about_page_new_backGroundImage = ImageTk.PhotoImage(about_page_resized_backGroundImage)
@@ -2324,7 +2405,12 @@ def main():
         #Add button
     about_page_user_button = tk.Button(about_page_header, text = ' ', image = about_page_user_button_image, borderwidth=0)
     #user text label
-    about_page_user_text_label =Label(about_page_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    about_page_user_text_label =Label(about_page_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
 
     #add to window
@@ -2335,7 +2421,7 @@ def main():
     about_page_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
     about_page_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
     about_page_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
-    about_page_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height =(43/1080)*h)
+    about_page_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     about_page_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
     about_page_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
     about_page_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
@@ -2431,7 +2517,12 @@ def main():
     calendar_user_button = tk.Button(calendar_header, image = calendar_user_button_image, borderwidth=0)
 
     #user text label
-    calendar_user_text_label =Label(calendar_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    calendar_user_text_label =Label(calendar_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #back button
         # Define image
@@ -2828,7 +2919,7 @@ def main():
 
     calendar_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
     calendar_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
-    calendar_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w), height =(43/1080)*h)
+    calendar_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     calendar_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
     calendar_month_label.place(relx = 0.38, rely = 0.03, width=((323/1920)*w), height =(65/1080)*h)
@@ -2932,7 +3023,12 @@ def main():
     settings2_user_button = tk.Button(settings2_header, image = settings2_user_button_image, borderwidth=0)
 
     #user text label
-    settings2_user_text_label =Label(settings2_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    settings2_user_text_label =Label(settings2_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #back button
         # Define image
@@ -2945,6 +3041,9 @@ def main():
     settings2_back_button = tk.Button(settings2_header, text = ' ', image = settings2_back_button_image, borderwidth=0)
 
     settings2_back_button.bind("<Button-1>",settings2_go_to_settings)
+
+    def on_click(event):
+        event.widget.delete(0, tk.END)
 
      #name text spot label
         #label
@@ -2960,6 +3059,12 @@ def main():
     settings2_music_path_location_text_spot_label =Label(settings2_backGroundImage_label, borderwidth=0, image = settings2_text_spot_label_image)
         #input
     settings2_music_path_location_input = tk.Entry(settings2_music_path_location_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+
+    settings2_spotify_user_name_input.bind("<Button-1>", on_click)
+    settings2_music_path_location_input.bind("<Button-1>", on_click)
+
+    settings2_spotify_user_name_input.bind("<Return>",seve_settings2)
+    settings2_music_path_location_input.bind("<Return>",seve_settings2)
 
     #browse to files button
         # Define image
@@ -2988,6 +3093,7 @@ def main():
     settings2_music_path_image = ImageTk.PhotoImage(temp_image2)
     settings2_smusic_path = Label(settings2_backGroundImage_label,image = settings2_music_path_image, borderwidth=0)
 
+    settings2_load_spotify_username_and_music_path()
 
     #add to Settings
     settings2_backGroundImage_label.place( relx=0.0, rely= 0.155 )
@@ -3000,7 +3106,7 @@ def main():
 
     settings2_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
     settings2_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
-    settings2_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
+    settings2_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     settings2_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
     settings2_spotify_user_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
@@ -3104,7 +3210,12 @@ def main():
     settings_user_button = tk.Button(settings_header, image = settings_user_button_image, borderwidth=0)
 
     #user text label
-    settings_user_text_label =Label(settings_header,text ="User", borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
+    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    a = f.readline()
+    u_name = f.readline()
+    f.close()
+    u_name = u_name.replace('Username: ','')
+    settings_user_text_label =Label(settings_header,text =str(u_name), borderwidth=0,background = "#0d0029",fg = "white", font = ("", 16))
 
     #back button
         # Define image
@@ -3298,7 +3409,7 @@ def main():
     settings_male_button.place(relx = 0.85, rely = 0.1, width=((110/1920)*w), height =(43/1080)*h)
 
     settings_username_label.place(relx = 0.02, rely = 0.2, width=((262/1920)*w), height =(52/1080)*h)
-    settings_user_name_text_field.place(relx = 0.85, rely = 0.2, width=((273/1920)*w), height =(52/1080)*h)
+    settings_user_name_text_field.place(relx = 0.85, rely = 0.2, width=((280/1920)*w), height =(52/1080)*h)
 
     settings_voice_control_label.place(relx = 0.02, rely = 0.3, width=((354/1920)*w), height =(50/1080)*h)
     settings_voice_control_button.place(relx = 0.9, rely = 0.3, width=((173/1920)*w), height =(64/1080)*h)
@@ -3311,7 +3422,7 @@ def main():
 
     settings_home_button.place(relx = 0.006, rely = 0.35, width=((43/1920)*w), height =(43/1080)*h)
     settings_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height =(43/1080)*h)#-5x-5
-    settings_user_text_label.place(relx = 0.0295, rely = 0.7, width=((44/1920)*w),height =(43/1080)*h)
+    settings_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),height =(43/1080)*h)
     settings_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
     settings_next_button.place(relx = 0.04, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
@@ -3630,8 +3741,6 @@ def main():
 
     message_history_label.place(relx = 0.005, rely = 0.64, width=((950/1920)*w), height=(325/1080)*h)
     message_history_label_text_field.place(relx = 0.008, rely = 0.03, relwidth=0.9, relheight=0.9)
-
-
 
     home_page_bottom_line.place(relx=0.0, rely= 0.9515, relwidth = 1.0,height =52)
     home_page_enter_button.place(relx = 0.965, rely = 0.13, width=((54/1920)*w), height=(38/1080)*h)
