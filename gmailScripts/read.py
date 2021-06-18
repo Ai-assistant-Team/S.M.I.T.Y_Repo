@@ -1,3 +1,7 @@
+"""
+Created on Sat May 8 
+@author: Τάσος Παπαδόπουλος
+"""
 from __future__ import print_function
 from Google import Create_Service
 import time
@@ -35,19 +39,21 @@ def show_emails(Number_of_emails = 1):
     #Storing the results to messages
 
     try:
-        print('Messages:\n')
+        
         for Number_of_emails in messages[:Number_of_emails]:
 
             msg = services.users().messages().get(userId='me', id=Number_of_emails['id']).execute()
             #Getting a specific message.
 
-            print(msg['snippet'])
+           
             #Snippet is a part of the entire message.
-
-            print('\n')
+            
+            fullmsg = fullmsg +  "\n" + msg['snippet'] 
+            
+            
 
             time.sleep(1)
-        return 0
+        return fullmsg
 
     except messages:
         return 1
