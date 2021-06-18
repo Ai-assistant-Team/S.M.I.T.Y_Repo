@@ -35,10 +35,3 @@ def insert_db(hours):
         f.close()
     except :
         return 9 #problem with file saving
-
-
-check_alarm_input(20)
-
-f = open("hours.txt", "r")
-print(f.read())
-f.close()
