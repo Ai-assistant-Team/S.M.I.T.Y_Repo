@@ -9,7 +9,6 @@ def spotifyAuth(): #used to authenticate the user with the spotify platform
     
    import spotipy 
    import spotipy.util as util
-   import tkinter
 
    try:
        CLIENT_ID = 'f1c84641b9c34faa8bb20510ee8c9c40' #id given to the app when registered in the spotify dashboard
@@ -25,18 +24,21 @@ def spotifyAuth(): #used to authenticate the user with the spotify platform
        return 1
 
 def getFirstAvailableDevice(): #used to return the first available device running spotify (more commonly browser,desktop or mobile)
-    import tkinter
+    from openUrls import openUrl
+    from time import sleep
     
-    try:
-        sp = spotifyAuth()
-          
-        devices = sp.devices() #gets list of available devices
-        deviceID = devices['devices'][0]['id'] #gets the id of the first device on the list
-        return deviceID 
-    except:
-        window = tkinter.Tk()
-        window.withdraw()
-        tkinter.messagebox.showerror(title='Device Error', message='No device detected')
+    for i in range(5):
+        try:
+            sp = spotifyAuth()
+              
+            devices = sp.devices() #gets list of available devices
+            deviceID = devices['devices'][0]['id'] #gets the id of the first device on the list
+            return deviceID 
+        except:
+            openUrl('https://open.spotify.com/')
+            sleep(5)
+    
+        
 
 def searchForId(q,TYPE): #used to search for an id in the spotify database given a query e.g song name and a type e.g track
     try:
@@ -62,6 +64,7 @@ def songbyTitle(songName,songArtist): #plays a song given a name and an optional
             sp.start_playback(deviceID, uris=['spotify:track:'+trackId])
     except:
         return 1
+        
 
 def playEpisode(epName): #plays a podcast episode given its name
     try:
@@ -433,3 +436,4 @@ def deleteSavedAlbums(albumNameList): #removes given album/albums from the user'
     except:
         return 1
 
+songbyTitle('Back in Black', None)
