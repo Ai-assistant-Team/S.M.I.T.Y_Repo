@@ -1,0 +1,1 @@
+show weather,what is the weather like,weather,weather in,tell me the weather
