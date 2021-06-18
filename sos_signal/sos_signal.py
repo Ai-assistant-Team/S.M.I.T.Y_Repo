@@ -1,3 +1,7 @@
+"""
+Created on Tue Apr 27
+@author: Τάσος Παπαδόπουλος
+"""
 import send
 
 email = 'dai19078@uom.edu.gr'
