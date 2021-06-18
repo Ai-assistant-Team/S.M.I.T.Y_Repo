@@ -62,6 +62,7 @@ def songbyTitle(songName,songArtist): #plays a song given a name and an optional
         else:
             trackId = searchForId('track:'+songName+' artist:'+songArtist, 'track')
             sp.start_playback(deviceID, uris=['spotify:track:'+trackId])
+            return 0
     except:
         return 1
         
@@ -74,6 +75,7 @@ def playEpisode(epName): #plays a podcast episode given its name
         
         epId = searchForId(epName, 'episode')
         sp.start_playback(deviceID, uris=['spotify:episode:'+epId])
+        return 0
     except:
         return 1
 
@@ -85,6 +87,7 @@ def playShow(showName): #plays a podcast from the beginning given its name
         
         showId = searchForId(showName, 'show')
         sp.start_playback(deviceID, 'spotify:show:'+showId)
+        return 0
     except:
         return 1
              
@@ -97,6 +100,7 @@ def songsbyArtist(artist): #plays the top song from an artist's profile given th
         
         artistId = searchForId(artist, 'artist')
         sp.start_playback(deviceID, 'spotify:artist:'+artistId)
+        return 0
     except:
         return 1
     
@@ -112,6 +116,7 @@ def playAlbumOrPlaylist(TYPE, name): #plays and album or a playlist from an arti
             sp.start_playback(deviceID, 'spotify:album:'+Id)
         else:
             sp.start_playback(deviceID, 'spotify:playlist:'+Id)
+        return 0
     except:
         return 1
         
@@ -122,6 +127,7 @@ def resumePlayback(): #resumes a user's playback
         deviceID = getFirstAvailableDevice()
         
         sp.start_playback(deviceID)
+        return 0
     except:
         return 1
     
@@ -133,6 +139,7 @@ def pausePlayback(): #pauses a user's playback
         deviceID = getFirstAvailableDevice()
         
         sp.pause_playback(deviceID)
+        return 0
     except:
         return 1
     
@@ -144,6 +151,7 @@ def playNext(): #plays the next track in a user's playback queue
         deviceID = getFirstAvailableDevice()
         
         sp.next_track(deviceID)
+        return 0
     except:
         return 1
 
@@ -155,6 +163,7 @@ def playPrev(): #plays the previous track in a user's playback queue
         deviceID = getFirstAvailableDevice()
         
         sp.previous_track(deviceID)
+        return 0
     except:
         return 1
     
@@ -167,6 +176,7 @@ def addToQueue(songName): #adds a song to the end of a user's playback queue
         
         itemID = searchForId(songName, 'track')
         sp.add_to_queue(itemID, deviceID)
+        return 0
     except:
         return 1
     
@@ -178,6 +188,7 @@ def seek(whereTo): #skips to a point in the current track (input in seconds)
         deviceID = getFirstAvailableDevice()
         
         sp.seek_track(int(whereTo)*1000,deviceID)
+        return 0
     except:
         return 1
     
@@ -189,6 +200,7 @@ def repeatControl(whatToRepeat): #controls the repeat function of spotify (input
         deviceID = getFirstAvailableDevice()
         
         sp.repeat(whatToRepeat,deviceID)  
+        return 0
     except:
         return 1
     
@@ -204,6 +216,7 @@ def shuffleControl(active): #controls the repeat function of spotify (input = Tr
             active = False
         
         sp.shuffle(active,deviceID)
+        return 0
     except:
         return 1
 
@@ -215,6 +228,7 @@ def volumeControl(volumeLevel): #controls the inner app volume Level (input = 1-
         deviceID = getFirstAvailableDevice()
          
         sp.volume(int(volumeLevel),deviceID)
+        return 0
     except:
         return 1
 
@@ -233,6 +247,7 @@ def playlistCreate(username, playlistName, isPublic, isCollab, description): #cr
         else:
             isCollab = False
         sp.user_playlist_create(username, playlistName, isPublic, isCollab, description)
+        return 0
     except:
         return 1
     
@@ -247,6 +262,7 @@ def playlistAddTracks(username, playlistName, trackNameList, position): #adds gi
             trackIDList.append(trackID)
         playlistId = searchForId(playlistName, 'playlist')
         sp.user_playlist_add_tracks(username, playlistId, trackIDList, position)
+        return 0
     except:
         return 1
         
@@ -261,6 +277,7 @@ def playlistRemoveTracks(playlistName, trackNameList): #removes given tracks fro
             trackIDList.append(trackID)
         playlistId = searchForId(playlistName, 'playlist')
         sp.playlist_remove_all_occurrences_of_items(playlistId, trackIDList, snapshot_id=None)
+        return 0
     except:
         return 1
     
@@ -271,6 +288,7 @@ def playlistFollow(playlistName): #follows given playlist
        
         playlistId = searchForId(playlistName, 'playlist')
         sp.current_user_follow_playlist(playlistId)
+        return 0
     except:
         return 1
     
@@ -281,6 +299,7 @@ def playlistUnfollow(playlistName): #unfollows given playlist
        
         playlistId = searchForId(playlistName, 'playlist')
         sp.current_user_unfollow_playlist(playlistId)
+        return 0
     except:
         return 1
 
@@ -294,6 +313,7 @@ def artistFollow(artistNameList): #follows given artist/artists
             artistId = searchForId(artist, 'artist')
             artistIdList.append(artistId)
         sp.user_follow_artists(artistIdList)
+        return 0
     except:
         return 1
     
@@ -307,6 +327,7 @@ def artistUnfollow(artistNameList): #unfollows given artist/artists
             artistId = searchForId(artist, 'artist')
             artistIdList.append(artistId)
         sp.user_unfollow_artists(artistIdList)
+        return 0
     except:
         return 1
         
@@ -316,6 +337,7 @@ def userFollow(userNameList): #follows given user/users
         sp = spotifyAuth()
         
         sp.user_follow_users(userNameList)
+        return 0
     except:
         return 1
     
@@ -325,6 +347,7 @@ def userUnfollow(userNameList): #unfollows given user/users
         sp = spotifyAuth()
         
         sp.user_unfollow_users(userNameList)
+        return 0
     except:
         return 1
     
@@ -343,6 +366,7 @@ def saveTracks(trackNameList): #saves given track/tracks to the user's library
             if(isSaved[i] and i<(len(trackIDList)-1)):
                 trackIDList.remove(trackIDList[i])
         sp.current_user_saved_tracks_add(trackIDList)
+        return 0
     except:
         return 1
         
@@ -361,6 +385,7 @@ def deleteSavedTracks(trackNameList): #removes given track/tracks from the user'
             if(isSaved[i]==False and i<(len(trackIDList)-1)):
                 trackIDList.remove(trackIDList[i])
         sp.current_user_saved_tracks_delete(trackIDList)
+        return 0
     except:
         return 1
        
@@ -379,6 +404,7 @@ def saveShows(showNameList): #saves given podcast/podcasts to the user's library
             if(isSaved[i] and i<(len(showIDList)-1)):
                 showIDList.remove(showIDList[i])
         sp.current_user_saved_shows_add(showIDList)
+        return 0
     except:
         return 1
       
@@ -397,6 +423,7 @@ def deleteSavedShows(showNameList): #removes given podcast/podcasts from the use
             if(isSaved[i]==False and i<(len(showIDList)-1)):
                 showIDList.remove(showIDList[i])
         sp.current_user_saved_shows_delete(showIDList)
+        return 0
     except:
         return 1
     
@@ -415,6 +442,7 @@ def saveAlbums(albumNameList): #saves given album/albums to the user's library
             if(isSaved[i] and i<(len(albumIDList)-1)):
                 albumIDList.remove(albumIDList[i])
         sp.current_user_saved_albums_add(albumIDList)
+        return 0
     except:
         return 1
     
@@ -433,7 +461,7 @@ def deleteSavedAlbums(albumNameList): #removes given album/albums from the user'
             if(isSaved[i]==False and i<(len(albumIDList)-1)):
                 albumIDList.remove(albumIDList[i])
         sp.current_user_saved_albums_delete(albumIDList)
+        return 0
     except:
         return 1
 
-songbyTitle('Back in Black', None)
