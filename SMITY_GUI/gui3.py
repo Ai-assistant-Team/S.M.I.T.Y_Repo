@@ -12,7 +12,8 @@ import os
 
 from SMITY.definePATH import PATH_TO_GUI
 from SMITY.definePATH import MY_OUTPUT
-from SMITY.definePATH import PATH_TO_SETTINGS 
+from SMITY.definePATH import PATH_TO_SETTINGS
+from SMITY.SMITYcore.speechToText import callListenFromGUI
 
 MAX_LINES = 7
 
@@ -80,6 +81,9 @@ def resize_gif(wi,hi):
     om = next(frames) # Handle first frame separately
     om.info = im.info # Copy sequence info
     om.save(os.path.join(PATH_TO_GUI, 'aaa.gif'), save_all=True, append_images=list(frames))
+
+def microphone_fun(event):
+   callListenFromGUI()
 
 def home_page_go_to_setings(event):
     settings.pack(fill='both', expand =1)
@@ -3647,7 +3651,7 @@ b = int((45/1080)*h)+5
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 home_page_mic_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
-home_page_mic_button = tk.Button(home_page_bottom_line, text = ' ', image = home_page_mic_button_image, borderwidth=0)        
+home_page_mic_button = tk.Button(home_page_bottom_line, text = ' ', image = home_page_mic_button_image, borderwidth=0, command=lambda:microphone_fun ("<Button-1>"))      
 #message history)
 temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','message_history.png'))
 a = int((950/1920)*w)+2
