@@ -123,16 +123,11 @@ currencyMatches = {
 }
 
 
-def cconvert(c1, c2, amount):       #Converts the amount from currency 1 to currency 2
+def converter(c1, c2, amount):
+    c = CurrencyRates()
+
     try:
-        
-        c3= c2                       # c3 = name of currency you are converting to 
-        c1= currencyMatches[c1]
-        c2= currencyMatches[c2]
-        fin= (c.convert(c1, c2, amount))
-        fin= str(fin) + ' ' + c3
-        
-        
-        return fin
+        cc = round(c.convert(currencyMatches[c1], currencyMatches[c2], amount),2)
+        return(str(cc) + ' ' + c2)
     except:
         return 1
