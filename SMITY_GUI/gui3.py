@@ -887,6 +887,18 @@ def my_websites_go_to_add_website(event,number):
     global website_number
     website_number = number
     add_website.pack(fill='both', expand =1)
+    add_website_name_input.delete(0, tk.END)
+    add_website_location_input.delete(0, tk.END)
+    f = open(os.path.join(PATH_TO_SETTINGS,'users_urls.txt'),'r')
+    for x in range (10):
+        w_name = f.readline()
+        w_url = f.readline()
+        if x == website_number:
+            break
+    w_name = w_name.replace('\n','')
+    w_url = w_url.replace('\n','')
+    add_website_name_input.insert(0,str(w_name))
+    add_website_location_input.insert(0,str(w_url))
     my_websites.forget()
 
 def my_websites_exit_fullscreen(event):
@@ -1202,11 +1214,11 @@ add_aplication_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*
 
 
 add_aplication_name_label.place(relx = 0.05, rely = 0.2, width=((191/1920)*w)-1, height=(53/1080)*h)
-add_aplication_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
+add_aplication_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.54, height=(84/1080)*h)
 add_aplication_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(70/1080)*h)
 
 add_aplication_location_label.place(relx = 0.05, rely = 0.4, width=((268/1920)*w)-1, height=(56/1080)*h)
-add_aplication_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.544, height=(84/1080)*h)
+add_aplication_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.54, height=(84/1080)*h)
 add_aplication_location_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, height=(70/1080)*h)
 
 add_aplication_browse_to_files_button.place(relx = 0.83, rely = 0.366, width=((164/1920)*w), height=(217/1080)*h)
@@ -1817,7 +1829,7 @@ users_aplications__user_button_9 = tk.Button(users_aplications_backGroundImage_l
 users_aplications__user_button_10 = tk.Button(users_aplications_backGroundImage_label, image = users_aplications_change_save_url_button_image_2, borderwidth=0, command=lambda:users_programs_go_to_add_add_aplication ("<Button-1>",9))
 
 users_aplications_backGroundImage_label.place( relx=0.0, rely= 0.155 )
-users_aplications_header.place(relx=0.0, rely= 0.0, width = w,height =171)
+users_aplications_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
 users_aplications_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=(512/1920)*w, height=(56/1080)*h)
 users_aplications_title_aktri.place(relx = 0.92, rely = 0.41, width=((142/1920)*w), height =(108/1080)*h)
 users_aplications_cloce_button.place(relx = 0.985, rely = 0.0, width=((31/1920)*w), height =(28/1080)*h)
@@ -2919,8 +2931,8 @@ calendar_user_text_label.place(relx = 0.0295, rely = 0.75, width=((150/1920)*w),
 calendar_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), height =(34/1080)*h)
 
 calendar_month_label.place(relx = 0.38, rely = 0.03, width=((323/1920)*w), height =(65/1080)*h)
-calendar_year_label_background_label.place(relx = 0.65, rely = 0.03, width=((184/1920)*w), height =(65/1080)*h)
-calendar_year_fists_position.place(relx = 0.001, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
+calendar_year_label_background_label.place(relx = 0.65, rely = 0.03, width=((182/1920)*w), height =(65/1080)*h)
+calendar_year_fists_position.place(relx = 0.002, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
 calendar_year_second_position.place(relx = 0.2527, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
 calendar_year_third_position.place(relx = 0.5025, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
 calendar_year_fourth_position.place(relx = 0.75, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
