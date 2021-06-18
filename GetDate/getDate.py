@@ -2,8 +2,6 @@ import datetime
 
 def getDate():
     try:
-        print (datetime.datetime.now().strftime("%d-%m-%Y "))
-
-        return 0
+        return(datetime.datetime.now().strftime("%d-%m-%Y "))
     except:
         return 1
