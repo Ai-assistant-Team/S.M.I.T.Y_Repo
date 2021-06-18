@@ -1,4 +1,4 @@
-
+import os
 
 def check_alarm_input(hours = 0):
 #Checks to see if the user has entered in a valid alarm time
@@ -18,14 +18,23 @@ def check_alarm_input(hours = 0):
 
 def insert_db(hours):
     try:
-        f = open("hours.txt", "w") #opens file
+        f = open("hours.txt", "a") #opens file
 
-        f.write(str(hours)) #rewrites and replaces all content with the variable hours
+        if os.stat("hours.txt").st_size == 0 :
+
+            f.write(str(hours))
+
+        else :
+
+            f.write("\n" + str(hours)) #rewrites and replaces all content with the variable hours
 
         f.close()
     except :
         return 9 #problem with file saving
 
 
+check_alarm_input(20)
 
-
+f = open("hours.txt", "r")
+print(f.read())
+f.close()
