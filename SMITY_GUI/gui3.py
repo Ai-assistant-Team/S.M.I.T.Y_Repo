@@ -455,7 +455,7 @@ def add_aplication_go_to_users_aplications(event):
 def add_aplication_add_button(event,program_name,program_location):
     names = ["ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM", "ADD PROGRAM"]
     location = ["ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location"]
-    program_name = program_name
+    
     global program_number
     f = open(os.path.join(PATH_TO_SETTINGS,'users_programs.txt'),'r')
     for x in range(10):
@@ -962,6 +962,9 @@ def users_programs_go_to_aplications(event):
     aplications.pack(fill='both', expand =1)
     users_aplications.forget()
 
+def user_aplications_go_to_home_page(event):
+    home_page.pack(fill='both', expand =1)
+    users_aplications.forget()
 
 def users_programs_go_to_add_add_aplication(event,number):
     global program_number
@@ -1188,7 +1191,7 @@ add_aplication_add_button_button = Button(add_aplication_backGroundImage_label, 
 
 #add to window
 add_aplication_backGroundImage_label.place( relx=0.0, rely= 0.15 )
-add_aplication_header.place(relx=0.0, y= 0.0, width = w,height =(171/1080)*h)
+add_aplication_header.place(relx=0.0, rely= 0.0, width = w,height =(171/1080)*h)
 add_aplication_title.place(relx = 0.5, rely = 0.5,anchor ="center", width=((1336/1920)*w), height=(171/1080)*h)
 add_aplication_title_aktri.place(relx = 0.925, rely = 0.95,anchor ="sw", width=((142/1920)*w), height=(108/1080)*h)
 add_aplication_user_button.place(relx = 0.006, rely = 0.65, width=((43/1920)*w), height=(43/1080)*h)#-5x-5
@@ -1198,11 +1201,11 @@ add_aplication_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31
 add_aplication_minimize_button.place(relx = 0.945, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
 
-add_aplication_name_label.place(relx = 0.05, rely = 0.2, width=((191/1920)*w), height=(53/1080)*h)
+add_aplication_name_label.place(relx = 0.05, rely = 0.2, width=((191/1920)*w)-1, height=(53/1080)*h)
 add_aplication_name_text_spot_label.place(relx = 0.25, rely = 0.18, relwidth=0.544, height=(84/1080)*h)
 add_aplication_name_input.place(relx = 0.01, rely = 0.1, relwidth=0.98, height=(70/1080)*h)
 
-add_aplication_location_label.place(relx = 0.05, rely = 0.4, width=((268/1920)*w), height=(56/1080)*h)
+add_aplication_location_label.place(relx = 0.05, rely = 0.4, width=((268/1920)*w)-1, height=(56/1080)*h)
 add_aplication_location_text_spot_label.place(relx = 0.25, rely = 0.375, relwidth=0.544, height=(84/1080)*h)
 add_aplication_location_input.place(relx = 0.01, rely = 0.1, relwidth=0.97, height=(70/1080)*h)
 
@@ -1713,7 +1716,7 @@ temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 users_aplications_home_button_image = ImageTk.PhotoImage(temp_image2)
     #Add button
 users_aplications_home_button = tk.Button(users_aplications_header, text = ' ', image = users_aplications_home_button_image, borderwidth=0)
-users_aplications_home_button.bind("<Button-1>",my_websites_go_to_home_page)
+users_aplications_home_button.bind("<Button-1>",user_aplications_go_to_home_page)
 
 #User button
     # setings button image
@@ -2917,7 +2920,7 @@ calendar_back_button.place(relx = 0.006, rely = 0.05, width=((48/1920)*w), heigh
 
 calendar_month_label.place(relx = 0.38, rely = 0.03, width=((323/1920)*w), height =(65/1080)*h)
 calendar_year_label_background_label.place(relx = 0.65, rely = 0.03, width=((184/1920)*w), height =(65/1080)*h)
-calendar_year_fists_position.place(relx = 0.0, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
+calendar_year_fists_position.place(relx = 0.001, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
 calendar_year_second_position.place(relx = 0.2527, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
 calendar_year_third_position.place(relx = 0.5025, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
 calendar_year_fourth_position.place(relx = 0.75, rely = 0.0, width=((46/1920)*w), height =(65/1080)*h)
@@ -3622,7 +3625,7 @@ home_page_mic_button_image = ImageTk.PhotoImage(temp_image2)
 home_page_mic_button = tk.Button(home_page_bottom_line, text = ' ', image = home_page_mic_button_image, borderwidth=0)        
 #message history)
 temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','message_history.png'))
-a = int((950/1920)*w)
+a = int((950/1920)*w)+2
 b = int((325/1080)*h)+1
 temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
 message_history_label_image = ImageTk.PhotoImage(temp_image2)
@@ -3662,6 +3665,7 @@ def getWrittenCommand():
 def input(content):
     pass
 def get_comand(event):
+
     # deprecated
     # global message_history
     # global line_count
@@ -3677,7 +3681,9 @@ def get_comand(event):
     # if line_count == MAX_LINES +1:
     #     line_count =0
     #     message_history =''
+    
     getWrittenCommand()
+    home_page_comand_text_field.delete(0, tk.END)
 
 message_history_label = Label(home_page, image = message_history_label_image, borderwidth =0)
 global message_history
