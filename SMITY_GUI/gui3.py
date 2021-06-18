@@ -354,8 +354,19 @@ def main():
 
     def aplications_go_to_change_location(event,name):
         change_location.pack(fill='both', expand =1)
-        change_location_name_input.delete(0, tk.END)
-        change_location_name_input.insert(0, name)
+        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'r')
+        loc = '--'
+        for x in range (8):
+            n = f.readline()
+            print(n)
+            l = f.readline()
+            if n == (name+'\n'):
+                loc = l
+                break
+        f.close()
+        change_location_location_input.delete(0, tk.END)
+        change_location_location_input.insert(0, loc)
+        change_location_name_input.config(text = name)
         aplications.forget()
 
     def settings_go_to_settings2(event):
@@ -1991,12 +2002,14 @@ def main():
     change_location_text_spot_label_image = ImageTk.PhotoImage(temp_image2)
     change_location_name_text_spot_label =Label(change_location_backGroundImage_label, borderwidth=0, image = change_location_text_spot_label_image)
         #input
-    change_location_name_input = tk.Entry(change_location_name_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+    change_location_name_input = Label(change_location_name_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+    
     #location text spot label
         #label
     change_location_location_text_spot_label =Label(change_location_backGroundImage_label, borderwidth=0, image = change_location_text_spot_label_image)
         #input
     change_location_location_input = tk.Entry(change_location_location_text_spot_label, font = ("", 33), fg = "#00f9ff", width =1000 , borderwidth =0,background = "#167f95")
+    
 
     #Cancel button
         # Define image
@@ -2016,7 +2029,7 @@ def main():
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     change_location_add_button_image = ImageTk.PhotoImage(temp_image2)
         #Add button
-    change_location_add_button_button = Button(change_location_backGroundImage_label, text = ' ', image = change_location_add_button_image, borderwidth=0, command=lambda:change_protgram_location ("<Button-1>",str(change_location_name_input.get()),str(change_location_location_input.get())))
+    change_location_add_button_button = Button(change_location_backGroundImage_label, text = ' ', image = change_location_add_button_image, borderwidth=0, command=lambda:change_protgram_location ("<Button-1>",str(change_location_name_input.cget('text')),str(change_location_location_input.get())))
 
 
 
