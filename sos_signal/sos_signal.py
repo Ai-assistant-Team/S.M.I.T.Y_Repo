@@ -1,11 +1,11 @@
-import gmail
+import send
 
 email = 'dai19078@uom.edu.gr'
 
 # This method sends the email
 def send_sos():
     try:
-        gmail.send.create_send(create_msg(), email, 'Help!') #sends the sos email
+        send.create_send(create_msg(), email, 'Help!') #sends the sos email
 
         return 0 #all went good
 
