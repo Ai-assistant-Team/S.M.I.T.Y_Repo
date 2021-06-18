@@ -14,9 +14,6 @@ def test2(body="", email="", subject="") :
 test1(2)
 #Test with number 2 which shows the latest 2 emails
 
-test1()
-#Test where no number was specified
-
 test1(100000000)
 #Test with a really large number, I limitted it to max 20 latest emails
 
