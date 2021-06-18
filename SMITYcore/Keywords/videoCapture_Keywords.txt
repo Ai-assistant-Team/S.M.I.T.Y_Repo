@@ -1,0 +1,1 @@
+record video,capture video,video,camera
