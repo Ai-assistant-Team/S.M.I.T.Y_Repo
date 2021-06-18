@@ -14,6 +14,7 @@ from SMITY.definePATH import PATH_TO_GUI
 from SMITY.definePATH import MY_OUTPUT
 from SMITY.definePATH import PATH_TO_SETTINGS
 from SMITY.SMITYcore.speechToText import callListenFromGUI
+from SMITY.SMITYcore.intentRecognition import writtenCommandFromGUI
 
 MAX_LINES = 7
 
@@ -3688,6 +3689,7 @@ def output(*content):
 def getWrittenCommand():
     try:
         output('User : ' + str(home_page_comand_text_field.get().rstrip()))
+        writtenCommandFromGUI(str(home_page_comand_text_field.get().rstrip()))
     except:
         return 1
 
