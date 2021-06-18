@@ -1,3 +1,7 @@
+"""
+Created on Fri Jun 18 
+@author: Τάσος Παπαδόπουλος
+"""
 import os
 
 def check_alarm_input(hours = 0):
