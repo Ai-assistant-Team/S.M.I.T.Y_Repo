@@ -84,7 +84,7 @@ def main():
         om.save(os.path.join(PATH_TO_GUI, 'aaa.gif'), save_all=True, append_images=list(frames))
 
     def microphone_fun(event):
-    callListenFromGUI()
+        callListenFromGUI()
 
     def home_page_go_to_setings(event):
         settings.pack(fill='both', expand =1)
