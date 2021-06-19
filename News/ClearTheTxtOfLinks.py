@@ -7,13 +7,16 @@ import os
 
 #add libraries
 
+#difine costans
 DIRNAME = 'News'
-
 record_file = 'links.txt'
 
 def create_txt_with_links():
+    #creates links.txt with all the links from https://www.news.gr/
     try:
+        #set url
         urls = 'https://www.news.gr/'
+        #request urls
         grab = requests.get(urls)
         soup = BeautifulSoup(grab.text, 'html.parser')
         try:
