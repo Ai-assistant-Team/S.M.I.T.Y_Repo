@@ -23,12 +23,12 @@ def checkTime():
                     for x in a:
                         s.append(int(x) - datetime.datetime.now().hour) #puts each element of list 'a' to list 's' where every element is the result of its self minus the current time
 
-                    min = 24
+                    minv = 24
 
                     for x in s:
 
-                        if int(x) < min and int(x) >= 0: #finds the element that is the lowest and not negative
-                            min = int(x)
+                        if int(x) < minv and int(x) >= 0: #finds the element that is the lowest and not negative
+                            minv = int(x)
 
                     p = []
                     
@@ -57,7 +57,7 @@ def checkTime():
                     
                     b = 0
                     
-                    if (min == 0): #if there was an element equal to 0 and so is min it means that the ring has to go off
+                    if (minv == 0): #if there was an element equal to 0 and so is min it means that the ring has to go off
                         
                         wakeup="WAKE UP!"
                         
