@@ -16,7 +16,7 @@ def Forecast_weather_now(city=""):
         r = requests.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + api_key + "")
         # GET request With the HTTPS services to the url that gets use the Data in a json format
 
-        aoi_data = r.json()  # converts json format to python and storring it to the dictionary API_data
+        api_data = r.json()  # converts json format to python and storring it to the dictionary API_data
 
         if api_data["cod"] == "404":  # checks if the answer is 404 ,meaning that the city was invalid
 
