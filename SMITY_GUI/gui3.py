@@ -17,6 +17,7 @@ from SMITY.SMITYcore.speechToText import callListenFromGUI
 from SMITY.SMITYcore.intentRecognition import writtenCommandFromGUI
 
 MAX_LINES = 7
+#txt files constants
 settings_txt_file = 'settings.txt'
 program_locations_txt_file = 'program_locations.txt'
 users_programs_txt_file = 'users_programs.txt'
@@ -63,6 +64,7 @@ def main():
                 self.after(self.delay, self.next_frame)
 
     def resize_gif(wi,hi):
+        #resize gif acording to screen seze
         # Output (max) size
         size = wi , hi
 
@@ -85,22 +87,26 @@ def main():
         # Save output
         om = next(frames) # Handle first frame separately
         om.info = im.info # Copy sequence info
+        #save as aaa.gif the new gif
         om.save(os.path.join(PATH_TO_GUI, 'aaa.gif'), save_all=True, append_images=list(frames))
 
     def microphone_fun(event):
         callListenFromGUI()
 
     def home_page_go_to_setings(event):
+        #go from home to settings screen
         settings.pack(fill='both', expand =1)
         home_page.forget()
 
     def home_page_exit_fullscreen(event):
+        #home page exit fullscreen
         screen.attributes('-fullscreen', False)
         home_page_cloce_button.place_forget()
         home_page_exit_fullscreen_button.place_forget()
         home_page_fullscreen_button.place(relx = 0.96, rely = 0.0, width=((62*1920)/w), height=(28*1080)/h)
 
     def home_page_fullscreen(event):
+         #home page activate fullscreen
         screen.attributes('-fullscreen', True)
         home_page_fullscreen_button.place_forget()
         home_page_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
@@ -108,20 +114,25 @@ def main():
         
     global home_page_to_calendar
     def home_page_to_calendar(event):
+        #go from home to settings screen
         calendar.pack(fill='both', expand =1)
         home_page.forget()
 
     def home_page_mic():
         f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
+        #read 4 linew from settings txt
+        #only care for the 4th line
         a1= f.readline()
-        a2= f.readline()
-        a3= f.readline()
+        a1= f.readline()
+        a1= f.readline()
         a4= f.readline()
         f.close()
         if a4 == 'Speak key : 1\n':
             home_page_mic_button.config(state ='normal')
+            #activate mic button
         else:
             home_page_mic_button.config(state ='disable')
+             #deactivate mic button
 
     def settings_save():
         global gender
@@ -130,6 +141,7 @@ def main():
         global settings_wake_up_on
         global user_name
         f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
+        #read 7 lines care only for the last 2
         a = f.readline()
         a = f.readline()
         a = f.readline()
@@ -179,10 +191,15 @@ def main():
         global user_name
 
         f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
+        #read gender line
         load_gender = f.readline()
+         #read username line
         load_username = f.readline()
+         #read voice control line
         load_settings_voice_control_on = f.readline()
+         #read speak key line
         load_settings_speak_key_on = f.readline()
+         #read wayk up key line
         load_settings_wake_up_on = f.readline()
         f.close()
         #Gender
