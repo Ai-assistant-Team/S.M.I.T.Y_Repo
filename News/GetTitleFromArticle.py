@@ -1,12 +1,11 @@
 #https://www.geeksforgeeks.org/newspaper-article-scraping-curation-python/
-
 from newspaper import Article
-
 def get_title_from_article(url):
     try:
         #A new article from TOI
         #For different language newspaper refer above table
-        toi_article = Article(url, language="el") # el for Greek
+        # el for Greek
+        toi_article = Article(url, language="el")
         #To download the article
         toi_article.download()
         #To parse the article
