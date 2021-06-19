@@ -1,73 +1,78 @@
 """
-Created on Fri Jun 18 
+Created on Fri Jun 18
 @author: Τάσος Παπαδόπουλος
 """
 import datetime
+import os
+import time
 
 def checkTime():
     try:
+        while True:
+            if os.path.exists("hours.txt") :
+                if os.stat("hours.txt").st_size > 0 :
+                    with open("hours.txt", "r") as f:
 
+                        a = [a.strip() for a in f]  #formats the content of the txt file to a list of integers that represent the time
 
-        with open("hours.txt", "r") as f:
+                    s = [] #new list
 
+                    for x in a:
+                        s.append(int(x) - datetime.datetime.now().hour) #puts each element of list 'a' to list 's' where every element is the result of its self minus the current time
 
-            a = [a.strip() for a in f] #
+                    min = 24
 
-        s = []
+                    for x in s:
 
-        for x in a:
-            s.append(int(x) - datetime.datetime.now().hour)
+                        if int(x) < min and int(x) >= 0: #finds the element that is the lowest and not negative
+                            min = int(x)
 
+                    p = []
+                    j = 0
+                    k = 0
+                    for x in s:
 
-        min = 24
+                        if int(x) != 0:
+                            p.append(x) #puts all elements into a new list excluding elements that are equal to zero
+                            k += 1
+                        else:
+                            j += 1
 
-        for x in s:
+                    y = 0
 
-            if int(x) < min and int(x)>=0 :
-                min = int(x)
+                    for x in p:
+                        p[y] = int(x) + datetime.datetime.now().hour #converts each element back to its original state by additive its self and current time
+                        y += 1
 
+                    print(p)
+                    b = 0
+                    if (min == 0): #if there was an element equal to 0 and so is min it means that the ring has to go off
+                        print("WAKE UP!")
 
+                        with open("hours.txt", "w") as txt_file: #saving every element from list p to the hours.txt file
+                            for line in p:
+                                if b == 0:
 
-        p = []
-        j = 0
-        k = 0
-        for x in s:
+                                    txt_file.write(str(line))
 
-            if int(x) != 0:
-                p.append(x)
-                k += 1
-            else:
-                j += 1
+                                else:
 
-        y=0
+                                    txt_file.write("\n" + "".join(str(line)))
+                                b += 1
+                                if b == (k - j): #the size of the list minus the number of all the elements that where 0
+                                    txt_file.close()
+                                    f.close()
+                                    break
 
-        for x in p:
-            p[y] = int(x) + datetime.datetime.now().hour
-            y += 1
-
-        print(p)
-        b=0
-        if (min == 0) :
-            print ("WAKE UP!")
-
-            with open("hours.txt", "w") as txt_file:
-                for line in p:
-                    if b == 0:
-
-                        txt_file.write(str(line) )
-
-                    else:
-
-                        txt_file.write( "\n" + "".join(str(line)) )
-                    b += 1
-                    if b == (k-j):
                         txt_file.close()
-                        f.close()
-                        break
+                    f.close()
+                    time.sleep(2)
+                else:
 
+                    time.sleep(10) #checks if the file is empty
+            else:
 
-            txt_file.close()
-        f.close()
+                time.sleep(10) #checks if the file exists
 
     except OSError :
         return 8 #It could not open and read the file
