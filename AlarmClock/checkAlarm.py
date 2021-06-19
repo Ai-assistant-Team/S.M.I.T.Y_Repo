@@ -5,16 +5,17 @@ Created on Fri Jun 18
 import datetime
 import os
 import time
+file = "hours.txt"
 
 def checkTime():
     try:
         while True: #running forever
             
-            if os.path.exists("hours.txt") : #checks if the file hours.txt exists
+            if os.path.exists(file) : #checks if the file hours.txt exists
                 
-                if os.stat("hours.txt").st_size > 0 : #checks  if the file hours.txt is empty
+                if os.stat(file).st_size > 0 : #checks  if the file hours.txt is empty
                     
-                    with open("hours.txt", "r") as f: #if it exists it opens the file
+                    with open(file, "r") as f: #if it exists it opens the file
 
                         a = [a.strip() for a in f]  #formats the content of the txt file to a list of integers that represent the time
 
@@ -62,7 +63,7 @@ def checkTime():
                         wakeup="WAKE UP!"
                         
                         
-                        with open("hours.txt", "w") as txt_file: #saving every element from list p to the hours.txt file
+                        with open(file, "w") as txt_file: #saving every element from list p to the hours.txt file
                             
                             for line in p:
                                 
