@@ -6,6 +6,7 @@ from SMITY.definePATH import RESOURCES_PATH
 import os
 
 DIRNAME = 'News'
+record_file = 'links.txt'
 
 def create_txt_with_links():
     try:
@@ -13,7 +14,7 @@ def create_txt_with_links():
         grab = requests.get(urls)
         soup = BeautifulSoup(grab.text, 'html.parser')
         try:
-            filename = os.path.join(RESOURCES_PATH, DIRNAME, 'links.txt')
+            filename = os.path.join(RESOURCES_PATH, DIRNAME, record_file)
             # opening a file in write mode
             f = open(filename, 'w')
             # traverse paragraphs from soup
