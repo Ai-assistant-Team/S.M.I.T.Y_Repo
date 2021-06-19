@@ -45,14 +45,19 @@ def create_txt_with_links():
 def update_txt(list_of_links):
     #updates links.txt
     try:
+        #find links.txt
         location = os.path.join(RESOURCES_PATH, DIRNAME, record_file)
+        #open links.txt
         file = open(location,'w')
+        #update links.txt
         for link in list_of_links:
             file.write(link)
         # Closing file
         file.close
+         #if all good sed 0
         return 0
     except:
+        #return 9 if there is a problem writing the file
         return 9
 
 
