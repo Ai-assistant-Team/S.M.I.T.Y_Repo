@@ -9,6 +9,7 @@ import time
 def checkTime():
     try:
         while True: #running forever
+            
             if os.path.exists("hours.txt") : #checks if the file hours.txt exists
                 
                 if os.stat("hours.txt").st_size > 0 : #checks  if the file hours.txt is empty
@@ -30,29 +31,41 @@ def checkTime():
                             min = int(x)
 
                     p = []
+                    
                     j = 0
+                    
                     k = 0
+                    
                     for x in s:
 
                         if int(x) != 0:
                             p.append(x) #puts all elements into a new list excluding elements that are equal to zero
+                            
                             k += 1
+                            
                         else:
                             j += 1
 
                     y = 0
 
                     for x in p:
+                        
                         p[y] = int(x) + datetime.datetime.now().hour #converts each element back to its original state by additive its self and current time
+                        
                         y += 1
 
-                    print(p)
+                    
                     b = 0
+                    
                     if (min == 0): #if there was an element equal to 0 and so is min it means that the ring has to go off
-                        print("WAKE UP!")
-
+                        
+                        wakeup="WAKE UP!"
+                        
+                        
                         with open("hours.txt", "w") as txt_file: #saving every element from list p to the hours.txt file
+                            
                             for line in p:
+                                
                                 if b == 0:
 
                                     txt_file.write(str(line))
@@ -60,14 +73,23 @@ def checkTime():
                                 else:
 
                                     txt_file.write("\n" + "".join(str(line)))
+                                    
                                 b += 1
+                                
                                 if b == (k - j): #the size of the list minus the number of all the elements that where 0
+                                    
                                     txt_file.close()
+                                    
                                     f.close()
+                                    
+                                    return wakeup
+                                
                                     break
 
                         txt_file.close()
+                        
                     f.close()
+                    
                     time.sleep(2)
                 else:
 
