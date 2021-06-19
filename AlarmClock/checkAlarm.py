@@ -8,10 +8,12 @@ import time
 
 def checkTime():
     try:
-        while True:
-            if os.path.exists("hours.txt") :
-                if os.stat("hours.txt").st_size > 0 :
-                    with open("hours.txt", "r") as f:
+        while True: #running forever
+            if os.path.exists("hours.txt") : #checks if the file hours.txt exists
+                
+                if os.stat("hours.txt").st_size > 0 : #checks  if the file hours.txt is empty
+                    
+                    with open("hours.txt", "r") as f: #if it exists it opens the file
 
                         a = [a.strip() for a in f]  #formats the content of the txt file to a list of integers that represent the time
 
@@ -73,6 +75,7 @@ def checkTime():
             else:
 
                 time.sleep(10) #checks if the file exists
+            #end of while
 
     except OSError :
         return 8 #It could not open and read the file
