@@ -3,19 +3,27 @@ from ClearTheTxtOfLinks import get_list_from_txt
 from ClearTheTxtOfLinks import update_txt
 from GetTitleFromArticle import get_title_from_article
 from SMITY.openUrls import openUrl
+#add libraries
 
 
 def get_news():
+    #returns 5 tiles of atricles in str form
     try:
+        #initialize
         news_titles =""
         list_of_links = []
         try:
+            #call get_list_from_txt(list_of_links)
             list_of_links = get_list_from_txt(list_of_links)
         except:
             return 8
+        #totall links
         totall = int(list_of_links[0])
+        #links that the user have seen
         used = int(list_of_links[1])
+        #the number of the line of the first lin that it is going to return
         start = int(list_of_links[2])
+        #the number of the line of the last lin that it is going to return
         end = int(list_of_links[3])
 
         if(used < totall):
