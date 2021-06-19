@@ -17,6 +17,7 @@ from SMITY.SMITYcore.speechToText import callListenFromGUI
 from SMITY.SMITYcore.intentRecognition import writtenCommandFromGUI
 
 MAX_LINES = 7
+s_file = 'settings.txt'
 
 
 def main():
