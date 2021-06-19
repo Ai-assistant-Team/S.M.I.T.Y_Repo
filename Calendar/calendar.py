@@ -1,6 +1,7 @@
-#import libraries
+
 import datetime
 import pathlib
+#add libraries
 
 #register an event to calendar_record
 def make_event(date,time,description):
