@@ -9,25 +9,25 @@ def test():
     import os #Required to see the contents of a txt file
     import sys #Required to stop the script
     
-    sName = input("Insert song name: ")
+    sname = input('Insert song name: ')
+    filename = 'pathfile.txt'
+    pathfilew = open(filename, 'a+')
     
-    pathfileW = open("pathfile.txt", "a+")
-    
-    if(os.stat("pathfile.txt").st_size == 0): #if txt is empty prompt the user to select a search location
+    if(os.stat(filename).st_size == 0): #if txt is empty prompt the user to select a search location
         import tkinter as tk
         from tkinter.filedialog import askdirectory
         window = tk.Tk()
         path = askdirectory(title='Select Music Folder') 
         window.withdraw()
-        pathfileW.write(path)
+        pathfilew.write(path)
     else: #else read the location from the txt 
-        pathfileR = open("pathfile.txt", "r")
-        path = pathfileR.readline()
+        pathfiler = open(filename, 'r')
+        path = pathfiler.readline()
         print(path)
-        pathfileR.close()
+        pathfiler.close()
         
     
-    pathfileW.close()
-    playMusicLocal(sName, path) #Play the audio file with the given name in thee given location
+    pathfilew.close()
+    playMusicLocal(sname, path) #Play the audio file with the given name in thee given location
     sys.exit()
 test()
