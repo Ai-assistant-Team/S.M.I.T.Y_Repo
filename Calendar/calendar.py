@@ -58,6 +58,7 @@ def show_me(date):
         #return the events that match the date
         return events_found
     except :
+        #if something gose wrong return error code
         return 8
 
 def show_me_in_range(date1,date2):
@@ -85,6 +86,7 @@ def show_me_in_range(date1,date2):
          #return events found
         return events_found
     except:
+        #if something gose wrong return error code
         return 1
         
             
@@ -140,6 +142,7 @@ def next_day (date):
                 date[2] = date[2] +1
         return '/'.join([str(elem) for elem in date])
     except :
+        #if something gose wrong return error code
         return 1
 
 
@@ -153,11 +156,13 @@ def put_on_record(something):
         f.close()
         return 0
     except:
+        #if something gose wrong return error code
         return 9
 
 def get_description(description):
     a = put_on_record(description)
     if a == 1:
+        #if something gose wrong return error code
         return 9
 
 def get_date(date):
@@ -179,6 +184,7 @@ def get_date(date):
             return 'The day of the event must in the present or in the future not in the past YOU IDIOT'
         return '/'.join([str(elem) for elem in date])
     except:
+        #if something gose wrong return error code
         return 1
     
 
@@ -206,4 +212,5 @@ def get_time(time_of_the_event,date):
                 return 'Unless you time travel you can not schedule something in the past'
         return ':'.join([str(elem) for elem in time_of_the_event])
     except :
+        #if something gose wrong return error code
         return 1
