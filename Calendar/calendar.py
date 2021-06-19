@@ -37,7 +37,9 @@ def show_me(date):
         events_found =''
         #open nad read calendar_record.txt
         f = open("%s\\calendar_record.txt"%(location), "r")
+        #while TRUE
         while 5>4:
+            #read line
             line = f.readline()
             if not line:
                 break
@@ -54,6 +56,7 @@ def show_me(date):
                 #read line
                 #add line
                 events_found = events_found + line
+        #close file
         f.close()
         #return the events that match the date
         return events_found
@@ -160,6 +163,8 @@ def next_day (date):
 
 
 def put_on_record(something):
+    #something --> date,time, discription
+    #add to the calendar_record.txt
     try:
         location = pathlib.Path(__file__).parent.absolute()
         f = open("%s\\calendar_record.txt"%(location), "a+")
@@ -183,17 +188,23 @@ def get_date(date):
         todays_date_and_hour = datetime.datetime.now()
         #split
         date = date.split("/")
-        #turn time from str to int
+        #turn date from str to int
         day = int (date[0])
+        #turn month from str to int
         month = int (date[1])
+        #turn year from str to int
         year = int (date[2])
         #Check
+        #if the year is in the past
         if todays_date_and_hour.year > year:
             return 'The year of the event must in the present or in the future not in the past YOU IDIOT'
+        #if the month is in the past
         if todays_date_and_hour.year == year and todays_date_and_hour.month > month:
             return 'The month of the event must in the present or in the future not in the past YOU IDIOT'
+        #if the day is in the past
         if todays_date_and_hour.year == year and todays_date_and_hour.month == month and todays_date_and_hour.day > day:
             return 'The day of the event must in the present or in the future not in the past YOU IDIOT'
+        #combine day,month and year and return
         return '/'.join([str(elem) for elem in date])
     except:
         #if something gose wrong return error code
@@ -202,26 +213,35 @@ def get_date(date):
 
 def get_time(time_of_the_event,date):
     try:
+        #turn date from str to int
         date = date.split("/")
-        #turn time from str to int
+         #turn day from str to int
         day = int (date[0])
+        #turn month from str to int
         month = int (date[1])
+        #todays year and time
         year = int (date[2])
-        #todays date and time
+        
         todays_date_and_time = datetime.datetime.now()
         #split
         time_of_the_event = time_of_the_event.split(":")
         #str -> int
         hour = int( time_of_the_event[0])
+        #turn hour from str to int
         minutes = int( time_of_the_event[1])
-        #check if hour if between 0 and 23 
+        #turn minutes from str to int
+        #check if hour is between 0 and 23 
         if hour >23 or hour <0:
             return 'The hour of the event must be between 0 and 24. YOU IDIOT'
+        #check if minutes is between 0 and 59
         if minutes >59 or minutes <0:
             return 'The minutes of the event must be between 0 and 59. YOU IDIOT'
+        #if date is today
         if day== todays_date_and_time.day and month == todays_date_and_time.month and year== todays_date_and_time.year:
+            # if hour is in the past
             if hour < todays_date_and_time.hour or (hour == todays_date_and_time.hour and minutes< todays_date_and_time.minute) :
                 return 'Unless you time travel you can not schedule something in the past'
+        #combine hour and minutes and return
         return ':'.join([str(elem) for elem in time_of_the_event])
     except :
         #if something gose wrong return error code
