@@ -9,7 +9,7 @@ import requests  # Allows us to send HTTPS requests
 from datetime import datetime  # imports time related functions
 
 
-def Forecast_weather_now(city=""):
+def forecast_weather_now(city=""):
     try:
         api_key = "ebb3e7cd4040c8390449e4fb314a5923"
 
