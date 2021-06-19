@@ -328,7 +328,7 @@ def recognizeAndAct(userInput):
         Text2Speech().speak('For what city would you like to know the weather ?')
         city = listen()
         if type(city) == str:
-            result = Forecast_weather_now(city)
+            result = forecast_weather_now(city)
             if type(result) is str:
                 Text2Speech().speak(result)
             else:
