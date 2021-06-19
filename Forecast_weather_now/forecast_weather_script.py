@@ -11,14 +11,14 @@ from datetime import datetime  # imports time related functions
 
 def Forecast_weather_now(city=""):
     try:
-        API_key = "ebb3e7cd4040c8390449e4fb314a5923"
+        api_key = "ebb3e7cd4040c8390449e4fb314a5923"
 
-        r = requests.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API_key + "")
+        r = requests.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + api_key + "")
         # GET request With the HTTPS services to the url that gets use the Data in a json format
 
-        API_data = r.json()  # converts json format to python and storring it to the dictionary API_data
+        aoi_data = r.json()  # converts json format to python and storring it to the dictionary API_data
 
-        if API_data["cod"] == "404":  # checks if the answer is 404 ,meaning that the city was invalid
+        if api_data["cod"] == "404":  # checks if the answer is 404 ,meaning that the city was invalid
 
             # similar error would be 401       because of:      API key failure
             # similar error would be 429       because of:      More that 60 API calls per minute
@@ -30,21 +30,16 @@ def Forecast_weather_now(city=""):
         else:
             # Variables for each phenomenon
 
-            temp_city = ((API_data["main"]["temp"]) - 273.15)
+            temp_city = ((api_data["main"]["temp"]) - 273.15)
             # using the main and temp keys finds the temprature from the dictionary(in F) converts it to Celsium and storring it to temp_city
 
             temp_min = ((
-                            API_data["main"][
+                            api_data["main"][
                                 "temp_min"]) - 273.15)  # same routine for the minimum temprature as with temp_city
 
             temp_max = ((
-                            API_data["main"][
+                            api_data["main"][
                                 "temp_max"]) - 273.15)  # same routine for the maximum temprature as with temp_city
-
-            weather_desc = ((API_data["weather"][0][
-                "description"]))  # a dictionary which has only a single array element 0 and inside of it nests another dictionary
-
-            humidity = ((API_data["main"]["humidity"]))  # same procedure as the temp_city
 
             date_time = datetime.now().strftime(
                 "%d %b %Y | %I:%M:%S %p")  # datetime.now gives us the time and strftime helps convert the date and time objects to string
