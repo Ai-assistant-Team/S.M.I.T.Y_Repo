@@ -112,6 +112,7 @@ def next_day (date):
             if date[2] % 4 == 0 and (date[2] % 100 != 0 or date[2] % 400 == 0):
                 #if february has 29 days
                 if date[0] < 29:
+                    #add 1 day
                     date[0] = date[0] +1
                 elif date[0] == 29:
                     date[0] = 1
@@ -119,26 +120,37 @@ def next_day (date):
             else:
                 #if february has 28 days
                 if date[0] == 28:
+                    #set day to 1
                     date[0] = 1
+                    #set day to 3 -- March
                     date[1] = 3
         elif date[1] == 4 or date[1] == 6 or date[1] == 9 or date[1] == 11:
             #if the month has 30 days
             if date[0] < 30:
+                #add 1 day
                 date[0] = date[0] +1
             else:
+                #set day to 1
                 date[0] = 1
+                #add 1 month
                 date[1] = date[1] +1
         elif date[1] == 1 or date[1] == 3 or date[1] == 5 or date[1] == 7 or date[1] == 8 or date[1] == 10 or date[1] == 12:
             #if month has 31 days
             if date[0] < 31:
+                #add 1 day
                 date[0] = date[0] +1
             elif date[0] == 31 and date[1] < 12:
+                #set day to 1
                 date[0] = 1
+                #add 1 month
                 date[1] = date[1] +1
             elif date[0] == 31 and date[1] == 12:
                 #if the year changes
+                #set day to 1
                 date[0] = 1
+                #set month to 1
                 date[1] = 1
+                #add 1 year
                 date[2] = date[2] +1
         return '/'.join([str(elem) for elem in date])
     except :
