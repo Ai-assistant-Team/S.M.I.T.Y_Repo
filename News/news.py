@@ -66,21 +66,30 @@ def get_news():
         return 1  #return 9 if something went wrong
 
 def open_news_page(title):
+    #this function recives a titli and one by one converts every link to tingle and compares it to the title given
     try:
+         #initialize
         list_of_links = []
         list_of_links = get_list_from_txt(list_of_links)
         fount = 'no'
+        #set found to no
         end = int(list_of_links[1]) + 4
+        #set the end of the search to the last ling the user saw
         for x in range(4,end):
             if (get_title_from_article(list_of_links[x]) == title):
+                #if a match is found
                 fount = 'yes'
+                #set found to YES
+                #open the url
                 o = openUrl(list_of_links[x])
-                if o == 14:
+                if o == 14:#if something went wrong with opening the link 
                     return 14
                 break
-        if fount == 'no':
+        if fount == 'no': 
+            #if There is no match
             return 'Title not found'
         else:
             return 'Title found'
     except:
         return 10
+        #if there is a internet conection problem
