@@ -17,7 +17,10 @@ from SMITY.SMITYcore.speechToText import callListenFromGUI
 from SMITY.SMITYcore.intentRecognition import writtenCommandFromGUI
 
 MAX_LINES = 7
-s_file = 'settings.txt'
+settings_txt_file = 'settings.txt'
+program_locations_txt_file = 'program_locations.txt'
+users_programs_txt_file = 'users_programs.txt'
+users_urls_txt_file = 'users_urls.txt'
 
 
 def main():
@@ -109,7 +112,7 @@ def main():
         home_page.forget()
 
     def home_page_mic():
-        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
         a1= f.readline()
         a2= f.readline()
         a3= f.readline()
@@ -126,7 +129,7 @@ def main():
         global settings_speak_key_on
         global settings_wake_up_on
         global user_name
-        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
         a = f.readline()
         a = f.readline()
         a = f.readline()
@@ -134,7 +137,7 @@ def main():
         a = f.readline()
         s = f.readline()
         m = f.readline()
-        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'w')
+        f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'w')
         #Gender
         f.write('S.M.I.T.Y. Gender : ')
         f.write(gender)
@@ -175,7 +178,7 @@ def main():
         global settings_wake_up_on
         global user_name
 
-        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
         load_gender = f.readline()
         load_username = f.readline()
         load_settings_voice_control_on = f.readline()
@@ -370,7 +373,7 @@ def main():
 
     def aplications_go_to_change_location(event,name):
         change_location.pack(fill='both', expand =1)
-        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,program_locations_txt_file),'r')
         loc = '--'
         for x in range (8):
             n = f.readline()
@@ -393,7 +396,7 @@ def main():
         spotify_u_n = str(settings2_spotify_user_name_input.get())
         music_p = str(settings2_music_path_location_input.get())
         set_list = ['f','f','f','f','f','f','f',]
-        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
         set_list[0] = f.readline()
         set_list[1] = f.readline()
         set_list[2] = f.readline()
@@ -402,7 +405,7 @@ def main():
         set_list[5] = 'Spotify username : '+ spotify_u_n+'\n'
         set_list[6] = 'Music path : '+ music_p+'\n'
         f.close()
-        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'w')
+        f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'w')
         for x in range (7):
             f.write(set_list[x] )
         f.close()
@@ -436,7 +439,7 @@ def main():
         settings2_music_path_location_input.insert(0, filedialog.askdirectory())
 
     def settings2_load_spotify_username_and_music_path():
-        f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
         a = f.readline()
         b = f.readline()
         c = f.readline()
@@ -464,14 +467,14 @@ def main():
         location = ["ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location", "ADD location"]
         
         global program_number
-        f = open(os.path.join(PATH_TO_SETTINGS,'users_programs.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,users_programs_txt_file),'r')
         for x in range(10):
             names[x] = f.readline()
             location[x] = f.readline()
         f.close()
         names[program_number] = program_name +'\n'
         location[program_number] = program_location +'\n'
-        f = open(os.path.join(PATH_TO_SETTINGS,'users_programs.txt'),'w')
+        f = open(os.path.join(PATH_TO_SETTINGS,users_programs_txt_file),'w')
         for b in range(10):
             f.write(names[b])
             f.write(location[b])
@@ -881,7 +884,7 @@ def main():
         my_websites.forget()
 
     def users_urls_load(names,urls):
-        f = open(os.path.join(PATH_TO_SETTINGS,'users_urls.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,users_urls_txt_file,'r')
         for x in range(10):
             temp = f.readline()
             names[x] = temp.replace('\n','')
@@ -896,7 +899,7 @@ def main():
         add_website.pack(fill='both', expand =1)
         add_website_name_input.delete(0, tk.END)
         add_website_location_input.delete(0, tk.END)
-        f = open(os.path.join(PATH_TO_SETTINGS,'users_urls.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,users_urls_txt_file),'r')
         for x in range (10):
             w_name = f.readline()
             w_url = f.readline()
@@ -929,14 +932,14 @@ def main():
         names = ["ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE", "ADD WEBSITE"]
         urls = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
         
-        f = open(os.path.join(PATH_TO_SETTINGS,'users_urls.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,users_urls_txt_file),'r')
         for x in range(10):
             names[x] = f.readline()
             urls[x] = f.readline()
         f.close()
         names[website_number]= websites_name + '\n'
         urls[website_number] = websites_url + '\n'
-        f = open(os.path.join(PATH_TO_SETTINGS,'users_urls.txt'),'w')
+        f = open(os.path.join(PATH_TO_SETTINGS,users_urls_txt_file),'w')
         for b in range(10):
             f.write(names[b])
             f.write(urls[b])
@@ -969,7 +972,7 @@ def main():
         add_website_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=((31/1920)*w), height=(28/1080)*h)
 
     def users_programs_load(names,urls):
-        f = open(os.path.join(PATH_TO_SETTINGS,'users_programs.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,users_programs_txt_file),'r')
         for x in range(10):
             temp = f.readline()
             names[x] = temp.replace('\n','')
@@ -990,7 +993,7 @@ def main():
         program_number = number
         add_aplication_name_input.delete(0, tk.END)
         add_aplication_location_input.delete(0, tk.END)
-        f = open(os.path.join(PATH_TO_SETTINGS,'users_programs.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,users_programs_txt_file),'r')
         for x in range (10):
             p_name = f.readline()
             p_url = f.readline()
@@ -1028,7 +1031,7 @@ def main():
         urls = ["ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL", "ADD URL"]
         
         
-        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'r')
+        f = open(os.path.join(PATH_TO_SETTINGS,program_locations_txt_file),'r')
         for x in range(8):
             a = f.readline()
             urls[x] = f.readline()
@@ -1041,7 +1044,7 @@ def main():
                 names[j] = name
                 urls[j] = str.rstrip(str(file_location)) + '\n'
                 break
-        f = open(os.path.join(PATH_TO_SETTINGS,'program_locations.txt'),'w')
+        f = open(os.path.join(PATH_TO_SETTINGS,program_locations_txt_file),'w')
         for b in range(8):
             f.write(names[b] + '\n')
             f.write(urls[b] )
@@ -1147,7 +1150,7 @@ def main():
     add_aplication_user_button = tk.Button(add_aplication_header, image = add_aplication_user_button_image, borderwidth=0)
 
     #user text label
-    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
     a = f.readline()
     u_name = f.readline()
     f.close()
@@ -1347,7 +1350,7 @@ def main():
     my_websites_user_button = tk.Button(my_websites_header, image = my_websites_user_button_image, borderwidth=0)
 
     #user text label
-    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
     a = f.readline()
     u_name = f.readline()
     f.close()
@@ -1561,7 +1564,7 @@ def main():
     add_website_user_button = tk.Button(add_website_header, image = add_website_user_button_image, borderwidth=0)
 
     #user text label
-    f = open(os.path.join(PATH_TO_SETTINGS,'settings.txt'),'r')
+    f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
     a = f.readline()
     u_name = f.readline()
     f.close()
