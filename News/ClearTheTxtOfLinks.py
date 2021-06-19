@@ -5,7 +5,10 @@ from bs4 import BeautifulSoup
 from SMITY.definePATH import RESOURCES_PATH
 import os
 
+#add libraries
+
 DIRNAME = 'News'
+
 record_file = 'links.txt'
 
 def create_txt_with_links():
