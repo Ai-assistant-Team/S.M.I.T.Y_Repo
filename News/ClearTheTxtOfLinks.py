@@ -20,6 +20,7 @@ def create_txt_with_links():
         grab = requests.get(urls)
         soup = BeautifulSoup(grab.text, 'html.parser')
         try:
+            #find file
             filename = os.path.join(RESOURCES_PATH, DIRNAME, record_file)
             # opening a file in write mode
             f = open(filename, 'w')
@@ -29,12 +30,16 @@ def create_txt_with_links():
                 f.write(data)
                 f.write("\n")
             f.close()
+            #if all good sed 0
             return 0
         except:
             return 9
+        #return 9 if there is a problem writing the file
         return 0
+    #if all good sed 0
     except:
         return 10
+    #return 9 if there is a problem with the internrt conection
 
 
 def update_txt(list_of_links):
