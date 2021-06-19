@@ -2,7 +2,7 @@ from ClearTheTxtOfLinks import clear_the_txt_of_links
 from ClearTheTxtOfLinks import get_list_from_txt
 from ClearTheTxtOfLinks import update_txt
 from GetTitleFromArticle import get_title_from_article
-import webbrowser
+from SMITY.openUrls import openUrl
 
 
 def get_news():
@@ -54,7 +54,9 @@ def open_news_page(title):
         for x in range(4,end):
             if (get_title_from_article(list_of_links[x]) == title):
                 fount = 'yes'
-                webbrowser.open_new_tab(list_of_links[x])
+                o = openUrl(list_of_links[x])
+                if o == 14:
+                    return 14
                 break
         if fount == 'no':
             return 'Title not found'
