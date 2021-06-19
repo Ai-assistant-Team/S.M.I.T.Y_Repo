@@ -43,8 +43,9 @@ def create_txt_with_links():
 
 
 def update_txt(list_of_links):
+    #updates links.txt
     try:
-        location = os.path.join(RESOURCES_PATH, DIRNAME, 'links.txt')
+        location = os.path.join(RESOURCES_PATH, DIRNAME, record_file)
         file = open(location,'w')
         for link in list_of_links:
             file.write(link)
@@ -58,7 +59,7 @@ def update_txt(list_of_links):
 def clear_the_txt_of_links():
     #open file
     try:
-        location = os.path.join(RESOURCES_PATH, DIRNAME, 'links.txt')
+        location = os.path.join(RESOURCES_PATH, DIRNAME, record_file)
         file = open(location,'r')
 
         list_of_links = []
@@ -106,7 +107,7 @@ def clear_the_txt_of_links():
 
 def get_list_from_txt(list_of_links):
     try:
-        location = os.path.join(RESOURCES_PATH, DIRNAME, 'links.txt')
+        location = os.path.join(RESOURCES_PATH, DIRNAME, record_file)
         file = open(location,'r')
         for line in file:
             list_of_links.append(line)
