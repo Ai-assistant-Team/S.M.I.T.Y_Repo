@@ -3,6 +3,8 @@ Created on Fri Jun 18
 @author: Τάσος Παπαδόπουλος
 """
 import os
+from SMITY.definePATH import PATH_TO_ALARM_CLOCK
+file = "hours.txt"
 
 def check_alarm_input(hours = 0):
 #Checks to see if the user has entered in a valid alarm time
@@ -22,9 +24,9 @@ def check_alarm_input(hours = 0):
 
 def insert_db(hours):
     try:
-        f = open("hours.txt", "a") #opens file
+        f = open(os.path.join(PATH_TO_ALARM_CLOCK, file), "a") #opens file
 
-        if os.stat("hours.txt").st_size == 0 :
+        if os.stat(os.path.join(PATH_TO_ALARM_CLOCK, file)).st_size == 0 :
 
             f.write(str(hours))
 
