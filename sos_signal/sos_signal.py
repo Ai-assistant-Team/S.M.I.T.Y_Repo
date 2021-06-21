@@ -2,14 +2,14 @@
 Created on Tue Apr 27
 @author: Τάσος Παπαδόπουλος
 """
-import send
+import SMITY.gmailScripts.send
 
 email = 'dai19078@uom.edu.gr'
 
 # This method sends the email
 def send_sos():
     try:
-        send.create_send(create_msg(), email, 'Help!') #sends the sos email
+        SMITY.gmailScripts.send.create_send(create_msg(), email, 'Help!') #sends the sos email
 
         return 0 #all went good
 
