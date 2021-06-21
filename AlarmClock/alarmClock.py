@@ -32,7 +32,7 @@ def insert_db(hours):
 
         else :
 
-            f.write("\n" + str(hours)) #rewrites and replaces all content with the variable hours
+            f.write('\n' + str(hours)) #rewrites and replaces all content with the variable hours
 
         f.close()
     except :
