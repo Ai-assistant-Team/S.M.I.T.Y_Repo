@@ -1,1 +1,0 @@
-A basic script that gets you the weather from any place in the world.The weather's forecast is LIMITED only at the specific time that someone calls the function Forecast_weather_now.In future more scripts will forecast the weather even 5 days ahead of the current time.
