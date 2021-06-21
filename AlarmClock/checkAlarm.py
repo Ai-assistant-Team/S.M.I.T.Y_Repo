@@ -74,7 +74,7 @@ def checkTime():
 
                                 else:
 
-                                    txt_file.write("\n" + "".join(str(line)))
+                                    txt_file.write('\n' + ''.join(str(line)))
                                     
                                 b += 1
                                 
