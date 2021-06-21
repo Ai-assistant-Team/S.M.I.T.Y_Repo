@@ -1,5 +1,5 @@
 #
-# Script created by Theodore Economides (ΞΞµΟΞ΄Ο‰ΟΞΏΟ‚ ΞΞΉΞΊΞΏΞ½ΞΏΞΌΞ―Ξ΄Ξ·Ο‚)
+# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
 #
 
 # Sources : https://www.programiz.com/python-programming/user-defined-exception
@@ -19,13 +19,13 @@ class FilesCouldNotInitialize(Exception):
     pass
 
 
-class News_Not_Initialized_Correctly:
+class News_Not_Initialized_Correctly(Exception):
     pass
 
 
 def init():
     ## ------------------------------------------------------
-    ## created by Theodore Economides (ΞΞµΟΞ΄Ο‰ΟΞΏΟ‚ ΞΞΉΞΊΞΏΞ½ΞΏΞΌΞ―Ξ΄Ξ·Ο‚)
+    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
     ## ------------------------------------------------------
 
     # creating file PATH
