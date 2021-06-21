@@ -13,7 +13,7 @@ def forecast_weather_now(city=""):
     try:
         api_key = "ebb3e7cd4040c8390449e4fb314a5923"
 
-        r = requests.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + api_key + "")
+        r = requests.get("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + api_key + "")
         # GET request With the HTTPS services to the url that gets use the Data in a json format
 
         api_data = r.json()  # converts json format to python and storring it to the dictionary API_data
@@ -55,6 +55,3 @@ def forecast_weather_now(city=""):
             return weather
     except ConnectionError:
         return 10
-
-
-
