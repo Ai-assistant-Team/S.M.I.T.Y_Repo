@@ -2247,6 +2247,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','title.png'))
                  #calculate the image width according to screen width
     a = int((847/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_title_image = ImageTk.PhotoImage(temp_image2)
@@ -2255,6 +2256,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
                  #calculate the image width according to screen width
     a = int((142/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_title_aktri_image = ImageTk.PhotoImage(temp_image2)
@@ -2263,6 +2265,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
                  #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_cloce_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2271,6 +2274,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
                  #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2279,6 +2283,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
                  #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_minimize_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2287,6 +2292,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
                  #calculate the image width according to screen width
     a = int((62/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2301,6 +2307,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
                  #calculate the image width according to screen width
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_home_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2313,6 +2320,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
                  #calculate the image width according to screen width
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_user_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2332,6 +2340,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
                  #calculate the image width according to screen width
     a = int((48/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_back_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2344,6 +2353,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','excel-icon.png'))
                  #calculate the image width according to screen width
     a = int((102/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_excel_icon_image = ImageTk.PhotoImage(temp_image2)
@@ -2352,6 +2362,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','word-icon.png'))
                  #calculate the image width according to screen width
     a = int((102/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_word_icon_image = ImageTk.PhotoImage(temp_image2)
@@ -2360,6 +2371,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','acces-icon.png'))
                  #calculate the image width according to screen width
     a = int((102/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_acces_icon_image = ImageTk.PhotoImage(temp_image2)
@@ -2368,6 +2380,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','power-point-icon.png'))
                  #calculate the image width according to screen width
     a = int((162/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_power_point_icon_image = ImageTk.PhotoImage(temp_image2)
@@ -2376,6 +2389,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','spotify-icon.png'))
                  #calculate the image width according to screen width
     a = int((102/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_spotify_icon_image = ImageTk.PhotoImage(temp_image2)
@@ -2384,6 +2398,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','messenger-icon.png'))
                  #calculate the image width according to screen width
     a = int((102/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_messenger_icon_image = ImageTk.PhotoImage(temp_image2)
@@ -2392,6 +2407,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','web-icon.png'))
                  #calculate the image width according to screen width
     a = int((102/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_websites_icon_image = ImageTk.PhotoImage(temp_image2)
@@ -2400,6 +2416,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','calculator-icon.png'))
                  #calculate the image width according to screen width
     a = int((102/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_cuclulator_icon_image = ImageTk.PhotoImage(temp_image2)
@@ -2409,6 +2426,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','notebook-icon.png'))
                  #calculate the image width according to screen width
     a = int((102/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_notebook_icon_image = ImageTk.PhotoImage(temp_image2)
@@ -2418,6 +2436,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','users-applications.png'))
                  #calculate the image width according to screen width
     a = int((102/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((137/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_users_applications_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2428,6 +2447,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','your_applications-label-text.png'))
                  #calculate the image width according to screen width
     a = int((285/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((39/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_your_applications_text_label_image = ImageTk.PhotoImage(temp_image2)
@@ -2438,6 +2458,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Aplications','change-save_location-button2.png'))
                  #calculate the image width according to screen width
     a = int((376/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     aplications_change_save_location_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2527,6 +2548,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'About','title.png'))
                  #calculate the image width according to screen width
     a = int((422/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_title_image = ImageTk.PhotoImage(temp_image2)
@@ -2535,6 +2557,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
                  #calculate the image width according to screen width
     a = int((142/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_title_aktri_image = ImageTk.PhotoImage(temp_image2)
@@ -2543,6 +2566,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
                  #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_cloce_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2551,6 +2575,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
                  #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2559,6 +2584,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
                  #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_minimize_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2567,6 +2593,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
                  #calculate the image width according to screen width
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2581,6 +2608,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
                  #calculate the image width according to screen width
     a = int((48/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_back_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2593,6 +2621,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
                  #calculate the image width according to screen width
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_home_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2605,6 +2634,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
                  #calculate the image width according to screen width
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     about_page_user_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2656,6 +2686,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','title.png'))
                  #calculate the image width according to screen width
     a = int((977/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((44/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_title_image = ImageTk.PhotoImage(temp_image2)
@@ -2664,6 +2695,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
                  #calculate the image width according to screen width
     a = int((142/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_title_aktri_image = ImageTk.PhotoImage(temp_image2)
@@ -2673,6 +2705,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
                  #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_cloce_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2681,6 +2714,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
                  #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2689,6 +2723,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
                  #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_minimize_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2697,6 +2732,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
                  #calculate the image width according to screen width
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2712,6 +2748,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
                  #calculate the image width according to screen width
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_home_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2724,6 +2761,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
                  #calculate the image width according to screen width
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_user_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2743,6 +2781,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
                  #calculate the image width according to screen width
     a = int((48/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_back_button_image = ImageTk.PhotoImage(temp_image2)
@@ -2755,6 +2794,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','0.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_zero = ImageTk.PhotoImage(temp_image2)
@@ -2762,6 +2802,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','1.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_one = ImageTk.PhotoImage(temp_image2)
@@ -2769,6 +2810,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','2.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_two = ImageTk.PhotoImage(temp_image2)
@@ -2776,6 +2818,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','3.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_three = ImageTk.PhotoImage(temp_image2)
@@ -2783,6 +2826,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','4.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_four = ImageTk.PhotoImage(temp_image2)
@@ -2790,6 +2834,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','5.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_five = ImageTk.PhotoImage(temp_image2)
@@ -2797,6 +2842,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','6.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_six = ImageTk.PhotoImage(temp_image2)
@@ -2804,6 +2850,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','7.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_seven = ImageTk.PhotoImage(temp_image2)
@@ -2811,6 +2858,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','8.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_eight = ImageTk.PhotoImage(temp_image2)
@@ -2818,6 +2866,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','year_numbers','9.png'))
                  #calculate the image width according to screen width
     a = int((46/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_nine = ImageTk.PhotoImage(temp_image2)
@@ -2843,6 +2892,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','S-31.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_sunday_31 = ImageTk.PhotoImage(temp_image2)
@@ -2850,6 +2900,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','S-30.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_sunday_30 = ImageTk.PhotoImage(temp_image2)
@@ -2857,6 +2908,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','S-29.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_sunday_29 = ImageTk.PhotoImage(temp_image2)
@@ -2864,6 +2916,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','S-28.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_sunday_28 = ImageTk.PhotoImage(temp_image2)
@@ -2872,6 +2925,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','M-30.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_monday_31 = ImageTk.PhotoImage(temp_image2)
@@ -2879,6 +2933,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','M-30.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_monday_30 = ImageTk.PhotoImage(temp_image2)
@@ -2886,6 +2941,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','M-29.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_monday_29 = ImageTk.PhotoImage(temp_image2)
@@ -2893,6 +2949,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','M-28.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_monday_28 = ImageTk.PhotoImage(temp_image2)
@@ -2901,6 +2958,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','TU-31.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_tuesday_31 = ImageTk.PhotoImage(temp_image2)
@@ -2908,6 +2966,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','TU-30.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_tuesday_30 = ImageTk.PhotoImage(temp_image2)
@@ -2915,6 +2974,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','TU-29.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_tuesday_29 = ImageTk.PhotoImage(temp_image2)
@@ -2922,6 +2982,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','TU-28.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_tuesday_28 = ImageTk.PhotoImage(temp_image2)
@@ -2930,6 +2991,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','W-31.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_wednesday_31 = ImageTk.PhotoImage(temp_image2)
@@ -2937,6 +2999,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','W-30.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_wednesday_30 = ImageTk.PhotoImage(temp_image2)
@@ -2944,6 +3007,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','W-29.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_wednesday_29 = ImageTk.PhotoImage(temp_image2)
@@ -2951,6 +3015,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','W-28.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_wednesday_28 = ImageTk.PhotoImage(temp_image2)
@@ -2959,6 +3024,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','THU-31.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_thursday_31 = ImageTk.PhotoImage(temp_image2)
@@ -2966,6 +3032,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','THU-30.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_thursday_30 = ImageTk.PhotoImage(temp_image2)
@@ -2973,6 +3040,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','THU-29.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_thursday_29 = ImageTk.PhotoImage(temp_image2)
@@ -2980,6 +3048,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','THU-28.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_thursday_28 = ImageTk.PhotoImage(temp_image2)
@@ -2988,6 +3057,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','F-31.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_friday_31 = ImageTk.PhotoImage(temp_image2)
@@ -2995,6 +3065,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','F-30.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_friday_30 = ImageTk.PhotoImage(temp_image2)
@@ -3002,6 +3073,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','F-29.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_friday_29 = ImageTk.PhotoImage(temp_image2)
@@ -3009,6 +3081,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','F-28.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_friday_28 = ImageTk.PhotoImage(temp_image2)
@@ -3017,6 +3090,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','SAT-31.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_saturday_31 = ImageTk.PhotoImage(temp_image2)
@@ -3024,6 +3098,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','SAT-30.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_saturday_30 = ImageTk.PhotoImage(temp_image2)
@@ -3031,6 +3106,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','SAT-29.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_saturday_29 = ImageTk.PhotoImage(temp_image2)
@@ -3038,6 +3114,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','SAT-28.png'))
                  #calculate the image width according to screen width
     a = int((1494/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((725/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_saturday_28 = ImageTk.PhotoImage(temp_image2)
@@ -3050,6 +3127,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','1.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_january = ImageTk.PhotoImage(temp_image2)
@@ -3057,6 +3135,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','2.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_february = ImageTk.PhotoImage(temp_image2)
@@ -3064,6 +3143,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','3.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_march = ImageTk.PhotoImage(temp_image2)
@@ -3071,6 +3151,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','4.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_april = ImageTk.PhotoImage(temp_image2)
@@ -3078,6 +3159,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','5.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_may = ImageTk.PhotoImage(temp_image2)
@@ -3085,6 +3167,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','6.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_june = ImageTk.PhotoImage(temp_image2)
@@ -3092,6 +3175,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','7.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_july = ImageTk.PhotoImage(temp_image2)
@@ -3099,6 +3183,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','8.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_august = ImageTk.PhotoImage(temp_image2)
@@ -3106,6 +3191,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','9.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_september = ImageTk.PhotoImage(temp_image2)
@@ -3113,6 +3199,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','10.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_octomber = ImageTk.PhotoImage(temp_image2)
@@ -3120,6 +3207,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','11.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_november = ImageTk.PhotoImage(temp_image2)
@@ -3127,6 +3215,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','12.png'))
                  #calculate the image width according to screen width
     a = int((323/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_december = ImageTk.PhotoImage(temp_image2)
@@ -3135,6 +3224,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','Months_Imagies','%d.png'%(month)))
                  #calculate the image width according to screen width
     a = int(((323/1920)*w)+5)
+                 #calculate the image higth according to screen width
     b = int((65/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_month_image = ImageTk.PhotoImage(temp_image2)
@@ -3145,6 +3235,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','next_month_button_image.png'))
                  #calculate the image width according to screen width
     a = int(((51/1920)*w)+5)
+                 #calculate the image higth according to screen width
     b = int((59/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_next_month_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3155,6 +3246,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','previous_month_button_image.png'))
                  #calculate the image width according to screen width
     a = int(((51/1920)*w)+5)
+                 #calculate the image higth according to screen width
     b = int((59/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_previous_month_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3169,6 +3261,7 @@ def main():
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Calendar','today_numbers','%d.png'%(now.day)))
                  #calculate the image width according to screen width
     a = int(((191/1920)*w)+5)
+                 #calculate the image higth according to screen width
     b = int((107/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     calendar_today_label_image = ImageTk.PhotoImage(temp_image2)
@@ -3223,21 +3316,27 @@ def main():
     #header
     settings2_header = Label(settings2,borderwidth=0,background = "#0d0029")
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','title.png'))
+                 #calculate the image width according to screen width
     a = int(((670/1920)*w)+5)
+                 #calculate the image higth according to screen width
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_title_image = ImageTk.PhotoImage(temp_image2)
     settings2_title = Label(settings2_header,image = settings2_title_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
+                 #calculate the image width according to screen width
     a = int((142/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_title_aktri_image = ImageTk.PhotoImage(temp_image2)
     settings2_title_aktri = Label(settings2_header,image = settings2_title_aktri_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
+                 #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_cloce_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3246,6 +3345,7 @@ def main():
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3253,6 +3353,7 @@ def main():
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_minimize_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3260,6 +3361,7 @@ def main():
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
     a = int((62/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3273,6 +3375,7 @@ def main():
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_home_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3285,6 +3388,7 @@ def main():
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_user_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3303,6 +3407,7 @@ def main():
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
     a = int((48/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_back_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3318,6 +3423,7 @@ def main():
         #label
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','text_spot.png'))
     a = int(0.544*w)
+                 #calculate the image higth according to screen width
     b = int((84/1080)*h)
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_text_spot_label_image = ImageTk.PhotoImage(temp_image2)
@@ -3339,6 +3445,7 @@ def main():
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','browse_to_files.png'))
     a = int((164/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((217/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_browse_to_files_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3349,6 +3456,7 @@ def main():
     #spotify username
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','spotify_username.png'))
     a = int((331/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((60/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_spotify_username_image = ImageTk.PhotoImage(temp_image2)
@@ -3357,6 +3465,7 @@ def main():
     #music path
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','music_path.png'))
     a = int((331/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((60/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings2_music_path_image = ImageTk.PhotoImage(temp_image2)
@@ -3412,6 +3521,7 @@ def main():
     settings_header = Label(settings,borderwidth=0,background = "#0d0029")
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','title.png'))
     a = int(((670/1920)*w)+5)
+                 #calculate the image higth according to screen width
     b = int((57/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_title_image = ImageTk.PhotoImage(temp_image2)
@@ -3419,6 +3529,7 @@ def main():
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
     a = int((142/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_title_aktri_image = ImageTk.PhotoImage(temp_image2)
@@ -3426,6 +3537,7 @@ def main():
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_cloce_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3434,6 +3546,7 @@ def main():
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3441,6 +3554,7 @@ def main():
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_minimize_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3448,6 +3562,7 @@ def main():
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
     a = int((62/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3461,6 +3576,7 @@ def main():
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_home_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3472,6 +3588,7 @@ def main():
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
     a = int((43/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_user_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3490,6 +3607,7 @@ def main():
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
     a = int((48/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_back_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3502,6 +3620,7 @@ def main():
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button2.png'))
     a = int((48/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((34/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_next_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3514,6 +3633,7 @@ def main():
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','smiti_gender.png'))
     a = int((400/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((50/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_smity_gender_label_image = ImageTk.PhotoImage(temp_image2)
@@ -3523,12 +3643,14 @@ def main():
             # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','female_on.png'))
     a = int((148/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_female_on = ImageTk.PhotoImage(temp_image2)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','female_off.png'))
     a = int((148/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_female_off = ImageTk.PhotoImage(temp_image2)
@@ -3537,12 +3659,14 @@ def main():
         #Male button
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','male_off.png'))
     a = int((110/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_male_off = ImageTk.PhotoImage(temp_image2)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','male_on.png'))
     a = int((110/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_male_on = ImageTk.PhotoImage(temp_image2)
@@ -3560,6 +3684,7 @@ def main():
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','user_name.png'))
     a = int((262/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((52/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_user_name_label_image = ImageTk.PhotoImage(temp_image2)
@@ -3584,12 +3709,14 @@ def main():
     #switch
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','on_switch.png'))
     a = int((173/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((64/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_switch_on = ImageTk.PhotoImage(temp_image2)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','off_switch.png'))
     a = int((173/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((64/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_switch_off = ImageTk.PhotoImage(temp_image2)
@@ -3598,6 +3725,7 @@ def main():
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','Voice_control.png'))
     a = int((354/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((50/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_voice_control_label_image = ImageTk.PhotoImage(temp_image2)
@@ -3612,6 +3740,7 @@ def main():
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','Speak_key.png'))
     a = int((264/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((60/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_speak_key_label_image = ImageTk.PhotoImage(temp_image2)
@@ -3627,6 +3756,7 @@ def main():
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','voise_wake_up.png'))
     a = int((357/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((60/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_wake_up_label_image = ImageTk.PhotoImage(temp_image2)
@@ -3645,6 +3775,7 @@ def main():
     #info button
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','info_button.png'))
     a = int((206/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((275/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_info_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3655,6 +3786,7 @@ def main():
     #Applications button
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','applications.png'))
     a = int((325/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((275/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     settings_applicatons_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3718,7 +3850,9 @@ def main():
         #Label
     home_page_backGroundImage_label = Label(home_page, image=home_page_new_backGroundImage, borderwidth=0)
     #GIF
+                 #calculate the image width according to screen width
     gif_w = int ((260/1920)*w)+5
+                 #calculate the image higth according to screen width
     gif_h = int ((270/1080)*h)+5
     resize_gif(gif_w,gif_h)
     home_page_gif_label = ImageLabel(home_page,borderwidth=0)
@@ -3728,7 +3862,9 @@ def main():
     home_page_header = Label(home_page,borderwidth=0,background = "#0d0029")
     #home_page_title_image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Home_page','title.png'))
+                 #calculate the image width according to screen width
     a = int((405/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((171/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_title_image = ImageTk.PhotoImage(temp_image2)
@@ -3737,7 +3873,9 @@ def main():
 
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'akrh_titlou.png'))
+                 #calculate the image width according to screen width
     a = int((142/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((108/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_title_aktri_image = ImageTk.PhotoImage(temp_image2)
@@ -3745,7 +3883,9 @@ def main():
     home_page_title_aktri = Label(home_page_header,image = home_page_title_aktri_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'exit_button.png'))
+                 #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_cloce_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3753,7 +3893,9 @@ def main():
     home_page_cloce_button = tk.Button(home_page_header,image = home_page_cloce_button_image, borderwidth=0, command = screen.destroy)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'exit_fullscreen_button.png'))
+                 #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_exit_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3761,7 +3903,9 @@ def main():
     home_page_exit_fullscreen_button = tk.Button(home_page_header,image = home_page_exit_fullscreen_button_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'minimize_button.png'))
+                 #calculate the image width according to screen width
     a = int((31/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_minimize_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3769,7 +3913,9 @@ def main():
     home_page_minimize_button = tk.Button(home_page_header,image = home_page_minimize_button_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'fullscreen_button.png'))
+                 #calculate the image width according to screen width
     a = int((62/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_fullscreen_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3783,7 +3929,9 @@ def main():
     #Calendar button
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','calendar_button.png'))
+                 #calculate the image width according to screen width
     a = int((36/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((40/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_calendar_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3794,7 +3942,9 @@ def main():
     #Settings button
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'settings_button.png'))
+                 #calculate the image width according to screen width
     a = int((39/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((40/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_settings_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3806,7 +3956,9 @@ def main():
     #weather
         # weather button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','weather.png'))
+                 #calculate the image width according to screen width
     a = int((200/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_weather_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3816,7 +3968,9 @@ def main():
     #questions
         # questions button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','questions.png'))
+                 #calculate the image width according to screen width
     a = int((200/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_questions_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3826,7 +3980,9 @@ def main():
     #time
         # time button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','time.png'))
+                 #calculate the image width according to screen width
     a = int((200/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_time_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3836,7 +3992,9 @@ def main():
     #news
         # news button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','news.png'))
+                 #calculate the image width according to screen width
     a = int((200/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_news_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3846,7 +4004,9 @@ def main():
     #calls
         # calls button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','calls.png'))
+                 #calculate the image width according to screen width
     a = int((200/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_calls_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3856,7 +4016,9 @@ def main():
     #maps
         # maps button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','maps.png'))
+                 #calculate the image width according to screen width
     a = int((200/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_maps_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3866,7 +4028,9 @@ def main():
     #mail
         # mail button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','mail.png'))
+                 #calculate the image width according to screen width
     a = int((200/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_mail_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3876,7 +4040,9 @@ def main():
     #music
         # music button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','music.png'))
+                 #calculate the image width according to screen width
     a = int((200/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((185/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_music_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3890,7 +4056,9 @@ def main():
     #Mic button
         # Mic button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','microphone.png'))
+                 #calculate the image width according to screen width
     a = int((23/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((45/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_mic_button_image = ImageTk.PhotoImage(temp_image2)
@@ -3898,7 +4066,9 @@ def main():
     home_page_mic_button = tk.Button(home_page_bottom_line, text = ' ', image = home_page_mic_button_image, borderwidth=0, command=lambda:microphone_fun ("<Button-1>"))      
     #message history)
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','message_history.png'))
+                 #calculate the image width according to screen width
     a = int((950/1920)*w)+2
+                 #calculate the image higth according to screen width
     b = int((325/1080)*h)+1
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     message_history_label_image = ImageTk.PhotoImage(temp_image2)
@@ -3982,7 +4152,9 @@ def main():
     #Enter button
         # setings button image os.path.join(PATH_TO_GUI, 'Settings'
     temp_image = Image.open(os.path.join(PATH_TO_GUI, 'Home_page','enter_button.png'))
+                 #calculate the image width according to screen width
     a = int((54/1920)*w)+5
+                 #calculate the image higth according to screen width
     b = int((38/1080)*h)+5
     temp_image2 = temp_image.resize((a, b),Image.ANTIALIAS)
     home_page_enter_button_image = ImageTk.PhotoImage(temp_image2)
