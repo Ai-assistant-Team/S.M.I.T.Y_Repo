@@ -2,8 +2,8 @@
 # Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
 #
 
-from printToGUI import print2gui
-from textToSpeech import Text2Speech
+from SMITY.SMITYcore.printToGUI import print2gui
+from SMITY.SMITYcore.textToSpeech import Text2Speech
 
 MESSAGES = {
     0: 'The operation was executed successfully.',
@@ -30,7 +30,7 @@ MESSAGES = {
 
 
 def handleError(code):
-    if code in [10, 12, 13, 19]:
+    if code in [10, 12, 13]:
         # errors to be communicated only by written word
         print2gui(MESSAGES[code])
     else:
@@ -38,4 +38,3 @@ def handleError(code):
         Text2Speech().speak(MESSAGES[code])
 
     return code
-

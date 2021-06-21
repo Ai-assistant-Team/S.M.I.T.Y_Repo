@@ -7,8 +7,8 @@
 ##      https://pyttsx3.readthedocs.io/en/latest/engine.html
 
 import pyttsx3
-from printToGUI import print2gui
-from singleton import Singleton
+from SMITY.SMITYcore.printToGUI import print2gui
+from SMITY.SMITYcore.singleton import Singleton
 
 
 class Text2Speech(metaclass=Singleton):

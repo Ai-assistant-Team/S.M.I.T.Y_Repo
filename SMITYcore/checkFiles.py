@@ -3,7 +3,7 @@
 #
 
 from SMITY.definePATH import PATH_TO_SETTINGS, PATH_TO_GUI
-from searchExeProgram import lookFor
+from SMITY.SMITYcore.searchExeProgram import lookFor
 import os
 
 
@@ -12,6 +12,7 @@ def initializeFiles():
     ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
     ## ------------------------------------------------------
 
+    # Assigning the absolute paths of the needed files in variables
     settingsFile = os.path.join(PATH_TO_SETTINGS, 'settings.txt')
     websitesFile = os.path.join(PATH_TO_SETTINGS, 'users_urls.txt')
     programsFile = os.path.join(PATH_TO_SETTINGS, 'program_locations.txt')
@@ -19,6 +20,10 @@ def initializeFiles():
     locationsFile = os.path.join(PATH_TO_GUI, 'Calendar', 'locations_of_today.txt')
 
     try:
+        # Searching, for each file, if it exists.
+        # If it doesn't, then it is being created and the required content is being added.
+        # If the creation fails, it means that S.M.I.T.Y. won't be able to run properly, so an exception is thrown
+        #   and whoever called the function is being notified that the initialization has failed.
         if not (os.path.isfile(settingsFile)):
             if createSettingsFile(settingsFile) != 0:
                 raise Exception
@@ -40,11 +45,11 @@ def initializeFiles():
                 raise Exception
 
         return 0
-    except FileNotFoundError as e:
-        return 3
-    except Exception:
-        return 19
 
+    except Exception:
+        # If any line of this code fails, S.M.I.T.Y. can't run
+        # It doesn't matter what kind of exception is thrown, because they all mean that S.M.I.T.Y. can't initialize
+        raise       # raises exception to be caught by the initialization function
 # end of initializeFiles
 
 
@@ -67,7 +72,6 @@ def createSettingsFile(settingsFile):
         return 3
     except:
         return 9
-
 # end of createSettingsFile
 
 
@@ -136,13 +140,16 @@ def createLinks2Programs(programsFile):
             elif type(result) is str:
                 resultsDict[name] = result
     except UnicodeDecodeError:
-        counter = len(resultsDict)
+        # If this error is raised, it means that there were characters
+        # inside the absolute path of a file what could not be identified.
+
+        # For every item in dictOfPrograms, if its key is not already added to resultsDict, a value 'NOT FOUND' is set.
+        # If the key exists in resultsDict, it means that it was added before the UnicodeDecodeError and, as such, is
+        #   a valid value, that could be used with no problem in the future.
         for exe, name in dictOfPrograms.items():
-            if counter > 0:
-                counter -= 1
+            if name in resultsDict.keys():
                 continue
             resultsDict[name] = 'NOT FOUND'
-
 
     try:
         with open(programsFile, 'w') as file:
@@ -176,4 +183,3 @@ def createLocationsOfToday(locationsFile):
     except:
         return 9
 # end of createLocationsOfToday
-

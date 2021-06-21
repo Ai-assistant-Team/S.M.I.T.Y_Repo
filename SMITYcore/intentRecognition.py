@@ -2,11 +2,10 @@
 # Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
 #
 
+import SMITY.SMITYcore.createDictFromFiles
 
-import createDictFromFiles
 
-
-KEYWORDS_DICT = createDictFromFiles.create('Keywords', ',')
+KEYWORDS_DICT = SMITY.SMITYcore.createDictFromFiles.create('Keywords', ',')
 
 
 def most_common_element(lst):
@@ -25,7 +24,6 @@ def intentRecognition(userInput, keywordsDict=KEYWORDS_DICT):
     ## ------------------------------------------------------
 
     try:
-        print(KEYWORDS_DICT)
         # if userInput is a keyword by itself, then return the key that matches that keyword
         for key, value in keywordsDict.items():
             if userInput in value:
@@ -44,14 +42,8 @@ def intentRecognition(userInput, keywordsDict=KEYWORDS_DICT):
                 if keyword in userInput:
                     keywordsFound.append(key)
 
-        print(keywordsFound)
         return most_common_element(keywordsFound)
 
     except ValueError as e:
         return 7
 # end of intentRecognition
-
-
-def writtenCommandFromGUI(command):
-    intentRecognition(command)
-# end of writtenCommandFromGUI
