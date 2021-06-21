@@ -1,8 +1,6 @@
-from ClearTheTxtOfLinks import clear_the_txt_of_links
-from ClearTheTxtOfLinks import get_list_from_txt
-from ClearTheTxtOfLinks import update_txt
-from GetTitleFromArticle import get_title_from_article
-from SMITY.openUrls import openUrl
+from SMITY.News.ClearTheTxtOfLinks import get_list_from_txt, update_txt
+from SMITY.News.GetTitleFromArticle import get_title_from_article
+from SMITY.urlHandling.openUrls import openUrl
 #add libraries
 
 

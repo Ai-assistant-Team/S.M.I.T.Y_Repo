@@ -1,5 +1,4 @@
 #https://www.geeksforgeeks.org/extract-all-the-urls-from-the-webpage-using-python/
-import pathlib
 import requests
 from bs4 import BeautifulSoup
 from SMITY.definePATH import RESOURCES_PATH

@@ -1,8 +1,7 @@
-import webbrowser
 import subprocess
-from program import Program
+from SMITY.open_program.program import Program
 import pathlib
-from openUrls import openUrl
+from SMITY.urlHandling.openUrls import openUrl
 
 def open_program(program_name):
     listOfPrograms =[]

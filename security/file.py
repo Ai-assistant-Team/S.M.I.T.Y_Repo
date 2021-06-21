@@ -11,7 +11,7 @@ Created on Fri Apr 30 09:15:17 2021
 
 import cryptography
 
-from produceFernet import produceFernet
+from SMITY.security.produceFernet import produceFernet
 
 class fileSecurity:
     

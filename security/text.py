@@ -11,7 +11,7 @@ Created on Mon Apr 26 07:50:18 2021
 ##https://stackoverflow.com/questions/60912944/unable-to-except-cryptography-fernet-invalidtoken-error-in-python
 
 import cryptography
-from produceFernet import produceFernet
+from SMITY.security.produceFernet import produceFernet
 
 class textSecurity:
     
