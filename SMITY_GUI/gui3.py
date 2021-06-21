@@ -3344,6 +3344,7 @@ def main():
 
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
+                 #calculate the image width according to screen width
     a = int((31/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
@@ -3352,6 +3353,7 @@ def main():
     settings2_exit_fullscreen_button = tk.Button(settings2_header,image = settings2_exit_fullscreen_button_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
+                 #calculate the image width according to screen width
     a = int((31/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
@@ -3360,6 +3362,7 @@ def main():
     settings2_minimize_button = tk.Button(settings2_header,image = settings2_minimize_button_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
+                 #calculate the image width according to screen width
     a = int((62/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
@@ -3374,6 +3377,7 @@ def main():
     #Home button
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
+                 #calculate the image width according to screen width
     a = int((43/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
@@ -3387,6 +3391,7 @@ def main():
     #User button
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
+                 #calculate the image width according to screen width
     a = int((43/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
@@ -3406,6 +3411,7 @@ def main():
     #back button
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
+                 #calculate the image width according to screen width
     a = int((48/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((34/1080)*h)+5
@@ -3422,6 +3428,7 @@ def main():
         #name text spot label
         #label
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','text_spot.png'))
+                 #calculate the image width according to screen width
     a = int(0.544*w)
                  #calculate the image higth according to screen width
     b = int((84/1080)*h)
@@ -3444,6 +3451,7 @@ def main():
     #browse to files button
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Add_Aplications','browse_to_files.png'))
+                 #calculate the image width according to screen width
     a = int((164/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((217/1080)*h)+5
@@ -3455,6 +3463,7 @@ def main():
 
     #spotify username
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','spotify_username.png'))
+                 #calculate the image width according to screen width
     a = int((331/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((60/1080)*h)+5
@@ -3464,6 +3473,7 @@ def main():
 
     #music path
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','music_path.png'))
+                 #calculate the image width according to screen width
     a = int((331/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((60/1080)*h)+5
@@ -3520,6 +3530,7 @@ def main():
     #header
     settings_header = Label(settings,borderwidth=0,background = "#0d0029")
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','title.png'))
+                 #calculate the image width according to screen width
     a = int(((670/1920)*w)+5)
                  #calculate the image higth according to screen width
     b = int((57/1080)*h)+5
@@ -3528,6 +3539,7 @@ def main():
     settings_title = Label(settings_header,image = settings_title_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'akrh_titlou.png'))
+                 #calculate the image width according to screen width
     a = int((142/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((108/1080)*h)+5
@@ -3536,6 +3548,7 @@ def main():
     settings_title_aktri = Label(settings_header,image = settings_title_aktri_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_button.png'))
+                 #calculate the image width according to screen width
     a = int((31/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
@@ -3545,6 +3558,7 @@ def main():
 
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'exit_fullscreen_button.png'))
+                 #calculate the image width according to screen width
     a = int((31/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
@@ -3553,6 +3567,7 @@ def main():
     settings_exit_fullscreen_button = tk.Button(settings_header,image = settings_exit_fullscreen_button_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'minimize_button.png'))
+                 #calculate the image width according to screen width
     a = int((31/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
@@ -3561,6 +3576,7 @@ def main():
     settings_minimize_button = tk.Button(settings_header,image = settings_minimize_button_image, borderwidth=0)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'fullscreen_button.png'))
+                 #calculate the image width according to screen width
     a = int((62/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((28/1080)*h)+5
@@ -3575,6 +3591,7 @@ def main():
     #Home button
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'home-button.png'))
+                 #calculate the image width according to screen width
     a = int((43/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
@@ -3587,6 +3604,7 @@ def main():
     #User button
         # setings button image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'user-button.png'))
+                 #calculate the image width according to screen width
     a = int((43/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
@@ -3606,6 +3624,7 @@ def main():
     #back button
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button.png'))
+                 #calculate the image width according to screen width
     a = int((48/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((34/1080)*h)+5
@@ -3619,6 +3638,7 @@ def main():
     #Next button
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'back_button2.png'))
+                 #calculate the image width according to screen width
     a = int((48/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((34/1080)*h)+5
@@ -3632,6 +3652,7 @@ def main():
     #smity gender
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','smiti_gender.png'))
+                 #calculate the image width according to screen width
     a = int((400/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((50/1080)*h)+5
@@ -3642,6 +3663,7 @@ def main():
         #female button
             # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','female_on.png'))
+                 #calculate the image width according to screen width
     a = int((148/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
@@ -3649,6 +3671,7 @@ def main():
     settings_female_on = ImageTk.PhotoImage(temp_image2)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','female_off.png'))
+                 #calculate the image width according to screen width
     a = int((148/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
@@ -3658,6 +3681,7 @@ def main():
     settings_female_button = tk.Button(settings_backGroundImage_label, text = ' ', image = settings_female_on, borderwidth=0)
         #Male button
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','male_off.png'))
+                 #calculate the image width according to screen width
     a = int((110/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
@@ -3665,6 +3689,7 @@ def main():
     settings_male_off = ImageTk.PhotoImage(temp_image2)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','male_on.png'))
+                 #calculate the image width according to screen width
     a = int((110/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((43/1080)*h)+5
@@ -3683,6 +3708,7 @@ def main():
     #Username name
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','user_name.png'))
+                 #calculate the image width according to screen width
     a = int((262/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((52/1080)*h)+5
@@ -3708,6 +3734,7 @@ def main():
 
     #switch
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','on_switch.png'))
+                 #calculate the image width according to screen width
     a = int((173/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((64/1080)*h)+5
@@ -3715,6 +3742,7 @@ def main():
     settings_switch_on = ImageTk.PhotoImage(temp_image2)
 
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','off_switch.png'))
+                 #calculate the image width according to screen width
     a = int((173/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((64/1080)*h)+5
@@ -3724,6 +3752,7 @@ def main():
     #voice control
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','Voice_control.png'))
+                 #calculate the image width according to screen width
     a = int((354/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((50/1080)*h)+5
@@ -3739,6 +3768,7 @@ def main():
     #speak key
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','Speak_key.png'))
+                 #calculate the image width according to screen width
     a = int((264/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((60/1080)*h)+5
@@ -3755,6 +3785,7 @@ def main():
     #voice wake up
         # Define image
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','voise_wake_up.png'))
+                 #calculate the image width according to screen width
     a = int((357/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((60/1080)*h)+5
@@ -3774,6 +3805,7 @@ def main():
 
     #info button
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','info_button.png'))
+                 #calculate the image width according to screen width
     a = int((206/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((275/1080)*h)+5
@@ -3785,6 +3817,7 @@ def main():
 
     #Applications button
     temp_image = Image.open(os.path.join(PATH_TO_GUI,'Settings','applications.png'))
+                 #calculate the image width according to screen width
     a = int((325/1920)*w)+5
                  #calculate the image higth according to screen width
     b = int((275/1080)*h)+5
