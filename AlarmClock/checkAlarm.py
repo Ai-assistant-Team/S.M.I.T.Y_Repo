@@ -6,7 +6,7 @@ import datetime
 import os
 import time
 from SMITY.definePATH import PATH_TO_ALARM_CLOCK
-file = "hours.txt"
+file = 'hours.txt'
 
 def checkTime():
     try:
@@ -16,7 +16,7 @@ def checkTime():
                 
                 if os.stat(os.path.join(PATH_TO_ALARM_CLOCK, file)).st_size > 0 : #checks  if the file hours.txt is empty
                     
-                    with open(os.path.join(PATH_TO_ALARM_CLOCK, file), "r") as f: #if it exists it opens the file
+                    with open(os.path.join(PATH_TO_ALARM_CLOCK, file), 'r') as f: #if it exists it opens the file
 
                         a = [a.strip() for a in f]  #formats the content of the txt file to a list of integers that represent the time
 
@@ -61,10 +61,10 @@ def checkTime():
                     
                     if (minv == 0): #if there was an element equal to 0 and so is min it means that the ring has to go off
                         
-                        wakeup="WAKE UP!"
+                        wakeup='WAKE UP!'
                         
                         
-                        with open(os.path.join(PATH_TO_ALARM_CLOCK,file), "w") as txt_file: #saving every element from list p to the hours.txt file
+                        with open(os.path.join(PATH_TO_ALARM_CLOCK,file), 'w') as txt_file: #saving every element from list p to the hours.txt file
                             
                             for line in p:
                                 
