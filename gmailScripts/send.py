@@ -2,7 +2,7 @@
 Created on Sat May 15
 @author: Τάσος Παπαδόπουλος
 """
-from Google import Create_Service
+from SMITY.gmailScripts.Google import Create_Service
 import base64
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
