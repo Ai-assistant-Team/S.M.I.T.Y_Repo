@@ -23,7 +23,7 @@ def spotifyAuth(): #used to authenticate the user with the spotify platform
        return 1
 
 def getFirstAvailableDevice(): #used to return the first available device running spotify (more commonly browser,desktop or mobile)
-    from openUrls import openUrl #used to open spotify web page in case it or the spotify desktop app is not already open
+    from urlHandling.openUrls import openUrl #used to open spotify web page in case it or the spotify desktop app is not already open
     from time import sleep #used to delay authentication until the spotify web page is loaded
     
     for i in range(5):
