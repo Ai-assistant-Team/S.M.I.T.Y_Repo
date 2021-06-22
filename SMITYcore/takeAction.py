@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+#
+# Script created by Theodore Economides
+#
+
 ## ------------------------------
 ## Importing modules and declaring functions
 ## ------------------------------

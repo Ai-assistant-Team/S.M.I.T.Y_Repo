@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 from SMITY.SMITYcore.printToGUI import print2gui
@@ -30,6 +32,7 @@ MESSAGES = {
 
 
 def handleError(code):
+
     if code in [10, 12, 13]:
         # errors to be communicated only by written word
         print2gui(MESSAGES[code])

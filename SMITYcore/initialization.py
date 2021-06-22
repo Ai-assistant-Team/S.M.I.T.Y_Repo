@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 # Sources : https://www.programiz.com/python-programming/user-defined-exception
@@ -25,7 +27,7 @@ class News_Not_Initialized_Correctly(Exception):
 
 def init():
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     # creating file PATH

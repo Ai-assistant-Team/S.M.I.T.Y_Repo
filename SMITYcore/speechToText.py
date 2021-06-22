@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 import speech_recognition as sr
@@ -10,7 +12,7 @@ from SMITY.SMITYcore.errorHandling import handleError
 
 def greeting():
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     from random import choice
@@ -23,7 +25,7 @@ def greeting():
 
 def listenForCommand():
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     from SMITY.SMITYcore.takeAction import recognizeAndAct
@@ -44,7 +46,7 @@ def listenForCommand():
 
 def listen():
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     ## Listens for the user's input and returns it as a string
@@ -81,7 +83,7 @@ def listen():
 
 def callListenFromGUI():
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     # This function is called from GUI, when the user clicks on the <Microphone Button>, and has no return statement.

@@ -1,10 +1,13 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 from SMITY.SMITYcore.initialization import init
 from SMITY.SMITYcore.wakeup import waitForWakeup
-from SMITY.SMITYcore.parallelProgramming import *
+from SMITY.SMITYcore.parallelProgramming import call_function
+# from time import sleep
 
 
 if __name__ == '__main__':
@@ -14,6 +17,7 @@ if __name__ == '__main__':
     # ------------------------------
 
     try:
+        
         init()
     except:
         # if initialization fails, then GUI doesn't work, so errorHandling can't be used
@@ -27,11 +31,10 @@ if __name__ == '__main__':
     # Initialize GUI
     # ------------------------------
 
-    ## By importing gui3, the GUI initializes
-
     import SMITY.SMITY_GUI.gui3
 
     call_function(SMITY.SMITY_GUI.gui3.main())
+    # sleep(0.00000000001)
 
     # ------------------------------
 
@@ -45,5 +48,6 @@ if __name__ == '__main__':
     ## speech2text to hear the request
 
     call_function(waitForWakeup)
+    # sleep(0.00000000001)
 
     # ------------------------------

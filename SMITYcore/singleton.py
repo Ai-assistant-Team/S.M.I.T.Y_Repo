@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+
+#
+# Script created by Theodore Economides
+#
+
 class Singleton(type):
     _instances = {}
 

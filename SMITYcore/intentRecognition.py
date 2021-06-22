@@ -1,16 +1,18 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 import SMITY.SMITYcore.createDictFromFiles
 
 
-KEYWORDS_DICT = SMITY.SMITYcore.createDictFromFiles.create('Keywords', ',')
+KEYWORDS_DICT = SMITY.SMITYcore.createDictFromFiles.create()
 
 
 def most_common_element(lst):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     # https://stackoverflow.com/questions/1518522/find-the-most-common-element-in-a-list
@@ -20,7 +22,7 @@ def most_common_element(lst):
 
 def intentRecognition(userInput, keywordsDict=KEYWORDS_DICT):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     try:
@@ -44,6 +46,6 @@ def intentRecognition(userInput, keywordsDict=KEYWORDS_DICT):
 
         return most_common_element(keywordsFound)
 
-    except ValueError as e:
+    except ValueError:
         return 7
 # end of intentRecognition

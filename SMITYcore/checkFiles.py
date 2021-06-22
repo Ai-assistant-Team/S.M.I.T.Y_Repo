@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 from SMITY.definePATH import PATH_TO_SETTINGS, PATH_TO_GUI
@@ -9,7 +11,7 @@ import os
 
 def initializeFiles():
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     # Assigning the absolute paths of the needed files in variables
@@ -55,7 +57,7 @@ def initializeFiles():
 
 def createSettingsFile(settingsFile):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     try:
@@ -77,7 +79,7 @@ def createSettingsFile(settingsFile):
 
 def createLinks2usersPrograms(userProgramsFile):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     try:
@@ -95,7 +97,7 @@ def createLinks2usersPrograms(userProgramsFile):
 
 def createLinks2Sites(websitesFile):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     try:
@@ -113,7 +115,7 @@ def createLinks2Sites(websitesFile):
 
 def createLinks2Programs(programsFile):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     # Dictionary in which
@@ -167,7 +169,7 @@ def createLinks2Programs(programsFile):
 
 def createLocationsOfToday(locationsFile):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     try:

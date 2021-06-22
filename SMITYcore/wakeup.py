@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 import speech_recognition as sr
@@ -12,7 +14,7 @@ WAKEUP_WORDS_LIST = ['smity', 'smitty']
 
 def waitForWakeup():
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     # # Uses Google's Speech Recognition Model

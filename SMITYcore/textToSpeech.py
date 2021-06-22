@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 ## Sources :
@@ -17,7 +19,7 @@ class Text2Speech(metaclass=Singleton):
 
     def __init__(self, rate=125, volume=1.0):
         ## ------------------------------------------------------
-        ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+        ## created by Theodore Economides
         ## ------------------------------------------------------
 
         self.__engine = pyttsx3.init()  # object creation
@@ -32,7 +34,7 @@ class Text2Speech(metaclass=Singleton):
 
     def speak(self, toSay):
         ## ------------------------------------------------------
-        ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+        ## created by Theodore Economides
         ## ------------------------------------------------------
 
         ##

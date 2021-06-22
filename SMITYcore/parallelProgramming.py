@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 # ------------------------------
@@ -12,7 +14,7 @@ from SMITY.SMITYcore.errorHandling import handleError
 
 def communicateWithRunningFunctions(conn):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     ##
@@ -33,15 +35,11 @@ def communicateWithRunningFunctions(conn):
 
 def call_function_wCommunication(function2beCalled, *functionsArgs):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
     parent_conn, child_conn = multiprocessing.Pipe()
 
-    # if the function2beCalled doesn't sleep after sending a message, add the following code after each send :
-    # from time import sleep
-    # sleep(0.0000000000001)
-    # so that the receiver gets its turn to receive the messages and do what he has got to do with them
     p_function = multiprocessing.Process(target=function2beCalled, args=(parent_conn, *functionsArgs))
     receiver = multiprocessing.Process(target=communicateWithRunningFunctions, args=(child_conn,))
 
@@ -54,13 +52,9 @@ def call_function_wCommunication(function2beCalled, *functionsArgs):
 
 def call_function(function2beCalled, *functionsArgs):
     ## ------------------------------------------------------
-    ## created by Theodore Economides (Θεόδωρος Οικονομίδης)
+    ## created by Theodore Economides
     ## ------------------------------------------------------
 
-    # if the function2beCalled doesn't sleep after sending a message, add the following code after each send :
-    # from time import sleep
-    # sleep(0.0000000000001)
-    # so that the receiver gets its turn to receive the messages and do what he has got to do with them
     p_function = multiprocessing.Process(target=function2beCalled, args=(*functionsArgs,))
 
     p_function.start()

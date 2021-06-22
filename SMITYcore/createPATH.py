@@ -1,11 +1,13 @@
+# -*- coding: utf-8 -*-
+
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 # Sources : https://stackoverflow.com/questions/6227590/finding-the-users-my-documents-path
 
 import os
-from SMITY.definePATH import RESOURCES_PATH, PATH_TO_NEWS, PATH_TO_GUI, PATH_TO_SETTINGS, PATH_TO_ALARM_CLOCK
+from SMITY.definePATH import RESOURCES_PATH, PATH_TO_NEWS, PATH_TO_GUI, PATH_TO_SETTINGS, PATH_TO_ALARM_CLOCK, PATH_TO_KEYWORDS
 from pathlib import Path
 
 
@@ -41,6 +43,8 @@ def create():
 
         # Settings
         Path(PATH_TO_SETTINGS).mkdir(parents=True, exist_ok=True)
+        # Keywords
+        Path(PATH_TO_KEYWORDS).mkdir(parents=True, exist_ok=True)
         # AlarmClock
         Path(PATH_TO_ALARM_CLOCK).mkdir(parents=True, exist_ok=True)
         # Checklists
