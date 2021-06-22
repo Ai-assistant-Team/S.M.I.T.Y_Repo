@@ -1,5 +1,5 @@
 #
-# Script created by Theodore Economides (Θεόδωρος Οικονομίδης)
+# Script created by Theodore Economides
 #
 
 # Sources : https://stackoverflow.com/questions/6227590/finding-the-users-my-documents-path
@@ -26,3 +26,4 @@ MY_OUTPUT = os.path.join(PATH_TO_GUI, 'output.txt')
 PATH_TO_SETTINGS = os.path.join(RESOURCES_PATH, 'Settings')
 PATH_TO_ALARM_CLOCK = os.path.join(RESOURCES_PATH, 'AlarmClock')
 PATH_TO_CHECKLISTS = os.path.join(RESOURCES_PATH, 'Checklists')
+PATH_TO_KEYWORDS = os.path.join(RESOURCES_PATH, 'Keywords')

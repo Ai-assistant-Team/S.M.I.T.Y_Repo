@@ -9,10 +9,9 @@ import datetime
 from tkinter import filedialog
 
 import os
+from time import sleep
 
-from SMITY.definePATH import PATH_TO_GUI
-from SMITY.definePATH import MY_OUTPUT
-from SMITY.definePATH import PATH_TO_SETTINGS
+from SMITY.definePATH import PATH_TO_GUI, MY_OUTPUT, PATH_TO_SETTINGS
 # from SMITY.SMITYcore.speechToText import callListenFromGUI
 # from SMITY.SMITYcore.intentRecognition import writtenCommandFromGUI
 import SMITY.SMITYcore.speechToText
@@ -20,10 +19,10 @@ import SMITY.SMITYcore.intentRecognition
 
 MAX_LINES = 7
 #txt files constants
-settings_txt_file = 'settings.txt'
-program_locations_txt_file = 'program_locations.txt'
-users_programs_txt_file = 'users_programs.txt'
-users_urls_txt_file = 'users_urls.txt'
+settings_txt_file = os.path.join(PATH_TO_SETTINGS, 'settings.txt')
+program_locations_txt_file = os.path.join(PATH_TO_SETTINGS, 'program_locations.txt')
+users_programs_txt_file = os.path.join(PATH_TO_SETTINGS, 'users_programs.txt')
+users_urls_txt_file = os.path.join(PATH_TO_SETTINGS, 'users_urls.txt')
 
 
 def main():
@@ -77,7 +76,7 @@ def main():
         frames = ImageSequence.Iterator(im)
 
         # Wrap on-the-fly thumbnail generator
-        def thumbnails(frames):
+        def thumbnails(frames): 
             for frame in frames:
                 thumbnail = frame.copy()
                 #thumbnail.thumbnail(size, Image.ANTIALIAS)
@@ -94,6 +93,7 @@ def main():
 
     def microphone_fun(event):
         SMITY.SMITYcore.speechToText.callListenFromGUI()
+        sleep(0.00000000001)
 
     def home_page_go_to_setings(event):
         #go from home to settings screen
@@ -2453,7 +2453,8 @@ def main():
     about_page_new_backGroundImage = ImageTk.PhotoImage(about_page_resized_backGroundImage)
         #Label
     about_page_backGroundImage_label = Label(about_page, image=about_page_new_backGroundImage, borderwidth=0)
-
+    about_page_backGroundImage_label.image = about_page_new_backGroundImage
+    
     #Header
     about_page_header = Label(about_page,borderwidth=0,background = "#0d0029")
 
@@ -3871,6 +3872,7 @@ def main():
         try:
             output('User : ' + str(home_page_comand_text_field.get().rstrip()))
             SMITY.SMITYcore.intentRecognition.writtenCommandFromGUI(str(home_page_comand_text_field.get().rstrip()))
+            sleep(0.00000000001)
         except:
             return 1
 
@@ -3957,7 +3959,15 @@ def main():
     home_page_comand_text_field.place(relx=0.03, rely= 0.12, relwidth = 0.3,height =(36/1080)*h)
 
     home_page.mainloop()
+    
+    sleep(0.00000000001)
 
 
 def goToCalendar():
     home_page_to_calendar('<Button-1>')
+    sleep(0.00000000001)
+    
+
+def update_output():
+    get_command_update()
+    sleep(0.00000000001)
