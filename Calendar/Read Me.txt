@@ -1,9 +1,0 @@
----------- 7-5-2021 ----------
-turn_text_to_date: gets a string and turns today,tomorrow etc into dates
-show_me: returns returs a stirng with all the registered tasks for a specific date
-show_me_in_range: returns returs a stirng with all the registered tasks for a specific range of dates
-next_day : returns the next day of the date of the input
-put_on_record: gets a string and adds it to the txt file
-get_description: gets the description of the event and adds it to the txt file
-get_date : gets the date of the event and adds it to the txt file
-get_time : gets the time of the event and adds it to the txt file
