@@ -1,5 +1,0 @@
-Requirements:
-            Lib 1: tk
-            Lib 2: pyautogui
-            Lib 3: numpy
-            Lib 4: opencv-python

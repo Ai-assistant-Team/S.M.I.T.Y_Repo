@@ -1,7 +1,0 @@
-7/5/2021
-	screenrecorder.py
-			change 1 :( Added root = tk.Tk() at line 17)
-			change 2 :( Added root.withdraw() at line 18)
-			change 3: ( Replaced filename = "Recording.avi" with filename = filedialog.asksaveasfilename(defaultextension='.mp4'))
-			change 4: ( Added if(not filename) : return False at 21,22 lines)
-			change 5: ( Added return True at line 69)
