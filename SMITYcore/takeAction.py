@@ -12,7 +12,7 @@
 from SMITY.definePATH import *
 from SMITY.AlarmClock.alarmClock import *
 from SMITY.counter.counter import *
-from SMITY.currency_converter.ExchangeRates import *
+# from SMITY.currency_converter.ExchangeRates import *
 from SMITY.fb_messages.facebook_messages_count import *
 from SMITY.Forecast_weather_now.forecast_weather_script import *
 from SMITY.funFactsScript.funFacts import *
@@ -26,23 +26,23 @@ from SMITY.googleSearch.googleSearchCust import *
 from SMITY.instagram_messages.instagram_messages_count import *
 from SMITY.jokesScript.jokes import *
 from SMITY.LockScrn.lockScrn import *
-from SMITY.News.ClearTheTxtOfLinks import *
-from SMITY.News.news import *
+# from SMITY.News.ClearTheTxtOfLinks import *
+# from SMITY.News.news import *
 from SMITY.open_program.open_program import *
-from SMITY.PhotoCapture.photoCapture import *
+# from SMITY.PhotoCapture.photoCapture import *
 from SMITY.playMusicLocal.playMusicLocal import *
 from SMITY.playMusicSpotify.playMusicSpotify import *
 from SMITY.playVideoLocal.playVideoLocal import *
 from SMITY.Restart.restartDev import *
-from SMITY.screenRecord.screenrecord import *
-from SMITY.screenshotScript.screenshot import *
+# from SMITY.screenRecord.screenrecord import *
+# from SMITY.screenshotScript.screenshot import *
 from SMITY.security.file import *
 from SMITY.security.text import *
 from SMITY.Shutdown.shutdownDev import *
 # from SMITY.SMITY_GUI.gui3 import goToCalendar      # despite the error, it should work. When the GUI runs, it will create a global variable, that references <home_page_to_calendar>
 # import SMITY.SMITY_GUI.gui3
 # from SMITY.sos_signal.sos_signal import *
-from SMITY.VideoCapture.videoCapture import *
+# from SMITY.VideoCapture.videoCapture import *
 from SMITY.Wikipedia.wikipediaScript import *
 from SMITY.Youtube.youtubeScript import *
 from SMITY.urlHandling.openUrls import openUrl
@@ -195,26 +195,28 @@ def recognizeAndAct(userInput):
 
     elif key == 'currencyConverter_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('From what currency would you like to convert?')
-        c1 = SMITY.SMITYcore.speechToText.listen()
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What currency what would you like to convert to?')
-        c2 = SMITY.SMITYcore.speechToText.listen()
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the amount of ' + c1 + ' ?')
-        amount = SMITY.SMITYcore.speechToText.listen()
-        if type(c1) == type(c2) == type(amount) == str:
-            if c1 == 'dollar':
-                c1 = 'United States Dollar'
-            if c2 == 'dollar':
-                c2 = 'United States Dollar'
-            try:
-                amount = int(re.search(r'\d+', amount).group())
-                result = converter(c1, c2, amount)
-                if type(result) == str:
-                    SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
-                else:
-                    SMITY.SMITYcore.errorHandling.handleError(result)
-            except:
-                SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Input')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('From what currency would you like to convert?')
+        # c1 = SMITY.SMITYcore.speechToText.listen()
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What currency what would you like to convert to?')
+        # c2 = SMITY.SMITYcore.speechToText.listen()
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the amount of ' + c1 + ' ?')
+        # amount = SMITY.SMITYcore.speechToText.listen()
+        # if type(c1) == type(c2) == type(amount) == str:
+        #     if c1 == 'dollar':
+        #         c1 = 'United States Dollar'
+        #     if c2 == 'dollar':
+        #         c2 = 'United States Dollar'
+        #     try:
+        #         amount = int(re.search(r'\d+', amount).group())
+        #         result = converter(c1, c2, amount)
+        #         if type(result) == str:
+        #             SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
+        #         else:
+        #             SMITY.SMITYcore.errorHandling.handleError(result)
+        #     except:
+        #         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Input')
 
     elif key == 'decryptFile_Keywords':
 
@@ -329,11 +331,13 @@ def recognizeAndAct(userInput):
 
     elif key == 'get_news_Keywords':
 
-        result = get_news()
-        if type(result) == str:
-            SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
-        else:
-            SMITY.SMITYcore.errorHandling.handleError(result)
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # result = get_news()
+        # if type(result) == str:
+        #     SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
+        # else:
+        #     SMITY.SMITYcore.errorHandling.handleError(result)
 
     elif key == 'gmailRead_Keywords':
 
@@ -437,7 +441,9 @@ def recognizeAndAct(userInput):
 
     elif key == 'photoCapture_Keywords':
 
-        SMITY.SMITYcore.errorHandling.handleError(capturing())
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # SMITY.SMITYcore.errorHandling.handleError(capturing())
 
     elif key == 'playAlbumSpotify_Keywords':
 
@@ -581,11 +587,15 @@ def recognizeAndAct(userInput):
 
     elif key == 'screenRecord_Keywords':
 
-        SMITY.SMITYcore.errorHandling.handleError(screenRecord())
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # SMITY.SMITYcore.errorHandling.handleError(screenRecord())
 
     elif key == 'screenshot_Keywords':
 
-        SMITY.SMITYcore.errorHandling.handleError(screenshot())
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # SMITY.SMITYcore.errorHandling.handleError(screenshot())
 
     elif key == 'seekSpotify_Keywords':
 
@@ -594,6 +604,7 @@ def recognizeAndAct(userInput):
 
         try:
             whereTo = int(re.search(r'\d+', whereTo).group())
+            whereTo = whereTo * 60  # to become seconds from minutes
             if type(whereTo) == int:
                 SMITY.SMITYcore.errorHandling.handleError(seek(whereTo))
         except:
@@ -601,17 +612,17 @@ def recognizeAndAct(userInput):
 
     elif key == 'shuffleControlSpotify_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this option is not supported yet.')
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this option is not supported yet.')
 
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Would you like to activate shuffle ?')
-        # ans = SMITY.SMITYcore.speechToText.listen()
-        # if type(ans) == str:
-        #     if ans.lower() == 'yes':
-        #         SMITY.SMITYcore.errorHandling.handleError(shuffleControl(True))
-        #     elif ans.lower() == 'no':
-        #         SMITY.SMITYcore.errorHandling.handleError(shuffleControl(False))
-        #     else:
-        #         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Answer')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Would you like to activate shuffle ?')
+        ans = SMITY.SMITYcore.speechToText.listen()
+        if type(ans) == str:
+            if ans.lower() == 'yes':
+                SMITY.SMITYcore.errorHandling.handleError(shuffleControl('True'))
+            elif ans.lower() == 'no':
+                SMITY.SMITYcore.errorHandling.handleError(shuffleControl('False'))
+            else:
+                SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Answer')
 
     elif key == 'shutdownDevice_Keywords':
 
@@ -661,7 +672,9 @@ def recognizeAndAct(userInput):
 
     elif key == 'videoCapture_Keywords':
 
-        SMITY.SMITYcore.errorHandling.handleError(videocap())
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # SMITY.SMITYcore.errorHandling.handleError(videocap())
 
     elif key == 'volumeControlSpotify_Keywords':
 
