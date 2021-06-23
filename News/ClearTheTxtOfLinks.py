@@ -7,8 +7,8 @@ import os
 #add libraries
 
 #difine costans
-DIRNAME = '\\News'
-record_file = '\\links.txt'
+DIRNAME = 'News'
+record_file = 'links.txt'
 
 def create_txt_with_links():
     #creates links.txt with all the links from https://www.news.gr/
