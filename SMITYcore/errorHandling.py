@@ -37,7 +37,6 @@ def handleError(code):
         # errors to be communicated only by written word
         SMITY.SMITYcore.printToGUI.print2gui(MESSAGES[code])
     else:
-        print(code)
         if code not in MESSAGES.keys():
             print(code)
         # errors to be communicated like any other answer from S.M.I.T.Y.

@@ -7,7 +7,7 @@
 import speech_recognition as sr
 #from SMITY.SMITYcore.speechToText import listenForCommand
 import SMITY.SMITYcore.speechToText
-
+import time
 
 WAKEUP_WORDS_LIST = ['smity', 'smitty']
 
@@ -38,6 +38,7 @@ def waitForWakeup():
                     if WAKEUP_WORD in userInput:
                         # activate
                         SMITY.SMITYcore.speechToText.listenForCommand()
+                        time.sleep(0.1)
                         print('Say "SMITY" to wake S.M.I.T.Y. up.')
                         break
 

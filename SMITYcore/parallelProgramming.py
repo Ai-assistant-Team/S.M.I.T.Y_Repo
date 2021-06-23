@@ -9,7 +9,7 @@
 # ------------------------------
 import multiprocessing
 # import SMITY.SMITYcore.printToGUI
-import textToSpeech
+import SMITY.SMITYcore.textToSpeech
 from SMITY.SMITYcore.errorHandling import handleError
 
 
@@ -27,7 +27,7 @@ def communicateWithRunningFunctions(conn):
         msg = conn.recv()
         if type(msg) == str:
             # SMITY.SMITYcore.printToGUI.print2gui("{}".format(msg))
-            textToSpeech.Text2Speech().speak("{}".format(msg))
+            SMITY.SMITYcore.textToSpeech.Text2Speech().speak("{}".format(msg))
         elif type(msg) == int:
             handleError(msg)
         else:
