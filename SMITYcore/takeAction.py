@@ -18,8 +18,8 @@ from SMITY.Forecast_weather_now.forecast_weather_script import *
 from SMITY.funFactsScript.funFacts import *
 from SMITY.GetDate.getDate import *
 from SMITY.GetTime.getTime import *
-from SMITY.gmailScripts.read import *
-from SMITY.gmailScripts.send import *
+# from SMITY.gmailScripts.read import *
+# from SMITY.gmailScripts.send import *
 from SMITY.googleMapsScripts.googleMapsDirections import *
 from SMITY.googleMapsScripts.googleMapsSearch import *
 from SMITY.googleSearch.googleSearchCust import *
@@ -40,8 +40,8 @@ from SMITY.security.file import *
 from SMITY.security.text import *
 from SMITY.Shutdown.shutdownDev import *
 # from SMITY.SMITY_GUI.gui3 import goToCalendar      # despite the error, it should work. When the GUI runs, it will create a global variable, that references <home_page_to_calendar>
-#import SMITY.SMITY_GUI.gui3
-from SMITY.sos_signal.sos_signal import *
+# import SMITY.SMITY_GUI.gui3
+# from SMITY.sos_signal.sos_signal import *
 from SMITY.VideoCapture.videoCapture import *
 from SMITY.Wikipedia.wikipediaScript import *
 from SMITY.Youtube.youtubeScript import *
@@ -335,27 +335,33 @@ def recognizeAndAct(userInput):
 
     elif key == 'gmailRead_Keywords':
 
-        result = show_emails()
-        if type(result) == str:
-            SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
-        else:
-            SMITY.SMITYcore.errorHandling.handleError(result)
+        # Though the script is fully functional, it can't use the user's credentials if Google doesn't authorize the app
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # result = show_emails()
+        # if type(result) == str:
+        #     SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
+        # else:
+        #     SMITY.SMITYcore.errorHandling.handleError(result)
 
     elif key == 'gmailSend_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What would you like the email to say ?')
-        msg = SMITY.SMITYcore.speechToText.listen()
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak("What would you like the email's subject to be ?")
-        subject = SMITY.SMITYcore.speechToText.listen()
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('To whom should I send the email  ?')
-        to = SMITY.SMITYcore.speechToText.listen()
+        # Though the script is fully functional, it can't use the user's credentials if Google doesn't authorize the app
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
-        if type(msg) == type(subject) == type(to) == str:
-            result = create_send(msg, to, subject)
-            if type(result) is str:
-                SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
-            else:
-                SMITY.SMITYcore.errorHandling.handleError(result)
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What would you like the email to say ?')
+        # msg = SMITY.SMITYcore.speechToText.listen()
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak("What would you like the email's subject to be ?")
+        # subject = SMITY.SMITYcore.speechToText.listen()
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('To whom should I send the email  ?')
+        # to = SMITY.SMITYcore.speechToText.listen()
+        #
+        # if type(msg) == type(subject) == type(to) == str:
+        #     result = create_send(msg, to, subject)
+        #     if type(result) is str:
+        #         SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
+        #     else:
+        #         SMITY.SMITYcore.errorHandling.handleError(result)
 
     elif key == 'googleMapsDirections_Keywords':
 
@@ -488,7 +494,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'playMusicLocal_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the song you would like to SMITY.SMITYcore.speechToText.listen ?')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the song you would like to listen ?')
         songName = SMITY.SMITYcore.speechToText.listen()
         if type(songName) == str:
             songPath = getLocalMusicPath()
@@ -496,7 +502,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'playMusicSpotify_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the song you would like Spotidfy to play ?')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the song you would like Spotify to play ?')
         songName = SMITY.SMITYcore.speechToText.listen()
         if type(songName) == str:
             SMITY.SMITYcore.errorHandling.handleError(songbyTitle(songName, None))
@@ -611,10 +617,14 @@ def recognizeAndAct(userInput):
 
     elif key == 'sosSignal_Keywords':
 
-        if isSure():
-            send_sos()
-        else:
-            SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Ok, I will not proceed')
+        # The script uses the gmail send function which is not supported yet for reasons explained before
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # if isSure():
+        #     send_sos()
+        # else:
+        #     SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Ok, I will not proceed')
+
     elif key == 'translateText_Keywords':
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this option is not supported yet.')
 
@@ -638,7 +648,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'videoCapture_Keywords':
 
-        videocap()
+        SMITY.SMITYcore.errorHandling.handleError(videocap())
 
     elif key == 'volumeControlSpotify_Keywords':
 
@@ -660,6 +670,8 @@ def recognizeAndAct(userInput):
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What would you like to search in Wikipedia ?')
         toSearch = SMITY.SMITYcore.speechToText.listen()
         if type(toSearch) == str:
+            SMITY.SMITYcore.textToSpeech.Text2Speech().speak(Wiki_Search(toSearch))
+        else:
             SMITY.SMITYcore.errorHandling.handleError(Wiki_Search(toSearch))
 
     elif key == 'youtube_Keywords':
