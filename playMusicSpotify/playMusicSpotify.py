@@ -67,7 +67,7 @@ def songbyTitle(songname, songartist):  # plays a song given a name and an optio
         else:
             trackid = searchForId('track:' + songname + ' artist:' + songartist, 'track')
             sp.start_playback(deviceid, uris=['spotify:track:' + trackid])
-            return 0
+        return 0
     except:
         return 1
 
