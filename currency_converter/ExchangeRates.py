@@ -128,7 +128,8 @@ def converter(c1, c2, amount):
 
     try:
         c = CurrencyRates()
-        cc = round(c.convert(currencyMatches[c1], currencyMatches[c2], amount),2)
-        return(str(cc) + ' ' + c2)
+        cc = round(c.convert(currencyMatches[c1.lower()], currencyMatches[c2.lower()], amount), 2)
+        print(str(cc) + ' ' + c2)
+        return str(cc) + ' ' + c2
     except:
         return 1
