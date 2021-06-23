@@ -1,5 +1,0 @@
----------- 09/5/2021 ----------
-	ExchangeRates.py <version 1.0> : Created 
-
----------- 06/16/2021 ----------
-	ExchangeRates.py <version 2.0> : Changed to now convert an amount from one currency to another
