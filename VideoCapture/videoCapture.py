@@ -1,25 +1,23 @@
 from ecapture import ecapture as ec
 
-def videocap() :
-    
+
+def videocap():
     try:
-        ec.vidcapture(0,'Video','Demo.avi','q')
-        
+        ec.vidcapture(0, 'Video', 'Demo.avi', 'q')
+
         return 0
-    
+
     except IOError:
         return 12
     except:
         return 1
-   
-#The vidcapture function takes four arguments:
 
-#Camera index(first connected webcam will be of index 0. The next webcam will be of index 1)
+# The vidcapture function takes four arguments:
 
-#Window name (It can be a variable or a string)
+# Camera index(first connected webcam will be of index 0. The next webcam will be of index 1)
 
-#Save name (It can be a variable or a string. If you don't wish to save the video, type False)
+# Window name (It can be a variable or a string)
 
-#Exit key (The key you press to stop recording the video. It can be ("q", "x", "a" or any other letter))
+# Save name (It can be a variable or a string. If you don't wish to save the video, type False)
 
-
+# Exit key (The key you press to stop recording the video. It can be ("q", "x", "a" or any other letter))
