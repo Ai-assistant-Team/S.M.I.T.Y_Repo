@@ -114,7 +114,6 @@ def checkTime():
         return 8  # It could not open and read the file
 
 
-checkTime()
 def notify(content, title='Notification!'):
     try:
         toaster = ToastNotifier()  # One-time initialization

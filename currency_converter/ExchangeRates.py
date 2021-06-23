@@ -5,11 +5,12 @@ Created on Sat May 8
 
 from forex_python.converter import CurrencyRates
 
-c = CurrencyRates()
-#c1 = the key the user gives for the currency you are converting from 
-#c2= the key theuser givesfor the currency you are converting to
-#c3= Full name of the currency that the user wants to conver to 
-#amount= the amount you are converting
+
+# c1 = the key the user gives for the currency you are converting from
+# c2= the key theuser givesfor the currency you are converting to
+# c3= Full name of the currency that the user wants to conver to
+# amount= the amount you are converting
+
 currencyMatches = {
     'Albania Lek'				:		'ALL',
     'Afghanistan Afghani'		:			'AFN',
@@ -124,9 +125,9 @@ currencyMatches = {
 
 
 def converter(c1, c2, amount):
-    c = CurrencyRates()
 
     try:
+        c = CurrencyRates()
         cc = round(c.convert(currencyMatches[c1], currencyMatches[c2], amount),2)
         return(str(cc) + ' ' + c2)
     except:
