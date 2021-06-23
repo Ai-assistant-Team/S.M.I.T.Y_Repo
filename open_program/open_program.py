@@ -2,15 +2,19 @@ import subprocess
 from SMITY.open_program.program import Program
 import pathlib
 from SMITY.urlHandling.openUrls import openUrl
+from SMITY.definePATH import RESOURCES_PATH
+import os
 
 def open_program(program_name):
     listOfPrograms =[]
     listOfwebsites =[]
     execution = 0
-    execution = load(listOfPrograms,"\\program_locations.txt")
+    location = RESOURCES_PATH + '\\Settings\\program_locations.txt'
+    execution = load(listOfPrograms,location)
     if execution == 1:
         return 1
-    execution = load(listOfwebsites,"\\users_urls.txt")
+    location = RESOURCES_PATH + '\\Settings\\users_urls.txt'
+    execution = load(listOfwebsites,location)
     if execution == 1:
         return 1
     else:
@@ -45,8 +49,8 @@ def open_program(program_name):
 
 def load(list,txt_location):
     try:
-        location = pathlib.Path(__file__).parent.absolute()
-        f = open("%s%s"%(location,txt_location), "r")
+        location = RESOURCES_PATH + '\\Settings\\program_locations.txt'
+        f = open(location, "r")
         while 5>4:
             name = f.readline()
             name = name.replace('\n','')
