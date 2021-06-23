@@ -589,22 +589,29 @@ def recognizeAndAct(userInput):
 
     elif key == 'seekSpotify_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Which song would to like to skip to')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('To which minute of the song would to like to skip to')
         whereTo = SMITY.SMITYcore.speechToText.listen()
-        if type(whereTo) == str:
-            SMITY.SMITYcore.errorHandling.handleError(seek(whereTo))
+
+        try:
+            whereTo = int(re.search(r'\d+', whereTo).group())
+            if type(whereTo) == int:
+                SMITY.SMITYcore.errorHandling.handleError(seek(whereTo))
+        except:
+            SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Input')
 
     elif key == 'shuffleControlSpotify_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Would you like to activate shuffle ?')
-        ans = SMITY.SMITYcore.speechToText.listen()
-        if type(ans) == str:
-            if ans.lower() == 'yes':
-                SMITY.SMITYcore.errorHandling.handleError(shuffleControl(True))
-            elif ans.lower() == 'no':
-                SMITY.SMITYcore.errorHandling.handleError(shuffleControl(False))
-            else:
-                SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Answer')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this option is not supported yet.')
+
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Would you like to activate shuffle ?')
+        # ans = SMITY.SMITYcore.speechToText.listen()
+        # if type(ans) == str:
+        #     if ans.lower() == 'yes':
+        #         SMITY.SMITYcore.errorHandling.handleError(shuffleControl(True))
+        #     elif ans.lower() == 'no':
+        #         SMITY.SMITYcore.errorHandling.handleError(shuffleControl(False))
+        #     else:
+        #         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Answer')
 
     elif key == 'shutdownDevice_Keywords':
 
