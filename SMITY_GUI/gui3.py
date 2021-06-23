@@ -13,9 +13,9 @@ from time import sleep
 
 from SMITY.definePATH import PATH_TO_GUI, MY_OUTPUT, PATH_TO_SETTINGS
 # from SMITY.SMITYcore.speechToText import callListenFromGUI
-# from SMITY.SMITYcore.intentRecognition import writtenCommandFromGUI
+# from SMITY.SMITYcore.takeAction import writtenCommandFromGUI
 import SMITY.SMITYcore.speechToText
-import SMITY.SMITYcore.intentRecognition
+import SMITY.SMITYcore.takeAction
 
 MAX_LINES = 7
 #txt files constants
@@ -114,11 +114,13 @@ def main():
         home_page_cloce_button.place(relx = 0.985, rely = 0.0, width=31, height=28)
         home_page_exit_fullscreen_button.place(relx = 0.965, rely = 0.0, width=31, height=28)
         
-    global home_page_to_calendar
     def home_page_to_calendar(event):
         #go from home to settings screen
         calendar.pack(fill='both', expand =1)
         home_page.forget()
+
+    main.get_home_page_to_calendar = home_page_to_calendar
+
 
     def home_page_mic():
         f = open(os.path.join(PATH_TO_SETTINGS,settings_txt_file),'r')
@@ -3840,7 +3842,6 @@ def main():
 
     # Source: https://stackoverflow.com/questions/27930038/how-to-define-global-function-in-python
     # Source : https://stackoverflow.com/questions/27930038/how-to-define-global-function-in-python
-    global get_command_update
 
     def get_command_update():
         try:
@@ -3858,6 +3859,8 @@ def main():
         except:
             return 1
 
+    main.get_get_command_update = get_command_update
+
 
     def output(*content):
         try:
@@ -3868,10 +3871,11 @@ def main():
         except:
             return 1
 
-    def getWrittenCommand():
+    def sendWrittenCommandToTakeAction():
         try:
             output('User : ' + str(home_page_comand_text_field.get().rstrip()))
-            SMITY.SMITYcore.intentRecognition.writtenCommandFromGUI(str(home_page_comand_text_field.get().rstrip()))
+            # SMITY.SMITYcore.takeAction.
+            SMITY.SMITYcore.takeAction.writtenCommandFromGUI(str(home_page_comand_text_field.get().rstrip()))
             sleep(0.00000000001)
         except:
             return 1
@@ -3896,7 +3900,7 @@ def main():
         #     line_count =0
         #     message_history =''
         
-        getWrittenCommand()
+        sendWrittenCommandToTakeAction()
         home_page_comand_text_field.delete(0, tk.END)
 
     message_history_label = Label(home_page, image = message_history_label_image, borderwidth =0)
@@ -3964,10 +3968,10 @@ def main():
 
 
 def goToCalendar():
-    home_page_to_calendar('<Button-1>')
+    main.get_home_page_to_calendar('<Button-1>')
     sleep(0.00000000001)
     
 
-def update_output():
-    get_command_update()
+def update_output_from_outside():
+    main.get_get_command_update()
     sleep(0.00000000001)
