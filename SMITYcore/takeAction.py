@@ -211,6 +211,8 @@ def recognizeAndAct(userInput):
                 result = converter(c1, c2, amount)
                 if type(result) == str:
                     SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
+                else:
+                    SMITY.SMITYcore.errorHandling.handleError(result)
             except:
                 SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Input')
 
@@ -632,19 +634,23 @@ def recognizeAndAct(userInput):
 
     elif key == 'userFollowSpotify_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the user you would like to follow ?')
-        userName = SMITY.SMITYcore.speechToText.listen()
-        if type(userName) == str:
-            userNameList = [userName]
-            SMITY.SMITYcore.errorHandling.handleError(userFollow(userNameList))
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the user you would like to follow ?')
+        # userName = SMITY.SMITYcore.speechToText.listen()
+        # if type(userName) == str:
+        #     userNameList = [userName]
+        #     SMITY.SMITYcore.errorHandling.handleError(userFollow(userNameList))
 
     elif key == 'userUnfollowSpotify_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the user you would like to unfollow ?')
-        userName = SMITY.SMITYcore.speechToText.listen()
-        if type(userName) == str:
-            userNameList = [userName]
-            userUnfollow(userNameList)
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+
+        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the user you would like to unfollow ?')
+        # userName = SMITY.SMITYcore.speechToText.listen()
+        # if type(userName) == str:
+        #     userNameList = [userName]
+        #     userUnfollow(userNameList)
 
     elif key == 'videoCapture_Keywords':
 
