@@ -40,6 +40,7 @@ def waitForWakeup():
                         SMITY.SMITYcore.speechToText.listenForCommand()
                         print('Say "SMITY" to wake S.M.I.T.Y. up.')
                         break
+
             except sr.UnknownValueError:
                 pass
             except sr.RequestError:

@@ -681,4 +681,3 @@ def recognizeAndAct(userInput):
 def writtenCommandFromGUI(command):
     recognizeAndAct(command)
 # end of writtenCommandFromGUI
-

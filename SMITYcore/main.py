@@ -12,10 +12,6 @@ from SMITY.SMITYcore.parallelProgramming import call_function
 # import multiprocessing
 
 
-def test():
-    print('ok')
-
-
 if __name__ == '__main__':
 
     # ------------------------------
