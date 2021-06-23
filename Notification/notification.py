@@ -6,7 +6,7 @@ Created on We Jun 16 20:16:19 2021
 from win10toast import ToastNotifier # python -m pip install win10toast
 
 
-   toaster = ToastNotifier() # One-time initialization
+toaster = ToastNotifier() # One-time initialization
    
    def notify(content, title='Notification!'):
       try:
@@ -16,5 +16,4 @@ from win10toast import ToastNotifier # python -m pip install win10toast
          return 0
       
       except:
-         
          return 1
