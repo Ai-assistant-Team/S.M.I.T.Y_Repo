@@ -7,6 +7,7 @@ Created on Mon Mar 22 06:25:31 2021
 
 ## version 1.2
 
+
 def googleMapsDirections(origin='', destination='', travelmode=''):
     #made by Οικονομίδης Θεόδωρος
     ## Options
@@ -30,7 +31,7 @@ def googleMapsDirections(origin='', destination='', travelmode=''):
         
         # imports 
         
-        from urlHandling.openUrls import openUrl
+        from SMITY.urlHandling.openUrls import openUrl
         
         from urllib.parse import urlencode, quote_plus              # import the parts of the urllib.parse that are needed 
         

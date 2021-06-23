@@ -5,16 +5,16 @@ Created on Tue Mar 23 06:11:25 2021
 @author: Θόδωρος
 """
 
+
 def googleMapsSearch(query=''):
     #made by Οικονομίδης Θεόδωρος
     ## If called with a parameter, it opens a google maps page and searches for the given text
     ## If called without a parameter, it opens a google maps page, with an empty search bar
     
     try:
-        
         # imports
         
-        from urlHandling.openUrls import openUrl
+        from SMITY.urlHandling.openUrls import openUrl
         
         from urllib.parse import urlencode, quote_plus              # import the parts of the urllib.parse that are needed 
     
