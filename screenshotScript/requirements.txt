@@ -1,3 +1,0 @@
-Requirements:
-            Lib 1: tk
-            Lib 2: pyautogui
