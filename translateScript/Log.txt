@@ -1,5 +1,0 @@
-7/5/2021
-translate.py :
-	change 1 : (Added: textToTranslate = input('Give text to translate: '))
- 	change 2 : (Added: lang = input('Choose language: '))
-	change 3 : (Added: try: at 11 line and except: return print() at 17,18 lines)
