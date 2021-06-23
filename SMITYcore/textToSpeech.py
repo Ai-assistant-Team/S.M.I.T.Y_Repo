@@ -9,7 +9,7 @@
 ##      https://pyttsx3.readthedocs.io/en/latest/engine.html
 
 import pyttsx3
-from SMITY.SMITYcore.printToGUI import print2gui
+import SMITY.SMITYcore.printToGUI
 from SMITY.SMITYcore.singleton import Singleton
 
 
@@ -41,7 +41,7 @@ class Text2Speech(metaclass=Singleton):
         ## Prints to GUI what is going to be said. Then begins to say it.
         ##
 
-        print2gui('S.M.I.T.Y. : ', toSay)
+        SMITY.SMITYcore.printToGUI.print2gui('S.M.I.T.Y. : ', toSay)
 
         self.__engine.say(toSay)
 

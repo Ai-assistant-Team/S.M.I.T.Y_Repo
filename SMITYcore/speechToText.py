@@ -31,6 +31,7 @@ def listenForCommand():
     from SMITY.SMITYcore.takeAction import recognizeAndAct
 
     # takes the user's input (returned as a string)
+    Text2Speech().speak(greeting())
     userInput = listen()
 
     if type(userInput) == str:
@@ -55,10 +56,11 @@ def listen():
 
     # obtain audio from the microphone
     try:
+        
         r = sr.Recognizer()
 
         with sr.Microphone() as source:
-            Text2Speech().speak(greeting())
+            
             print2gui('Listening...')
 
             audio = r.listen(source)
@@ -76,7 +78,8 @@ def listen():
                 print2gui('Error. Could not request results; {0}'.format(e))
                 return handleError(10)     # 10 : No Internet Connection
 
-    except:
+    except Exception as e:
+        print(e)
         return handleError(1)  # 1 : Something Went Wrong (General Error)
 # end of listen
 

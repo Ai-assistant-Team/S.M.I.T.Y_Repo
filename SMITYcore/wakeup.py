@@ -19,6 +19,7 @@ def waitForWakeup():
 
     # # Uses Google's Speech Recognition Model
 
+    print('Say "SMITY" to wake S.M.I.T.Y. up.')
     while 1:
         try:
             # obtain audio from the microphone
@@ -37,10 +38,11 @@ def waitForWakeup():
                     if WAKEUP_WORD in userInput:
                         # activate
                         SMITY.SMITYcore.speechToText.listenForCommand()
+                        print('Say "SMITY" to wake S.M.I.T.Y. up.')
                         break
             except sr.UnknownValueError:
                 pass
-            except sr.RequestError as e:
+            except sr.RequestError:
                 pass
         except:
             pass

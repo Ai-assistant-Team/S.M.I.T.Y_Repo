@@ -8,7 +8,8 @@
 # For Parallel Programming
 # ------------------------------
 import multiprocessing
-from SMITY.SMITYcore.printToGUI import print2gui
+# import SMITY.SMITYcore.printToGUI
+import textToSpeech
 from SMITY.SMITYcore.errorHandling import handleError
 
 
@@ -25,7 +26,8 @@ def communicateWithRunningFunctions(conn):
     while 1:
         msg = conn.recv()
         if type(msg) == str:
-            print2gui("{}".format(msg))
+            # SMITY.SMITYcore.printToGUI.print2gui("{}".format(msg))
+            textToSpeech.Text2Speech().speak("{}".format(msg))
         elif type(msg) == int:
             handleError(msg)
         else:

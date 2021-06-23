@@ -39,8 +39,8 @@ from SMITY.screenshotScript.screenshot import *
 from SMITY.security.file import *
 from SMITY.security.text import *
 from SMITY.Shutdown.shutdownDev import *
-# from SMITY.SMITY_GUI.gui3 import home_page_to_calendar      # despite the error, it should work. When the GUI runs, it will create a global variable, that references <home_page_to_calendar>
-import SMITY.SMITY_GUI.gui3
+# from SMITY.SMITY_GUI.gui3 import goToCalendar      # despite the error, it should work. When the GUI runs, it will create a global variable, that references <home_page_to_calendar>
+#import SMITY.SMITY_GUI.gui3
 from SMITY.sos_signal.sos_signal import *
 from SMITY.VideoCapture.videoCapture import *
 from SMITY.Wikipedia.wikipediaScript import *
@@ -147,41 +147,51 @@ def recognizeAndAct(userInput):
 
     elif key == 'calendar_make_event_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not available yet.')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
         # make_event(date, time, description)
 
     elif key == 'calendar_Keywords':
-
-        SMITY.SMITY_GUI.gui3.main().home_page_to_calendar('<Button-1>')
+        
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
+        # SMITY.SMITY_GUI.gui3.main().home_page_to_calendar('<Button-1>')
         # home_page_to_calendar('<Button-1>')
+        #SMITY.SMITY_GUI.gui3.goToCalendar()
 
     elif key == 'calendar_showMeInRange_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not available yet.')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
         # show_me_in_range(date1, date2)
 
     elif key == 'calendar_showMe_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not available yet.')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
         # show_me(date)
 
-    elif key == 'countDown_Keywords':
+    elif key == 'countTo_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What number would you like to count to')
         to = SMITY.SMITYcore.speechToText.listen()
-        if type(to) == str:
-            to = int(re.search(r'\d+', to).group())
-            SMITY.SMITYcore.parallelProgramming.call_function_wCommunication(countTo, to)
 
-    elif key == 'countTo_Keywords':
+        if type(to) == str:
+            try:
+                to = int(re.search(r'\d+', to).group())
+
+                SMITY.SMITYcore.parallelProgramming.call_function_wCommunication(countTo, to)
+            except:
+                SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Input')
+
+    elif key == 'countDown_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What number would you like to count down from')
         countDownFrom = SMITY.SMITYcore.speechToText.listen()
         if type(countDownFrom) == str:
-            countDownFrom = int(re.search(r'\d+', countDownFrom).group())
-            SMITY.SMITYcore.parallelProgramming.call_function_wCommunication(countDown, countDownFrom)
+            try:
+                countDownFrom = int(re.search(r'\d+', countDownFrom).group())
+                SMITY.SMITYcore.parallelProgramming.call_function_wCommunication(countDown, countDownFrom)
+            except:
+                SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Input')
 
     elif key == 'currencyConverter_Keywords':
 
@@ -196,10 +206,13 @@ def recognizeAndAct(userInput):
                 c1 = 'United States Dollar'
             if c2 == 'dollar':
                 c2 = 'United States Dollar'
-            amount = int(re.search(r'\d+', amount).group())
-            result = converter(c1, c2, amount)
-            if type(result) == str:
-                SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
+            try:
+                amount = int(re.search(r'\d+', amount).group())
+                result = converter(c1, c2, amount)
+                if type(result) == str:
+                    SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
+            except:
+                SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Input')
 
     elif key == 'decryptFile_Keywords':
 
@@ -364,7 +377,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'googleSearch_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What would you like to search for in Google Maps ?')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What would you like to search for in Google ?')
         query = SMITY.SMITYcore.speechToText.listen()
         if type(query) == str:
             SMITY.SMITYcore.errorHandling.handleError(searching(query))
@@ -406,7 +419,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'open_news_page_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not available yet.')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
         # open_news_page(title)
 
@@ -632,11 +645,15 @@ def recognizeAndAct(userInput):
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Which value should I set to the volume')
         volumeLevel = SMITY.SMITYcore.speechToText.listen()
         if type(volumeLevel) == str:
-            volumeLevel = int(re.search(r'\d+', volumeLevel).group())
-            if 1 <= volumeLevel <= 100:
-                SMITY.SMITYcore.errorHandling.handleError(volumeControl(volumeLevel))
-            else:
-                SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Value')
+            try:
+                volumeLevel = int(re.search(r'\d+', volumeLevel).group())
+
+                if 1 <= volumeLevel <= 100:
+                    SMITY.SMITYcore.errorHandling.handleError(volumeControl(volumeLevel))
+                else:
+                    SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Value')
+            except:
+                SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Input')
 
     elif key == 'wikipedia_Keywords':
 

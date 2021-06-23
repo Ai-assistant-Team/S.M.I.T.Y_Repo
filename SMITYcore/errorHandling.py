@@ -4,8 +4,8 @@
 # Script created by Theodore Economides
 #
 
-from SMITY.SMITYcore.printToGUI import print2gui
-from SMITY.SMITYcore.textToSpeech import Text2Speech
+import SMITY.SMITYcore.printToGUI
+import SMITY.SMITYcore.textToSpeech
 
 MESSAGES = {
     0: 'The operation was executed successfully.',
@@ -35,9 +35,12 @@ def handleError(code):
 
     if code in [10, 12, 13]:
         # errors to be communicated only by written word
-        print2gui(MESSAGES[code])
+        SMITY.SMITYcore.printToGUI.print2gui(MESSAGES[code])
     else:
+        print(code)
+        if code not in MESSAGES.keys():
+            print(code)
         # errors to be communicated like any other answer from S.M.I.T.Y.
-        Text2Speech().speak(MESSAGES[code])
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak(MESSAGES[code])
 
     return code
