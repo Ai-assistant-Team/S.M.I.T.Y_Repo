@@ -1,0 +1,215 @@
+Keywords
+Οι λέξεις-κλειδιά που αντιστοιχούν σε κάθε λειτουργία της S.M.I.T.Y.
+
+Add a song to playback queue on Spotify.
+“With Spotify add to queue”
+
+Set alarm.
+“Set alarm for”
+
+Follow an artist on Spotify.
+“With Spotify follow artist”
+
+Unfollow artist on Spotify.
+“With Spotify unfollow artist”
+
+Open calendar.
+“Open calendar”
+
+Make an event on the calendar.
+“Add to calendar”
+
+Show tasks from multiple dates on calendar.
+“Show tasks from”
+
+Show tasks from a specific date on calendar.
+“Show tasks”
+
+Countdown from a number.
+“Countdown”
+
+Count to a number.
+“Count to”
+
+Convert currency.
+“Convert”
+
+Decrypt a file.
+“Decrypt file”
+
+Decrypt text.
+“Decrypt text”
+
+Delete chosen saved albums on Spotify.
+“With Spotify delete album”
+
+Delete chosen saved shows on Spotify.
+“With Spotify delete podcast”
+
+Delete chosen saved tracks on Spotify.
+“With Spotify delete song”
+
+Encrypt a file.
+“Encrypt file”
+
+Encrypt text.
+“Encrypt text”
+
+Count Facebook messages.
+“Facebook messages”
+
+Get weather forecast.
+“Show weather”
+
+Get fun facts.
+“Fun fact”
+
+Get the date.
+“What is the date”
+
+Get the time.
+“What is the time”
+
+Get news.
+“Show me news titles”
+
+Read mail from Gmail.
+“Read my emails”
+
+Send mail from Gmail.
+“Send email”
+
+Get directions to somewhere on Google Maps.
+“Take me to”
+
+Search for a place on Google Maps.
+“Where is”
+
+Google Search.
+“Search”
+
+Count Instagram messages.
+“Instagram messages”
+
+Get jokes.
+“Tell me a joke”
+
+Lock device screen.
+“Lock screen”
+
+Open a program.
+“Open”
+
+Open links.
+“Open URL”
+
+Open a news page.
+“Open news site”
+
+Pause playback on Spotify.
+“With Spotify pause”
+
+Capture a photo.
+“Take a photo”
+
+Play an album on Spotify.
+“With Spotify play album”
+
+Play an episode on Spotify.
+“With Spotify play episode”
+
+Play a song stored on your device.
+“Play”
+
+Play a song on Spotify.
+“Play song on Spotify”
+
+Play the next song on queue on Spotify.
+“With Spotify next”
+
+Play a playlist on Spotify.
+“With Spotify play playlist”
+
+Play the previous song on Spotify.
+“With Spotify previous”
+
+Play a show on Spotify.
+“With Spotify play podcast”
+
+Play a video stored on your device local.
+“Play video”
+
+Add songs to a playlist on Spotify.
+“With Spotify add song to”
+
+Create a playlist on Spotify.
+“With Spotify create playlist”
+
+Follow a playlist on Spotify.
+“With Spotify follow playlist”
+
+Remove a song from a playlist on Spotify.
+“With Spotify remove song from”
+
+Unfollow a playlist on Spotify.
+“With Spotify unfollow playlist”
+
+Change the repeat function on Spotify.
+“With Spotify repeat”
+
+Restart the device.
+“Restart device”
+
+Resume playback on Spotify.
+“With Spotify resume”
+
+Save albums on Spotify.
+“With Spotify save album”
+
+Save shows on Spotify.
+“With Spotify save podcast”
+
+Save songs on spotify.
+“With Spotify save song”
+
+Record the screen.
+“Record screen”
+
+Take a screenshot.
+“Take screenshot”
+
+Skip to a desired part of a song on Spotify.
+“With Spotify skip to”
+
+Change the shuffle function on Spotify.
+“With Spotify shuffle”
+
+Shutdown the device.
+“Shutdown device”
+
+Play songs by an artist on Spotify.
+“With Spotify play songs by”
+
+Send SOS signal.
+“Send SOS signal”
+
+Translate text.
+“Translate”
+
+Follow a user on Spotify.
+“With Spotify follow user”
+
+Unfollow a user on Spotify.
+“With Spotify unfollow user”
+
+Capture video.
+“Record video”
+
+Change the volume of a song on Spotify.
+“With Spotify set volume to”
+
+Search in Wikipedia.
+“Search in Wikipedia”
+
+Search on YouTube.
+“Search on YouTube”
