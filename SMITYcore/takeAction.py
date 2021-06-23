@@ -10,39 +10,23 @@
 
 # -------------------------------------------------------------
 from SMITY.definePATH import *
-from SMITY.AlarmClock.alarmClock import *
 from SMITY.counter.counter import *
-# from SMITY.currency_converter.ExchangeRates import *
 from SMITY.fb_messages.facebook_messages_count import *
 from SMITY.Forecast_weather_now.forecast_weather_script import *
-from SMITY.funFactsScript.funFacts import *
 from SMITY.GetDate.getDate import *
 from SMITY.GetTime.getTime import *
-# from SMITY.gmailScripts.read import *
-# from SMITY.gmailScripts.send import *
 from SMITY.googleMapsScripts.googleMapsDirections import *
 from SMITY.googleMapsScripts.googleMapsSearch import *
-from SMITY.googleSearch.googleSearchCust import *
 from SMITY.instagram_messages.instagram_messages_count import *
 from SMITY.jokesScript.jokes import *
-from SMITY.LockScrn.lockScrn import *
-# from SMITY.News.ClearTheTxtOfLinks import *
-# from SMITY.News.news import *
 from SMITY.open_program.open_program import *
-# from SMITY.PhotoCapture.photoCapture import *
 from SMITY.playMusicLocal.playMusicLocal import *
 from SMITY.playMusicSpotify.playMusicSpotify import *
 from SMITY.playVideoLocal.playVideoLocal import *
 from SMITY.Restart.restartDev import *
-# from SMITY.screenRecord.screenrecord import *
-# from SMITY.screenshotScript.screenshot import *
 from SMITY.security.file import *
 from SMITY.security.text import *
 from SMITY.Shutdown.shutdownDev import *
-# from SMITY.SMITY_GUI.gui3 import goToCalendar      # despite the error, it should work. When the GUI runs, it will create a global variable, that references <home_page_to_calendar>
-# import SMITY.SMITY_GUI.gui3
-# from SMITY.sos_signal.sos_signal import *
-# from SMITY.VideoCapture.videoCapture import *
 from SMITY.Wikipedia.wikipediaScript import *
 from SMITY.Youtube.youtubeScript import *
 from SMITY.urlHandling.openUrls import openUrl
@@ -124,10 +108,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'alarmClock_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What time should the alarm go off?')
-        hours = SMITY.SMITYcore.speechToText.listen()
-        if type(hours) == str:
-            check_alarm_input(hours)
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
     elif key == 'artistFollowSpotify_Keywords':
 
@@ -148,26 +129,18 @@ def recognizeAndAct(userInput):
     elif key == 'calendar_make_event_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
-        # make_event(date, time, description)
 
     elif key == 'calendar_Keywords':
         
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
-        # SMITY.SMITY_GUI.gui3.main().home_page_to_calendar('<Button-1>')
-        # home_page_to_calendar('<Button-1>')
-        #SMITY.SMITY_GUI.gui3.goToCalendar()
 
     elif key == 'calendar_showMeInRange_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
-        # show_me_in_range(date1, date2)
-
     elif key == 'calendar_showMe_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
-
-        # show_me(date)
 
     elif key == 'countTo_Keywords':
 
@@ -196,27 +169,6 @@ def recognizeAndAct(userInput):
     elif key == 'currencyConverter_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
-
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('From what currency would you like to convert?')
-        # c1 = SMITY.SMITYcore.speechToText.listen()
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What currency what would you like to convert to?')
-        # c2 = SMITY.SMITYcore.speechToText.listen()
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the amount of ' + c1 + ' ?')
-        # amount = SMITY.SMITYcore.speechToText.listen()
-        # if type(c1) == type(c2) == type(amount) == str:
-        #     if c1 == 'dollar':
-        #         c1 = 'United States Dollar'
-        #     if c2 == 'dollar':
-        #         c2 = 'United States Dollar'
-        #     try:
-        #         amount = int(re.search(r'\d+', amount).group())
-        #         result = converter(c1, c2, amount)
-        #         if type(result) == str:
-        #             SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
-        #         else:
-        #             SMITY.SMITYcore.errorHandling.handleError(result)
-        #     except:
-        #         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Input')
 
     elif key == 'decryptFile_Keywords':
 
@@ -307,11 +259,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'funFacts_Keywords':
 
-        result = funFacts()
-        if type(result) is str:
-            SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
-        else:
-            SMITY.SMITYcore.errorHandling.handleError(result)
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
     elif key == 'getDate_Keywords':
 
@@ -333,41 +281,15 @@ def recognizeAndAct(userInput):
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
-        # result = get_news()
-        # if type(result) == str:
-        #     SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
-        # else:
-        #     SMITY.SMITYcore.errorHandling.handleError(result)
-
     elif key == 'gmailRead_Keywords':
 
         # Though the script is fully functional, it can't use the user's credentials if Google doesn't authorize the app
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
-        # result = show_emails()
-        # if type(result) == str:
-        #     SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
-        # else:
-        #     SMITY.SMITYcore.errorHandling.handleError(result)
-
     elif key == 'gmailSend_Keywords':
 
         # Though the script is fully functional, it can't use the user's credentials if Google doesn't authorize the app
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
-
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What would you like the email to say ?')
-        # msg = SMITY.SMITYcore.speechToText.listen()
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak("What would you like the email's subject to be ?")
-        # subject = SMITY.SMITYcore.speechToText.listen()
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('To whom should I send the email  ?')
-        # to = SMITY.SMITYcore.speechToText.listen()
-        #
-        # if type(msg) == type(subject) == type(to) == str:
-        #     result = create_send(msg, to, subject)
-        #     if type(result) is str:
-        #         SMITY.SMITYcore.textToSpeech.Text2Speech().speak(result)
-        #     else:
-        #         SMITY.SMITYcore.errorHandling.handleError(result)
 
     elif key == 'googleMapsDirections_Keywords':
 
@@ -389,10 +311,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'googleSearch_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What would you like to search for in Google ?')
-        query = SMITY.SMITYcore.speechToText.listen()
-        if type(query) == str:
-            SMITY.SMITYcore.errorHandling.handleError(searching(query))
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
     elif key == 'instagramMessagesCount_Keywords':
 
@@ -413,7 +332,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'lockScreen_Keywords':
 
-        lockScrnTimer(0)  # t=0 to lock instantly
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
     elif key == 'openProgram_Keywords':
 
@@ -433,8 +352,6 @@ def recognizeAndAct(userInput):
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
-        # open_news_page(title)
-
     elif key == 'pausePlaybackSpotify_Keywords':
 
         SMITY.SMITYcore.errorHandling.handleError(pausePlayback())
@@ -442,8 +359,6 @@ def recognizeAndAct(userInput):
     elif key == 'photoCapture_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
-
-        # SMITY.SMITYcore.errorHandling.handleError(capturing())
 
     elif key == 'playAlbumSpotify_Keywords':
 
@@ -478,10 +393,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'playlistFollowSpotify_Keywords':
 
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the playlist you like to follow ?')
-        playlistName = SMITY.SMITYcore.speechToText.listen()
-        if type(playlistName) == str:
-            SMITY.SMITYcore.errorHandling.handleError(playlistFollow(playlistName))
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
     elif key == 'playlistRemoveTracksSpotify_Keywords':
 
@@ -544,14 +456,10 @@ def recognizeAndAct(userInput):
         if type(videoName) == str:
             videoPath = getLocalVideoPath()
             SMITY.SMITYcore.errorHandling.handleError(playVideoLocal(videoName, videoPath))
+
     elif key == 'repeatControlSpotify_Keywords':
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Repeat track, context or off ?')
-        whatToRepeat = SMITY.SMITYcore.speechToText.listen()
-        if type(whatToRepeat) == str:
-            if whatToRepeat.lower() not in ['track', 'context', 'off']:
-                SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Invalid Value')
-            else:
-                SMITY.SMITYcore.errorHandling.handleError(repeatControl(whatToRepeat))
+
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
     elif key == 'restartDevice_Keywords':
 
@@ -589,13 +497,9 @@ def recognizeAndAct(userInput):
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
-        # SMITY.SMITYcore.errorHandling.handleError(screenRecord())
-
     elif key == 'screenshot_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
-
-        # SMITY.SMITYcore.errorHandling.handleError(screenshot())
 
     elif key == 'seekSpotify_Keywords':
 
@@ -612,9 +516,7 @@ def recognizeAndAct(userInput):
 
     elif key == 'shuffleControlSpotify_Keywords':
 
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this option is not supported yet.')
-
-        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Would you like to activate shuffle ?')
+        SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Would you like to have shuffle activated ?')
         ans = SMITY.SMITYcore.speechToText.listen()
         if type(ans) == str:
             if ans.lower() == 'yes':
@@ -640,41 +542,21 @@ def recognizeAndAct(userInput):
         # The script uses the gmail send function which is not supported yet for reasons explained before
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
-        # if isSure():
-        #     send_sos()
-        # else:
-        #     SMITY.SMITYcore.textToSpeech.Text2Speech().speak('Ok, I will not proceed')
-
     elif key == 'translateText_Keywords':
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this option is not supported yet.')
-
-        # translateText(textToTranslate, lang)
 
     elif key == 'userFollowSpotify_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the user you would like to follow ?')
-        # userName = SMITY.SMITYcore.speechToText.listen()
-        # if type(userName) == str:
-        #     userNameList = [userName]
-        #     SMITY.SMITYcore.errorHandling.handleError(userFollow(userNameList))
-
     elif key == 'userUnfollowSpotify_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
 
-        # SMITY.SMITYcore.textToSpeech.Text2Speech().speak('What is the name of the user you would like to unfollow ?')
-        # userName = SMITY.SMITYcore.speechToText.listen()
-        # if type(userName) == str:
-        #     userNameList = [userName]
-        #     userUnfollow(userNameList)
 
     elif key == 'videoCapture_Keywords':
 
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak('I am sorry, this is not supported yet.')
-
-        # SMITY.SMITYcore.errorHandling.handleError(videocap())
 
     elif key == 'volumeControlSpotify_Keywords':
 

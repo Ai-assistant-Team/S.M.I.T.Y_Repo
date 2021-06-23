@@ -6,7 +6,6 @@
 
 from SMITY.definePATH import MY_OUTPUT
 # import SMITY.SMITY_GUI.gui3
-# from SMITY.SMITY_GUI.gui3 import update_output_from_outside
 
 # Add file that contains whatever is printed on the text area for GUI
 
@@ -17,13 +16,18 @@ def print2gui(*objects, sep=' ', end='\n', filename=MY_OUTPUT):
     ## created by Theodore Economides
     ## ------------------------------------------------------
 
-    # Use the same attributes as python's print, changing only the output file.
-    # Link used : https://python-reference.readthedocs.io/en/latest/docs/functions/print.html
-    
+    ## Due to problems with GUI, GUI is not used in this version of S.M.I.T.Y.
+    ## The name of the function remains "print2gui" because in future versions
+    ##   GUI will be used, and because a change that big may hurt the code.
+
+    # TO BE USED WITH GUI ONLY
+    # --------------------------
     # with open(filename, 'a') as file:
         
     #     print(*objects, sep=sep, end=end, file=file)
         
     # # The following is called to update the GUI output
     # SMITY.SMITY_GUI.gui3.update_output_from_outside()
+    # --------------------------
+
     print(*objects)

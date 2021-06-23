@@ -8,7 +8,6 @@
 # For Parallel Programming
 # ------------------------------
 import multiprocessing
-# import SMITY.SMITYcore.printToGUI
 import SMITY.SMITYcore.textToSpeech
 from SMITY.SMITYcore.errorHandling import handleError
 

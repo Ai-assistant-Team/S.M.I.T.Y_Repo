@@ -38,7 +38,7 @@ def handleError(code):
         SMITY.SMITYcore.printToGUI.print2gui(MESSAGES[code])
     else:
         if code not in MESSAGES.keys():
-            print(code)
+            SMITY.SMITYcore.printToGUI.print2gui(code)
         # errors to be communicated like any other answer from S.M.I.T.Y.
         SMITY.SMITYcore.textToSpeech.Text2Speech().speak(MESSAGES[code])
 
