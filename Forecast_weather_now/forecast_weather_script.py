@@ -48,7 +48,7 @@ def forecast_weather_now(city=""):
 
 
 
-            weather = "--------------------------------------------------------------\n" + "Today's forecast in {} {}".format(city,
+            weather = "\n--------------------------------------------------------------\n" + "Today's forecast in {} {}".format(city,
                      date_time) + "\n--------------------------------------------------------------\n" + "The temprature is: {:.2f} °C".format(temp_city) + "\n        The temprature will flaxuate between {:.2f}°C to {:.2f}°C\n".format(temp_min, temp_max)
 
             return weather
