@@ -8,9 +8,11 @@ def open_program(program_name):
     listOfwebsites =[]
     execution = 0
     execution = load(listOfPrograms,"\\program_locations.txt")
+    if execution == 1:
+        return 1
     execution = load(listOfwebsites,"\\users_urls.txt")
     if execution == 1:
-        return 10
+        return 1
     else:
         found = 'N'
         for program in listOfPrograms:
