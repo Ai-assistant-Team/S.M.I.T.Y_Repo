@@ -1,2 +1,0 @@
-extract gui_requirements.zip to the same folder as the script
-PIL library
