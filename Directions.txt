@@ -1,0 +1,8 @@
+To use:
+
+1) Download 'SMITY.zip' and extract it into the user's Documents folder, in Windows.
+2) The following compressed file contains all the libraries used in this project (file too large to be uploaded to GitHub) :
+              https://drive.google.com/file/d/1A0N6DjSW4MsjnaPd2ki5iJ7mK8X2JKNf/view?usp=sharing 
+   Download and add the libraries to PATH.
+3) Download this GitHub Repository (except for the 'SMITY.zip' file), into a folder named 'SMITY' and add the folder to PATH. 
+4) Run SMITY/SMITYcore/main.py
